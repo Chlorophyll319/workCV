@@ -26,16 +26,21 @@
 
 ## 📂 頁面區塊（垂直佈局系統）
 
-> **2025-09-07 更新**：已從 Bento Grid 並排改為垂直佈局，提升資訊清晰度
+> **2025-09-07 更新**：已從 Bento Grid 並排改為垂直佈局，提升資訊清晰度  
+> **2025-09-07 晚間更新**：Hero Section 已完成重大重構，從 Terminal 風格改為 VSCode Editor 風格
 
 ### 現有佈局架構（已實作 ✅）
 
-#### 1. Hero Section - 全寬頂部區塊 ✅
-- 姓名、職稱（Frontend Engineer / Aspiring Backend）
-- 一句標語（功能導向、資料流思維）
-- Terminal 互動設計：`whoami` 和 `ls skills/` 命令模擬
-- 兩個 CTA 按鈕（GitHub / 聯絡我）
-- 偽 Terminal 視窗設計（左上角紅黃綠點）
+#### 1. Hero Section - VSCode Editor 風格主視覺 ✅
+- **設計風格**：從 Terminal 風格重構為 VSCode Editor 卡片設計
+- **檔案標籤**：`portfolio.js` 檔案標籤，包含 JS 圖示與關閉按鈕
+- **程式碼語法**：JavaScript 物件語法展示個人資訊
+- **語法高亮**：使用 VSCode 色彩系統 (purple, blue, green, orange)
+- **行號系統**：左側固定寬度行號 (1-10 行)，不隨內容縮排
+- **游標動畫**：第 10 行實現真實的游標閃爍效果
+- **響應式設計**：行號與內容分離，保持一致的視覺效果
+- **CTA 按鈕**：GitHub / 聯絡我 按鈕置於底部
+- **圖示系統**：統一使用 Phosphor Icons (`i-ph-*`)
 
 #### 2. About Me Section - 獨立全寬區塊 ✅
 - **完整個人介紹**：背景轉換、開發理念、目前專注、核心優勢
@@ -79,9 +84,11 @@
 
 ## 🔧 開發注意事項
 - 使用 **Nuxt UI Vue 版**（`@nuxt/ui` with Vite plugin）
-- Icons：使用 `@iconify/vue`（已精簡，支援多套圖示庫按需載入）
+- Icons：使用 **Phosphor Icons**（`i-ph-*`，已統一全站圖示系統）
 - SEO/Meta：使用 `@vueuse/head`（已安裝，輕量且與 @vueuse 生態整合）
-- 動效：使用純 Tailwind transition（保持輕量，符合 VSCode 簡潔風格）
+- 動效：使用純 Tailwind transition + 自定義 CSS animation（如游標閃爍）
+- **內容真實性**：所有個人資料來源於 `.claude/葉芃 (1).pdf`，不使用虛構內容
+- **Tailwind Utility-First**：盡量減少自定義 CSS，善用 Tailwind 類別
 - 保持簡潔，不要過度依賴套件，避免增加維護負擔
 
 ---
@@ -90,7 +97,8 @@
 
 ### 已達成標準 ✅
 - `npm install && npm run dev` 可以直接跑起來
-- Hero 區有 VSCode 偽 Terminal 條完整互動
+- **Hero Section**：VSCode Editor 風格完整實現，包含語法高亮、行號系統、游標動畫
+- **圖示統一性**：全站統一使用 Phosphor Icons (`i-ph-*`) 系統
 - **垂直佈局系統**清晰，每個區塊獨立展示
 - 卡片 hover 有 accent 高亮效果
 - Projects 區有完整資料（3 筆專案，含 metrics 和亮點）
@@ -98,6 +106,7 @@
 - 中文字體顯示粉圓體，英文/程式碼顯示 Fira Code
 - **About Me 區塊**有完整的個人資訊展示
 - **響應式網格系統**運作良好
+- **真實內容**：所有個人資料基於真實履歷內容
 
 ### 待完成標準 ⏳
 - 無（已全部完成）
@@ -112,7 +121,7 @@
 - **套件狀態**：✅ 已精簡優化，無冗餘依賴
 
 ### 完成度
-- **Hero Section**: 100% ✅
+- **Hero Section**: 100% ✅ (已重構為 VSCode Editor 風格)
 - **About Me Section**: 100% ✅  
 - **Projects Section**: 100% ✅
 - **Skills Section**: 100% ✅
@@ -121,4 +130,13 @@
 - **排版系統**：垂直佈局 (已從 Bento Grid 重構)
 - **響應式設計**：Mobile-first 策略
 - **VSCode 主題**：完整色彩系統與字體配置
+- **圖示系統**：統一 Phosphor Icons (`i-ph-*`)
+- **內容管理**：真實履歷資料整合
 - **SEO 優化**：@vueuse/head 完整設定
+
+### 近期重大更新
+- **2025-09-07 晚間**：Hero Section 從 Terminal 風格重構為 VSCode Editor 風格
+- **視覺統一性**：所有 Section 現已採用一致的 VSCode 卡片設計風格
+- **圖示標準化**：完成全站 Phosphor Icons 統一，移除 iconify 依賴
+- **行號系統**：實現真實 IDE 般的固定寬度行號與語法高亮
+- **游標動畫**：自定義 CSS 動畫實現真實的游標閃爍效果

@@ -1,32 +1,32 @@
 export const profile = {
   name: '葉芃',
   englishName: 'Evelyn',
-  title: 'Frontend Engineer',
-  subtitle: 'AI協作開發',
-  tagline: '從設計思維到功能實現，擅長與 AI 協作的前端工程師',
-  description: '行銷設計出身，目前完成泰山職訓局的半年前端開發課程，具備前後端分離的獨立開發實作經驗。開發過程中習慣與 AI 協作，透過對話釐清問題、規劃流程並輔助除錯。',
+  title: '前端工程師',
+  subtitle: 'Frontend Engineer | Aspiring Backend',
+  tagline: '從設計思維到功能實現，專注於創造優質的用戶體驗',
+  description: '行銷設計出身，完成泰山職訓局半年前端開發課程，具備前後端分離的獨立開發實作經驗。開發過程中習慣與 AI 協作，透過對話釐清問題、規劃流程並輔助除錯，擅長拆解需求並規劃開發流程。',
   
   about: {
-    description: '從行銷設計轉向前端工程，我相信好的程式碼如同好的設計——既要功能完整，也要優雅易懂。透過半年的前端開發訓練，我掌握了 Vue 3、Node.js 全端開發技能，並在實戰中培養出與 AI 協作的獨特能力。',
+    description: '畢業後專職於設計與行銷領域，意識到設計領域發展瓶頸後，希望融合設計思維與程式技術，因此參加前端職訓課程轉換跑道。在受訓期間，我發現自己熱愛「優化資訊架構、實現功能邏輯」的開發過程。',
     background: {
       from: '行銷設計',
       to: '前端工程'
     },
-    philosophy: '功能導向思維，追求程式碼的可讀性與維護性，重視用戶體驗與開發效率的平衡',
+    philosophy: '結合過去培養的需求分析與流程拆解能力，能將複雜問題從本質分解成具體步驟逐一解決，深入理解技術架構背後的商業邏輯',
     highlights: [
       'AI 協作開發',
       '全端獨立開發',
       '設計思維',
       '快速學習'
     ],
-    currentFocus: '深化前端技術棧，並朝向全端工程師方向發展，同時探索 AI 輔助開發的最佳實踐'
+    currentFocus: '希望在實務中累積技術基礎，培養系統性分析能力。短期目標是熟練前端核心技術與後端 API 整合，持續精進設計模式、版本控制等技能'
   },
   
   contact: {
     email: 'kcnfoggy54@gmail.com',
     phone: '0971-700-818',
-    github: 'https://github.com/evelyn',
-    linkedin: 'https://linkedin.com/in/evelyn'
+    github: 'https://github.com/Chlorophyll319',
+    linkedin: 'https://www.linkedin.com/in/peng-yeh-4b35a2175/'
   },
 
   highlights: [

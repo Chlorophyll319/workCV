@@ -1,109 +1,180 @@
 <template>
-  <section class="hero-section h-full flex items-center justify-center p-4 md:p-8">
-    <div class="w-full max-w-3xl">
-      <!-- Terminal Window -->
-      <Terminal title="evelyn@portfolio:~$ whoami">
-        <div class="space-y-2">
-          <!-- Command Prompt -->
-          <div class="flex items-center space-x-2">
-            <span class="text-vscode-green">evelyn@portfolio</span>
-            <span class="text-vscode-text-primary">:</span>
-            <span class="text-vscode-blue">~</span>
-            <span class="text-vscode-text-primary">$</span>
-            <span class="text-vscode-yellow ml-2">whoami</span>
-          </div>
-          
-          <!-- Output -->
-          <div class="mt-4 space-y-1">
-            <div class="text-vscode-text-white text-lg font-semibold">
-              {{ profile.name }} ({{ profile.englishName }})
-            </div>
-            <div class="text-vscode-blue">
-              {{ profile.title }} | {{ profile.subtitle }}
-            </div>
-            <div class="text-vscode-text-secondary mt-2 max-w-2xl">
-              {{ profile.tagline }}
-            </div>
-          </div>
-
-          <!-- Second Command -->
-          <div class="flex items-center space-x-2 mt-6">
-            <span class="text-vscode-green">evelyn@portfolio</span>
-            <span class="text-vscode-text-primary">:</span>
-            <span class="text-vscode-blue">~</span>
-            <span class="text-vscode-text-primary">$</span>
-            <span class="text-vscode-yellow ml-2">ls skills/</span>
-          </div>
-          
-          <!-- Skills Output -->
-          <div class="mt-2 flex flex-wrap gap-2">
-            <span class="text-vscode-blue">Vue3/</span>
-            <span class="text-vscode-green">Node.js/</span>
-            <span class="text-vscode-yellow">AI-Collaboration/</span>
-            <span class="text-vscode-purple">MongoDB/</span>
-            <span class="text-vscode-orange">Tailwind/</span>
-          </div>
-
-          <!-- Third Command with Cursor -->
-          <div class="flex items-center space-x-2 mt-6">
-            <span class="text-vscode-green">evelyn@portfolio</span>
-            <span class="text-vscode-text-primary">:</span>
-            <span class="text-vscode-blue">~</span>
-            <span class="text-vscode-text-primary">$</span>
-            <span class="text-vscode-yellow ml-2">contact</span>
-            <span class="animate-pulse text-vscode-text-white">|</span>
+  <section class="bg-transparent h-full p-4 md:p-6">
+    <div class="h-full flex flex-col">
+      <!-- VSCode Editor Card -->
+      <div
+        class="bg-vscode-card rounded-xl border border-vscode-border p-4 md:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 hover:border-vscode-blue/50"
+      >
+        <!-- VSCode File Tab Design -->
+        <div class="flex items-center gap-2 mb-6 pb-4 border-b border-vscode-border">
+          <div class="flex items-center gap-2 bg-vscode-bg px-4 py-2 rounded-t-lg">
+            <UIcon name="i-ph-file-js" class="w-4 h-4 text-vscode-yellow" />
+            <span class="font-code text-sm text-vscode-text-white">portfolio.js</span>
+            <UIcon
+              name="i-ph-x"
+              class="w-3 h-3 text-vscode-text-secondary hover:text-vscode-text-white cursor-pointer"
+            />
           </div>
         </div>
-      </Terminal>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-        <UButton
-          :to="profile.contact.github"
-          target="_blank"
-          size="lg"
-          color="primary"
-          variant="solid"
-          class="font-code"
+        <!-- Code Content -->
+        <div class="space-y-4 flex-1">
+          <!-- Main Profile Code Block -->
+          <div class="font-code text-sm">
+            <!-- Line 1 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">1</span>
+              <div class="flex-1">
+                <span class="text-vscode-purple">const</span>
+                <span class="text-vscode-blue ml-2">developer</span>
+                <span class="text-vscode-text-primary ml-1">=</span>
+                <span class="text-vscode-text-primary ml-1">{</span>
+              </div>
+            </div>
+
+            <!-- Line 2 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">2</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-green">name</span>
+                <span class="text-vscode-text-primary">:</span>
+                <span class="text-vscode-orange ml-2"
+                  >"{{ profile.name }} ({{ profile.englishName }})"</span
+                >
+              </div>
+            </div>
+
+            <!-- Line 3 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">3</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-green">role</span>
+                <span class="text-vscode-text-primary">:</span>
+                <span class="text-vscode-orange ml-2">"{{ profile.title }}"</span>
+              </div>
+            </div>
+
+            <!-- Line 4 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">4</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-green">specialization</span>
+                <span class="text-vscode-text-primary">:</span>
+                <span class="text-vscode-orange ml-2">"{{ profile.subtitle }}"</span>
+              </div>
+            </div>
+
+            <!-- Line 5 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">5</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-green">philosophy</span>
+                <span class="text-vscode-text-primary">:</span>
+                <span class="text-vscode-orange ml-2">"{{ profile.tagline }}"</span>
+              </div>
+            </div>
+
+            <!-- Line 6 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">6</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-green">skills</span>
+                <span class="text-vscode-text-primary">:</span>
+                <span class="text-vscode-text-primary ml-2">[</span>
+              </div>
+            </div>
+
+            <!-- Line 7 (skills array content) -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">7</span>
+              <div class="flex-1 ml-8 flex flex-wrap gap-2">
+                <span class="text-vscode-orange">"Vue3"</span
+                ><span class="text-vscode-text-primary">,</span>
+                <span class="text-vscode-orange">"JavaScript"</span
+                ><span class="text-vscode-text-primary">,</span>
+                <span class="text-vscode-orange">"Node.js"</span
+                ><span class="text-vscode-text-primary">,</span>
+                <span class="text-vscode-orange">"MongoDB"</span
+                ><span class="text-vscode-text-primary">,</span>
+                <span class="text-vscode-orange">"AI-Collaboration"</span>
+              </div>
+            </div>
+
+            <!-- Line 8 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">8</span>
+              <div class="flex-1 ml-4">
+                <span class="text-vscode-text-primary">]</span>
+              </div>
+            </div>
+
+            <!-- Line 9 -->
+            <div class="flex">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">9</span>
+              <div class="flex-1">
+                <span class="text-vscode-text-primary">}</span>
+              </div>
+            </div>
+
+            <!-- Active cursor line -->
+            <div class="flex mt-2">
+              <span class="text-vscode-text-secondary w-6 text-right mr-4">10</span>
+              <div class="flex-1">
+                <span class="text-vscode-text-primary">//</span>
+                <span class="text-vscode-text-secondary ml-2">Ready to collaborate</span>
+                <span class="text-vscode-text-white ml-1 animate-blink">|</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center mt-8 pt-6 border-t border-vscode-border"
         >
-          <UIcon name="i-ph-github-logo" class="w-5 h-5" />
-          GitHub
-        </UButton>
-        
-        <UButton
-          :to="`mailto:${profile.contact.email}`"
-          size="lg"
-          color="neutral"
-          variant="outline"
-          class="font-code border-vscode-border hover:border-vscode-blue"
-        >
-          <UIcon name="i-ph-envelope" class="w-5 h-5" />
-          聯絡我
-        </UButton>
+          <UButton
+            :to="profile.contact.github"
+            target="_blank"
+            size="lg"
+            color="primary"
+            variant="solid"
+            class="font-code"
+          >
+            <UIcon name="i-ph-github-logo" class="w-5 h-5" />
+            GitHub
+          </UButton>
+
+          <UButton
+            :to="`mailto:${profile.contact.email}`"
+            size="lg"
+            color="neutral"
+            variant="outline"
+            class="font-code border-vscode-border hover:border-vscode-blue"
+          >
+            <UIcon name="i-ph-envelope" class="w-5 h-5" />
+            聯絡我
+          </UButton>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { profile } from '../../assets/data/profile'
-import Terminal from '../ui/Terminal.vue'
+import { profile } from '../../assets/data/profile';
 </script>
 
 <style scoped>
-/* Remove background since it's handled by parent */
-.hero-section {
-  background: transparent;
-}
-
-/* Typing animation could be added here */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
 @keyframes blink {
-  from, to { border-color: transparent }
-  50% { border-color: #D4D4D4 }
+  0%, 50% { 
+    opacity: 1; 
+  }
+  51%, 100% { 
+    opacity: 0; 
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }
 </style>

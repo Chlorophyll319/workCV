@@ -1615,3 +1615,154 @@ Skills Section 現在達到了視覺設計與用戶體驗的完美平衡，成�
 
 ---
 *圖示優化與排版調整完成 - 2025/09/08 凌晨*
+
+## 2025/09/08 凌晨 - Hero Section 視覺風格重構
+
+### 🎯 用戶需求分析
+用戶對於 Hero Section 的 Terminal 設計感到「突兀」，希望與其他區塊保持一致的 VSCode 風格：
+- **問題診斷**：Terminal 視窗設計與其他區塊的卡片風格不協調
+- **解決方向**：將 Terminal 風格改為 VSCode 編輯器風格，保持整體一致性
+
+### 🔄 設計風格重構
+
+#### 從 Terminal 到 VSCode 編輯器
+**設計理念轉換**：
+- **原設計**：macOS Terminal 視窗（紅黃綠圓點 + 黑色終端）
+- **新設計**：VSCode 編輯器介面（檔案標籤 + 程式碼內容）
+
+#### 視覺元素重新設計
+1. **檔案標籤系統**：
+   - 從 Terminal 標題列改為 VSCode 文件標籤
+   - 使用 `portfolio.js` 作為檔案名稱
+   - 加入 JavaScript 檔案圖示和關閉按鈕
+
+2. **內容呈現方式**：
+   - 從 Terminal 命令改為 JavaScript 物件語法
+   - 使用真實的程式碼結構展示個人資訊
+   - 保持 VSCode 語法高亮色彩系統
+
+### 🔧 技術實作記錄
+
+#### 1. 移除 Terminal 組件依賴
+```vue
+<!-- 移除前 -->
+<Terminal title="evelyn@portfolio:~$ whoami">
+  <div class="space-y-2">
+    <!-- Terminal 命令內容 -->
+  </div>
+</Terminal>
+
+<!-- 移除後 -->
+<div class="bg-vscode-card rounded-xl border border-vscode-border">
+  <!-- VSCode 編輯器內容 -->
+</div>
+```
+
+#### 2. 重構個人資訊展示結構
+**新的程式碼風格**：
+```javascript
+const developer = {
+  name: "葉芃 (Evelyn)",
+  role: "前端工程師", 
+  specialization: "Frontend Engineer | Aspiring Backend",
+  philosophy: "從設計思維到功能實現，專注於創造優質的用戶體驗",
+  skills: ["Vue3", "JavaScript", "Node.js", "MongoDB", "AI-Collaboration"]
+}
+// Ready to collaborate|
+```
+
+#### 3. 行號與程式碼分離
+**實現真實編輯器效果**：
+- 行號固定在左側，使用 `w-6 text-right mr-4`
+- 程式碼內容使用 `flex-1` 彈性佈局
+- 正確的縮排層次（物件內容、陣列內容）
+- 游標閃爍效果優化
+
+### 🎨 視覺效果優化
+
+#### 行號系統改善
+**修正前**：行號會跟著內容縮排移動
+```vue
+<div class="ml-6 space-y-1">
+  <span class="text-vscode-text-secondary">2</span>
+  <!-- 行號跟著縮排 ❌ -->
+</div>
+```
+
+**修正後**：行號固定位置，內容獨立縮排
+```vue
+<div class="flex">
+  <span class="text-vscode-text-secondary w-6 text-right mr-4">2</span>
+  <div class="flex-1 ml-4">
+    <!-- 行號固定，內容獨立縮排 ✅ -->
+  </div>
+</div>
+```
+
+#### 游標閃爍動畫改善
+**從 Tailwind animate-pulse 到自定義動畫**：
+```css
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s infinite;
+}
+```
+- 更接近真實編輯器的游標閃爍節奏
+- 清晰的顯示/隱藏切換效果
+
+### 📊 重構成果分析
+
+#### 視覺一致性提升
+- **統一卡片風格**：與 About、Projects、Skills 區塊完全一致
+- **相同 hover 效果**：`hover:shadow-lg hover:-translate-y-1`
+- **一致的圓角設計**：統一使用 `rounded-xl`
+- **協調的色彩系統**：完全基於 VSCode 主題色彩
+
+#### 內容展示優化
+- **更真實的程式碼感**：使用 JavaScript 物件語法
+- **語法高亮完整**：關鍵字、字串、變數、註解都有對應色彩
+- **資訊結構清晰**：個人資料以結構化方式展示
+- **互動感提升**：註解 `// Ready to collaborate` 呼應求職狀態
+
+#### 技術實作改善
+- **完全 Tailwind 化**：移除所有不必要的自定義 CSS（僅保留必要的游標動畫）
+- **組件依賴簡化**：移除 Terminal 組件，減少複雜度
+- **響應式友善**：所有元素都考慮多裝置適配
+- **Icon 系統統一**：改用 Phosphor Icons，保持專案一致性
+
+### 💡 設計學習重點
+
+#### 視覺協調重要性
+- **整體性優於個別特色**：單個區塊的設計必須服務於整體體驗
+- **一致性建立信任感**：統一的設計語言提升專業形象
+- **用戶認知負荷**：減少不必要的視覺差異，降低理解成本
+
+#### VSCode 主題設計策略
+- **主題深度應用**：不只是顏色，還包括佈局邏輯和互動方式
+- **真實性與可用性平衡**：保持真實感的同時確保資訊傳達效果
+- **開發者共鳴**：使用開發者熟悉的視覺語言增強認同感
+
+#### 重構決策原則
+- **用戶反饋優先**：設計師的主觀喜好應讓步於用戶體驗
+- **整體協調性**：局部最佳化不如整體最佳化
+- **維護友善性**：統一的設計系統更容易維護和擴展
+
+### 🚀 最終實現效果
+
+#### 用戶需求滿足度
+- ✅ **解決突兀問題**：Hero 區塊現在與其他區塊完美融合
+- ✅ **保持 VSCode 風格**：檔案標籤和程式碼展示更符合主題
+- ✅ **提升整體協調性**：四個區塊形成統一的視覺體驗
+
+#### 技術品質提升
+- **程式碼簡潔度**：移除不必要的組件依賴
+- **樣式統一性**：所有區塊都遵循相同的設計系統
+- **維護便利性**：統一的結構更容易理解和修改
+
+Hero Section 重構完成後，履歷網站現在擁有完全一致的 VSCode 風格，每個區塊都像真正的編輯器視窗，為用戶創造沉浸式的開發者體驗。
+
+---
+*Hero Section 視覺風格重構完成 - 2025/09/08 凌晨*

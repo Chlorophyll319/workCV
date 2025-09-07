@@ -1,56 +1,56 @@
 <template>
-  <section class="projects-section py-16 px-4">
-    <div class="max-w-6xl mx-auto">
+  <section class="projects-section h-full p-4 md:p-6">
+    <div class="h-full flex flex-col">
       <!-- Section Title -->
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-vscode-text-white font-chinese mb-4">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-vscode-text-white font-chinese mb-2">
           專案作品
         </h2>
-        <div class="w-16 h-1 bg-vscode-green mx-auto rounded-full"></div>
+        <div class="w-12 h-1 bg-vscode-green mx-auto rounded-full"></div>
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 flex-1">
         <div 
           v-for="(project, index) in projects" 
           :key="project.id"
-          class="project-card bg-vscode-card rounded-xl border border-vscode-border p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+          class="project-card bg-vscode-card rounded-xl border border-vscode-border p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           :class="getProjectAccentClass(index)"
         >
           <!-- Project Header -->
-          <div class="flex items-start justify-between mb-4">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-lg flex items-center justify-center" :class="getProjectIconBg(index)">
-                <UIcon :name="project.icon" class="w-6 h-6 text-vscode-text-white" />
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center" :class="getProjectIconBg(index)">
+                <UIcon :name="project.icon" class="w-4 h-4 text-vscode-text-white" />
               </div>
               <div>
-                <h3 class="text-xl font-bold text-vscode-text-white font-chinese">
+                <h3 class="text-lg font-bold text-vscode-text-white font-chinese">
                   {{ project.name }}
                 </h3>
-                <span class="text-sm text-vscode-text-secondary">
+                <span class="text-xs text-vscode-text-secondary">
                   {{ project.type }}
                 </span>
               </div>
             </div>
             <div class="flex items-center gap-1">
-              <UIcon name="i-ph-star-fill" class="w-4 h-4 text-vscode-yellow" />
-              <span class="text-sm text-vscode-text-secondary">{{ project.status }}</span>
+              <UIcon name="i-ph-star-fill" class="w-3 h-3 text-vscode-yellow" />
+              <span class="text-xs text-vscode-text-secondary">{{ project.status }}</span>
             </div>
           </div>
 
           <!-- Project Description -->
-          <p class="text-vscode-text-secondary font-chinese text-sm leading-relaxed mb-4">
+          <p class="text-vscode-text-secondary font-chinese text-xs leading-relaxed mb-3">
             {{ project.description }}
           </p>
 
           <!-- Tech Stack -->
-          <div class="mb-4">
-            <h4 class="text-sm font-semibold text-vscode-text-white mb-2">技術棧</h4>
-            <div class="flex flex-wrap gap-2">
+          <div class="mb-3">
+            <h4 class="text-xs font-semibold text-vscode-text-white mb-1">技術棧</h4>
+            <div class="flex flex-wrap gap-1">
               <span 
                 v-for="tech in project.techStack" 
                 :key="tech"
-                class="px-2 py-1 bg-vscode-bg rounded text-xs font-code text-vscode-text-primary border border-vscode-border"
+                class="px-1.5 py-0.5 bg-vscode-bg rounded text-xs font-code text-vscode-text-primary border border-vscode-border"
               >
                 {{ tech }}
               </span>
@@ -58,36 +58,36 @@
           </div>
 
           <!-- Metrics -->
-          <div class="bg-vscode-bg rounded-lg p-3 mb-4">
-            <h4 class="text-sm font-semibold text-vscode-text-white mb-2 flex items-center gap-2">
-              <UIcon name="i-ph-chart-bar" class="w-4 h-4" />
+          <div class="bg-vscode-bg rounded-lg p-2 mb-3">
+            <h4 class="text-xs font-semibold text-vscode-text-white mb-1 flex items-center gap-1">
+              <UIcon name="i-ph-chart-bar" class="w-3 h-3" />
               效能指標
             </h4>
-            <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="grid grid-cols-2 gap-2 text-xs">
               <div v-for="(value, key) in project.metrics" :key="key">
-                <div class="text-vscode-text-secondary">{{ getMetricLabel(key) }}</div>
-                <div class="font-semibold" :class="getMetricColor(key)">{{ value }}</div>
+                <div class="text-vscode-text-secondary text-xs">{{ getMetricLabel(key) }}</div>
+                <div class="font-semibold text-xs" :class="getMetricColor(key)">{{ value }}</div>
               </div>
             </div>
           </div>
 
           <!-- Highlights -->
-          <div class="mb-6">
-            <h4 class="text-sm font-semibold text-vscode-text-white mb-2">專案亮點</h4>
-            <ul class="space-y-1">
+          <div class="mb-4">
+            <h4 class="text-xs font-semibold text-vscode-text-white mb-1">專案亮點</h4>
+            <ul class="space-y-0.5">
               <li 
-                v-for="highlight in project.highlights" 
+                v-for="highlight in project.highlights.slice(0, 3)" 
                 :key="highlight"
-                class="text-xs text-vscode-text-secondary flex items-start gap-2"
+                class="text-xs text-vscode-text-secondary flex items-start gap-1"
               >
-                <UIcon name="i-ph-check" class="w-3 h-3 text-vscode-green mt-0.5 flex-shrink-0" />
-                <span>{{ highlight }}</span>
+                <UIcon name="i-ph-check" class="w-2.5 h-2.5 text-vscode-green mt-0.5 flex-shrink-0" />
+                <span class="text-xs">{{ highlight }}</span>
               </li>
             </ul>
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex gap-3">
+          <div class="flex gap-2">
             <UButton
               v-if="project.demoUrl"
               :to="project.demoUrl"
@@ -97,7 +97,7 @@
               :color="getProjectButtonColor(index)"
               class="flex-1 font-code text-xs"
             >
-              <UIcon name="i-ph-play" class="w-4 h-4" />
+              <UIcon name="i-ph-play" class="w-3 h-3" />
               Demo
             </UButton>
             <UButton
@@ -109,7 +109,7 @@
               color="neutral"
               class="flex-1 font-code text-xs border-vscode-border hover:border-vscode-text-secondary"
             >
-              <UIcon name="i-ph-github-logo" class="w-4 h-4" />
+              <UIcon name="i-ph-github-logo" class="w-3 h-3" />
               GitHub
             </UButton>
           </div>
@@ -172,21 +172,26 @@ const getMetricColor = (key: string) => {
 </script>
 
 <style scoped>
+/* Remove background since it's handled by parent */
 .projects-section {
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(106, 153, 85, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(86, 156, 214, 0.06) 0%, transparent 50%);
+  background: transparent;
 }
 
-.project-card:nth-child(1) {
-  animation-delay: 0.1s;
+/* Custom scrollbar for overflow content */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
 }
 
-.project-card:nth-child(2) {
-  animation-delay: 0.2s;
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.project-card:nth-child(3) {
-  animation-delay: 0.3s;
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(86, 156, 214, 0.5);
+  border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(86, 156, 214, 0.7);
 }
 </style>

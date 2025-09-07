@@ -7,6 +7,7 @@ import Fonts from 'unplugin-fonts/vite';
 import Layouts from 'vite-plugin-vue-layouts-next';
 
 export default defineConfig({
+  base:'./',
   resolve: {
     alias: {
       '@': '/src',

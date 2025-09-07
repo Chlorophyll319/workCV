@@ -1,6 +1,6 @@
 <template>
-  <section class="hero-section min-h-screen flex items-center justify-center px-4 py-8">
-    <div class="max-w-4xl w-full">
+  <section class="hero-section h-full flex items-center justify-center p-4 md:p-8">
+    <div class="w-full max-w-3xl">
       <!-- Terminal Window -->
       <Terminal title="evelyn@portfolio:~$ whoami">
         <div class="space-y-2">
@@ -57,7 +57,7 @@
       </Terminal>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
         <UButton
           :to="profile.contact.github"
           target="_blank"
@@ -81,16 +81,6 @@
           聯絡我
         </UButton>
       </div>
-
-      <!-- Scroll Indicator -->
-      <div class="text-center mt-12">
-        <div class="animate-bounce">
-          <UIcon name="i-ph-arrow-down" class="w-6 h-6 text-vscode-text-secondary mx-auto" />
-        </div>
-        <p class="text-vscode-text-secondary text-sm mt-2 font-code">
-          scroll to explore
-        </p>
-      </div>
     </div>
   </section>
 </template>
@@ -101,10 +91,9 @@ import Terminal from '../ui/Terminal.vue'
 </script>
 
 <style scoped>
+/* Remove background since it's handled by parent */
 .hero-section {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(86, 156, 214, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(106, 153, 85, 0.08) 0%, transparent 50%);
+  background: transparent;
 }
 
 /* Typing animation could be added here */

@@ -1,5 +1,7 @@
 # 履歷網站規格文件（Vue 3 + Vite + TypeScript + Tailwind + Nuxt UI Vue）
 
+> **最新狀態 (2025-09-07 晚間)**：已完成排版重構，從 Bento Grid 並排改為垂直佈局系統
+
 ## 🎨 整體設計風格
 - 主題風格：**VSCode 主題風**（暗色背景 + 語法高亮點綴）
 - 與專題網站的呼應/反差：
@@ -18,38 +20,49 @@
 > 以上僅供參考，請根據 monkai 或其他 vscode 主題修改
 
 - 動效：卡片 hover → accent 色邊框或 glow，進場淡入
-- **強調良好的 RWD 體驗**：手機單欄、平板/桌機 2–3 欄，排版不亂
+- **強調良好的 RWD 體驗**：響應式垂直佈局，所有螢幕尺寸都保持清晰的資訊層次
 
 ---
 
-## 📂 頁面區塊（Bento Grid 排版）
+## 📂 頁面區塊（垂直佈局系統）
 
-### 1. Hero
+> **2025-09-07 更新**：已從 Bento Grid 並排改為垂直佈局，提升資訊清晰度
+
+### 現有佈局架構（已實作 ✅）
+
+#### 1. Hero Section - 全寬頂部區塊 ✅
 - 姓名、職稱（Frontend Engineer / Aspiring Backend）
 - 一句標語（功能導向、資料流思維）
+- Terminal 互動設計：`whoami` 和 `ls skills/` 命令模擬
 - 兩個 CTA 按鈕（GitHub / 聯絡我）
 - 偽 Terminal 視窗設計（左上角紅黃綠點）
 
-### 2. About Me
-- 短版自我介紹（2–3 句）：背景轉職、功能導向、AI 協作
-- 放在一張卡片中
+#### 2. About Me Section - 獨立全寬區塊 ✅
+- **完整個人介紹**：背景轉換、開發理念、目前專注、核心優勢
+- **4欄響應式網格**：桌機4欄 → 平板2欄 → 手機1欄
+- **VSCode 檔案標籤設計**：`about-me.md` 風格
+- **底部 Slogan**：設計思維引用
 
-### 3. Projects
-- 三張卡片（專題網站、履歷站、PayMock）
-- 每張卡包含：  
-  - 專案名稱  
-  - 簡短描述（一句用途 + 技術重點）  
-  - 技術 Tag  
-  - Demo / GitHub 按鈕  
-  - 額外 metrics（如 Lighthouse 分數、API 延遲）
+#### 3. Projects Section - 獨立全寬區塊 ✅ 
+- **3個專案展示**：職訓網站、履歷網站、PayMock 模擬器
+- **3欄響應式網格**：桌機3欄 → 平板2欄 → 手機1欄
+- 每張卡片包含：
+  - 專案名稱與類型
+  - 簡短描述
+  - 技術標籤
+  - 效能指標 (Lighthouse、載入時間等)
+  - 專案亮點列表
+  - Demo / GitHub 按鈕
 - 每張卡用不同 accent 色呼應語法高亮（藍/綠/黃）
 
-### 4. Skills
+### 待實作區塊 ⏳
+
+#### 4. Skills Section
 - 卡片格子，分成分類：Frontend / Backend / Database / Tools / AI 協作
 - 每個技能附一句描述（不是 logo 牆）
 - 技能 tag 邊框用 accent 色
 
-### 5. Contact
+#### 5. Contact Section
 - Email / GitHub / LinkedIn → 三顆大按鈕
 - 簡單表單（展示表單驗證）
 - 按鈕可用藍/紫漸層，模仿 VSCode 酷炫感
@@ -76,11 +89,40 @@
 ---
 
 ## ✅ 驗收標準
+
+### 已達成標準 ✅
 - `npm install && npm run dev` 可以直接跑起來
-- Hero 區有 VSCode 偽 Terminal 條
-- Bento Grid 格式清晰，md 以上 2–3 欄，手機單欄
+- Hero 區有 VSCode 偽 Terminal 條完整互動
+- **垂直佈局系統**清晰，每個區塊獨立展示
 - 卡片 hover 有 accent 高亮效果
-- Projects 區有假資料（3 筆，含 metrics）
-- Skills 區塊用 accent 色標註不同分類
+- Projects 區有完整資料（3 筆專案，含 metrics 和亮點）
 - 在手機、平板、桌機都有良好的 **RWD 體驗**
 - 中文字體顯示粉圓體，英文/程式碼顯示 Fira Code
+- **About Me 區塊**有完整的個人資訊展示
+- **響應式網格系統**運作良好
+
+### 待完成標準 ⏳
+- Skills 區塊用 accent 色標註不同分類
+- Contact 區塊的表單驗證功能
+
+---
+
+## 🚀 目前專案狀態 (2025-09-07)
+
+### 開發環境
+- **開發伺服器**：`http://localhost:3002` ✅ 正常運行
+- **編譯狀態**：✅ 無錯誤，熱重載正常
+- **套件狀態**：✅ 已精簡優化，無冗餘依賴
+
+### 完成度
+- **Hero Section**: 100% ✅
+- **About Me Section**: 100% ✅  
+- **Projects Section**: 100% ✅
+- **Skills Section**: 0% ⏳
+- **Contact Section**: 0% ⏳
+
+### 技術架構
+- **排版系統**：垂直佈局 (已從 Bento Grid 重構)
+- **響應式設計**：Mobile-first 策略
+- **VSCode 主題**：完整色彩系統與字體配置
+- **SEO 優化**：@vueuse/head 完整設定

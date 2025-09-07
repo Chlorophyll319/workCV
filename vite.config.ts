@@ -8,11 +8,6 @@ import Layouts from 'vite-plugin-vue-layouts-next';
 
 export default defineConfig({
   base:'./',
-  resolve: {
-    alias: {
-      '@': '/src',
-    },
-  },
   plugins: [
     VueRouter(),
     Layouts(),

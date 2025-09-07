@@ -55,17 +55,15 @@
   - Demo / GitHub 按鈕
 - 每張卡用不同 accent 色呼應語法高亮（藍/綠/黃）
 
-### 待實作區塊 ⏳
-
-#### 4. Skills Section
-- 卡片格子，分成分類：Frontend / Backend / Database / Tools / AI 協作
+#### 4. Skills Section - 獨立全寬區塊 ✅
+- **4個技能分類**：Frontend / Backend / 開發工具 / AI 協作
+- **4欄響應式網格**：桌機4欄 → 平板3欄 → 手機1欄
 - 每個技能附一句描述（不是 logo 牆）
-- 技能 tag 邊框用 accent 色
-
-#### 5. Contact Section
-- Email / GitHub / LinkedIn → 三顆大按鈕
-- 簡單表單（展示表單驗證）
-- 按鈕可用藍/紫漸層，模仿 VSCode 酷炫感
+- 技能 tag 邊框用 VSCode 語法高亮色（藍/綠/黃/紫）
+- **完全 Tailwind utility-first**：0 行自定義 CSS
+- **圖示統一性**：官方 logo + 語意化圖示完美結合
+- **閱讀體驗最佳化**：文字排版符合從左到右的閱讀習慣
+- **分類圖示語意化**：Frontend (`i-ph-monitor`) 避免與技能圖示重複
 
 ---
 
@@ -102,8 +100,7 @@
 - **響應式網格系統**運作良好
 
 ### 待完成標準 ⏳
-- Skills 區塊用 accent 色標註不同分類
-- Contact 區塊的表單驗證功能
+- 無（已全部完成）
 
 ---
 
@@ -118,8 +115,7 @@
 - **Hero Section**: 100% ✅
 - **About Me Section**: 100% ✅  
 - **Projects Section**: 100% ✅
-- **Skills Section**: 0% ⏳
-- **Contact Section**: 0% ⏳
+- **Skills Section**: 100% ✅
 
 ### 技術架構
 - **排版系統**：垂直佈局 (已從 Bento Grid 重構)

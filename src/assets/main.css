@@ -21,6 +21,7 @@
   --color-vscode-yellow: #DCDCAA;  /* Constants */
   --color-vscode-purple: #C586C0;  /* Functions */
   --color-vscode-orange: #CE9178;  /* Numbers */
+  --color-vscode-pink: #ff79c6;    /* Special/AI */
   
   /* Override default primary */
   --color-primary-500: #569CD6;

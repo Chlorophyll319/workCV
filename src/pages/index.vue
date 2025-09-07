@@ -18,16 +18,10 @@
         <ProjectsSection />
       </div>
       
-      <!-- Future Sections Grid -->
-      <!-- <div class="bento-grid grid gap-6 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-        <div class="grid-item skills-area lg:col-span-1">
-          <SkillsSection />
-        </div>
-        
-        <div class="grid-item contact-area lg:col-span-1">
-          <ContactSection />
-        </div>
-      </div> -->
+      <!-- Skills Section - Full Width -->
+      <div class="grid-item skills-area">
+        <SkillsSection />
+      </div>
     </div>
   </div>
 </template>
@@ -37,8 +31,7 @@ import { useHead } from '@vueuse/head'
 import HeroSection from '../components/sections/HeroSection.vue'
 import AboutSection from '../components/sections/AboutSection.vue'
 import ProjectsSection from '../components/sections/ProjectsSection.vue'
-// import SkillsSection from '~/components/sections/SkillsSection.vue'
-// import ContactSection from '~/components/sections/ContactSection.vue'
+import SkillsSection from '../components/sections/SkillsSection.vue'
 
 // 設定頁面 meta
 useHead({

@@ -20,11 +20,6 @@ export default defineConfig({
     ui(),
     tailwindcss(),
     Fonts({
-      google: {
-        families: ['Fira Code:400,500'],
-        display: 'swap',
-        preconnect: false,
-      },
       custom: {
         families: [
           {

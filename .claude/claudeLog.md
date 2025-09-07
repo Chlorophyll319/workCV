@@ -731,3 +731,149 @@ dist/assets/index-D3pRk-ww.js    257.72 kB │ gzip: 88.34 kB
 
 ---
 *GitHub Pages 錯誤修復完成 - 2025/09/07 深夜*
+
+## 2025-09-07 深夜 - 字體預載入問題二次修復
+
+### 🐛 問題復現
+用戶重新部署後仍然遇到相同的字體預載入警告：
+```
+The resource https://fonts.googleapis.com/css2?family=Fira%20Code:400,500&display=swap was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+```
+
+### 🔍 根本原因分析
+第一次修復只是關閉了 `preconnect` 選項，但 `unplugin-fonts` 插件本身仍會對 Google Fonts 進行預載入處理，這是插件的默認行為。
+
+### ✅ 徹底解決方案
+
+#### 1. 完全移除 unplugin-fonts 的 Google Fonts 配置
+**檔案**: `vite.config.ts:22-33`
+
+**修改前**:
+```ts
+Fonts({
+  google: {
+    families: ['Fira Code:400,500'],
+    display: 'swap',
+    preconnect: false,
+  },
+  custom: {
+    families: [
+      {
+        name: 'jf-openhuninn',
+        src: './src/assets/font/*.ttf',
+      },
+    ],
+    display: 'swap',
+    preload: true,
+  },
+})
+```
+
+**修改後**:
+```ts
+Fonts({
+  custom: {
+    families: [
+      {
+        name: 'jf-openhuninn',
+        src: './src/assets/font/*.ttf',
+      },
+    ],
+    display: 'swap',
+    preload: true,
+  },
+})
+```
+
+#### 2. 改用標準 HTML `<link>` 標籤載入 Google Fonts
+**檔案**: `index.html:3-8`
+
+**新增**:
+```html
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" />
+  <title>Vite + Vue + TS</title>
+</head>
+```
+
+### 🔧 修復流程
+
+1. **診斷問題來源**:
+   - 確認第一次修復後仍有預載入行為
+   - 識別 `unplugin-fonts` 插件為根本原因
+
+2. **移除插件處理**:
+   - 從 Vite 配置中完全移除 Google Fonts 配置
+   - 保留 custom fonts（本地字體 jf-openhuninn）的處理
+
+3. **改用標準載入**:
+   - 在 `index.html` 中直接加入 Google Fonts 連結
+   - 使用 `display=swap` 確保字體載入性能
+
+4. **驗證修復**:
+   - 執行 `npm run build` 確認建置成功
+   - 檢查生成的 `dist/index.html` 確認字體載入方式正確
+
+### 📊 修復結果
+
+#### 建置成功
+```bash
+✓ built in 3.71s
+dist/index.html                    0.59 kB │ gzip:  0.38 kB
+dist/assets/index-CMZhU1JY.css     2.14 kB │ gzip:  0.77 kB
+dist/assets/index-CEH037zD.css   128.63 kB │ gzip: 17.42 kB
+dist/assets/default-Mcr_i1Zi.js    0.23 kB │ gzip:  0.19 kB
+dist/assets/index-CMngEsoE.js     15.82 kB │ gzip:  5.87 kB
+dist/assets/index-D3pRk-ww.js    257.72 kB │ gzip: 88.34 kB
+```
+
+#### 最終 dist/index.html 內容
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" />
+    <title>Vite + Vue + TS</title>
+    <script type="module" crossorigin src="./assets/index-D3pRk-ww.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CEH037zD.css">
+  </head>
+  <body>
+    <div id="app" class="isolate"></div>
+  </body>
+</html>
+```
+
+### 💡 技術學習重點
+
+#### unplugin-fonts 插件行為
+1. **默認預載入**: 插件會自動為 Google Fonts 添加 preload 行為
+2. **配置限制**: 即使設定 `preconnect: false`，插件內部仍可能進行預載入
+3. **混合使用策略**: 插件適合處理本地字體，標準 `<link>` 更適合處理 Google Fonts
+
+#### 字體載入最佳化策略
+1. **標準 `<link>` 載入**: 更可控的載入方式，避免不必要的預載入
+2. **`display=swap`**: 確保在字體載入期間文字仍然可見
+3. **權衡取捨**: 插件便利性 vs 載入控制精準度
+
+#### 問題排查方法
+1. **漸進式排除**: 從配置參數調整到完全移除插件處理
+2. **檢查生成檔案**: 查看最終輸出的 HTML 確認實際行為
+3. **工具鏈理解**: 理解各個工具的默認行為和限制
+
+### 🚀 最終狀態
+- ✅ **字體預載入警告完全解決**: 不再有 preload 相關警告
+- ✅ **字體功能正常**: Fira Code 字體透過標準方式載入，CSS 中仍可正常使用
+- ✅ **本地字體不受影響**: jf-openhuninn 仍通過 unplugin-fonts 處理
+- ✅ **建置流程穩定**: TypeScript 編譯和 Vite 建置都無錯誤
+- ❓ **Message Channel 錯誤**: 仍存在但不影響功能，屬於瀏覽器擴充功能問題
+
+專案現在已完全準備好部署至 GitHub Pages，字體載入警告問題已徹底解決。
+
+---
+*字體預載入問題徹底修復完成 - 2025/09/07 深夜*

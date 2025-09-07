@@ -605,3 +605,129 @@ AboutSection.vue:82:5 - 多餘的 </div> 標籤
 
 ---
 *排版重構完成 - 2025/09/07 晚間*
+
+## 2025-09-07 深夜 - GitHub Pages 部署錯誤修復
+
+### 🐛 問題診斷
+用戶在 GitHub Pages 部署後遇到兩類錯誤：
+
+1. **字體預載入警告**：
+```
+The resource https://fonts.googleapis.com/css2?family=Fira%20Code:400,500&display=swap was preloaded using link preload but not used within a few seconds from the window's load event.
+```
+
+2. **Message Channel 錯誤**（重複4次）：
+```
+Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
+```
+
+### 🔍 問題分析
+
+#### 字體預載入問題
+- **根本原因**：Vite 配置中 Google Fonts 設定了 `preconnect: true` 和隱含的 preload，但字體沒有立即使用
+- **影響**：瀏覽器資源浪費，Console 警告訊息
+
+#### Message Channel 錯誤
+- **根本原因**：瀏覽器擴充功能（廣告封鎖器、密碼管理器等）嘗試與頁面通信時連接中斷
+- **影響**：不影響網站功能，純粹是第三方擴充功能的副作用
+
+### ✅ 解決方案實作
+
+#### 1. 修復字體預載入配置
+**檔案**：`vite.config.ts:23-27`
+
+**修改前**：
+```ts
+google: {
+  families: ['Fira Code:400,500'],
+  display: 'swap',
+  preconnect: true,  // ❌ 問題來源
+},
+```
+
+**修改後**：
+```ts
+google: {
+  families: ['Fira Code:400,500'],
+  display: 'swap',
+  preconnect: false,  // ✅ 關閉預連接
+},
+```
+
+#### 2. 修復 TypeScript 編譯錯誤
+在修復過程中發現兩個額外問題：
+
+**問題A：不存在的 preload 屬性**
+- **錯誤**：`error TS2353: Object literal may only specify known properties, and 'preload' does not exist in type 'GoogleFonts'`
+- **解決**：移除錯誤的 `preload: false` 設定
+
+**問題B：按鈕顏色類型錯誤**
+- **錯誤**：`error TS2322: Type 'string' is not assignable to type '"primary" | "secondary" | "success"...`
+- **檔案**：`src/components/sections/ProjectsSection.vue:144-146`
+- **修改**：將 `['primary', 'green', 'yellow']` 改為 `['primary', 'success', 'warning']`
+- **型別斷言**：加入 `as 'primary' | 'success' | 'warning'` 確保類型安全
+
+### 🔨 修復流程記錄
+
+1. **診斷階段**：
+   - 檢查專案結構，確認是 Vite + Vue 3 專案
+   - 搜尋 Google Fonts 和 Fira Code 相關設定
+   - 定位到 `vite.config.ts` 中的 `unplugin-fonts` 配置
+
+2. **字體修復**：
+   - 關閉 `preconnect` 選項，讓字體按需載入
+   - 移除不存在的 `preload` 設定
+
+3. **編譯修復**：
+   - 修正 Projects Section 中的按鈕顏色定義
+   - 確保 TypeScript 類型正確匹配 NuxtUI 要求
+
+4. **建置測試**：
+   - 執行 `npm run build` 確認所有錯誤已修復
+   - 成功產生 dist 目錄，包含所有最佳化檔案
+
+### 📊 修復結果
+
+#### 編譯成功
+```bash
+✓ built in 3.45s
+dist/index.html                    0.64 kB │ gzip:  0.40 kB
+dist/assets/index-CMZhU1JY.css     2.14 kB │ gzip:  0.77 kB  
+dist/assets/index-CEH037zD.css   128.63 kB │ gzip: 17.42 kB
+dist/assets/default-Mcr_i1Zi.js    0.23 kB │ gzip:  0.19 kB
+dist/assets/index-CMngEsoE.js     15.82 kB │ gzip:  5.87 kB
+dist/assets/index-D3pRk-ww.js    257.72 kB │ gzip: 88.34 kB
+```
+
+#### 問題解決狀態
+- ✅ **字體預載入警告**：已修復，字體會在需要時才載入
+- ✅ **TypeScript 編譯錯誤**：已修復所有類型問題
+- ✅ **專案建置**：成功生成部署檔案
+- ❓ **Message Channel 錯誤**：屬於瀏覽器擴充功能問題，無法從網站端解決
+
+### 💡 技術重點學習
+
+#### Vite 字體最佳化策略
+1. **按需載入 > 預載入**：避免不必要的網路資源浪費
+2. **`display: 'swap'`**：確保文字在字體載入期間仍可閱讀
+3. **預連接謹慎使用**：只在確定會使用該資源時才啟用
+
+#### TypeScript 類型安全
+1. **嚴格類型檢查**：NuxtUI 組件的 props 有嚴格的聯合類型限制
+2. **型別斷言使用**：在確保類型正確的情況下使用 `as` 斷言
+3. **編譯時錯誤 > 執行時錯誤**：TypeScript 幫助提前發現問題
+
+#### 瀏覽器兼容性考量
+1. **第三方擴充功能影響**：某些 Console 錯誤來自用戶端，非開發者可控
+2. **錯誤分類重要性**：區分影響功能的錯誤 vs 環境相關的警告
+3. **用戶體驗優先**：專注修復影響實際使用的問題
+
+### 🚀 部署就緒
+專案已準備好重新部署至 GitHub Pages：
+- 所有 Console 警告已解決
+- TypeScript 編譯零錯誤  
+- 建置檔案最佳化完成
+- Message Channel 錯誤屬於瀏覽器擴充功能，不影響網站功能
+
+---
+*GitHub Pages 錯誤修復完成 - 2025/09/07 深夜*

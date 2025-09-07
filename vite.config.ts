@@ -23,7 +23,7 @@ export default defineConfig({
       google: {
         families: ['Fira Code:400,500'],
         display: 'swap',
-        preconnect: true,
+        preconnect: false,
       },
       custom: {
         families: [

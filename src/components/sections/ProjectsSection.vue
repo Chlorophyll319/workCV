@@ -94,7 +94,7 @@
               target="_blank"
               size="sm"
               variant="solid"
-              :color="getProjectButtonColor(index)"
+              :color="getProjectButtonColor(index) as 'primary' | 'success' | 'warning'"
               class="flex-1 font-code text-xs"
             >
               <UIcon name="i-ph-play" class="w-3 h-3" />
@@ -142,7 +142,7 @@ const getProjectIconBg = (index: number) => {
 }
 
 const getProjectButtonColor = (index: number) => {
-  const colors = ['primary', 'green', 'yellow']
+  const colors = ['primary', 'success', 'warning']
   return colors[index % colors.length]
 }
 

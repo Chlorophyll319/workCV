@@ -1,86 +1,89 @@
-# 履歷網站規格文件（Vue 3 + Vite + TypeScript + Tailwind + Nuxt UI Vue）
+# 本專案與 claude code 協作需求
 
-## 🎨 整體設計風格
-- 主題風格：**VSCode 主題風**（暗色背景 + 語法高亮點綴）
-- 與專題網站的呼應/反差：
-  - **專題網站**：米色基底 + RGB 點綴（隱喻「從平面 CMYK → 前端 RGB 的轉換」）
-  - **履歷網站**：暗色 VSCode 主題（象徵工程師日常、程式碼世界）
-  - **呼應**：專題講「轉職故事」，履歷站表現「工程師定位」
-- 背景：深灰 `#1E1E1E`，卡片背景 `#252526`，邊框 `#3C3C3C`
-- 文字：主要 `#D4D4D4`，標題白色，次要文字 `#9CA3AF`
-- 點綴色（VSCode 語法高亮感）：  
-  - 藍 `#569CD6`（關鍵字）  
-  - 綠 `#6A9955`（字串）  
-  - 黃 `#DCDCAA`（常數/變數）  
-  - 紫 `#C586C0`（function）
-- 卡片：`rounded-[12px]`，陰影柔和
+1. 每次執行任務後需要將對話紀錄至 vite-project\.claude\claudeLog.md
+2. 下方內容若標註【已完成】或是（預留）請略過
 
-> 以上僅供參考，請根據 monkai 或其他 vscode 主題修改
+## 專案問題
 
-- 動效：卡片 hover → accent 色邊框或 glow，進場淡入
-- **強調良好的 RWD 體驗**：手機單欄、平板/桌機 2–3 欄，排版不亂
+### 1. 【已完成】履歷網站套件精簡與增補清單
 
----
+目前專案環境：
+- Vue 3 + Vite + TypeScript + Tailwind v4
+- 已設定好 @nuxt/ui（Vue 版）
+- 其他已安裝：vue-router、pinia（persisted）、vee-validate、yup、axios、@vueuse/core
+- Icons：@phosphor-icons/vue、@flaticon/flaticon-uicons（暫時都有）
+- 字體：中文 jf-openhuninn（本地），英文 Fira Code（Google Fonts）
 
-## 📂 頁面區塊（Bento Grid 排版）
+#### 想請你幫忙評估這些點：
 
-### 1. Hero
-- 姓名、職稱（Frontend Engineer / Aspiring Backend）
-- 一句標語（功能導向、資料流思維）
-- 兩個 CTA 按鈕（GitHub / 聯絡我）
-- 偽 Terminal 視窗設計（左上角紅黃綠點）
+##### 1. Icon 庫
+- 現在同時有 `@phosphor-icons/vue` 和 `@iconify/vue`。  
+- 是否應該精簡為單一來源？  
+- 建議是保留 **Phosphor** 或改用 **@iconify/vue**（能整合多套圖示庫，按需載入）。  
+- 請分析哪個對履歷網站最合適（體積、易用性、美觀度）。
 
-### 2. About Me
-- 短版自我介紹（2–3 句）：背景轉職、功能導向、AI 協作
-- 放在一張卡片中
+##### 2. SEO / Meta
+- 考慮新增 **`@unhead/vue`**（或 `@vueuse/head`）來處理 `<title>` 和 OG meta tag。  
+- 履歷網站需要在社群分享、搜尋引擎顯示得漂亮。  
+- 請評估是否值得加，還是只用 index.html 手動設就夠。
 
-### 3. Projects
-- 三張卡片（專題網站、履歷站、PayMock）
-- 每張卡包含：  
-  - 專案名稱  
-  - 簡短描述（一句用途 + 技術重點）  
-  - 技術 Tag  
-  - Demo / GitHub 按鈕  
-  - 額外 metrics（如 Lighthouse 分數、API 延遲）
-- 每張卡用不同 accent 色呼應語法高亮（藍/綠/黃）
+##### 3. 動效
+- 考慮新增 **`@vueuse/motion`**（或 `motion/vue`）。  
+- 用來實現卡片 hover 上浮、進場淡入，符合 VSCode 主題風格。  
+- 請評估相較於純 Tailwind transition，這類動效庫是否必要。
 
-### 4. Skills
-- 卡片格子，分成分類：Frontend / Backend / Database / Tools / AI 協作
-- 每個技能附一句描述（不是 logo 牆）
-- 技能 tag 邊框用 accent 色
-
-### 5. Contact
-- Email / GitHub / LinkedIn → 三顆大按鈕
-- 簡單表單（展示表單驗證）
-- 按鈕可用藍/紫漸層，模仿 VSCode 酷炫感
+##### 4. 其他輔助套件（可選）
+- **`tailwind-merge`**：避免動態 class 拼接時 Tailwind 類名衝突。  
+- **`vite-imagetools`**：自動壓縮/產生多尺寸圖片，優化作品截圖的載入效能。  
+- 請分析這兩個對我的履歷網站是否有實質幫助，還是可以省略。
 
 ---
 
-## 🖋️ 字體要求
-- 中文：**jf-openhuninn 粉圓體**  
-  - 字體檔會手動放在 `vite-project/src/assets/font/`  
-  - 請在專案中設定 `@font-face` 並整合進 Tailwind `fontFamily`
-- 英文 & 程式碼：**Fira Code**  
-  - 請透過 Google Fonts `<link>` 引入  
-  - 英文字與程式碼區塊使用 Fira Code
+✅ 請根據這些條件，幫我評估哪些套件「值得保留或新增」，哪些可以移除，理由是什麼。也請給一份精簡後的建議套件清單。
 
 ---
 
-## 🔧 開發注意事項
-- 使用 **Nuxt UI Vue 版**（`@nuxt/ui` with Vite plugin）
-- Icons：使用 `@iconify/vue`（已精簡，支援多套圖示庫按需載入）
-- SEO/Meta：使用 `@vueuse/head`（已安裝，輕量且與 @vueuse 生態整合）
-- 動效：使用純 Tailwind transition（保持輕量，符合 VSCode 簡潔風格）
-- 保持簡潔，不要過度依賴套件，避免增加維護負擔
+#### 📊 套件精簡評估結果（已完成）
 
----
+##### 1. Icon 庫：**保留 @iconify/vue** ✅
+**已移除：** `@phosphor-icons/vue`
 
-## ✅ 驗收標準
-- `npm install && npm run dev` 可以直接跑起來
-- Hero 區有 VSCode 偽 Terminal 條
-- Bento Grid 格式清晰，md 以上 2–3 欄，手機單欄
-- 卡片 hover 有 accent 高亮效果
-- Projects 區有假資料（3 筆，含 metrics）
-- Skills 區塊用 accent 色標註不同分類
-- 在手機、平板、桌機都有良好的 **RWD 體驗**
-- 中文字體顯示粉圓體，英文/程式碼顯示 Fira Code
+**理由：**
+- `@iconify/vue` 支援 100+ icon 套件（包含 Phosphor），按需載入更輕量
+- 單一來源管理，避免重複依賴
+- 更靈活的圖示選擇，適合履歷網站多元需求
+- Bundle size 更小，只載入使用到的圖示
+
+##### 2. SEO/Meta：**已新增 @vueuse/head** ✅
+**理由：**
+- 履歷網站 SEO 至關重要
+- 動態管理 `<title>`、OG tags、meta description
+- `@vueuse/head` 比 `@unhead/vue` 更輕量，與現有 `@vueuse/core` 生態整合
+- 支援社群分享預覽、搜尋引擎最佳化
+
+##### 3. 動效：**暫不新增動效庫** ❌
+**理由：**
+- Tailwind v4 的 transition 已足夠應付基本動效需求
+- VSCode 風格偏向簡潔，過度動效反而干擾
+- 可用純 CSS 實現卡片 hover、淡入效果
+- 保持 bundle size 輕量
+
+##### 4. 輔助套件評估：
+- **tailwind-merge：不需要** ❌ - 履歷網站樣式相對固定，動態 class 需求不高
+- **vite-imagetools：值得考慮** ⚠️ - 作品截圖優化對載入效能有實質幫助
+
+#### 🎯 **精簡後最終套件清單**
+
+##### 執行的變更：
+```bash
+npm uninstall @phosphor-icons/vue  ✅ 已完成
+npm install @vueuse/head           ✅ 已完成
+```
+
+##### 可選新增（依需求）：
+- `vite-imagetools`: 作品集圖片最佳化
+
+**✅ 套件精簡完成！現在專案更加輕量且具備完整的 SEO 功能。**
+
+
+### 2. （預留）

@@ -1,1 +1,0 @@
-import{_ as o,e as t,h as n,k as a,y as c,f as r}from"./index-DFABIPDC.js";const s={};function _(l,f){const e=c("RouterView");return r(),t("div",null,[n("main",null,[a(e)])])}const d=o(s,[["render",_]]);export{d as default};

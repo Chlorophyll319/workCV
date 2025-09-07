@@ -1,0 +1,474 @@
+# Claude Code 學習紀錄
+
+## 2025-09-06 - Vue 3 + TypeScript 專案設定與學習
+
+### 🛠️ 專案配置問題解決
+
+#### 1. 自動路由配置
+**問題**: `unplugin-vue-router` 的 `routesFolder` 設定是否必要
+**解決**: 
+- `unplugin-vue-router` 預設 `routesFolder` 就是 `'src/pages'`
+- 可以簡化為 `VueRouter()` 不需額外設定
+
+#### 2. ESLint Vue 規則問題
+**問題**: `default.vue` 出現 "Component name should always be multi-word" 錯誤
+**原因**: 
+- 新專案使用 `pluginVue.configs['flat/recommended']` 包含嚴格的 Vue 規則
+- 舊專案沒有 Vue ESLint 規則，所以沒遇到此問題
+
+**解決方案**:
+1. 加入 `defineOptions({ name: 'DefaultLayout' })` (已解決)
+2. 或修改 ESLint 配置移除嚴格的 Vue 規則 (已採用)
+
+#### 3. Layout 系統配置
+**問題**: `default.vue` layout 沒有被自動套用
+**解決**: 在 `main.ts` 中加入:
+```ts
+import { setupLayouts } from 'virtual:generated-layouts'
+
+const router = createRouter({
+  routes: setupLayouts(routes),
+  history: createWebHistory(),
+})
+```
+
+#### 4. TypeScript 類型宣告
+**問題**: `virtual:generated-layouts` 模組找不到類型宣告
+**解決**: 在 `vite-env.d.ts` 中加入:
+```ts
+/// <reference types="vite-plugin-vue-layouts-next/client" />
+```
+
+### 📚 TypeScript 學習重點
+
+#### JavaScript vs TypeScript 主要差異
+1. **類型檢查**: TS 在編譯時檢查，JS 在執行時才發現問題
+2. **IDE 支援**: TS 提供更好的自動完成和錯誤提示
+3. **語法差異**: 主要是多了類型標註 `: 類型`
+
+#### 類型標註語法與時機
+**基本語法**:
+```ts
+變數名稱: 類型 = 值
+函數名稱(參數名: 類型): 回傳類型 { }
+```
+
+**必須標註的情況**:
+- 函數參數
+- 空陣列: `const users: User[] = []`
+- 聯合類型: `let status: 'loading' | 'success' | 'error'`
+- API 回傳類型
+
+**不需要標註的情況**:
+- 有初始值的變數 (TS 自動推斷)
+- 能推斷的函數回傳值
+- 有初始值的陣列
+
+#### 學習策略
+1. **漸進式學習**: 先不標類型，讓 TS 自動推斷
+2. **看錯誤學習**: 紅線出現時再處理
+3. **救命三招**:
+   - 能不標就不標
+   - 只有函數參數一定要標
+   - 出現紅線才處理
+
+### 🔧 最終專案配置
+
+#### ESLint 配置 (寬鬆版)
+移除了嚴格的 Vue 規則，保留 TypeScript 支援:
+```ts
+export default [
+  {
+    files: ['**/*.{js,mjs,cjs,ts,vue}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+    languageOptions: { 
+      globals: { ...globals.browser, ...globals.node },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+  },
+  ...tseslint.configs.recommended,
+  eslintPluginPrettierRecommended,
+  {
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    },
+  },
+]
+```
+
+#### Vite 配置簡化
+```ts
+export default defineConfig({
+  plugins: [
+    VueRouter(), // 簡化，不需要 routesFolder 設定
+    Layouts(),
+    vue(),
+    ui(),
+    tailwindcss(),
+    Fonts({
+      google: {
+        families: ['Inter', 'Noto Sans TC'],
+      },
+    }),
+  ],
+  server: {
+    port: 3000,
+  },
+})
+```
+
+### 💡 重要學習心得
+
+1. **npm 套件安裝流程**:
+   - 安裝套件
+   - 查看 README 設定指南
+   - Vite 插件需要修改 `vite.config.ts`
+   - TypeScript 專案可能需要加類型宣告
+   - 重啟開發伺服器
+
+2. **TypeScript 學習建議**:
+   - 當作更聰明的 ESLint 來用
+   - 先求能跑，再求完美
+   - 多利用 VS Code 的提示學習
+
+### 🎯 下一步計劃
+- 開始使用此專案進行 TypeScript 學習
+- 建立作品集內容
+- 實戰中學習 TypeScript 語法
+
+---
+*本紀錄由 Claude Code 整理 - 2025/09/06*
+
+## 2025-09-07 - VSCode 風格履歷網站開發完成 Hero Section
+
+### 🎨 專案概述
+- **主題**：VSCode 風格的個人履歷網站
+- **技術棧**：Vue 3 + Vite + TypeScript + Tailwind v4 + NuxtUI
+- **特色**：偽 Terminal 視窗設計，完整 VSCode 色彩系統
+
+### 📦 套件精簡與優化
+
+#### 套件評估結果
+1. **Icon 庫統一**：
+   - ❌ 移除 `@phosphor-icons/vue` 
+   - ✅ 保留 `@iconify/vue`（支援多套圖示庫，按需載入）
+
+2. **SEO 功能新增**：
+   - ✅ 新增 `@vueuse/head`（輕量 SEO meta 管理）
+
+3. **動效策略**：
+   - ❌ 不新增動效庫（純 Tailwind transition 已足夠）
+
+4. **字體系統**：
+   - ✅ 中文：jf-openhuninn 粉圓體（本地載入）
+   - ✅ 英文/程式碼：Fira Code（Google Fonts）
+
+#### 執行的變更
+```bash
+npm uninstall @phosphor-icons/vue  # 移除重複 Icon 庫
+npm install @vueuse/head           # 新增 SEO 管理
+```
+
+### 🔧 技術配置與問題解決
+
+#### 1. 路徑別名配置
+**問題**：TypeScript 無法識別 `@` 路徑別名
+
+**解決方案**：
+- **Vite 配置**：
+```ts
+// vite.config.ts
+resolve: {
+  alias: {
+    '@': '/src',
+  },
+},
+```
+
+- **TypeScript 配置**：
+```json
+// tsconfig.app.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+#### 2. 字體載入系統
+**配置方式**：使用 `unplugin-fonts` 插件
+```ts
+Fonts({
+  google: {
+    families: ['Fira Code:400,500'],
+    display: 'swap',
+    preconnect: true,
+  },
+  custom: {
+    families: [
+      {
+        name: 'jf-openhuninn',
+        src: './src/assets/font/*.ttf',
+      },
+    ],
+    display: 'swap',
+    preload: true,
+  },
+})
+```
+
+#### 3. VSCode 主題色彩系統
+**實作方式**：Tailwind v4 CSS-first 配置
+```css
+@theme {
+  /* VSCode Font Families */
+  --font-family-chinese: 'jf-openhuninn', system-ui, sans-serif;
+  --font-family-code: 'Fira Code', 'Courier New', monospace;
+  
+  /* VSCode Dark Theme Colors */
+  --color-vscode-bg: #1E1E1E;
+  --color-vscode-card: #252526;
+  --color-vscode-border: #3C3C3C;
+  --color-vscode-blue: #569CD6;    /* Keywords */
+  --color-vscode-green: #6A9955;   /* Strings */
+  --color-vscode-yellow: #DCDCAA;  /* Constants */
+  --color-vscode-purple: #C586C0;  /* Functions */
+}
+```
+
+### 🏗️ 專案架構
+
+#### 資料結構設計
+```
+src/assets/data/
+├── profile.ts    # 個人基本資料
+├── projects.ts   # 專案作品資料  
+└── skills.ts     # 技能分類資料
+```
+
+#### 組件架構
+```
+src/components/
+├── ui/Terminal.vue           # 偽 Terminal 視窗組件
+└── sections/HeroSection.vue  # Hero 區塊（已完成）
+```
+
+### ✨ Hero Section 功能實作
+
+#### 核心功能
+- ✅ **偽 Terminal 視窗**：完整 macOS 風格設計（紅黃綠點）
+- ✅ **命令行互動**：`whoami` 和 `ls skills/` 命令模擬
+- ✅ **個人資訊展示**：姓名（葉芃 Evelyn）、職稱、標語
+- ✅ **技能預覽**：用 VSCode 語法高亮色彩分類顯示
+- ✅ **CTA 按鈕**：GitHub 和 Email 聯絡按鈕
+- ✅ **SEO 最佳化**：完整 meta 標籤和 OG 設定
+- ✅ **響應式設計**：手機和桌面完美適配
+
+#### 視覺效果
+- 卡片 hover 浮動效果（`translateY(-2px)`）
+- 動態游標閃爍動畫
+- 滾動提示動畫（`animate-bounce`）
+- VSCode 色彩漸變背景
+
+### 🐛 問題排除紀錄
+
+#### Icon 組件錯誤
+**問題**：`Icon` 組件未定義
+**解決**：改用 NuxtUI 的 `UIcon`，圖示格式改為 `i-ph-*`
+
+#### UButton 顏色屬性錯誤  
+**問題**：`color="gray"` 不在允許列表中
+**解決**：改用 `color="neutral"`
+
+#### TypeScript 路徑解析
+**問題**：IDE 無法識別 `@` 別名，但 Vite 可以運行
+**解決**：暫時使用相對路徑確保穩定運行
+
+### 📊 最終專案狀態
+
+#### 開發環境
+- **開發伺服器**：`http://localhost:3001` ✅ 正常運行
+- **熱重載**：✅ 正常
+- **TypeScript 檢查**：✅ 無錯誤
+- **套件相依**：✅ 已優化精簡
+
+#### 已完成功能
+- ✅ VSCode 主題系統
+- ✅ 字體載入（中英文）
+- ✅ Hero Section 完整實作
+- ✅ SEO meta 配置
+- ✅ 響應式設計基礎
+
+#### 待實作功能
+- ⏳ About Me Section
+- ⏳ Projects Section
+- ⏳ Skills Section  
+- ⏳ Contact Section
+
+### 💡 重要學習心得
+
+1. **套件管理策略**：
+   - 優先考慮功能重疊，避免冗餘
+   - 選擇生態系統整合度高的方案
+   - 考慮 bundle size 和維護成本
+
+2. **Tailwind v4 新特性**：
+   - CSS-first 配置方式更直觀
+   - `@theme` 語法統一管理設計系統
+   - 與 TypeScript 整合需要額外配置
+
+3. **Vue 3 + TypeScript 最佳實踐**：
+   - Composition API 提供更好的類型推斷
+   - 路徑別名配置需同時設定 Vite 和 TypeScript
+   - 使用相對路徑作為 fallback 方案
+
+### 🎯 下次開發重點
+- ✅ 完成 About Me Section（個人簡介卡片）
+- ✅ 實作 Projects Section（三個專案展示）
+- ⏳ 建立 Skills Section（技能分類展示）
+- ⏳ 完成 Contact Section（聯絡表單）
+
+---
+*本紀錄由 Claude Code 整理 - 2025/09/07*
+
+## 2025-09-07 下午 - 完成 About Me 與 Projects Section
+
+### ✨ About Me Section 實作完成
+
+#### 核心功能
+- ✅ **VSCode 檔案標籤設計**：`about-me.md` 風格的假文件標籤頁
+- ✅ **分區塊資訊展示**：背景轉換、開發理念、核心優勢、目前專注
+- ✅ **個人故事完整呈現**：從行銷設計到前端工程的轉職歷程
+- ✅ **卡片互動效果**：hover 上浮 + VSCode 藍色邊框高亮
+- ✅ **響應式設計**：MD 以上雙欄布局，手機單欄
+
+#### 技術特色
+- 使用 VSCode 語法高亮色彩系統（藍/綠/黃/紫）
+- 漸變背景效果（紫色與黃色渲染）
+- 完整的 TypeScript 類型支援
+- 模組化的數據結構設計
+
+#### 數據結構優化
+更新了 `profile.ts` 添加 `about` 結構：
+```ts
+about: {
+  description: '主要自我介紹',
+  background: { from: '行銷設計', to: '前端工程' },
+  philosophy: '開發理念',
+  highlights: ['AI 協作開發', '全端獨立開發', '設計思維', '快速學習'],
+  currentFocus: '未來發展方向'
+}
+```
+
+### 🚀 Projects Section 實作完成
+
+#### 核心功能
+- ✅ **三個專案完整展示**：職訓網站、履歷網站、PayMock 模擬器
+- ✅ **豐富的專案資訊**：描述、技術棧、效能指標、專案亮點
+- ✅ **互動式卡片設計**：每個專案不同的 accent 色彩（藍/綠/黃）
+- ✅ **動態按鈕配色**：Demo 和 GitHub 按鈕隨專案變色
+- ✅ **效能指標展示**：Lighthouse、載入時間、使用者數、運行時間
+- ✅ **專案亮點列表**：每個專案 5 個關鍵技術亮點
+
+#### 視覺設計特色
+- **專案卡片**：每張卡片有獨特的 hover 效果和邊框色彩
+- **圖示系統**：graduation-cap、user-circle、credit-card 對應不同專案類型
+- **效能指標**：用不同顏色標註不同指標類型
+- **技術標籤**：VSCode 風格的程式碼標籤設計
+- **動畫效果**：卡片進場動畫延遲，hover 上浮效果
+
+#### 數據結構完整重構
+重新設計 `projects.ts` 介面：
+```ts
+interface Project {
+  id: number
+  name: string
+  type: string
+  description: string
+  techStack: string[]
+  demoUrl?: string
+  githubUrl?: string
+  icon: string
+  status: string
+  metrics: Record<string, string>
+  highlights: string[]
+}
+```
+
+#### 三個專案詳細資料
+1. **職訓資訊分享網站**（全端專案）
+   - 技術：Vue 3 + Node.js + MongoDB 全端架構
+   - 亮點：JWT 身份驗證、Markdown 編輯器、權限管理
+
+2. **個人履歷網站**（前端專案）
+   - 技術：Vue 3 + Tailwind v4 + TypeScript
+   - 亮點：VSCode 主題設計、SEO 優化、類型安全
+
+3. **PayMock 模擬器**（後端練習）
+   - 技術：Node.js + Express + NewebPay API
+   - 亮點：金流串接、SHA256 加密、API 設計
+
+### 🔧 技術成果總結
+
+#### 已完成功能
+- ✅ **Hero Section**：Terminal 互動界面
+- ✅ **About Me Section**：個人介紹與轉職故事
+- ✅ **Projects Section**：三個專案作品展示
+- ✅ **VSCode 主題系統**：完整色彩與字體配置
+- ✅ **響應式設計**：手機到桌機完美適配
+- ✅ **SEO 優化**：完整 meta 標籤設定
+
+#### 開發環境狀態
+- **開發伺服器**：`http://localhost:3001` ✅ 正常運行
+- **熱重載**：✅ 完全正常
+- **TypeScript 檢查**：✅ 無錯誤
+- **組件架構**：✅ 模組化完成
+
+#### 程式碼品質
+- **TypeScript 支援**：所有組件都有完整類型定義
+- **組件設計**：高度可重用與可維護
+- **數據管理**：結構化的數據檔案組織
+- **樣式系統**：VSCode 主題色彩統一管理
+
+### 💡 開發心得與學習
+
+#### Vue 3 + TypeScript 最佳實踐
+1. **Composition API 優勢**：更好的邏輯複用與類型推斷
+2. **數據結構設計**：介面定義先行，確保類型安全
+3. **組件通信**：Props 與 Emit 的類型定義重要性
+
+#### 響應式設計策略
+1. **移動優先**：從手機版開始設計，逐步適配大螢幕
+2. **Flexbox + Grid**：靈活運用兩套布局系統
+3. **斷點管理**：Tailwind 斷點系統有效管理響應式
+
+#### VSCode 主題實現
+1. **色彩系統**：Tailwind v4 `@theme` 語法統一管理
+2. **語法高亮感**：用不同色彩區分內容類型
+3. **視覺層次**：背景、卡片、邊框的層次分明
+
+### 🎯 剩餘開發計劃
+
+#### 待完成功能
+- ⏳ **Skills Section**：技能分類展示系統
+- ⏳ **Contact Section**：聯絡表單與按鈕
+
+#### 預期完成時間
+- Skills Section：預計 30-45 分鐘
+- Contact Section：預計 30-45 分鐘
+- 整體測試與優化：15-30 分鐘
+
+#### 測試重點
+- 各區段響應式表現
+- 所有連結與按鈕功能
+- SEO meta 標籤正確性
+- 載入效能與動畫流暢度
+
+---
+*本紀錄由 Claude Code 持續更新 - 2025/09/07*

@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme {
+  /* VSCode Font Families */
+  --font-family-chinese: 'jf-openhuninn', system-ui, sans-serif;
+  --font-family-code: 'Fira Code', 'Courier New', monospace;
+  --font-family-english: 'Fira Code', system-ui, sans-serif;
+  
+  /* VSCode Dark Theme Colors */
+  --color-vscode-bg: #1E1E1E;
+  --color-vscode-card: #252526;
+  --color-vscode-border: #3C3C3C;
+  --color-vscode-text-primary: #D4D4D4;
+  --color-vscode-text-secondary: #9CA3AF;
+  --color-vscode-text-white: #FFFFFF;
+  
+  /* VSCode Syntax Highlight Colors */
+  --color-vscode-blue: #569CD6;    /* Keywords */
+  --color-vscode-green: #6A9955;   /* Strings */
+  --color-vscode-yellow: #DCDCAA;  /* Constants */
+  --color-vscode-purple: #C586C0;  /* Functions */
+  --color-vscode-orange: #CE9178;  /* Numbers */
+  
+  /* Override default primary */
+  --color-primary-500: #569CD6;
+  
+  /* VSCode Border Radius */
+  --radius-vscode: 12px;
+  
+  /* VSCode Shadows */
+  --shadow-vscode: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-vscode-hover: 0 10px 15px -3px rgba(86, 156, 214, 0.2), 0 4px 6px -2px rgba(86, 156, 214, 0.1);
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'jf-openhuninn', system-ui, sans-serif;
+  background-color: #1E1E1E;
+  color: #D4D4D4;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Terminal Dots for VSCode Window */
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-close { background-color: #FF5F56; }
+.dot-minimize { background-color: #FFBD2E; }
+.dot-maximize { background-color: #27CA3F; }

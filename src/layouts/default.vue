@@ -1,20 +1,20 @@
 <template>
   <div>
-    <!-- <header>
+    <header>
       <nav class="p-4 bg-gray-100">
-        <h1 class="text-xl font-bold">My App</h1>
+        <h1 class="text-xl font-bold">Nav</h1>
       </nav>
-    </header> -->
+    </header>
 
     <main>
       <RouterView />
     </main>
 
-    <!-- <footer class="p-4 mt-8 text-center text-gray-600">
+    <footer class="p-4 mt-8 text-center text-gray-600">
       <p>&copy; 2025 My App</p>
-    </footer> -->
+      <p>footer</p>
+    </footer>
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

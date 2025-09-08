@@ -2,36 +2,49 @@
 @import '@nuxt/ui';
 
 @theme {
-  /* VSCode Font Families */
+  /* Font Families */
   --font-family-chinese: 'jf-openhuninn', system-ui, sans-serif;
   --font-family-code: 'Fira Code', 'Courier New', monospace;
   --font-family-english: 'Fira Code', system-ui, sans-serif;
   
-  /* VSCode Dark Theme Colors */
-  --color-vscode-bg: #1E1E1E;
-  --color-vscode-card: #252526;
-  --color-vscode-border: #3C3C3C;
-  --color-vscode-text-primary: #D4D4D4;
-  --color-vscode-text-secondary: #9CA3AF;
-  --color-vscode-text-white: #FFFFFF;
+  /* Base Colors - Modern Infographic Blue-Orange */
+  --color-base: #FFFAE6;           /* Base/Background */
+  --color-primary: #009EE6;        /* Main Blue */
+  --color-accent: #E87409;         /* Orange Accent */
+  --color-text: #000000;           /* Text */
+  --color-border: #000000;         /* Borders/Lines */
   
-  /* VSCode Syntax Highlight Colors */
-  --color-vscode-blue: #569CD6;    /* Keywords */
-  --color-vscode-green: #6A9955;   /* Strings */
-  --color-vscode-yellow: #DCDCAA;  /* Constants */
-  --color-vscode-purple: #C586C0;  /* Functions */
-  --color-vscode-orange: #CE9178;  /* Numbers */
-  --color-vscode-pink: #ff79c6;    /* Special/AI */
+  /* Card & Surface Colors */
+  --color-card: #FFFFFF;           /* White Cards */
+  --color-card-shadow: rgba(0, 0, 0, 0.1);
   
-  /* Override default primary */
-  --color-primary-500: #569CD6;
-  
-  /* VSCode Border Radius */
-  --radius-vscode: 12px;
-  
-  /* VSCode Shadows */
-  --shadow-vscode: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-vscode-hover: 0 10px 15px -3px rgba(86, 156, 214, 0.2), 0 4px 6px -2px rgba(86, 156, 214, 0.1);
+  /* Override Tailwind default colors */
+  --color-primary-50: #E6F7FF;
+  --color-primary-100: #CCF0FF;
+  --color-primary-200: #99E0FF;
+  --color-primary-300: #66D1FF;
+  --color-primary-400: #33C1FF;
+  --color-primary-500: #009EE6;
+  --color-primary-600: #007AB8;
+  --color-primary-700: #005B8A;
+  --color-primary-800: #003D5C;
+  --color-primary-900: #001E2E;
+
+  --color-accent-50: #FEF3E6;
+  --color-accent-100: #FDE7CC;
+  --color-accent-200: #FBCF99;
+  --color-accent-300: #F9B766;
+  --color-accent-400: #F79F33;
+  --color-accent-500: #E87409;
+  --color-accent-600: #BA5D07;
+  --color-accent-700: #8B4605;
+  --color-accent-800: #5D2F04;
+  --color-accent-900: #2E1702;
+
+  /* Modern Card Styling */
+  --radius-card: 12px;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 16px rgba(0, 158, 230, 0.12);
 }
 
 /* Global Styles */
@@ -42,26 +55,9 @@
 body {
   margin: 0;
   font-family: 'jf-openhuninn', system-ui, sans-serif;
-  background-color: #1E1E1E;
-  color: #D4D4D4;
+  background-color: #FFFAE6;
+  color: #000000;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Terminal Dots for VSCode Window */
-.terminal-dots {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.terminal-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.dot-close { background-color: #FF5F56; }
-.dot-minimize { background-color: #FFBD2E; }
-.dot-maximize { background-color: #27CA3F; }

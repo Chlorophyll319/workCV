@@ -3,7 +3,7 @@ import './style.css';
 import App from './App.vue';
 
 // Auto-generated router from unplugin-vue-router
-import { createRouter, createWebHistory } from 'vue-router/auto';
+import { createRouter, createWebHashHistory } from 'vue-router/auto';
 import { routes } from 'vue-router/auto-routes';
 import { setupLayouts } from 'virtual:generated-layouts';
 
@@ -15,7 +15,7 @@ import './assets/main.css';
 const app = createApp(App);
 const router = createRouter({
   routes: setupLayouts(routes),
-  history: createWebHistory(),
+  history: createWebHashHistory(),
 });
 app.use(router);
 app.use(ui);

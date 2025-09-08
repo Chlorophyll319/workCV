@@ -1,26 +1,44 @@
 <template>
-  <div class="min-h-screen" style="background-color: var(--color-base)">
-    <!-- Main Container with Two-Column Layout -->
-    <div class="max-w-7xl mx-auto px-4 py-8">
-      <div class="flex flex-col lg:flex-row gap-8">
-        <!-- Left Column (30%) -->
-        <div class="lg:w-[30%] space-y-6">
-          <PersonalCard />
-          <SkillsCard />
-        </div>
-
-        <!-- Vertical Divider (Hidden on mobile) -->
-        <div class="hidden lg:block w-px bg-black"></div>
-
-        <!-- Right Column (70%) -->
-        <div class="lg:w-[70%] space-y-6">
-          <ContactCard />
+  <div class="min-h-screen" style="background-color: var(--color-base);">
+    <!-- Navigation -->
+    <NavBar />
+    
+    <!-- Hero Section (簡化版，包含主要資訊) -->
+    <HeroSectionNew />
+    
+    <!-- Main Content Sections -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <!-- 分隔線 -->
+      <div class="w-full h-1 bg-black mb-12"></div>
+      
+      <!-- 專案經驗區域 -->
+      <section id="projects" class="mb-16">
+        <h2 class="text-3xl font-bold mb-8" style="color: var(--color-primary);">專案經驗</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
           <ProjectsCard />
           <ExperienceCard />
-          <EducationCard />
-          <AboutCard />
         </div>
-      </div>
+      </section>
+      
+      <!-- 分隔線 -->
+      <div class="w-full h-1 bg-black mb-12"></div>
+      
+      <!-- 技能和學歷 -->
+      <section id="skills" class="mb-16">
+        <h2 class="text-3xl font-bold mb-8" style="color: var(--color-primary);">背景資料</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <SkillsCard />
+          <EducationCard />
+        </div>
+      </section>
+      
+      <!-- 分隔線 -->
+      <div class="w-full h-1 bg-black mb-12"></div>
+      
+      <!-- 關於我 -->
+      <section id="about" class="mb-16">
+        <AboutCard />
+      </section>
     </div>
   </div>
 </template>
@@ -28,11 +46,11 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
 // @ts-ignore
-import PersonalCard from '../components/cards/PersonalCard.vue';
+import NavBar from '../components/ui/NavBar.vue';
+// @ts-ignore
+import HeroSectionNew from '../components/sections/HeroSectionNew.vue';
 // @ts-ignore
 import SkillsCard from '../components/cards/SkillsCard.vue';
-// @ts-ignore
-import ContactCard from '../components/cards/ContactCard.vue';
 // @ts-ignore
 import ProjectsCard from '../components/cards/ProjectsCard.vue';
 // @ts-ignore
@@ -65,36 +83,28 @@ useHead({
 </script>
 
 <style scoped>
-/* Two-Column Layout Styling */
-@media (min-width: 1024px) {
-  .lg\:w-\[30\%\] {
-    position: sticky;
-    top: 2rem;
-    align-self: flex-start;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 1023px) {
-  .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .max-w-7xl {
-    padding: 1rem;
-  }
-
-  .space-y-6 > * + * {
-    margin-top: 1rem;
-  }
+/* Section Styling */
+section {
+  scroll-margin-top: 80px; /* 考慮固定導航欄的高度 */
 }
 
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+}
+
+/* Section transitions */
+section {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Card hover effects */
+:deep(.resume-card) {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+:deep(.resume-card:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 </style>

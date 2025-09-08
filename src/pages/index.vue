@@ -1,64 +1,37 @@
 <template>
   <div class="min-h-screen" style="background-color: var(--color-base);">
-    <!-- Navigation -->
-    <NavBar />
-    
-    <!-- Hero Section (簡化版，包含主要資訊) -->
-    <HeroSectionNew />
-    
-    <!-- Main Content Sections -->
-    <div class="max-w-6xl mx-auto px-6 py-12">
-      <!-- 分隔線 -->
-      <div class="w-full h-1 bg-black mb-12"></div>
+    <!-- Main Container with Bento Grid Layout -->
+    <div class="max-w-7xl mx-auto px-4 py-6 space-y-6">
       
-      <!-- 專案經驗區域 -->
-      <section id="projects" class="mb-16">
-        <h2 class="text-3xl font-bold mb-8" style="color: var(--color-primary);">專案經驗</h2>
-        <div class="grid lg:grid-cols-2 gap-8">
-          <ProjectsCard />
-          <ExperienceCard />
-        </div>
-      </section>
+      <!-- Hero Section - Full Width -->
+      <div class="grid-item hero-area">
+        <HeroSectionNew />
+      </div>
       
-      <!-- 分隔線 -->
-      <div class="w-full h-1 bg-black mb-12"></div>
+      <!-- About Me Section - Full Width -->
+      <div class="grid-item about-area">
+        <AboutSection />
+      </div>
       
-      <!-- 技能和學歷 -->
-      <section id="skills" class="mb-16">
-        <h2 class="text-3xl font-bold mb-8" style="color: var(--color-primary);">背景資料</h2>
-        <div class="grid lg:grid-cols-2 gap-8">
-          <SkillsCard />
-          <EducationCard />
-        </div>
-      </section>
+      <!-- Projects Section - Full Width -->
+      <div class="grid-item projects-area">
+        <ProjectsSection />
+      </div>
       
-      <!-- 分隔線 -->
-      <div class="w-full h-1 bg-black mb-12"></div>
-      
-      <!-- 關於我 -->
-      <section id="about" class="mb-16">
-        <AboutCard />
-      </section>
+      <!-- Skills Section - Full Width -->
+      <div class="grid-item skills-area">
+        <SkillsSection />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@vueuse/head';
-// @ts-ignore
-import NavBar from '../components/ui/NavBar.vue';
-// @ts-ignore
-import HeroSectionNew from '../components/sections/HeroSectionNew.vue';
-// @ts-ignore
-import SkillsCard from '../components/cards/SkillsCard.vue';
-// @ts-ignore
-import ProjectsCard from '../components/cards/ProjectsCard.vue';
-// @ts-ignore
-import ExperienceCard from '../components/cards/ExperienceCard.vue';
-// @ts-ignore
-import EducationCard from '../components/cards/EducationCard.vue';
-// @ts-ignore
-import AboutCard from '../components/cards/AboutCard.vue';
+import { useHead } from '@vueuse/head'
+import HeroSectionNew from '../components/sections/HeroSectionNew.vue'
+import AboutSection from '../components/sections/AboutSection.vue'
+import ProjectsSection from '../components/sections/ProjectsSection.vue'
+import SkillsSection from '../components/sections/SkillsSection.vue'
 
 // 設定頁面 meta
 useHead({
@@ -83,9 +56,68 @@ useHead({
 </script>
 
 <style scoped>
-/* Section Styling */
-section {
-  scroll-margin-top: 80px; /* 考慮固定導航欄的高度 */
+/* Bento Grid Layout Styling */
+.grid-item {
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero area special styling */
+.hero-area {
+  min-height: 70vh;
+}
+
+/* About area styling */
+.about-area {
+  min-height: 300px;
+}
+
+/* Projects area styling */
+.projects-area {
+  min-height: 500px;
+}
+
+/* Skills area styling */
+.skills-area {
+  min-height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+  .hero-area {
+    min-height: 50vh;
+  }
+  
+  .about-area,
+  .projects-area,
+  .skills-area {
+    min-height: auto;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-area {
+    min-height: 40vh;
+  }
+  
+  .grid-item {
+    border-radius: 12px;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
 }
 
 /* Smooth scroll behavior */
@@ -93,18 +125,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Section transitions */
-section {
-  transition: all 0.3s ease-in-out;
-}
-
-/* Card hover effects */
-:deep(.resume-card) {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-:deep(.resume-card:hover) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+/* Background pattern for visual interest */
+.min-h-screen::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(33, 150, 243, 0.03) 2px, transparent 2px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
 }
 </style>

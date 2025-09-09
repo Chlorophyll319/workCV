@@ -1,9 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(npm run dev:*)",
-      "Bash(Get-Date -Format \"yyyyMMdd_HHmmss\")"
-    ],
+    "allow": ["Bash(npm run dev:*)", "Bash(date +\"%Y%m%d_%H%M%S\")"],
     "deny": [],
     "ask": []
   }

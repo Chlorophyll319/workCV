@@ -10,51 +10,86 @@
         </div>
         <!-- 行動裝置漢堡選單按鈕 -->
         <button
-          @click="toggleSidebar"
+          @click="toggleMobileMenu"
           class="md:hidden p-1 hover:bg-primary-700 rounded transition-colors"
-          :title="isSidebarCollapsed ? 'Show Panel' : 'Hide Panel'"
+          :title="isMobileMenuExpanded ? 'Hide Menu' : 'Show Menu'"
         >
           <Icon
-            :icon="isSidebarCollapsed ? 'heroicons:bars-3' : 'heroicons:x-mark'"
+            :icon="isMobileMenuExpanded ? 'heroicons:x-mark' : 'heroicons:bars-3'"
             class="w-4 h-4 text-white"
           />
         </button>
+        <!-- 桌面版選單 -->
         <div class="hidden md:flex gap-4">
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >File</span
+            >Design</span
           >
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >Edit</span
+            >Code</span
           >
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >View</span
+            >AI-Powered</span
           >
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >Go</span
+            >Projects</span
           >
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >Run</span
+            >Marketing</span
           >
           <span
             class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >Terminal</span
-          >
-          <span
-            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
-            >Help</span
+            >Connect</span
           >
         </div>
       </div>
       <div
-        class="hidden md:block absolute left-1/2 transform -translate-x-1/2 text-xs text-primary-50"
+        class="absolute left-1/2 transform -translate-x-1/2 text-xs md:text-xs text-primary-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] md:max-w-none"
       >
-        葉芃 (Evelyn) - Frontend Engineer Resume
+        <span class="hidden sm:inline">葉芃 (Evelyn) - Frontend Engineer Resume</span>
+        <span class="sm:hidden">Evelyn Resume</span>
       </div>
+    </div>
+    
+    <!-- 手機版選單下拉 -->
+    <div 
+      v-show="isMobileMenuExpanded"
+      class="md:hidden absolute top-[30px] left-2 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 min-w-[160px]"
+    >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >Design</span
+      >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >Code</span
+      >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >AI-Powered</span
+      >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >Projects</span
+      >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >Marketing</span
+      >
+      <span
+        class="block px-4 py-2 cursor-pointer text-gray-700 hover:bg-gray-100 transition-colors text-sm"
+        @click="isMobileMenuExpanded = false"
+        >Connect</span
+      >
     </div>
 
     <div class="flex-1 flex overflow-hidden">
@@ -124,14 +159,13 @@
       <!-- 側邊面板 -->
       <div
         :class="[
-          'bg-card border-r border-border border-opacity-20 flex flex-col overflow-hidden relative',
-          // 桌面版本
-          'md:relative md:flex',
-          // 行動版本 - 覆蓋層顯示
-          'absolute top-0 left-0 h-full shadow-lg z-20 md:shadow-none md:z-auto',
-          isSidebarCollapsed ? 'w-0' : '',
-          // 拖拽時移除過渡效果避免抖動
-          !isResizing && !isSidebarCollapsed ? 'transition-all duration-300 ease-in-out' : ''
+          'bg-card border-r border-border border-opacity-20 flex flex-col overflow-hidden transition-all duration-300 ease-in-out',
+          // 桌面版
+          'md:relative',
+          // 手機版 - 絕對定位覆蓋層
+          'absolute md:static top-0 left-12 h-full z-20 shadow-lg md:shadow-none',
+          // 顯示/隱藏控制
+          isSidebarCollapsed ? 'hidden md:block md:w-0' : 'block'
         ]"
         :style="{
           width: isSidebarCollapsed ? '0px' : `${sidebarWidth}px`
@@ -156,6 +190,7 @@
               icon="heroicons:arrow-path"
               class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
               title="Refresh"
+              @click="refreshPage"
             />
           </div>
         </div>
@@ -164,13 +199,20 @@
         <div class="flex-1 py-2">
           <div class="px-3">
             <div
+              @click="toggleFolder"
               class="flex items-center gap-1 py-1 cursor-pointer hover:bg-primary-50 transition-colors"
             >
-              <Icon icon="heroicons:chevron-down" class="w-3 h-3 text-gray-600" />
-              <Icon icon="heroicons:folder-open" class="w-4 h-4 text-accent" />
+              <Icon 
+                :icon="isFolderExpanded ? 'heroicons:chevron-down' : 'heroicons:chevron-right'" 
+                class="w-3 h-3 text-gray-600 transition-transform" 
+              />
+              <Icon 
+                :icon="isFolderExpanded ? 'heroicons:folder-open' : 'heroicons:folder'" 
+                class="w-4 h-4 text-accent" 
+              />
               <span class="text-sm font-medium text-text">RESUME-PROJECT</span>
             </div>
-            <div class="ml-4">
+            <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">
               <div
                 class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
               >
@@ -295,6 +337,12 @@ const maxSidebarWidth = 400;
 // 拖拽相關狀態
 const isResizing = ref(false);
 
+// 資料夾展開狀態
+const isFolderExpanded = ref(true);
+
+// 手機版頂部選單展開狀態
+const isMobileMenuExpanded = ref(false);
+
 // 在行動裝置上預設收合
 onMounted(() => {
   if (window.innerWidth < 768) {
@@ -324,6 +372,21 @@ onMounted(() => {
 // 切換側邊欄收合狀態
 const toggleSidebar = () => {
   isSidebarCollapsed.value = !isSidebarCollapsed.value;
+};
+
+// 重新整理頁面
+const refreshPage = () => {
+  window.location.reload();
+};
+
+// 切換資料夾展開狀態
+const toggleFolder = () => {
+  isFolderExpanded.value = !isFolderExpanded.value;
+};
+
+// 切換手機版選單展開狀態
+const toggleMobileMenu = () => {
+  isMobileMenuExpanded.value = !isMobileMenuExpanded.value;
 };
 
 // 拖拽調整寬度功能

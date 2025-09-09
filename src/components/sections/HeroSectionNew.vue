@@ -4,20 +4,7 @@
       <!-- VSCode Extensions Marketplace -->
       <div class="flex-1 min-h-full p-2 sm:p-4 md:p-6">
         <!-- Extensions Header -->
-        <div
-          class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-primary"
-        >
-          <div
-            class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-t-lg bg-primary text-white"
-          >
-            <Icon icon="heroicons:puzzle-piece" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span class="font-mono text-xs sm:text-sm font-semibold">Extensions</span>
-            <Icon
-              icon="heroicons:x-mark"
-              class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors"
-            />
-          </div>
-        </div>
+        <Tab :file="extensionFile" />
 
         <!-- Extension Item -->
         <div class="space-y-4 flex-1">
@@ -145,4 +132,9 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { profile } from '../../assets/data/profile';
+import Tab from '../Tab.vue';
+import { sectionsFiles } from '../../assets/data/fileSystem';
+
+// 使用 fileSystem.ts 中的 hero 項目
+const extensionFile = sectionsFiles.find(file => file.id === 'hero')!;
 </script>

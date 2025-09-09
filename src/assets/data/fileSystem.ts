@@ -6,7 +6,7 @@ export interface FileItem {
   name: string
   displayName: string
   icon: string
-  type: 'vue' | 'js' | 'ts' | 'json' | 'md' | 'yaml'
+  type: 'vue' | 'js' | 'ts' | 'json' | '延伸模組' | 'md' | 'yaml'
   path: string
   isActive?: boolean
   section?: string
@@ -17,9 +17,9 @@ export const sectionsFiles: FileItem[] = [
   {
     id: 'hero',
     name: 'HeroSectionNew.vue',
-    displayName: 'portfolio.js',
-    icon: 'heroicons:document-text',
-    type: 'vue',
+    displayName: 'YEH,PENG',
+    icon: 'heroicons:puzzle-piece',
+    type: '延伸模組',
     path: '/src/components/sections/HeroSectionNew.vue',
     section: 'hero'
   },

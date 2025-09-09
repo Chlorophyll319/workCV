@@ -786,3 +786,68 @@ const handleTabClose = () => {
 詳細實作過程記錄於 `claudeLog/20250909_184714_tab_component_refactor.md`
 
 ---
+
+## 17. 【最新修正】HeroSection Tab 組件整合（2025/09/09 19:09）
+
+### HeroSection Tab 組件統一
+完成了 HeroSection 中手寫 tab 樣式到 Tab 組件的統一修正：
+
+#### 主要修正
+1. **手寫 Tab 替換**：
+   - 移除 14 行手寫的 Extensions Header HTML 結構
+   - 改用 `<Tab :file="extensionFile" />` 單行組件呼叫
+
+2. **資料來源統一**：
+   - 原本自訂 `extensionFile` 物件
+   - 改用 `sectionsFiles.find(file => file.id === 'hero')!` 取得統一配置
+
+#### fileSystem.ts 配置更新
+更新了 hero 項目的檔案配置以符合 Extensions 標籤需求：
+
+```typescript
+{
+  id: 'hero',
+  name: 'HeroSectionNew.vue',
+  displayName: 'YEH,PENG',        // 用戶自訂為「YEH,PENG」
+  icon: 'heroicons:puzzle-piece',  // Extensions 圖示
+  type: '延伸模組',                // 新增的檔案類型
+  path: '/src/components/sections/HeroSectionNew.vue',
+  section: 'hero'
+}
+```
+
+#### 程式碼簡化效果
+**修改前：**
+```html
+<!-- 14 行手寫 HTML -->
+<div class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-primary">
+  <div class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-t-lg bg-primary text-white">
+    <Icon icon="heroicons:puzzle-piece" class="w-4 h-4 sm:w-5 sm:h-5" />
+    <span class="font-mono text-xs sm:text-sm font-semibold">Extensions</span>
+    <Icon icon="heroicons:x-mark" class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
+  </div>
+</div>
+```
+
+**修改後：**
+```html
+<!-- 1 行組件呼叫 -->
+<Tab :file="extensionFile" />
+```
+
+#### 其他 Section 檢查結果
+檢查了所有其他 section 組件，確認都已正確使用 Tab 組件：
+- ✅ **AboutSection.vue**：已使用 `<Tab :file="aboutFile" />`
+- ✅ **ProjectsSection.vue**：已使用 `<Tab :file="projectsFile" />`  
+- ✅ **SkillsSection.vue**：已使用 `<Tab :file="skillsFile" />`
+
+### 技術效益
+1. **程式碼統一**：所有 section 都使用相同的 Tab 組件
+2. **維護性提升**：修改 tab 樣式只需改一個檔案
+3. **型別安全**：使用 fileSystem.ts 統一的 FileItem 類型
+4. **資料一致性**：避免在各組件中重複定義檔案資訊
+
+### 對話記錄檔案
+已建立 `claudeLog/20250909_190919.md` 記錄完整修正過程
+
+---

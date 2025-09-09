@@ -29,7 +29,7 @@
       <div class="flex-1 flex flex-col relative">
         <!-- Tab 列 -->
         <div
-          class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch overflow-x-auto overflow-y-hidden tab-container"
+          class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch overflow-x-auto overflow-y-hidden"
         >
           <div
             v-for="(tab, index) in openTabs"
@@ -299,7 +299,12 @@ const openTabs = ref<FileItem[]>([]);
 
 // 初始化預設開啟的 tabs
 const initializeTabs = () => {
-  openTabs.value = sectionsFiles.slice(0, 3);
+  // 預設只開啟 Hero tab
+  openTabs.value = [sectionsFiles[0]]; // hero 是第一個
+  // 頁面載入後導航到 Hero 區域
+  setTimeout(() => {
+    navigateToSection('hero');
+  }, 100);
 };
 
 // 在行動裝置上預設收合
@@ -347,6 +352,24 @@ const toggleFolder = () => {
   isFolderExpanded.value = !isFolderExpanded.value;
 };
 
+// 導航到指定區域的函數
+const navigateToSection = (section?: string) => {
+  if (section) {
+    const element = document.getElementById(section);
+    if (element) {
+      // 計算偏移量：頂部選單(30px) + Tab列(35px) + 一些額外空間(20px)
+      const headerOffset = 85;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: Math.max(0, offsetPosition), // 確保不會滾動到負值
+        behavior: 'smooth'
+      });
+    }
+  }
+};
+
 // 檔案管理函數
 const handleFileClick = (file: FileItem) => {
   activeFile.value = file;
@@ -354,10 +377,15 @@ const handleFileClick = (file: FileItem) => {
   if (!openTabs.value.find((tab) => tab.id === file.id)) {
     openTabs.value.push(file);
   }
+  
+  // 導航到對應的區域
+  navigateToSection(file.section);
 };
 
 const setActiveTab = (tab: FileItem) => {
   activeFile.value = tab;
+  // 導航到對應的區域
+  navigateToSection(tab.section);
 };
 
 const closeTab = (tab: FileItem) => {
@@ -408,6 +436,9 @@ const startResize = (e: MouseEvent) => {
   /* 隱藏捲動軸 */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  /* 確保不會超出容器 */
+  flex: 1;
+  min-width: 0; /* 允許彈性收縮 */
 }
 
 .tab-container::-webkit-scrollbar {

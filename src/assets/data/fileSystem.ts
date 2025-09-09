@@ -62,8 +62,8 @@ export const allFiles = [...sectionsFiles, ...otherFiles]
 
 // 取得當前活躍的檔案
 export const getActiveFile = (): FileItem => {
-  // 預設第一個檔案為活躍狀態（about-me.md）
-  return sectionsFiles[1] // AboutSection 對應 about-me.md
+  // 預設第一個檔案為活躍狀態（Hero）
+  return sectionsFiles[0] // HeroSectionNew 對應 YEH,PENG
 }
 
 // 取得檔案圖示對應

@@ -1,22 +1,22 @@
 <template>
   <div class="space-y-4 md:space-y-6 max-w-none overflow-x-hidden">
     <!-- Hero Section - Full Width -->
-    <div class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+    <div id="hero" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       <HeroSectionNew />
     </div>
 
     <!-- About Me Section - Full Width -->
-    <div class="min-h-[300px] md:min-h-[400px]">
+    <div id="about" class="min-h-[300px] md:min-h-[400px]">
       <AboutSection />
     </div>
 
     <!-- Projects Section - Full Width -->
-    <div class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+    <div id="projects" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       <ProjectsSection />
     </div>
 
     <!-- Skills Section - Full Width -->
-    <div class="min-h-[400px] md:min-h-[500px]">
+    <div id="skills" class="min-h-[400px] md:min-h-[500px]">
       <SkillsSection />
     </div>
   </div>

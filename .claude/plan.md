@@ -595,6 +595,82 @@
 
 ---
 
+## 15. 【最新完成】AboutSection RWD 修正與樣式優化（2025/09/09）
+
+### AboutSection.vue 完整 RWD 修正
+成功完成了 `src/components/sections/AboutSection.vue` 的全面響應式設計修正：
+
+#### 主要修正項目
+1. **文字大小優化**：
+   - 手機版：將過小的 `text-xs` 改為 `text-sm`
+   - 平板版：將 `text-sm` 改為 `text-lg`
+   - 桌面版：適當增大文字以提升可讀性
+
+2. **顏色問題解決**：
+   - **問題發現**：`sm:text-base` 在 Tailwind 配置中被錯誤定義，會套用淡黃色 `#FFFAE6`
+   - **解決方案**：避開有問題的類別，改用 `sm:text-lg`
+   - **使用設計系統顏色**：改用 `text-text` 類別對應 `--color-text: #000000`
+
+3. **卡片排版統一**：
+   - 四個內容卡片高度不一致問題
+   - 解決方案：統一使用 `h-full flex flex-col` + `flex-1` 自動填充
+   - 統一背景樣式和間距設定
+
+#### 特殊效果實現
+**"目前專注"區塊動態邊框：**
+- 實現了彩色線條沿卡片邊緣移動的動畫效果
+- 技術：雙層背景 + 線性漸變 + `background-position` 動畫
+- 效果：藍色到橘色的漸變線條持續繞卡片邊緣旋轉
+- 動畫參數：2.5秒循環，300% 背景尺寸
+
+```css
+.focus-card {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, 
+                transparent 0%, 
+                var(--color-primary) 25%, 
+                var(--color-accent) 50%, 
+                transparent 75%, 
+                transparent 100%) border-box;
+  background-size: 100% 100%, 300% 300%;
+  animation: moveBorder 2.5s linear infinite;
+}
+```
+
+#### CSS 優化與 Tailwind v4 整合
+1. **大幅簡化 CSS**：
+   - 將 `background: transparent` 移至 HTML 類別 `bg-transparent`
+   - 自定義陰影改用 Tailwind 任意值：`hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]`
+   - inline style 改用語義化類別：`border-accent`、`text-accent`
+
+2. **保留必要動畫**：
+   - 只保留無法用 Tailwind 替代的複雜動畫效果
+   - 所有可轉換的樣式都改用 Tailwind v4 語法
+
+#### 響應式設計優化
+- **網格系統**：`grid-cols-1 md:grid-cols-2 xl:grid-cols-4`
+- **間距設定**：手機版 `gap-4`，平板 `gap-5`，桌面 `gap-6`
+- **內容區塊**：統一的 padding 響應式設定
+
+#### 視覺效果提升
+1. **背景轉換**卡片：白色背景 + 學術帽圖示
+2. **開發理念**卡片：白色背景 + 燈泡圖示
+3. **目前專注**卡片：白色背景 + 動態彩色邊框 + 專注圖示
+4. **核心優勢**卡片：灰色背景 + 星星圖示 + 橘色標籤
+
+#### 技術成果
+- ✅ 完全解決 RWD 問題，所有裝置尺寸適配
+- ✅ 修正文字顏色可讀性問題
+- ✅ 實現酷炫的動態邊框效果
+- ✅ 大幅簡化 CSS，提升維護性
+- ✅ 100% 符合 Tailwind v4 最佳實踐
+
+#### 對話記錄
+建立了 `claudeLog20250909_134320.md` 完整記錄本次 RWD 修正過程。
+
+---
+
 ## 風格對照表（最終實作版本）
 
 | 項目 | 原計劃：藍橘雙欄商務風 | 73e14ae 混合版 | **VSCode Layout 版**（最新） |

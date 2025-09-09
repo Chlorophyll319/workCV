@@ -1,9 +1,9 @@
 <template>
-  <section class="skills-section h-full p-4 md:p-6">
+  <section class="skills-section h-full p-2 sm:p-4 md:p-6">
     <div class="h-full flex flex-col">
       <!-- VSCode File Tab Design -->
       <div 
-        class="bg-white rounded-xl border-2 border-primary p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        class="bg-white rounded-xl border-2 border-primary p-4 sm:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-full"
       >
         <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
           <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
@@ -22,10 +22,10 @@
         </div>
 
         <!-- Skills Categories Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 flex-1">
           
           <!-- Frontend Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary bg-opacity-10">
@@ -46,7 +46,7 @@
           </div>
 
           <!-- Backend Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-accent bg-opacity-10">
@@ -67,7 +67,7 @@
           </div>
 
           <!-- Tools Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary bg-opacity-10">
@@ -88,7 +88,7 @@
           </div>
 
           <!-- AI Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-accent bg-opacity-10">

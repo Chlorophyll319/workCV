@@ -214,34 +214,16 @@
             </div>
             <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">
               <div
-                class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
+                v-for="file in allFiles"
+                :key="file.id"
+                @click="handleFileClick(file)"
+                :class="[
+                  'flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors',
+                  activeFile.id === file.id ? 'bg-primary-100' : ''
+                ]"
               >
-                <Icon icon="heroicons:document-text" class="w-4 h-4 text-primary" />
-                <span class="text-sm">about-me.md</span>
-              </div>
-              <div
-                class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
-              >
-                <Icon icon="heroicons:document-text" class="w-4 h-4 text-primary" />
-                <span class="text-sm">experience.json</span>
-              </div>
-              <div
-                class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
-              >
-                <Icon icon="heroicons:document-text" class="w-4 h-4 text-primary" />
-                <span class="text-sm">projects.ts</span>
-              </div>
-              <div
-                class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
-              >
-                <Icon icon="heroicons:document-text" class="w-4 h-4 text-primary" />
-                <span class="text-sm">skills.yml</span>
-              </div>
-              <div
-                class="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors"
-              >
-                <Icon icon="heroicons:document-text" class="w-4 h-4 text-primary" />
-                <span class="text-sm">contact.json</span>
+                <Icon :icon="file.icon" class="w-4 h-4" :style="{ color: getFileColor(file.id) }" />
+                <span class="text-sm">{{ file.displayName }}</span>
               </div>
             </div>
           </div>
@@ -262,61 +244,58 @@
       <!-- 主要編輯區域 -->
       <div class="flex-1 flex flex-col">
         <!-- Tab 列 -->
-        <div class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch">
+        <div class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch overflow-x-auto">
           <div
-            class="relative min-w-[120px] max-w-[200px] h-[35px] bg-card border-r border-primary-200 flex items-center gap-1.5 px-3 cursor-pointer"
+            v-for="(tab, index) in openTabs"
+            :key="tab.id"
+            @click="setActiveTab(tab)"
+            :class="[
+              'relative min-w-[120px] max-w-[200px] h-[35px] border-r border-primary-200 flex items-center gap-1.5 px-3 cursor-pointer transition-colors flex-shrink-0',
+              activeFile.id === tab.id 
+                ? 'bg-card' 
+                : 'bg-primary-100 hover:bg-primary-50'
+            ]"
           >
-            <Icon icon="heroicons:user" class="w-3 h-3 text-accent" />
-            <span class="text-sm">about-me.md</span>
+            <Icon :icon="tab.icon" class="w-3 h-3" :style="{ color: activeFile.id === tab.id ? getFileColor(tab.id) : 'var(--color-primary)' }" />
+            <span class="text-sm truncate">{{ tab.displayName }}</span>
             <Icon
               icon="heroicons:x-mark"
-              class="w-3 h-3 ml-auto p-0.5 rounded hover:bg-primary-100 transition-colors"
+              class="w-3 h-3 ml-auto p-0.5 rounded hover:bg-primary-200 transition-colors flex-shrink-0"
+              @click.stop="closeTab(tab)"
             />
-            <div class="absolute bottom-0 left-0 right-0 h-px bg-accent"></div>
-          </div>
-          <div
-            class="min-w-[120px] max-w-[200px] h-[35px] bg-primary-100 border-r border-primary-200 flex items-center gap-1.5 px-3 cursor-pointer hover:bg-primary-50 transition-colors"
-          >
-            <Icon icon="heroicons:briefcase" class="w-3 h-3 text-primary" />
-            <span class="text-sm">experience.json</span>
-            <Icon
-              icon="heroicons:x-mark"
-              class="w-3 h-3 ml-auto p-0.5 rounded hover:bg-[var(--color-primary-200)] transition-colors"
-            />
-          </div>
-          <div
-            class="min-w-[120px] max-w-[200px] h-[35px] bg-primary-100 border-r border-primary-200 flex items-center gap-1.5 px-3 cursor-pointer hover:bg-primary-50 transition-colors"
-          >
-            <Icon icon="heroicons:rocket-launch" class="w-3 h-3 text-primary" />
-            <span class="text-sm">projects.ts</span>
-            <Icon
-              icon="heroicons:x-mark"
-              class="w-3 h-3 ml-auto p-0.5 rounded hover:bg-[var(--color-primary-200)] transition-colors"
-            />
+            <div 
+              v-if="activeFile.id === tab.id"
+              class="absolute bottom-0 left-0 right-0 h-px"
+              :style="{ backgroundColor: getFileColor(tab.id) }"
+            ></div>
           </div>
         </div>
 
         <!-- 主要內容區 -->
-        <main class="flex-1 bg-base p-4 overflow-auto">
-          <router-view />
+        <main class="flex-1 bg-base p-2 sm:p-4 md:p-6 overflow-auto scroll-smooth">
+          <div class="max-w-full mx-auto">
+            <router-view />
+          </div>
         </main>
       </div>
     </div>
 
     <!-- 底部狀態列 -->
-    <div class="h-[22px] bg-accent text-white flex items-center justify-between px-3 text-xs">
-      <div class="flex items-center gap-2">
-        <Icon icon="heroicons:code-bracket" class="w-4 h-4" />
-        <span>TypeScript</span>
-        <span class="text-white/60">|</span>
-        <span>UTF-8</span>
-        <span class="text-white/60">|</span>
-        <span>LF</span>
+    <div class="h-[22px] bg-accent text-white flex items-center justify-between px-2 sm:px-3 text-xs">
+      <div class="flex items-center gap-1 sm:gap-2 overflow-hidden">
+        <Icon icon="heroicons:code-bracket" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+        <span class="hidden sm:inline">TypeScript</span>
+        <span class="sm:hidden">TS</span>
+        <span class="text-white/60 hidden sm:inline">|</span>
+        <span class="hidden md:inline">UTF-8</span>
+        <span class="text-white/60 hidden md:inline">|</span>
+        <span class="hidden md:inline">LF</span>
       </div>
-      <div class="flex items-center gap-2">
-        <span>Ln 1, Col 1</span>
-        <span class="text-white/60">|</span>
-        <Icon icon="heroicons:check-circle" class="w-4 h-4 text-primary" />
+      <div class="flex items-center gap-1 sm:gap-2 overflow-hidden">
+        <span class="hidden sm:inline">Ln 1, Col 1</span>
+        <span class="sm:hidden">1:1</span>
+        <span class="text-white/60 hidden sm:inline">|</span>
+        <Icon icon="heroicons:check-circle" class="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
         <span>Ready</span>
       </div>
     </div>
@@ -326,6 +305,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { ref, onMounted } from 'vue';
+import { allFiles, getFileColor, type FileItem } from '../assets/data/fileSystem';
 
 // 側邊面板收合狀態
 const isSidebarCollapsed = ref(false);
@@ -342,6 +322,10 @@ const isFolderExpanded = ref(true);
 
 // 手機版頂部選單展開狀態
 const isMobileMenuExpanded = ref(false);
+
+// 檔案管理狀態
+const activeFile = ref<FileItem>(allFiles[1]); // 預設為 about-me.md
+const openTabs = ref<FileItem[]>([allFiles[1], allFiles[4], allFiles[2]]); // 預設開啟幾個 tab
 
 // 在行動裝置上預設收合
 onMounted(() => {
@@ -387,6 +371,33 @@ const toggleFolder = () => {
 // 切換手機版選單展開狀態
 const toggleMobileMenu = () => {
   isMobileMenuExpanded.value = !isMobileMenuExpanded.value;
+};
+
+// 檔案管理函數
+const handleFileClick = (file: FileItem) => {
+  // 設置為活躍檔案
+  activeFile.value = file;
+  
+  // 如果檔案不在 openTabs 中，則新增
+  if (!openTabs.value.find(tab => tab.id === file.id)) {
+    openTabs.value.push(file);
+  }
+};
+
+const setActiveTab = (tab: FileItem) => {
+  activeFile.value = tab;
+};
+
+const closeTab = (tab: FileItem) => {
+  const index = openTabs.value.findIndex(t => t.id === tab.id);
+  if (index > -1) {
+    openTabs.value.splice(index, 1);
+    
+    // 如果關閉的是當前活躍的 tab，切換到其他 tab
+    if (activeFile.value.id === tab.id && openTabs.value.length > 0) {
+      activeFile.value = openTabs.value[Math.max(0, index - 1)];
+    }
+  }
 };
 
 // 拖拽調整寬度功能

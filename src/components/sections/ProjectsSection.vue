@@ -1,9 +1,9 @@
 <template>
-  <section class="projects-section h-full p-4 md:p-6">
+  <section class="projects-section h-full p-2 sm:p-4 md:p-6">
     <div class="h-full flex flex-col">
       <!-- Projects Card -->
       <div 
-        class="bg-white rounded-xl border-2 border-primary p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        class="bg-white rounded-xl border-2 border-primary p-4 sm:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-full"
       >
         <!-- VSCode File Tab Design -->
         <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 flex-1">
           <div 
             v-for="(project, index) in projects" 
             :key="project.id"

@@ -1,16 +1,16 @@
 <template>
-  <section id="hero" class="h-full p-4 md:p-6">
+  <section id="hero" class="h-full p-2 sm:p-4 md:p-6">
     <div class="h-full flex flex-col">
       <!-- VSCode Editor Card -->
       <div
-        class="bg-white rounded-2xl border-2 border-primary p-6 md:p-8 flex-1 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+        class="bg-white rounded-xl md:rounded-2xl border-2 border-primary p-4 sm:p-6 md:p-8 flex-1 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 min-h-full"
       >
         <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-3 mb-8 pb-4 border-b-2 border-primary">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
-            <Icon icon="heroicons:document-text" class="w-5 h-5" />
-            <span class="font-mono text-sm font-semibold">portfolio.js</span>
-            <Icon icon="heroicons:x-mark" class="w-4 h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
+        <div class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-primary">
+          <div class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-t-lg bg-primary text-white">
+            <Icon icon="heroicons:document-text" class="w-4 h-4 sm:w-5 sm:h-5" />
+            <span class="font-mono text-xs sm:text-sm font-semibold">portfolio.js</span>
+            <Icon icon="heroicons:x-mark" class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
           </div>
         </div>
 
@@ -166,22 +166,22 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 pt-6 border-t-2 border-primary">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 border-t-2 border-primary">
           <a 
             :href="profile.contact.github" 
             target="_blank"
-            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold bg-primary text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+            class="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold bg-primary text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
           >
-            <Icon icon="heroicons:code-bracket" class="w-5 h-5" />
-            <span class="font-mono">GitHub</span>
+            <Icon icon="heroicons:code-bracket" class="w-4 h-4 sm:w-5 sm:h-5" />
+            <span class="font-mono text-sm sm:text-base">GitHub</span>
           </a>
 
           <a
             :href="`mailto:${profile.contact.email}`"
-            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold border-2 border-accent text-accent transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+            class="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold border-2 border-accent text-accent transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
           >
-            <Icon icon="heroicons:envelope" class="w-5 h-5" />
-            <span class="font-mono">聯絡我</span>
+            <Icon icon="heroicons:envelope" class="w-4 h-4 sm:w-5 sm:h-5" />
+            <span class="font-mono text-sm sm:text-base">聯絡我</span>
           </a>
         </div>
       </div>

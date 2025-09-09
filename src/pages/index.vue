@@ -1,41 +1,40 @@
 <template>
-  <!-- VSCode 現在不需要這些樣式了，直接簡化 -->
-  <div class="space-y-6">
+  <div class="space-y-4 md:space-y-6 max-w-none overflow-x-hidden">
     <!-- Hero Section - Full Width -->
-    <div>
+    <div class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       <HeroSectionNew />
     </div>
-    
+
     <!-- About Me Section - Full Width -->
-    <div>
+    <div class="min-h-[300px] md:min-h-[400px]">
       <AboutSection />
     </div>
-    
+
     <!-- Projects Section - Full Width -->
-    <div>
+    <div class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       <ProjectsSection />
     </div>
-    
+
     <!-- Skills Section - Full Width -->
-    <div>
+    <div class="min-h-[400px] md:min-h-[500px]">
       <SkillsSection />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@vueuse/head'
-import HeroSectionNew from '../components/sections/HeroSectionNew.vue'
-import AboutSection from '../components/sections/AboutSection.vue'
-import ProjectsSection from '../components/sections/ProjectsSection.vue'
-import SkillsSection from '../components/sections/SkillsSection.vue'
+import { useHead } from '@vueuse/head';
+import HeroSectionNew from '../components/sections/HeroSectionNew.vue';
+import AboutSection from '../components/sections/AboutSection.vue';
+import ProjectsSection from '../components/sections/ProjectsSection.vue';
+import SkillsSection from '../components/sections/SkillsSection.vue';
 
 // 指定使用 default layout
 defineOptions({
   meta: {
-    layout: 'default'
-  }
-})
+    layout: 'default',
+  },
+});
 
 // 設定頁面 meta
 useHead({
@@ -58,4 +57,3 @@ useHead({
   ],
 });
 </script>
-

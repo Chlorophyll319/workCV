@@ -136,5 +136,5 @@ import Tab from '../Tab.vue';
 import { sectionsFiles } from '../../assets/data/fileSystem';
 
 // 使用 fileSystem.ts 中的 hero 項目
-const extensionFile = sectionsFiles.find(file => file.id === 'hero')!;
+const extensionFile = sectionsFiles.find((file) => file.id === 'hero')!;
 </script>

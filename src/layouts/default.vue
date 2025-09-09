@@ -1,19 +1,27 @@
 <template>
   <div class="h-screen flex flex-col bg-base text-text font-sans text-sm">
     <!-- 頂部選單列 -->
-    <div class="h-[30px] bg-primary border-b border-primary-700 flex items-center px-2">
+    <div class="h-[30px] bg-primary border-b border-primary-700 flex items-center justify-between px-2">
       <div class="flex items-center gap-3">
         <div class="p-1">
           <Icon icon="vscode-icons:file-type-vscode" class="w-4 h-4" />
         </div>
+        <div
+          class="text-xs md:text-xs text-primary-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] md:max-w-none"
+        >
+          <span class="hidden sm:inline">葉芃 (Evelyn) - Frontend Engineer Resume</span>
+          <span class="sm:hidden">Evelyn Resume</span>
+        </div>
       </div>
-
-      <div
-        class="text-xs md:text-xs text-primary-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] md:max-w-none"
+      
+      <!-- 手機版漢堡選單 -->
+      <button
+        @click="toggleSidebar"
+        class="md:hidden p-1 hover:bg-primary-600 rounded transition-colors"
+        title="切換選單"
       >
-        <span class="hidden sm:inline">葉芃 (Evelyn) - Frontend Engineer Resume</span>
-        <span class="sm:hidden">Evelyn Resume</span>
-      </div>
+        <Icon icon="heroicons:bars-3" class="w-4 h-4 text-primary-50" />
+      </button>
     </div>
 
     <div class="flex-1 flex overflow-hidden">
@@ -75,21 +83,35 @@
         ></div>
       </div>
 
-      <!-- 側邊面板 -->
+      <!-- 側邊區域（包含面板和活動列） -->
       <div
         :class="[
-          'bg-card border-l border-border border-opacity-20 flex flex-col overflow-hidden transition-all duration-300 ease-in-out relative',
-          // 桌面版
+          'flex transition-all duration-300 ease-in-out',
+          // 桌面版 - 普通流式布局
           'md:relative',
-          // 手機版 - 絕對定位覆蓋層
-          'absolute md:static top-0 right-12 h-full z-20 shadow-lg md:shadow-none',
-          // 顯示/隱藏控制
-          isSidebarCollapsed ? 'hidden md:block md:w-0' : 'block',
+          // 手機版 - 固定定位覆蓋層，從頂部選單下方開始
+          'fixed md:static right-0 z-20 shadow-xl md:shadow-none',
+          // 顯示/隱藏控制 - 手機版用 transform，桌面版用 width
+          isSidebarCollapsed 
+            ? 'transform translate-x-full md:translate-x-0' 
+            : 'transform translate-x-0',
         ]"
         :style="{
-          width: isSidebarCollapsed ? '0px' : `${sidebarWidth}px`,
+          top: windowWidth < 768 ? '30px' : '0',
+          height: windowWidth < 768 ? 'calc(100vh - 30px)' : '100%',
         }"
       >
+        <!-- 側邊面板 -->
+        <div
+          :class="[
+            'bg-card border-l border-border border-opacity-20 flex flex-col overflow-hidden',
+            // 桌面版寬度控制
+            'md:block',
+          ]"
+          :style="{
+            width: windowWidth >= 768 ? (isSidebarCollapsed ? '0px' : `${sidebarWidth}px`) : '240px',
+          }"
+        >
         <div
           class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
         >
@@ -151,68 +173,68 @@
             </div>
           </div>
         </div>
-
-      </div>
-
-      <!-- 側邊活動列 -->
-      <div
-        class="w-12 bg-primary-700 border-l border-primary-800 flex flex-col justify-between py-2"
-      >
-        <div class="flex flex-col gap-1">
-          <div
-            @click="toggleSidebar"
-            :class="[
-              'relative w-12 h-12 flex items-center justify-center cursor-pointer text-white transition-colors',
-              isSidebarCollapsed
-                ? 'hover:bg-primary-800'
-                : 'bg-accent bg-opacity-20 before:content-[\'\'] before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-4 before:bg-accent',
-            ]"
-            title="Explorer"
-          >
-            <Icon icon="heroicons:folder" class="w-5 h-5" />
-          </div>
-          <div
-            class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
-            title="Search"
-          >
-            <Icon icon="heroicons:magnifying-glass" class="w-5 h-5" />
-          </div>
-          <div
-            class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
-            title="Source Control"
-          >
-            <Icon icon="heroicons:code-bracket" class="w-5 h-5" />
-          </div>
-          <div
-            class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
-            title="Extensions"
-          >
-            <Icon icon="heroicons:squares-2x2" class="w-5 h-5" />
-          </div>
         </div>
-        <div class="flex flex-col gap-1">
-          <div
-            class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
-            title="Settings"
-          >
-            <Icon icon="heroicons:cog-6-tooth" class="w-5 h-5" />
-          </div>
-          <div
-            @click="toggleSidebar"
-            :class="[
-              'w-12 h-12 flex items-center justify-center cursor-pointer transition-colors text-white',
-              isSidebarCollapsed ? 'hover:bg-primary-800 bg-primary-600' : 'hover:bg-primary-800',
-            ]"
-            :title="isSidebarCollapsed ? 'Show Panel' : 'Hide Panel'"
-          >
-            <Icon
-              :icon="
+
+        <!-- 側邊活動列 -->
+        <div
+          class="w-12 bg-primary-700 border-l border-primary-800 flex flex-col justify-between py-2"
+        >
+          <div class="flex flex-col gap-1">
+            <div
+              @click="toggleSidebar"
+              :class="[
+                'relative w-12 h-12 flex items-center justify-center cursor-pointer text-white transition-colors',
                 isSidebarCollapsed
-                  ? 'heroicons:chevron-double-left'
-                  : 'heroicons:chevron-double-right'
-              "
-              class="w-5 h-5"
-            />
+                  ? 'hover:bg-primary-800'
+                  : 'bg-accent bg-opacity-20 before:content-[\'\'] before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-4 before:bg-accent',
+              ]"
+              title="Explorer"
+            >
+              <Icon icon="heroicons:folder" class="w-5 h-5" />
+            </div>
+            <div
+              class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
+              title="Search"
+            >
+              <Icon icon="heroicons:magnifying-glass" class="w-5 h-5" />
+            </div>
+            <div
+              class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
+              title="Source Control"
+            >
+              <Icon icon="heroicons:code-bracket" class="w-5 h-5" />
+            </div>
+            <div
+              class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
+              title="Extensions"
+            >
+              <Icon icon="heroicons:squares-2x2" class="w-5 h-5" />
+            </div>
+          </div>
+          <div class="flex flex-col gap-1">
+            <div
+              class="w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-primary-800 text-white transition-colors"
+              title="Settings"
+            >
+              <Icon icon="heroicons:cog-6-tooth" class="w-5 h-5" />
+            </div>
+            <div
+              @click="toggleSidebar"
+              :class="[
+                'w-12 h-12 flex items-center justify-center cursor-pointer transition-colors text-white',
+                isSidebarCollapsed ? 'hover:bg-primary-800 bg-primary-600' : 'hover:bg-primary-800',
+              ]"
+              :title="isSidebarCollapsed ? 'Show Panel' : 'Hide Panel'"
+            >
+              <Icon
+                :icon="
+                  isSidebarCollapsed
+                    ? 'heroicons:chevron-double-left'
+                    : 'heroicons:chevron-double-right'
+                "
+                class="w-5 h-5"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -247,7 +269,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import {
   allFiles,
   sectionsFiles,
@@ -262,6 +284,8 @@ const isSidebarCollapsed = ref(false);
 const sidebarWidth = ref(240); // 預設 240px
 const minSidebarWidth = 180;
 const maxSidebarWidth = 400;
+// 響應式寬度檢測
+const windowWidth = ref(window.innerWidth);
 
 // 拖拽相關狀態
 const isResizing = ref(false);
@@ -289,6 +313,7 @@ onMounted(() => {
 
   // 監聽視窗大小變化
   const handleResize = () => {
+    windowWidth.value = window.innerWidth;
     if (window.innerWidth < 768) {
       // 行動裝置自動收合
       isSidebarCollapsed.value = true;

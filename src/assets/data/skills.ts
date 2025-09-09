@@ -75,7 +75,7 @@ export const skills: Skill[] = [
   // AI 協作
   {
     name: 'ChatGPT',
-    description: '需求分析、程式碼生成、錯誤排查',
+    description: '需求分析、錯誤排查',
     level: 'advanced',
     category: 'ai'
   },

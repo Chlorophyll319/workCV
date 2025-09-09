@@ -8,60 +8,69 @@
         <div class="p-1">
           <Icon icon="vscode-icons:file-type-vscode" class="w-4 h-4" />
         </div>
+        <!-- 行動裝置漢堡選單按鈕 -->
+        <button
+          @click="toggleSidebar"
+          class="md:hidden p-1 hover:bg-primary-700 rounded transition-colors"
+          :title="isSidebarCollapsed ? 'Show Panel' : 'Hide Panel'"
+        >
+          <Icon
+            :icon="isSidebarCollapsed ? 'heroicons:bars-3' : 'heroicons:x-mark'"
+            class="w-4 h-4 text-white"
+          />
+        </button>
         <div class="hidden md:flex gap-4">
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >File</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >Edit</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >View</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >Go</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >Run</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >Terminal</span
           >
-          <span class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
+          <span
+            class="px-2 py-1 cursor-pointer rounded hover:bg-primary-700 hover:text-white transition-colors text-white"
             >Help</span
           >
         </div>
       </div>
       <div
-        class="hidden md:block absolute left-1/2 transform -translate-x-1/2 text-xs text-gray-400"
+        class="hidden md:block absolute left-1/2 transform -translate-x-1/2 text-xs text-primary-50"
       >
         葉芃 (Evelyn) - Frontend Engineer Resume
-      </div>
-      <div class="flex">
-        <div
-          class="w-[45px] h-[30px] flex items-center justify-center cursor-pointer hover:bg-[#3c3c3c] transition-colors"
-        >
-          <Icon icon="heroicons:minus" class="w-4 h-4" />
-        </div>
-        <div
-          class="w-[45px] h-[30px] flex items-center justify-center cursor-pointer hover:bg-[#3c3c3c] transition-colors"
-        >
-          <Icon icon="heroicons:rectangle-stack" class="w-4 h-4" />
-        </div>
-        <div
-          class="w-[45px] h-[30px] flex items-center justify-center cursor-pointer hover:bg-[#e81123] hover:text-white transition-colors"
-        >
-          <Icon icon="heroicons:x-mark" class="w-4 h-4" />
-        </div>
       </div>
     </div>
 
     <div class="flex-1 flex overflow-hidden">
       <!-- 側邊活動列 -->
-      <div class="w-12 bg-primary-700 border-r border-primary-800 flex flex-col justify-between py-2">
+      <div
+        class="w-12 bg-primary-700 border-r border-primary-800 flex flex-col justify-between py-2"
+      >
         <div class="flex flex-col gap-1">
           <div
-            class="relative w-12 h-12 flex items-center justify-center cursor-pointer text-accent bg-accent bg-opacity-20 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-4 before:bg-accent"
+            @click="toggleSidebar"
+            :class="[
+              'relative w-12 h-12 flex items-center justify-center cursor-pointer text-white transition-colors',
+              isSidebarCollapsed
+                ? 'hover:bg-primary-800'
+                : 'bg-accent bg-opacity-20 before:content-[\'\'] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-4 before:bg-accent',
+            ]"
             title="Explorer"
           >
             <Icon icon="heroicons:folder" class="w-5 h-5" />
@@ -92,11 +101,42 @@
           >
             <Icon icon="heroicons:cog-6-tooth" class="w-5 h-5" />
           </div>
+          <div
+            @click="toggleSidebar"
+            :class="[
+              'w-12 h-12 flex items-center justify-center cursor-pointer transition-colors text-white',
+              isSidebarCollapsed ? 'hover:bg-primary-800 bg-primary-600' : 'hover:bg-primary-800',
+            ]"
+            :title="isSidebarCollapsed ? 'Show Panel' : 'Hide Panel'"
+          >
+            <Icon
+              :icon="
+                isSidebarCollapsed
+                  ? 'heroicons:chevron-double-right'
+                  : 'heroicons:chevron-double-left'
+              "
+              class="w-5 h-5"
+            />
+          </div>
         </div>
       </div>
 
       <!-- 側邊面板 -->
-      <div class="w-60 bg-card border-r border-border border-opacity-20 flex flex-col">
+      <div
+        :class="[
+          'bg-card border-r border-border border-opacity-20 flex flex-col overflow-hidden relative',
+          // 桌面版本
+          'md:relative md:flex',
+          // 行動版本 - 覆蓋層顯示
+          'absolute top-0 left-0 h-full shadow-lg z-20 md:shadow-none md:z-auto',
+          isSidebarCollapsed ? 'w-0' : '',
+          // 拖拽時移除過渡效果避免抖動
+          !isResizing && !isSidebarCollapsed ? 'transition-all duration-300 ease-in-out' : ''
+        ]"
+        :style="{
+          width: isSidebarCollapsed ? '0px' : `${sidebarWidth}px`
+        }"
+      >
         <div
           class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
         >
@@ -164,6 +204,17 @@
             </div>
           </div>
         </div>
+        
+        <!-- 拖拽調整邊界 -->
+        <div
+          v-if="!isSidebarCollapsed"
+          @mousedown="startResize"
+          :class="[
+            'absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-accent transition-colors z-10',
+            'hidden md:block'
+          ]"
+          title="Drag to resize sidebar"
+        ></div>
       </div>
 
       <!-- 主要編輯區域 -->
@@ -232,4 +283,75 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { ref, onMounted } from 'vue';
+
+// 側邊面板收合狀態
+const isSidebarCollapsed = ref(false);
+// 側邊欄寬度狀態
+const sidebarWidth = ref(240); // 預設 240px
+const minSidebarWidth = 180;
+const maxSidebarWidth = 400;
+
+// 拖拽相關狀態
+const isResizing = ref(false);
+
+// 在行動裝置上預設收合
+onMounted(() => {
+  if (window.innerWidth < 768) {
+    isSidebarCollapsed.value = true;
+  }
+  
+  // 監聽視窗大小變化
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      // 行動裝置自動收合
+      isSidebarCollapsed.value = true;
+    }
+    // 確保拖拽寬度在合理範圍內
+    if (sidebarWidth.value > window.innerWidth * 0.6) {
+      sidebarWidth.value = Math.min(maxSidebarWidth, window.innerWidth * 0.4);
+    }
+  };
+  
+  window.addEventListener('resize', handleResize);
+  
+  // 組件銷毀時清除監聽器
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+});
+
+// 切換側邊欄收合狀態
+const toggleSidebar = () => {
+  isSidebarCollapsed.value = !isSidebarCollapsed.value;
+};
+
+// 拖拽調整寬度功能
+const startResize = (e: MouseEvent) => {
+  if (isSidebarCollapsed.value) return;
+  
+  isResizing.value = true;
+  const startX = e.clientX;
+  const startWidth = sidebarWidth.value;
+  
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isResizing.value) return;
+    
+    const newWidth = startWidth + (e.clientX - startX);
+    sidebarWidth.value = Math.min(Math.max(newWidth, minSidebarWidth), maxSidebarWidth);
+  };
+  
+  const handleMouseUp = () => {
+    isResizing.value = false;
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  };
+  
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+  document.body.style.cursor = 'col-resize';
+  document.body.style.userSelect = 'none';
+};
 </script>

@@ -54,22 +54,7 @@ export const sectionsFiles: FileItem[] = [
 
 // 其他相關檔案（顯示在檔案總管中）
 export const otherFiles: FileItem[] = [
-  {
-    id: 'experience',
-    name: 'experience.json',
-    displayName: 'experience.json',
-    icon: 'heroicons:briefcase',
-    type: 'json',
-    path: '/src/data/experience.json'
-  },
-  {
-    id: 'contact',
-    name: 'contact.json',
-    displayName: 'contact.json',
-    icon: 'heroicons:envelope',
-    type: 'json',
-    path: '/src/data/contact.json'
-  }
+  // 目前沒有其他檔案，只有 sections 檔案
 ]
 
 // 合併所有檔案
@@ -100,9 +85,7 @@ export const getFileColor = (fileId: string): string => {
     'hero': 'var(--color-accent)',
     'about': 'var(--color-primary)', 
     'projects': 'var(--color-primary)',
-    'skills': 'var(--color-primary)',
-    'experience': 'var(--color-primary)',
-    'contact': 'var(--color-primary)'
+    'skills': 'var(--color-primary)'
   }
   return colorMap[fileId] || 'var(--color-primary)'
 }

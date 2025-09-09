@@ -5,13 +5,8 @@
       <div 
         class="bg-white rounded-xl border-2 border-primary p-4 sm:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-full"
       >
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
-            <Icon icon="heroicons:cog-6-tooth" class="w-4 h-4" />
-            <span class="font-mono text-sm font-semibold">skills-config.yaml</span>
-            <Icon icon="heroicons:x-mark" class="w-3 h-3 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
-          </div>
-        </div>
+        <!-- File Tab -->
+        <Tab :file="skillsFile" @close="handleTabClose" />
 
         <!-- Section Title -->
         <div class="text-center mb-6">
@@ -115,7 +110,20 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import Tab from '../Tab.vue'
+import { sectionsFiles } from '../../assets/data/fileSystem'
+
+// 找到對應的 skills 文件
+const skillsFile = computed(() => {
+  return sectionsFiles.find(file => file.section === 'skills') || sectionsFiles[3]
+})
+
+const handleTabClose = () => {
+  // Tab 關閉邏輯
+  console.log('Skills tab closed')
+}
 
 // Frontend 技能
 const frontendSkills = [

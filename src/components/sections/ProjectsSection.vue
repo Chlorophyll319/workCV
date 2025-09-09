@@ -5,14 +5,8 @@
       <div 
         class="bg-white rounded-xl border-2 border-primary p-4 sm:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-full"
       >
-        <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
-            <Icon icon="heroicons:document-text" class="w-4 h-4" />
-            <span class="font-mono text-sm font-semibold">projects.json</span>
-            <Icon icon="heroicons:x-mark" class="w-3 h-3 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
-          </div>
-        </div>
+        <!-- File Tab -->
+        <Tab :file="projectsFile" @close="handleTabClose" />
 
         <!-- Section Title -->
         <div class="text-center mb-6">
@@ -117,8 +111,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import Tab from '../Tab.vue'
 import { projects } from '../../assets/data/projects'
+import { sectionsFiles } from '../../assets/data/fileSystem'
+
+// 找到對應的 projects 文件
+const projectsFile = computed(() => {
+  return sectionsFiles.find(file => file.section === 'projects') || sectionsFiles[2]
+})
+
+const handleTabClose = () => {
+  // Tab 關閉邏輯
+  console.log('Projects tab closed')
+}
 
 // Helper functions for dynamic styling
 const getProjectBorderStyle = (index: number) => {

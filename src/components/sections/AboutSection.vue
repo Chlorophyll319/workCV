@@ -5,17 +5,8 @@
       <div
         class="bg-white rounded-xl border-2 border-primary p-4 sm:p-5 md:p-6 lg:p-8 flex-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 min-h-full"
       >
-        <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-2 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b-2 border-primary">
-          <div class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-t-lg bg-primary text-white">
-            <Icon icon="heroicons:user" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span class="font-mono text-sm sm:text-base font-semibold">about-me.md</span>
-            <Icon
-              icon="heroicons:x-mark"
-              class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors"
-            />
-          </div>
-        </div>
+        <!-- File Tab -->
+        <Tab :file="aboutFile" @close="handleTabClose" />
 
         <!-- Content -->
         <div class="space-y-4 sm:space-y-6 flex-1 flex flex-col">
@@ -104,8 +95,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
+import Tab from '../Tab.vue';
 import { profile } from '../../assets/data/profile';
+import { sectionsFiles } from '../../assets/data/fileSystem';
+
+// 找到對應的 about 文件
+const aboutFile = computed(() => {
+  return sectionsFiles.find((file) => file.section === 'about') || sectionsFiles[1];
+});
+
+const handleTabClose = () => {
+  // Tab 關閉邏輯，可以根據需求實現
+  console.log('Tab closed');
+};
 </script>
 
 <style scoped>

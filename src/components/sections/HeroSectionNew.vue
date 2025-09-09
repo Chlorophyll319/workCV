@@ -22,7 +22,7 @@
         <!-- Extension Item -->
         <div class="space-y-4 flex-1">
           <!-- Extension Card -->
-          <div class="extension-card extension-animate">
+          <div class="bg-white extension-card extension-animate">
             <!-- Extension Header -->
             <div class="flex flex-col gap-4 mb-4">
               <!-- Extension Icon & Basic Info -->
@@ -49,7 +49,7 @@
                     </span>
                     <span class="flex items-center gap-1">
                       <Icon icon="heroicons:arrow-down-tray" class="w-3 h-3 sm:w-4 sm:h-4" />
-                      1.2M
+                      40k
                     </span>
                     <span class="flex items-center gap-1">
                       <Icon

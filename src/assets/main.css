@@ -8,7 +8,7 @@
   --font-family-english: 'Fira Code', system-ui, sans-serif;
 
   /* Base Colors - Modern Infographic Blue-Orange */
-  --color-base: #fffae6;
+  --color-background: #fffae6;
   --color-primary: #2196f3;
   --color-accent: #ff9800;
   --color-text: #000000;
@@ -47,7 +47,7 @@
 body {
   margin: 0;
   font-family: 'jf-openhuninn', system-ui, sans-serif;
-  background-color: #fffae6;
+  background-color: var(--color-background);
   color: #000000;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

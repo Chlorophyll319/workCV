@@ -685,3 +685,104 @@
 | 特色 | 商務簡報感          | **VSCode 工程師風 + 專業配色** ✨ | **100% 仿真 VSCode** 🆕 |
 
 ---
+
+## 16. 【最新完成】Tab 組件重構與統一管理（2025/09/09）
+
+### Tab 組件拆分重構
+成功將各個 Section 中重複的 VSCode File Tab 設計拆分成可重用的組件：
+
+#### 創建 Tab.vue 可重用組件
+**檔案：** `src/components/Tab.vue`
+- 接受 `FileItem` 作為 prop，支援動態檔案資訊顯示
+- 動態顯示檔案名 (`displayName`) 和圖示 (`icon`)
+- 支援關閉事件 (`@close`) 與 TypeScript 介面定義
+- 完全基於 `fileSystem.ts` 配置動態渲染
+
+```vue
+<template>
+  <div class="flex items-center gap-2 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b-2 border-primary">
+    <div class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-t-lg bg-primary text-white">
+      <Icon :icon="file.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+      <span class="font-mono text-sm sm:text-base font-semibold">{{ file.displayName }}</span>
+      <Icon icon="heroicons:x-mark" @click="handleClose" />
+    </div>
+  </div>
+</template>
+```
+
+#### 各 Section 組件更新
+**修改檔案清單：**
+1. **AboutSection.vue**：
+   - 使用 `sectionsFiles.find(file => file.section === 'about')`
+   - 顯示：`about-me.md` + `heroicons:user` 圖示
+
+2. **ProjectsSection.vue**：
+   - 使用 `sectionsFiles.find(file => file.section === 'projects')`
+   - 顯示：`projects.ts` + `heroicons:rocket-launch` 圖示
+
+3. **SkillsSection.vue**：
+   - 使用 `sectionsFiles.find(file => file.section === 'skills')`
+   - 顯示：`skills-config.yaml` + `heroicons:cog-6-tooth` 圖示
+
+#### fileSystem.ts 集中管理
+**現有配置完美整合：**
+```typescript
+export const sectionsFiles: FileItem[] = [
+  {
+    id: 'about',
+    name: 'AboutSection.vue',
+    displayName: 'about-me.md',
+    icon: 'heroicons:user',
+    section: 'about'
+  },
+  {
+    id: 'projects', 
+    name: 'ProjectsSection.vue',
+    displayName: 'projects.ts',
+    icon: 'heroicons:rocket-launch',
+    section: 'projects'
+  },
+  {
+    id: 'skills',
+    name: 'SkillsSection.vue', 
+    displayName: 'skills-config.yaml',
+    icon: 'heroicons:cog-6-tooth',
+    section: 'skills'
+  }
+]
+```
+
+### 技術實現特點
+
+#### 動態檔案查找
+```typescript
+// 以 AboutSection 為例
+const aboutFile = computed(() => {
+  return sectionsFiles.find(file => file.section === 'about') || sectionsFiles[1]
+})
+```
+
+#### 事件處理統一
+```typescript
+const handleTabClose = () => {
+  console.log('Tab closed') // 可依需求擴展
+}
+```
+
+### 重構效益
+1. **程式碼復用性**：單一 Tab 組件供所有 Section 使用
+2. **統一管理**：所有檔案資訊集中在 `fileSystem.ts`
+3. **型別安全**：TypeScript 介面確保資料結構一致  
+4. **易於擴展**：新增 Section 只需在配置檔添加條目
+5. **維護便利**：Tab 樣式修改僅需改一個檔案
+
+### 後續擴展可能
+- 支援多個 Tab 顯示與切換
+- Tab 拖拽重排序功能
+- 檔案狀態指示（已修改、未儲存等）
+- 與側邊檔案總管的狀態同步
+
+### 對話記錄
+詳細實作過程記錄於 `claudeLog/20250909_184714_tab_component_refactor.md`
+
+---

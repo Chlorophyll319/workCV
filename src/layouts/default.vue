@@ -36,7 +36,7 @@
             :key="tab.id"
             @click="setActiveTab(tab)"
             :class="[
-              'relative min-w-[120px] max-w-[200px] h-[35px] border-r border-primary-200 flex items-center gap-1.5 px-3 cursor-pointer transition-colors flex-shrink-0',
+              'relative min-w-[120px] max-w-[200px] h-[35px] border-r border-primary-200 flex items-center gap-2 px-3 cursor-pointer transition-colors duration-200 flex-shrink-0',
               activeFile.id === tab.id ? 'bg-card' : 'bg-primary-100 hover:bg-primary-50',
               // 特殊檔案類型樣式
               tab.type === '延伸模組' ? 'font-medium' : '',
@@ -160,7 +160,7 @@
                 :key="file.id"
                 @click="handleFileClick(file)"
                 :class="[
-                  'flex items-center gap-1.5 px-2 py-0.5 cursor-pointer rounded hover:bg-primary-50 transition-colors',
+                  'flex items-center gap-2 px-2 py-1 cursor-pointer rounded hover:bg-primary-50 transition-colors duration-200',
                   activeFile.id === file.id ? 'bg-primary-100' : '',
                   // 延伸模組特殊樣式
                   file.type === '延伸模組' ? 'font-medium' : '',

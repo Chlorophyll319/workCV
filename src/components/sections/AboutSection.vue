@@ -17,10 +17,10 @@
 
           <!-- Key Points Grid -->
           <div
-            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 flex-1"
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 flex-1"
           >
             <!-- Background -->
-            <div class="bg-white rounded-lg p-3 sm:p-4 h-full flex flex-col">
+            <div class="bg-white rounded-lg p-4 h-full flex flex-col">
               <h3
                 class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
               >
@@ -34,7 +34,7 @@
             </div>
 
             <!-- Philosophy -->
-            <div class="bg-white rounded-lg p-3 sm:p-4 h-full flex flex-col">
+            <div class="bg-white rounded-lg p-4 h-full flex flex-col">
               <h3
                 class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
               >

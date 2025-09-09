@@ -16,11 +16,11 @@
 
         <!-- Skills Categories Grid -->
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 flex-1"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1"
         >
           <!-- Frontend Category -->
           <div
-            class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
@@ -49,7 +49,7 @@
 
           <!-- Backend Category -->
           <div
-            class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
@@ -78,7 +78,7 @@
 
           <!-- Tools Category -->
           <div
-            class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
@@ -107,7 +107,7 @@
 
           <!-- AI Category -->
           <div
-            class="min-h-[250px] sm:min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-3 sm:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">

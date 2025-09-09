@@ -28,7 +28,7 @@
                     {{ profile.title }}
                   </p>
                   <div
-                    class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500"
+                    class="flex flex-wrap items-center gap-3 text-sm text-gray-500"
                   >
                     <span class="flex items-center gap-1">
                       <Icon icon="heroicons:star" class="w-3 h-3 sm:w-4 sm:h-4" />
@@ -50,7 +50,7 @@
               </div>
 
               <!-- Install Buttons - 手機版全寬度 -->
-              <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto sm:self-start">
+              <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:self-start">
                 <button class="install-btn">Install</button>
                 <button class="details-btn">Details</button>
               </div>
@@ -67,7 +67,7 @@
             <!-- Skills Tags -->
             <div class="mb-6">
               <h4 class="text-sm sm:text-base font-semibold text-gray-900 mb-3">主要技能</h4>
-              <div class="flex flex-wrap gap-2 sm:gap-2.5">
+              <div class="flex flex-wrap gap-2">
                 <span class="skill-vue">Vue3</span>
                 <span class="skill-js">JavaScript</span>
                 <span class="skill-node">Node.js</span>
@@ -79,7 +79,7 @@
 
             <!-- Extension Details -->
             <div
-              class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-6 text-xs sm:text-sm"
+              class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6 text-sm"
             >
               <div class="extension-detail">
                 <Icon icon="heroicons:envelope" class="w-4 h-4 flex-shrink-0" />

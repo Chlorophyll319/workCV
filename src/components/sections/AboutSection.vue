@@ -3,12 +3,11 @@
     <div class="h-full flex flex-col">
       <!-- About Card -->
       <div 
-        class="bg-white rounded-xl border-2 p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-        style="border-color: var(--color-primary);"
+        class="bg-white rounded-xl border-2 border-primary p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       >
         <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-2 mb-6 pb-4 border-b-2" style="border-color: var(--color-primary);">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-t-lg" style="background-color: var(--color-primary); color: white;">
+        <div class="flex items-center gap-2 mb-6 pb-4 border-b-2 border-primary">
+          <div class="flex items-center gap-2 px-4 py-2 rounded-t-lg bg-primary text-white">
             <Icon icon="heroicons:user" class="w-4 h-4" />
             <span class="font-mono text-sm font-semibold">about-me.md</span>
             <Icon icon="heroicons:x-mark" class="w-3 h-3 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
@@ -26,7 +25,7 @@
           <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1">
             <!-- Background -->
             <div class="space-y-2">
-              <h3 class="flex items-center gap-2 font-semibold text-sm" style="color: var(--color-accent);">
+              <h3 class="flex items-center gap-2 font-semibold text-sm text-accent">
                 <Icon icon="heroicons:academic-cap" class="w-4 h-4" />
                 背景轉換
               </h3>
@@ -38,7 +37,7 @@
 
             <!-- Philosophy -->
             <div class="space-y-2">
-              <h3 class="flex items-center gap-2 font-semibold text-sm" style="color: var(--color-primary);">
+              <h3 class="flex items-center gap-2 font-semibold text-sm text-primary">
                 <Icon icon="heroicons:light-bulb" class="w-4 h-4" />
                 開發理念
               </h3>
@@ -49,7 +48,7 @@
             
             <!-- Current Focus -->
             <div class="border-l-4 pl-3" style="border-color: var(--color-primary);">
-              <h3 class="font-semibold mb-1 text-sm" style="color: var(--color-primary);">目前專注</h3>
+              <h3 class="font-semibold mb-1 text-sm text-primary">目前專注</h3>
               <p class="text-gray-600 text-xs leading-relaxed">
                 {{ profile.about.currentFocus }}
               </p>
@@ -57,7 +56,7 @@
             
             <!-- Highlights -->
             <div class="bg-gray-50 rounded-lg p-3">
-              <h3 class="flex items-center gap-2 font-semibold mb-2 text-sm" style="color: var(--color-accent);">
+              <h3 class="flex items-center gap-2 font-semibold mb-2 text-sm text-accent">
                 <Icon icon="heroicons:star" class="w-4 h-4" />
                 核心優勢
               </h3>

@@ -3,12 +3,11 @@
     <div class="h-full flex flex-col">
       <!-- Projects Card -->
       <div 
-        class="bg-white rounded-xl border-2 p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-        style="border-color: var(--color-primary);"
+        class="bg-white rounded-xl border-2 border-primary p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       >
         <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2" style="border-color: var(--color-primary);">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg" style="background-color: var(--color-primary); color: white;">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
+          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
             <Icon icon="heroicons:document-text" class="w-4 h-4" />
             <span class="font-mono text-sm font-semibold">projects.json</span>
             <Icon icon="heroicons:x-mark" class="w-3 h-3 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
@@ -17,10 +16,10 @@
 
         <!-- Section Title -->
         <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold mb-2" style="color: var(--color-primary);">
+          <h2 class="text-2xl font-bold mb-2 text-primary">
             專案作品
           </h2>
-          <div class="w-12 h-1 mx-auto rounded-full" style="background-color: var(--color-accent);"></div>
+          <div class="w-12 h-1 mx-auto rounded-full bg-accent"></div>
         </div>
 
         <!-- Projects Grid -->
@@ -50,7 +49,7 @@
                 </div>
               </div>
               <div class="flex items-center gap-1">
-                <Icon icon="heroicons:star-solid" class="w-3 h-3" style="color: var(--color-accent);" />
+                <Icon icon="heroicons:star-solid" class="w-3 h-3 text-accent" />
                 <span class="text-xs text-gray-500">{{ project.status }}</span>
               </div>
             </div>
@@ -104,8 +103,7 @@
                 v-if="project.githubUrl"
                 :href="project.githubUrl"
                 target="_blank"
-                class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg font-semibold text-sm border-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
-                style="border-color: var(--color-primary); color: var(--color-primary);"
+                class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg font-semibold text-sm border-2 border-primary text-primary transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
               >
                 <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
                 GitHub

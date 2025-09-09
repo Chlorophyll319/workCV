@@ -346,17 +346,115 @@
 
 ---
 
+## 11. 【最新進展】VSCode Layout 實作完成（2025/09/09）
+
+### VSCode 風格 Layout 決定
+經過討論，決定**繼續執行 VSCode 風格**：
+- ✅ 概念可行且有特色，用戶喜歡
+- ✅ 在資訊呈現方式上可能會調整（兼顧人資理解）
+- ✅ 視覺上仍然專業，即使人資不懂技術細節
+
+### 完整 VSCode Layout 實作
+完成了 `src/layouts/default.vue` 的完整 VSCode 介面：
+
+#### 結構組成
+- **頂部選單列**：VSCode 圖示 + File/Edit/View 選單 + 視窗標題 + 控制按鈕
+- **側邊活動列**：檔案總管、搜尋、Git、擴充功能圖示，藍色活動指示器
+- **檔案總管面板**：EXPLORER 標題、操作按鈕、履歷專案結構
+- **主要編輯區**：分頁標籤設計（about-me.md、experience.json、projects.ts）
+- **底部狀態列**：TypeScript、編碼格式、游標位置、專案狀態
+
+#### 技術特點
+- **100% VSCode 原生配色**：`#1e1e1e`、`#2c2c2c`、`#007acc` 等
+- **完整互動效果**：hover 狀態、active 指示器、分頁切換視覺
+- **響應式設計**：768px 以下調整側邊欄寬度和選單顯示
+- **履歷相關檔案命名**：`about-me.md`、`experience.json`、`projects.ts`、`skills.yml`、`contact.json`
+
+#### 路由配置修復
+- **問題**：layout 檔案名稱拼錯（`defult.vue` → `default.vue`）
+- **解決**：重新命名檔案 + 在 pages/index.vue 中使用 `defineOptions` 指定 layout
+- **技術**：使用 unplugin-vue-router + vue-layouts 系統
+
+### 設計理念優化
+**VSCode 風格的優勢：**
+- 展現對開發工具的熟悉度，技術辨識度高
+- 在技術圈很有共鳴，顯示創意和技術實力
+- 視覺上仍然乾淨專業，適合各種受眾
+
+**兼顧人資理解的策略：**
+- 保留 VSCode 視覺風格（配色、排版、卡片設計）
+- 可調整技術性元素為更直白的表達
+- 檔案 tab 文字可改為更通用的標題
+- 圖示選用更通用的設計
+
+### 下一步規劃
+1. **測試 VSCode Layout 效果**：啟動 `npm run dev` 查看完整 VSCode 介面
+2. **內容整合優化**：
+   - 讓履歷內容更像在「編輯」檔案的感覺
+   - 可增加程式碼語法高亮、打字機效果
+   - 實作側邊欄收合、分頁切換互動
+3. **人資友善調整**（依測試結果）：
+   - 保留 VSCode 視覺，調整過於技術性的文字
+   - 增加視覺提示幫助非技術背景理解
+
+### 專案現況總結
+- ✅ **基礎版本**：73e14ae Bento Grid + 藍橘配色（已完成）
+- ✅ **VSCode Layout**：完整 VSCode 介面架構（已完成）
+- 🔄 **整合測試**：VSCode Layout + 原有履歷內容的整合效果
+- 📋 **後續優化**：基於測試結果的人資友善調整
+
+---
+
+## 12. 【最新修復】重複 class 屬性錯誤修復（2025/09/09）
+
+### 問題發現
+在進行 CSS 變數到 Tailwind 語義化類名轉換時，發現了重複 class 屬性的語法錯誤：
+
+```html
+<!-- 錯誤示例 -->
+<div 
+  class="bg-white rounded-xl border-2 p-6..."
+  class="border-primary"  <!-- 重複的 class 屬性 -->
+>
+```
+
+### 修復過程
+系統性地修復了所有 Vue 組件中的重複 class 屬性錯誤：
+
+#### 修復檔案清單
+1. **AboutSection.vue**：修復 VSCode 檔案標籤的 border 顏色
+2. **SkillsSection.vue**：修復 4 個技能分類卡片的樣式
+   - Frontend 和 Tools：`border-primary`、`bg-primary`、`text-primary`
+   - Backend 和 AI：`border-accent`、`bg-accent`、`text-accent`
+3. **ProjectsSection.vue**：修復專案星號圖示和 GitHub 按鈕顏色
+4. **HeroSectionNew.vue**：修復 GitHub 和聯絡按鈕樣式
+
+### 轉換成果
+✅ 成功將所有 CSS 變數轉換為語義化 Tailwind 類名：
+- `style="color: var(--color-primary);"` → `class="text-primary"`
+- `style="border-color: var(--color-primary);"` → `class="border-primary"`
+- `style="background-color: var(--color-accent);"` → `class="bg-accent"`
+
+### 開發伺服器狀態
+✅ 修復後開發伺服器成功重啟，運行在 `http://localhost:3005/`
+✅ 所有 Vue 語法錯誤已修復，no TypeScript/template 錯誤
+
+### 對話記錄
+已建立 `claudeLog_20250909_083422.md` 記錄完整修復過程
+
+---
+
 ## 風格對照表（最終實作版本）
 
-| 項目 | 原計劃：藍橘雙欄商務風 | 實際完成：73e14ae + 藍橘混合版 |
-| ---- | -------------------- | ------------------------------ |
-| 背景 | 米白奶茶 `#FFFAE6`  | 米白奶茶 `#FFFAE6` ✅          |
-| 主色 | 藍色標題 `#2196F3`  | 藍色標題 `#2196F3` ✅          |
-| 強調 | 橘色標籤 `#FF9800`  | 橘色標籤 `#FF9800` ✅          |
-| 版型 | **雙欄（左30% / 右70%）** | **Bento Grid（4個卡片）** ✨    |
-| 標題 | 大標姓名 + 職稱標籤 | **VSCode Editor 檔案標籤** ✨   |
-| 分隔 | 黑色細實線分隔      | **卡片邊框 + hover 效果** ✨    |
-| 內容 | 簡潔條列 + 充足留白 | **高密度資訊 + 網格佈局** ✨    |
-| 特色 | 商務簡報感          | **VSCode 工程師風 + 專業配色** ✨ |
+| 項目 | 原計劃：藍橘雙欄商務風 | 73e14ae 混合版 | **VSCode Layout 版**（最新） |
+| ---- | -------------------- | ------------- | -------------------------- |
+| 背景 | 米白奶茶 `#FFFAE6`  | 米白奶茶 `#FFFAE6` ✅ | **VSCode 暗色 `#1e1e1e`** 🆕 |
+| 主色 | 藍色標題 `#2196F3`  | 藍色標題 `#2196F3` ✅ | **VSCode 藍 `#007acc`** 🆕 |
+| 強調 | 橘色標籤 `#FF9800`  | 橘色標籤 `#FF9800` ✅ | **橘色保留於內容區** 🆕 |
+| 版型 | **雙欄（左30% / 右70%）** | **Bento Grid（4個卡片）** | **VSCode 三欄式佈局** 🆕 |
+| 標題 | 大標姓名 + 職稱標籤 | **VSCode Editor 檔案標籤** ✨ | **完整 VSCode 介面** 🆕 |
+| 分隔 | 黑色細實線分隔      | **卡片邊框 + hover 效果** ✨ | **VSCode 原生邊框系統** 🆕 |
+| 內容 | 簡潔條列 + 充足留白 | **高密度資訊 + 網格佈局** ✨ | **編輯器風格內容展示** 🆕 |
+| 特色 | 商務簡報感          | **VSCode 工程師風 + 專業配色** ✨ | **100% 仿真 VSCode** 🆕 |
 
 ---

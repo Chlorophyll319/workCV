@@ -1,27 +1,24 @@
 <template>
-  <div class="min-h-screen" style="background-color: var(--color-base);">
-    <!-- Main Container with Bento Grid Layout -->
-    <div class="max-w-7xl mx-auto px-4 py-6 space-y-6">
-      
-      <!-- Hero Section - Full Width -->
-      <div class="grid-item hero-area">
-        <HeroSectionNew />
-      </div>
-      
-      <!-- About Me Section - Full Width -->
-      <div class="grid-item about-area">
-        <AboutSection />
-      </div>
-      
-      <!-- Projects Section - Full Width -->
-      <div class="grid-item projects-area">
-        <ProjectsSection />
-      </div>
-      
-      <!-- Skills Section - Full Width -->
-      <div class="grid-item skills-area">
-        <SkillsSection />
-      </div>
+  <!-- VSCode 現在不需要這些樣式了，直接簡化 -->
+  <div class="space-y-6">
+    <!-- Hero Section - Full Width -->
+    <div>
+      <HeroSectionNew />
+    </div>
+    
+    <!-- About Me Section - Full Width -->
+    <div>
+      <AboutSection />
+    </div>
+    
+    <!-- Projects Section - Full Width -->
+    <div>
+      <ProjectsSection />
+    </div>
+    
+    <!-- Skills Section - Full Width -->
+    <div>
+      <SkillsSection />
     </div>
   </div>
 </template>
@@ -32,6 +29,13 @@ import HeroSectionNew from '../components/sections/HeroSectionNew.vue'
 import AboutSection from '../components/sections/AboutSection.vue'
 import ProjectsSection from '../components/sections/ProjectsSection.vue'
 import SkillsSection from '../components/sections/SkillsSection.vue'
+
+// 指定使用 default layout
+defineOptions({
+  meta: {
+    layout: 'default'
+  }
+})
 
 // 設定頁面 meta
 useHead({
@@ -55,88 +59,3 @@ useHead({
 });
 </script>
 
-<style scoped>
-/* Bento Grid Layout Styling */
-.grid-item {
-  border-radius: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.grid-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Hero area special styling */
-.hero-area {
-  min-height: 70vh;
-}
-
-/* About area styling */
-.about-area {
-  min-height: 300px;
-}
-
-/* Projects area styling */
-.projects-area {
-  min-height: 500px;
-}
-
-/* Skills area styling */
-.skills-area {
-  min-height: 400px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1023px) {
-  .hero-area {
-    min-height: 50vh;
-  }
-  
-  .about-area,
-  .projects-area,
-  .skills-area {
-    min-height: auto;
-  }
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .hero-area {
-    min-height: 40vh;
-  }
-  
-  .grid-item {
-    border-radius: 12px;
-  }
-  
-  .space-y-6 > * + * {
-    margin-top: 1rem;
-  }
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Background pattern for visual interest */
-.min-h-screen::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 25px 25px, rgba(33, 150, 243, 0.03) 2px, transparent 2px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  z-index: -1;
-}
-</style>

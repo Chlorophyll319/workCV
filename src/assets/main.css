@@ -6,45 +6,37 @@
   --font-family-chinese: 'jf-openhuninn', system-ui, sans-serif;
   --font-family-code: 'Fira Code', 'Courier New', monospace;
   --font-family-english: 'Fira Code', system-ui, sans-serif;
-  
+
   /* Base Colors - Modern Infographic Blue-Orange */
-  --color-base: #FFFAE6;           /* Base/Background */
-  --color-primary: #2196F3;        /* Main Blue */
-  --color-accent: #FF9800;         /* Orange Accent */
-  --color-text: #000000;           /* Text */
-  --color-border: #000000;         /* Borders/Lines */
-  
-  /* Card & Surface Colors */
-  --color-card: #FFFFFF;           /* White Cards */
-  --color-card-shadow: rgba(0, 0, 0, 0.1);
-  
-  /* Override Tailwind default colors */
-  --color-primary-50: #E3F2FD;
-  --color-primary-100: #BBDEFB;
-  --color-primary-200: #90CAF9;
-  --color-primary-300: #64B5F6;
-  --color-primary-400: #42A5F5;
-  --color-primary-500: #2196F3;
-  --color-primary-600: #1E88E5;
-  --color-primary-700: #1976D2;
-  --color-primary-800: #1565C0;
-  --color-primary-900: #0D47A1;
+  --color-base: #fffae6;
+  --color-primary: #2196f3;
+  --color-accent: #ff9800;
+  --color-text: #000000;
+  --color-border: #000000;
+  --color-card: #ffffff;
 
-  --color-accent-50: #FFF3E0;
-  --color-accent-100: #FFE0B2;
-  --color-accent-200: #FFCC80;
-  --color-accent-300: #FFB74D;
-  --color-accent-400: #FFA726;
-  --color-accent-500: #FF9800;
-  --color-accent-600: #FB8C00;
-  --color-accent-700: #F57C00;
-  --color-accent-800: #EF6C00;
-  --color-accent-900: #E65100;
+  /* Tailwind Color System */
+  --color-primary-50: #e3f2fd;
+  --color-primary-100: #bbdefb;
+  --color-primary-200: #90caf9;
+  --color-primary-300: #64b5f6;
+  --color-primary-400: #42a5f5;
+  --color-primary-500: #2196f3;
+  --color-primary-600: #1e88e5;
+  --color-primary-700: #1976d2;
+  --color-primary-800: #1565c0;
+  --color-primary-900: #0d47a1;
 
-  /* Modern Card Styling */
-  --radius-card: 12px;
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-card-hover: 0 4px 16px rgba(33, 150, 243, 0.12);
+  --color-accent-50: #fff3e0;
+  --color-accent-100: #ffe0b2;
+  --color-accent-200: #ffcc80;
+  --color-accent-300: #ffb74d;
+  --color-accent-400: #ffa726;
+  --color-accent-500: #ff9800;
+  --color-accent-600: #fb8c00;
+  --color-accent-700: #f57c00;
+  --color-accent-800: #ef6c00;
+  --color-accent-900: #e65100;
 }
 
 /* Global Styles */
@@ -55,7 +47,7 @@
 body {
   margin: 0;
   font-family: 'jf-openhuninn', system-ui, sans-serif;
-  background-color: #FFFAE6;
+  background-color: #fffae6;
   color: #000000;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -120,7 +112,7 @@ body {
   .resume-card {
     padding: 1rem;
   }
-  
+
   .section-title {
     font-size: 1.25rem;
     margin-bottom: 1rem;
@@ -132,11 +124,11 @@ body {
     padding: 1rem;
     border-radius: 8px;
   }
-  
+
   .section-title {
     font-size: 1.125rem;
   }
-  
+
   .orange-tag {
     padding: 0.375rem 0.75rem;
     font-size: 0.8125rem;

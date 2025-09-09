@@ -3,11 +3,10 @@
     <div class="h-full flex flex-col">
       <!-- VSCode File Tab Design -->
       <div 
-        class="bg-white rounded-xl border-2 p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-        style="border-color: var(--color-primary);"
+        class="bg-white rounded-xl border-2 border-primary p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       >
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2" style="border-color: var(--color-primary);">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg" style="background-color: var(--color-primary); color: white;">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
+          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
             <Icon icon="heroicons:cog-6-tooth" class="w-4 h-4" />
             <span class="font-mono text-sm font-semibold">skills-config.yaml</span>
             <Icon icon="heroicons:x-mark" class="w-3 h-3 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
@@ -16,21 +15,21 @@
 
         <!-- Section Title -->
         <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold mb-2" style="color: var(--color-primary);">
+          <h2 class="text-2xl font-bold mb-2 text-primary">
             技術技能
           </h2>
-          <div class="w-12 h-1 mx-auto rounded-full" style="background-color: var(--color-accent);"></div>
+          <div class="w-12 h-1 mx-auto rounded-full bg-accent"></div>
         </div>
 
         <!-- Skills Categories Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1">
           
           <!-- Frontend Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style="border-color: var(--color-primary);">
+          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-primary); opacity: 0.1;">
-                  <Icon icon="heroicons:code-bracket" class="w-4 h-4" style="color: var(--color-primary);" />
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary bg-opacity-10">
+                  <Icon icon="heroicons:code-bracket" class="w-4 h-4 text-primary" />
                 </div>
                 <h3 class="text-lg font-bold text-gray-800">Frontend</h3>
               </div>
@@ -38,7 +37,7 @@
             <div class="flex-1 space-y-3">
               <div v-for="skill in frontendSkills" :key="skill.name" class="pb-2 border-b border-gray-300 last:border-b-0 last:pb-0">
                 <div class="flex items-center gap-2 mb-1">
-                  <Icon :icon="skill.icon" class="w-4 h-4" style="color: var(--color-primary);" />
+                  <Icon :icon="skill.icon" class="w-4 h-4 text-primary" />
                   <span class="text-sm font-medium text-gray-800">{{ skill.name }}</span>
                 </div>
                 <p class="text-xs text-gray-600 leading-relaxed text-left">{{ skill.description }}</p>
@@ -47,11 +46,11 @@
           </div>
 
           <!-- Backend Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style="border-color: var(--color-accent);">
+          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-accent); opacity: 0.1;">
-                  <Icon icon="heroicons:server" class="w-4 h-4" style="color: var(--color-accent);" />
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-accent bg-opacity-10">
+                  <Icon icon="heroicons:server" class="w-4 h-4 text-accent" />
                 </div>
                 <h3 class="text-lg font-bold text-gray-800">Backend</h3>
               </div>
@@ -59,7 +58,7 @@
             <div class="flex-1 space-y-3">
               <div v-for="skill in backendSkills" :key="skill.name" class="pb-2 border-b border-gray-300 last:border-b-0 last:pb-0">
                 <div class="flex items-center gap-2 mb-1">
-                  <Icon :icon="skill.icon" class="w-4 h-4" style="color: var(--color-accent);" />
+                  <Icon :icon="skill.icon" class="w-4 h-4 text-accent" />
                   <span class="text-sm font-medium text-gray-800">{{ skill.name }}</span>
                 </div>
                 <p class="text-xs text-gray-600 leading-relaxed text-left">{{ skill.description }}</p>
@@ -68,11 +67,11 @@
           </div>
 
           <!-- Tools Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style="border-color: var(--color-primary);">
+          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-primary); opacity: 0.1;">
-                  <Icon icon="heroicons:wrench-screwdriver" class="w-4 h-4" style="color: var(--color-primary);" />
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary bg-opacity-10">
+                  <Icon icon="heroicons:wrench-screwdriver" class="w-4 h-4 text-primary" />
                 </div>
                 <h3 class="text-lg font-bold text-gray-800">開發工具</h3>
               </div>
@@ -80,7 +79,7 @@
             <div class="flex-1 space-y-3">
               <div v-for="skill in toolsSkills" :key="skill.name" class="pb-2 border-b border-gray-300 last:border-b-0 last:pb-0">
                 <div class="flex items-center gap-2 mb-1">
-                  <Icon :icon="skill.icon" class="w-4 h-4" style="color: var(--color-primary);" />
+                  <Icon :icon="skill.icon" class="w-4 h-4 text-primary" />
                   <span class="text-sm font-medium text-gray-800">{{ skill.name }}</span>
                 </div>
                 <p class="text-xs text-gray-600 leading-relaxed text-left">{{ skill.description }}</p>
@@ -89,11 +88,11 @@
           </div>
 
           <!-- AI Category -->
-          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style="border-color: var(--color-accent);">
+          <div class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-accent p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="category-header mb-4">
               <div class="flex items-center gap-2 mb-2">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-accent); opacity: 0.1;">
-                  <Icon icon="heroicons:cpu-chip" class="w-4 h-4" style="color: var(--color-accent);" />
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-accent bg-opacity-10">
+                  <Icon icon="heroicons:cpu-chip" class="w-4 h-4 text-accent" />
                 </div>
                 <h3 class="text-lg font-bold text-gray-800">AI 協作</h3>
               </div>
@@ -101,7 +100,7 @@
             <div class="flex-1 space-y-3">
               <div v-for="skill in aiSkills" :key="skill.name" class="pb-2 border-b border-gray-300 last:border-b-0 last:pb-0">
                 <div class="flex items-center gap-2 mb-1">
-                  <Icon :icon="skill.icon" class="w-4 h-4" style="color: var(--color-accent);" />
+                  <Icon :icon="skill.icon" class="w-4 h-4 text-accent" />
                   <span class="text-sm font-medium text-gray-800">{{ skill.name }}</span>
                 </div>
                 <p class="text-xs text-gray-600 leading-relaxed text-left">{{ skill.description }}</p>

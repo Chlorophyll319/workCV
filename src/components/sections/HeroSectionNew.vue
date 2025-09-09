@@ -3,12 +3,11 @@
     <div class="h-full flex flex-col">
       <!-- VSCode Editor Card -->
       <div
-        class="bg-white rounded-2xl border-2 border-gray-200 p-6 md:p-8 flex-1 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-        style="border-color: var(--color-primary);"
+        class="bg-white rounded-2xl border-2 border-primary p-6 md:p-8 flex-1 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
       >
         <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-3 mb-8 pb-4 border-b-2" style="border-color: var(--color-primary);">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg" style="background-color: var(--color-primary); color: white;">
+        <div class="flex items-center gap-3 mb-8 pb-4 border-b-2 border-primary">
+          <div class="flex items-center gap-3 px-4 py-2 rounded-t-lg bg-primary text-white">
             <Icon icon="heroicons:document-text" class="w-5 h-5" />
             <span class="font-mono text-sm font-semibold">portfolio.js</span>
             <Icon icon="heroicons:x-mark" class="w-4 h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
@@ -23,8 +22,8 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">1</span>
               <div class="flex-1">
-                <span style="color: var(--color-accent);">const</span>
-                <span style="color: var(--color-primary); margin-left: 8px;">developer</span>
+                <span class="text-accent">const</span>
+                <span class="text-primary ml-2">developer</span>
                 <span class="text-gray-700 ml-2">=</span>
                 <span class="text-gray-700 ml-2">{</span>
               </div>
@@ -34,9 +33,9 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">2</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">name</span>
+                <span class="text-primary">name</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">
+                <span class="text-accent ml-2">
                   "{{ profile.name }} ({{ profile.englishName }})"
                 </span>
               </div>
@@ -46,9 +45,9 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">3</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">role</span>
+                <span class="text-primary">role</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">"{{ profile.title }}"</span>
+                <span class="text-accent ml-2">"{{ profile.title }}"</span>
               </div>
             </div>
 
@@ -56,9 +55,9 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">4</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">specialization</span>
+                <span class="text-primary">specialization</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">"{{ profile.subtitle }}"</span>
+                <span class="text-accent ml-2">"{{ profile.subtitle }}"</span>
               </div>
             </div>
 
@@ -66,9 +65,9 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">5</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">philosophy</span>
+                <span class="text-primary">philosophy</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">"{{ profile.tagline }}"</span>
+                <span class="text-accent ml-2">"{{ profile.tagline }}"</span>
               </div>
             </div>
 
@@ -76,7 +75,7 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">6</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">skills</span>
+                <span class="text-primary">skills</span>
                 <span class="text-gray-700">:</span>
                 <span class="text-gray-700 ml-2">[</span>
               </div>
@@ -86,18 +85,18 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">7</span>
               <div class="flex-1 ml-12 flex flex-wrap gap-x-4 gap-y-1">
-                <span style="color: var(--color-accent);">"Vue3"</span><span class="text-gray-700">,</span>
-                <span style="color: var(--color-accent);">"JavaScript"</span><span class="text-gray-700">,</span>
-                <span style="color: var(--color-accent);">"Node.js"</span><span class="text-gray-700">,</span>
-                <span style="color: var(--color-accent);">"MongoDB"</span><span class="text-gray-700">,</span>
+                <span class="text-accent">"Vue3"</span><span class="text-gray-700">,</span>
+                <span class="text-accent">"JavaScript"</span><span class="text-gray-700">,</span>
+                <span class="text-accent">"Node.js"</span><span class="text-gray-700">,</span>
+                <span class="text-accent">"MongoDB"</span><span class="text-gray-700">,</span>
               </div>
             </div>
             
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">8</span>
               <div class="flex-1 ml-12">
-                <span style="color: var(--color-accent);">"TypeScript"</span><span class="text-gray-700">,</span>
-                <span style="color: var(--color-accent); margin-left: 16px;">"AI-Collaboration"</span>
+                <span class="text-accent">"TypeScript"</span><span class="text-gray-700">,</span>
+                <span class="text-accent ml-4">"AI-Collaboration"</span>
               </div>
             </div>
 
@@ -113,7 +112,7 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">10</span>
               <div class="flex-1 ml-6">
-                <span style="color: var(--color-primary);">contact</span>
+                <span class="text-primary">contact</span>
                 <span class="text-gray-700">:</span>
                 <span class="text-gray-700 ml-2">{</span>
               </div>
@@ -123,18 +122,18 @@
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">11</span>
               <div class="flex-1 ml-12">
-                <span style="color: var(--color-primary);">email</span>
+                <span class="text-primary">email</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">"{{ profile.contact.email }}"</span><span class="text-gray-700">,</span>
+                <span class="text-accent ml-2">"{{ profile.contact.email }}"</span><span class="text-gray-700">,</span>
               </div>
             </div>
             
             <div class="flex">
               <span class="text-gray-400 w-8 text-right mr-4 select-none">12</span>
               <div class="flex-1 ml-12">
-                <span style="color: var(--color-primary);">github</span>
+                <span class="text-primary">github</span>
                 <span class="text-gray-700">:</span>
-                <span style="color: var(--color-accent); margin-left: 8px;">"{{ profile.contact.github }}"</span>
+                <span class="text-accent ml-2">"{{ profile.contact.github }}"</span>
               </div>
             </div>
 
@@ -167,12 +166,11 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 pt-6 border-t-2" style="border-color: var(--color-primary);">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 pt-6 border-t-2 border-primary">
           <a 
             :href="profile.contact.github" 
             target="_blank"
-            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-            style="background-color: var(--color-primary); color: white;"
+            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold bg-primary text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
           >
             <Icon icon="heroicons:code-bracket" class="w-5 h-5" />
             <span class="font-mono">GitHub</span>
@@ -180,8 +178,7 @@
 
           <a
             :href="`mailto:${profile.contact.email}`"
-            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-            style="border-color: var(--color-accent); color: var(--color-accent);"
+            class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold border-2 border-accent text-accent transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
           >
             <Icon icon="heroicons:envelope" class="w-5 h-5" />
             <span class="font-mono">聯絡我</span>

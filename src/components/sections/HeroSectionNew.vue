@@ -1,187 +1,140 @@
 <template>
   <section id="hero" class="h-full p-2 sm:p-4 md:p-6">
     <div class="h-full flex flex-col">
-      <!-- VSCode Editor Card -->
-      <div
-        class="bg-white rounded-xl md:rounded-2xl border-2 border-primary p-4 sm:p-6 md:p-8 flex-1 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 min-h-full"
-      >
-        <!-- VSCode File Tab Design -->
-        <div class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-primary">
-          <div class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-t-lg bg-primary text-white">
-            <Icon icon="heroicons:document-text" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span class="font-mono text-xs sm:text-sm font-semibold">portfolio.js</span>
-            <Icon icon="heroicons:x-mark" class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors" />
+      <!-- VSCode Extensions Marketplace -->
+      <div class="flex-1 min-h-full p-2 sm:p-4 md:p-6">
+        <!-- Extensions Header -->
+        <div
+          class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-primary"
+        >
+          <div
+            class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-t-lg bg-primary text-white"
+          >
+            <Icon icon="heroicons:puzzle-piece" class="w-4 h-4 sm:w-5 sm:h-5" />
+            <span class="font-mono text-xs sm:text-sm font-semibold">Extensions</span>
+            <Icon
+              icon="heroicons:x-mark"
+              class="w-3 h-3 sm:w-4 sm:h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors"
+            />
           </div>
         </div>
 
-        <!-- Code Content -->
-        <div class="space-y-3 flex-1">
-          <!-- Main Profile Code Block -->
-          <div class="font-mono text-sm leading-relaxed">
-            <!-- Line 1 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">1</span>
-              <div class="flex-1">
-                <span class="text-accent">const</span>
-                <span class="text-primary ml-2">developer</span>
-                <span class="text-gray-700 ml-2">=</span>
-                <span class="text-gray-700 ml-2">{</span>
+        <!-- Extension Item -->
+        <div class="space-y-4 flex-1">
+          <!-- Extension Card -->
+          <div class="extension-card extension-animate">
+            <!-- Extension Header -->
+            <div class="flex flex-col gap-4 mb-4">
+              <!-- Extension Icon & Basic Info -->
+              <div class="flex items-start gap-3 sm:gap-4">
+                <div class="extension-icon">
+                  {{ profile.name.charAt(0) }}{{ profile.englishName.charAt(0) }}
+                </div>
+
+                <div class="flex-1 min-w-0">
+                  <h2
+                    class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-1 leading-tight"
+                  >
+                    {{ profile.name }} ({{ profile.englishName }})
+                  </h2>
+                  <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-2 sm:mb-3">
+                    {{ profile.title }}
+                  </p>
+                  <div
+                    class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500"
+                  >
+                    <span class="flex items-center gap-1">
+                      <Icon icon="heroicons:star" class="w-3 h-3 sm:w-4 sm:h-4" />
+                      5.0
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <Icon icon="heroicons:arrow-down-tray" class="w-3 h-3 sm:w-4 sm:h-4" />
+                      1.2M
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <Icon
+                        icon="heroicons:check-badge"
+                        class="w-3 h-3 sm:w-4 sm:h-4 text-blue-500"
+                      />
+                      Verified
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Install Buttons - 手機版全寬度 -->
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto sm:self-start">
+                <button class="install-btn">Install</button>
+                <button class="details-btn">Details</button>
               </div>
             </div>
 
-            <!-- Line 2 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">2</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">name</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">
-                  "{{ profile.name }} ({{ profile.englishName }})"
-                </span>
+            <!-- Extension Description -->
+            <div class="mb-4">
+              <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
+                {{ profile.subtitle }}
+              </p>
+              <p class="text-xs sm:text-sm text-gray-600 mt-2 italic">"{{ profile.tagline }}"</p>
+            </div>
+
+            <!-- Skills Tags -->
+            <div class="mb-6">
+              <h4 class="text-sm sm:text-base font-semibold text-gray-900 mb-3">主要技能</h4>
+              <div class="flex flex-wrap gap-2 sm:gap-2.5">
+                <span class="skill-vue">Vue3</span>
+                <span class="skill-js">JavaScript</span>
+                <span class="skill-node">Node.js</span>
+                <span class="skill-db">MongoDB</span>
+                <span class="skill-ts">TypeScript</span>
+                <span class="skill-ai">AI-Collaboration</span>
               </div>
             </div>
 
-            <!-- Line 3 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">3</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">role</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">"{{ profile.title }}"</span>
+            <!-- Extension Details -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-6 text-xs sm:text-sm"
+            >
+              <div class="extension-detail">
+                <Icon icon="heroicons:envelope" class="w-4 h-4 flex-shrink-0" />
+                <span class="break-all truncate sm:break-normal">{{ profile.contact.email }}</span>
+              </div>
+              <div class="extension-detail">
+                <Icon icon="heroicons:code-bracket" class="w-4 h-4 flex-shrink-0" />
+                <span>GitHub 開源貢獻者</span>
+              </div>
+              <div class="extension-detail sm:col-span-2 xl:col-span-1">
+                <Icon icon="heroicons:calendar-days" class="w-4 h-4 flex-shrink-0" />
+                <span>持續更新中</span>
               </div>
             </div>
 
-            <!-- Line 4 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">4</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">specialization</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">"{{ profile.subtitle }}"</span>
-              </div>
-            </div>
-
-            <!-- Line 5 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">5</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">philosophy</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">"{{ profile.tagline }}"</span>
-              </div>
-            </div>
-
-            <!-- Line 6 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">6</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">skills</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-gray-700 ml-2">[</span>
-              </div>
-            </div>
-
-            <!-- Lines 7-8 (skills array content) -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">7</span>
-              <div class="flex-1 ml-12 flex flex-wrap gap-x-4 gap-y-1">
-                <span class="text-accent">"Vue3"</span><span class="text-gray-700">,</span>
-                <span class="text-accent">"JavaScript"</span><span class="text-gray-700">,</span>
-                <span class="text-accent">"Node.js"</span><span class="text-gray-700">,</span>
-                <span class="text-accent">"MongoDB"</span><span class="text-gray-700">,</span>
-              </div>
-            </div>
-            
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">8</span>
-              <div class="flex-1 ml-12">
-                <span class="text-accent">"TypeScript"</span><span class="text-gray-700">,</span>
-                <span class="text-accent ml-4">"AI-Collaboration"</span>
-              </div>
-            </div>
-
-            <!-- Line 9 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">9</span>
-              <div class="flex-1 ml-6">
-                <span class="text-gray-700">],</span>
-              </div>
-            </div>
-
-            <!-- Line 10 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">10</span>
-              <div class="flex-1 ml-6">
-                <span class="text-primary">contact</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-gray-700 ml-2">{</span>
-              </div>
-            </div>
-
-            <!-- Contact info -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">11</span>
-              <div class="flex-1 ml-12">
-                <span class="text-primary">email</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">"{{ profile.contact.email }}"</span><span class="text-gray-700">,</span>
-              </div>
-            </div>
-            
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">12</span>
-              <div class="flex-1 ml-12">
-                <span class="text-primary">github</span>
-                <span class="text-gray-700">:</span>
-                <span class="text-accent ml-2">"{{ profile.contact.github }}"</span>
-              </div>
-            </div>
-
-            <!-- Line 13 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">13</span>
-              <div class="flex-1 ml-6">
-                <span class="text-gray-700">}</span>
-              </div>
-            </div>
-
-            <!-- Line 14 -->
-            <div class="flex">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">14</span>
-              <div class="flex-1">
-                <span class="text-gray-700">}</span>
-              </div>
-            </div>
-
-            <!-- Active cursor line -->
-            <div class="flex mt-4">
-              <span class="text-gray-400 w-8 text-right mr-4 select-none">15</span>
-              <div class="flex-1">
-                <span class="text-gray-500">//</span>
-                <span class="text-gray-500 ml-2">Ready to collaborate and build amazing things</span>
-                <span class="text-gray-800 ml-2 animate-blink font-bold">|</span>
+            <!-- Publisher Info -->
+            <div class="border-t pt-3 sm:pt-4">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0"
+              >
+                <div class="text-xs sm:text-sm text-gray-600">
+                  <span class="font-medium">Published by:</span> {{ profile.name }}
+                </div>
+                <div class="text-xs text-gray-500">
+                  Last updated: {{ new Date().toLocaleDateString('zh-TW') }}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 border-t-2 border-primary">
-          <a 
-            :href="profile.contact.github" 
-            target="_blank"
-            class="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold bg-primary text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-          >
+        <div
+          class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 border-t-2 border-primary"
+        >
+          <a :href="profile.contact.github" target="_blank" class="action-btn-primary">
             <Icon icon="heroicons:code-bracket" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span class="font-mono text-sm sm:text-base">GitHub</span>
+            <span>查看專案</span>
           </a>
-
-          <a
-            :href="`mailto:${profile.contact.email}`"
-            class="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold border-2 border-accent text-accent transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-          >
+          <a :href="`mailto:${profile.contact.email}`" class="action-btn-secondary">
             <Icon icon="heroicons:envelope" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span class="font-mono text-sm sm:text-base">聯絡我</span>
+            <span>聯絡合作</span>
           </a>
         </div>
       </div>
@@ -190,60 +143,6 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import { profile } from '../../assets/data/profile'
+import { Icon } from '@iconify/vue';
+import { profile } from '../../assets/data/profile';
 </script>
-
-<style scoped>
-/* Remove background since it's handled by parent */
-.hero-section {
-  background: transparent;
-}
-
-/* 游標閃爍動畫 */
-@keyframes blink {
-  0%, 50% { 
-    opacity: 1; 
-  }
-  51%, 100% { 
-    opacity: 0; 
-  }
-}
-
-.animate-blink {
-  animation: blink 1s infinite;
-}
-
-/* VSCode Editor Card 樣式 */
-.bg-white {
-  background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
-}
-
-/* 響應式調整 */
-@media (max-width: 768px) {
-  .font-mono {
-    font-size: 12px;
-  }
-  
-  .w-8 {
-    width: 24px;
-  }
-  
-  .mr-4 {
-    margin-right: 12px;
-  }
-  
-  .ml-6 {
-    margin-left: 20px;
-  }
-  
-  .ml-12 {
-    margin-left: 40px;
-  }
-}
-
-/* Hover 效果增強 */
-.hover\:shadow-2xl:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-}
-</style>

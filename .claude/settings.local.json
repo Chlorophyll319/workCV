@@ -1,6 +1,10 @@
 {
   "permissions": {
-    "allow": ["Bash(npm run dev:*)", "Bash(date +\"%Y%m%d_%H%M%S\")"],
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(date +\"%Y%m%d_%H%M%S\")",
+      "Bash(claude mcp add sequential-thinking:*)"
+    ],
     "deny": [],
     "ask": []
   }

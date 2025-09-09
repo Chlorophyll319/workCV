@@ -17,5 +17,8 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
+  "vueCompilerOptions": {
+    "globalTypesPath": "./src/types/global.d.ts"
+  },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

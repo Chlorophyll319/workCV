@@ -107,6 +107,128 @@ body {
   padding-left: 1rem;
 }
 
+/* Hero Section - Extension Style */
+.extension-icon {
+  @apply w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20;
+  @apply bg-gradient-to-br from-primary to-accent;
+  @apply rounded-lg flex items-center justify-center;
+  @apply text-white text-lg sm:text-xl md:text-2xl font-bold flex-shrink-0;
+}
+
+.extension-card {
+  @apply border border-gray-200 rounded-lg p-4 sm:p-6;
+  @apply transition-all duration-200;
+}
+
+.extension-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+@layer utilities {
+  .skill-vue {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .skill-js {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .skill-node {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-purple-100 text-purple-800;
+  }
+  
+  .skill-db {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .skill-ts {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-indigo-100 text-indigo-800;
+  }
+  
+  .skill-ai {
+    @apply px-2.5 py-1.5 sm:px-3 sm:py-2;
+    @apply text-xs sm:text-sm font-medium rounded-full;
+    @apply transition-transform hover:scale-105;
+    @apply bg-pink-100 text-pink-800;
+  }
+}
+
+.install-btn {
+  @apply w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-2;
+  @apply bg-blue-600 text-white text-sm font-semibold rounded-md;
+  @apply transition-all duration-200;
+}
+
+.install-btn:hover {
+  @apply bg-blue-700;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+.details-btn {
+  @apply w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-2;
+  @apply border border-gray-300 text-gray-700 text-sm font-semibold rounded-md;
+  @apply transition-all duration-200;
+}
+
+.details-btn:hover {
+  @apply bg-gray-50;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.extension-detail {
+  @apply flex items-center gap-2 text-gray-600;
+  @apply p-2 sm:p-0 rounded bg-gray-50 sm:bg-transparent;
+}
+
+.action-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 sm:gap-3;
+  @apply px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold;
+  @apply bg-primary text-white text-sm sm:text-base;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+}
+
+.action-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 sm:gap-3;
+  @apply px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold;
+  @apply border-2 border-accent text-accent text-sm sm:text-base;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Extension Card Animation */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.extension-animate {
+  animation: slideInUp 0.5s ease-out;
+}
+
 /* Responsive Design */
 @media (max-width: 1023px) {
   .resume-card {

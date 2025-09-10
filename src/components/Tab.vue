@@ -6,7 +6,7 @@
       <Icon
         icon="heroicons:x-mark"
         class="w-4 h-4 hover:bg-white hover:text-gray-800 rounded cursor-pointer transition-colors duration-200"
-        @click="handleClose"
+        @click="emit('close')"
       />
     </div>
   </div>
@@ -15,21 +15,15 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 
-interface Props {
+// Linus 風格：內聯類型定義，簡潔直接
+defineProps<{
   file: {
     icon: string;
     displayName: string;
   };
-}
+}>();
 
-interface Emits {
-  (e: 'close'): void;
-}
-
-defineProps<Props>();
-const emit = defineEmits<Emits>();
-
-const handleClose = () => {
-  emit('close');
-};
+const emit = defineEmits<{
+  close: [];
+}>();
 </script>

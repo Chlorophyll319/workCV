@@ -125,62 +125,65 @@ body {
   transform: translateY(-2px);
 }
 
-@layer utilities {
-  /* 統一技能標籤基礎樣式 */
-  .skill-base {
-    @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
-  }
-  
-  .skill-vue {
-    @apply skill-base bg-blue-100 text-blue-800;
-  }
-  
-  .skill-js {
-    @apply skill-base bg-green-100 text-green-800;
-  }
-  
-  .skill-node {
-    @apply skill-base bg-purple-100 text-purple-800;
-  }
-  
-  .skill-db {
-    @apply skill-base bg-yellow-100 text-yellow-800;
-  }
-  
-  .skill-ts {
-    @apply skill-base bg-indigo-100 text-indigo-800;
-  }
-  
-  .skill-ai {
-    @apply skill-base bg-pink-100 text-pink-800;
-  }
+/* 統一技能標籤樣式 */
+.skill-vue {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-blue-100 text-blue-800;
 }
 
-  /* 統一按鈕基礎樣式 */
-  .btn-base {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
-    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  }
+.skill-js {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-green-100 text-green-800;
+}
 
-  .install-btn {
-    @apply btn-base w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700;
-  }
+.skill-node {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-purple-100 text-purple-800;
+}
 
-  .details-btn {
-    @apply btn-base w-full sm:w-auto border border-gray-300 text-gray-700 hover:bg-gray-50;
-  }
+.skill-db {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-yellow-100 text-yellow-800;
+}
 
-  .action-btn-primary {
-    @apply btn-base bg-primary text-white sm:text-base;
-  }
+.skill-ts {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-indigo-100 text-indigo-800;
+}
 
-  .action-btn-secondary {
-    @apply btn-base border-2 border-accent text-accent sm:text-base;
-  }
+.skill-ai {
+  @apply px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105;
+  @apply bg-pink-100 text-pink-800;
+}
 
-  .extension-detail {
-    @apply flex items-center gap-2 p-2 text-gray-600 bg-gray-50 rounded sm:p-0 sm:bg-transparent;
-  }
+/* 統一按鈕樣式 */
+.install-btn {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  @apply w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.details-btn {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  @apply w-full sm:w-auto border border-gray-300 text-gray-700 hover:bg-gray-50;
+}
+
+.action-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  @apply bg-primary text-white sm:text-base;
+}
+
+.action-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  @apply border-2 border-accent text-accent sm:text-base;
+}
+
+.extension-detail {
+  @apply flex items-center gap-2 p-2 text-gray-600 bg-gray-50 rounded sm:p-0 sm:bg-transparent;
+}
 
 /* Extension Card Animation */
 @keyframes slideInUp {

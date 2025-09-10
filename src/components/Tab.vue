@@ -14,10 +14,12 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import type { FileItem } from '../assets/data/fileSystem';
 
 interface Props {
-  file: FileItem;
+  file: {
+    icon: string;
+    displayName: string;
+  };
 }
 
 interface Emits {

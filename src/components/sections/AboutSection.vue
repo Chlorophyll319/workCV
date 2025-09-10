@@ -97,12 +97,11 @@ import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
 import { profile } from '../../assets/data/profile';
-import { sectionsFiles } from '../../assets/data/fileSystem';
-
-// 找到對應的 about 文件
-const aboutFile = computed(() => {
-  return sectionsFiles.find((file) => file.section === 'about') || sectionsFiles[1];
-});
+// 簡潔的文件定義
+const aboutFile = {
+  icon: 'heroicons:user',
+  displayName: '關於我'
+};
 
 const handleTabClose = () => {
   // Tab 關閉邏輯，可以根據需求實現

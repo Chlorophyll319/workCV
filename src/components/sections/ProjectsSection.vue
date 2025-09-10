@@ -109,12 +109,11 @@ import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
 import { projects } from '../../assets/data/projects';
-import { sectionsFiles } from '../../assets/data/fileSystem';
-
-// 找到對應的 projects 文件
-const projectsFile = computed(() => {
-  return sectionsFiles.find((file) => file.section === 'projects') || sectionsFiles[2];
-});
+// 簡潔的文件定義
+const projectsFile = {
+  icon: 'heroicons:rocket-launch',
+  displayName: '專案作品'
+};
 
 const handleTabClose = () => {
   // Tab 關閉邏輯

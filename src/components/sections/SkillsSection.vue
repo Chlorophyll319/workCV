@@ -135,12 +135,11 @@
 import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
-import { sectionsFiles } from '../../assets/data/fileSystem';
-
-// 找到對應的 skills 文件
-const skillsFile = computed(() => {
-  return sectionsFiles.find((file) => file.section === 'skills') || sectionsFiles[3];
-});
+// 簡潔的文件定義
+const skillsFile = {
+  icon: 'heroicons:cog-6-tooth',
+  displayName: '技術技能'
+};
 
 const handleTabClose = () => {
   // Tab 關閉邏輯

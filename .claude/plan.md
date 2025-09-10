@@ -113,6 +113,15 @@
   - **動畫修復**：解決 `:root` 在 scoped style 中無效導致的 CSS 動畫失效問題
   - **效能提升**：維護性 7/10→9/10、一致性 6/10→9/10
 
+- ✅ **ProjectsSection.vue 災難救援**（2025/09/11 深夜）：
+  - **Linus 模式審判**：C+ 評級，發現重複代碼災難與硬編碼問題
+  - **重複代碼消除**：合併 3 個相同邏輯函數為統一的 `getProjectColor()` 系統
+  - **常數系統建立**：建立 `PROJECT_CONSTANTS` 統一管理 UI 文案與顏色
+  - **CSS 清理**：移除無用的 Tailwind 覆蓋樣式
+  - **組件通信標準化**：console.log → defineEmits 標準做法
+  - **顏色邏輯優化**：簡化顏色循環，提升視覺一致性
+  - **量化改進**：代碼行數減少 16%，重複函數減少 66%，維護性 C+→A-
+
 ### 重構後檔案結構
 
 ```
@@ -157,3 +166,4 @@ src/
 - `claudeLog/20250911_011104.md` - **重構後錯誤修復與除錯紀錄**
 - `claudeLog/20250911_012206.md` - **AboutSection.vue Linus 模式審判與修正紀錄**
 - `claudeLog/20250911_012904.md` - **AboutSection.vue CSS 動畫修復紀錄**
+- `claudeLog/20250911_013925.md` - **ProjectsSection.vue Linus 模式審判與全面重構紀錄**

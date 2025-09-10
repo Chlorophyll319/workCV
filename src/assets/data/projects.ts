@@ -12,6 +12,28 @@ export interface Project {
   highlights: string[]
 }
 
+// UI 常數定義
+export const PROJECT_CONSTANTS = {
+  colors: {
+    primary: 'var(--color-primary)',
+    accent: 'var(--color-accent)'
+  },
+  labels: {
+    techStack: '技術棧',
+    metrics: '效能指標',
+    demo: 'Demo',
+    github: 'GitHub'
+  },
+  metricLabels: {
+    lighthouse: 'Lighthouse',
+    performance: '效能分數', 
+    loading: '載入時間',
+    users: '使用者數',
+    uptime: '運行時間',
+    apiResponse: 'API 回應'
+  }
+}
+
 export const projects: Project[] = [
   {
     id: 1,

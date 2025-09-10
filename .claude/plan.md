@@ -54,6 +54,8 @@
 - ✅ **Tailwind CSS 語法統一**：完成全專案 Tailwind 語法標準化，統一間距、過渡效果、響應式設計模式
 - ✅ **導航跳轉功能修復**：修復 Tab 和檔案總管點擊跳轉功能，改為對正確的滾動容器進行平滑滾動
 - ✅ **Tab 系統重構**：將多 Tab 系統改為單一 Tab 顯示，解決 Tab 長度影響 main 區域寬度的問題
+- ✅ **頂部圖示優化**：將 VSCode 圖示改為白色人像圖示，更符合履歷網站主題
+- ✅ **HeroSection 按鈕區域重構**：整合 Install Buttons 與 Action Buttons，統一使用單一按鈕區域
 
 ### 3. 檔案系統配置
 - **統一數據源**：`fileSystem.ts` 為唯一配置來源
@@ -100,3 +102,5 @@
 - `claudeLog/20250910_002150_tailwind_syntax_unification.md` - Tailwind CSS 語法統一作業紀錄
 - `claudeLog/20250910_134234.md` - 導航跳轉功能修復紀錄
 - `claudeLog/20250910_142300.md` - Tab 系統重構，改為單一 Tab 顯示解決佈局問題
+- `claudeLog/20250910_150555.md` - 頂部選單列圖示更換紀錄（VSCode圖示→白色人像圖示）
+- `claudeLog/20250910_163436.md` - HeroSection 按鈕區域重構與內容優化紀錄

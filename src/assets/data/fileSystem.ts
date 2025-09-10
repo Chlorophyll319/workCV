@@ -26,7 +26,7 @@ export const sectionsFiles: FileItem[] = [
   {
     id: 'about',
     name: 'AboutSection.vue',
-    displayName: 'about-me.md',
+    displayName: '關於我',
     icon: 'heroicons:user',
     type: 'vue',
     path: '/src/components/sections/AboutSection.vue',
@@ -35,7 +35,7 @@ export const sectionsFiles: FileItem[] = [
   {
     id: 'projects',
     name: 'ProjectsSection.vue',
-    displayName: 'projects.ts',
+    displayName: '專案作品',
     icon: 'heroicons:rocket-launch',
     type: 'vue',
     path: '/src/components/sections/ProjectsSection.vue',
@@ -44,7 +44,7 @@ export const sectionsFiles: FileItem[] = [
   {
     id: 'skills',
     name: 'SkillsSection.vue',
-    displayName: 'skills-config.yaml',
+    displayName: '技術技能',
     icon: 'heroicons:cog-6-tooth',
     type: 'vue',
     path: '/src/components/sections/SkillsSection.vue',
@@ -74,7 +74,8 @@ export const getFileIcon = (fileType: string): string => {
     'ts': 'heroicons:code-bracket',
     'json': 'heroicons:document-text',
     'md': 'heroicons:document-text',
-    'yaml': 'heroicons:cog-6-tooth'
+    'yaml': 'heroicons:cog-6-tooth',
+    '延伸模組': 'heroicons:puzzle-piece'
   }
   return iconMap[fileType] || 'heroicons:document-text'
 }

@@ -16,9 +16,7 @@
           </div>
 
           <!-- Key Points Grid -->
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 flex-1"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 flex-1">
             <!-- Background -->
             <div class="bg-white rounded-lg p-4 h-full flex flex-col">
               <h3

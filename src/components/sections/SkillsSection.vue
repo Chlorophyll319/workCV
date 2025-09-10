@@ -8,16 +8,8 @@
         <!-- File Tab -->
         <Tab :file="skillsFile" @close="handleTabClose" />
 
-        <!-- Section Title -->
-        <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold mb-2 text-primary">技術技能</h2>
-          <div class="w-12 h-1 mx-auto rounded-full bg-accent"></div>
-        </div>
-
         <!-- Skills Categories Grid -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1"
-        >
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1">
           <!-- Frontend Category -->
           <div
             class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 border-primary p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"

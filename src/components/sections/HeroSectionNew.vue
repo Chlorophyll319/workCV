@@ -2,7 +2,7 @@
   <section id="hero" class="h-full p-2 sm:p-4 md:p-6">
     <div class="h-full flex flex-col">
       <!-- VSCode Extensions Marketplace -->
-      <div class="flex-1 min-h-full p-2 sm:p-4 md:p-6">
+      <div class="flex-1 min-h-full p-2 sm:px-4 md:px-6">
         <!-- Extensions Header -->
         <Tab :file="extensionFile" />
 
@@ -27,9 +27,7 @@
                   <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-2 sm:mb-3">
                     {{ profile.title }}
                   </p>
-                  <div
-                    class="flex flex-wrap items-center gap-3 text-sm text-gray-500"
-                  >
+                  <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
                     <span class="flex items-center gap-1">
                       <Icon icon="heroicons:star" class="w-3 h-3 sm:w-4 sm:h-4" />
                       5.0
@@ -49,10 +47,16 @@
                 </div>
               </div>
 
-              <!-- Install Buttons - 手機版全寬度 -->
-              <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:self-start">
-                <button class="install-btn">Install</button>
-                <button class="details-btn">Details</button>
+              <!-- Action Buttons -->
+              <div class="flex flex-row gap-3 w-full sm:w-auto sm:self-start">
+                <a :href="profile.contact.github" target="_blank" class="install-btn">
+                  <Icon icon="heroicons:code-bracket" class="w-4 h-4" />
+                  <span>查看專案</span>
+                </a>
+                <a :href="`mailto:${profile.contact.email}`" class="details-btn">
+                  <Icon icon="heroicons:envelope" class="w-4 h-4" />
+                  <span>聯絡合作</span>
+                </a>
               </div>
             </div>
 
@@ -78,16 +82,14 @@
             </div>
 
             <!-- Extension Details -->
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6 text-sm"
-            >
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6 text-sm">
               <div class="extension-detail">
                 <Icon icon="heroicons:envelope" class="w-4 h-4 flex-shrink-0" />
                 <span class="break-all truncate sm:break-normal">{{ profile.contact.email }}</span>
               </div>
               <div class="extension-detail">
                 <Icon icon="heroicons:code-bracket" class="w-4 h-4 flex-shrink-0" />
-                <span>GitHub 開源貢獻者</span>
+                <span>技術探索者</span>
               </div>
               <div class="extension-detail sm:col-span-2 xl:col-span-1">
                 <Icon icon="heroicons:calendar-days" class="w-4 h-4 flex-shrink-0" />
@@ -109,20 +111,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div
-          class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 border-t-2 border-primary"
-        >
-          <a :href="profile.contact.github" target="_blank" class="action-btn-primary">
-            <Icon icon="heroicons:code-bracket" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span>查看專案</span>
-          </a>
-          <a :href="`mailto:${profile.contact.email}`" class="action-btn-secondary">
-            <Icon icon="heroicons:envelope" class="w-4 h-4 sm:w-5 sm:h-5" />
-            <span>聯絡合作</span>
-          </a>
         </div>
       </div>
     </div>

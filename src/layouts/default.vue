@@ -6,7 +6,7 @@
     >
       <div class="flex items-center gap-3">
         <div class="p-1">
-          <Icon icon="vscode-icons:file-type-vscode" class="w-4 h-4" />
+          <Icon icon="heroicons:user" class="w-4 h-4 text-primary-50" />
         </div>
         <div
           class="text-xs md:text-xs text-primary-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] md:max-w-none"

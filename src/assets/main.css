@@ -158,27 +158,27 @@ body {
 
 /* 統一按鈕樣式 */
 .install-btn {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold text-sm rounded-lg;
   @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  @apply w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700;
+  @apply w-full sm:w-auto bg-primary text-white hover:bg-primary-800;
 }
 
 .details-btn {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold text-sm rounded-lg;
   @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  @apply w-full sm:w-auto border border-gray-300 text-gray-700 hover:bg-gray-50;
+  @apply w-full sm:w-auto border-2 border-accent text-accent;
 }
 
 .action-btn-primary {
   @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
   @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  @apply bg-primary text-white sm:text-base;
+  @apply w-full sm:w-auto bg-primary text-white sm:text-base;
 }
 
 .action-btn-secondary {
   @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg;
   @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  @apply border-2 border-accent text-accent sm:text-base;
+  @apply w-full sm:w-auto border-2 border-accent text-accent sm:text-base;
 }
 
 .extension-detail {

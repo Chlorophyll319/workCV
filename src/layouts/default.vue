@@ -1,7 +1,9 @@
 <template>
   <div class="h-screen flex flex-col bg-base text-text font-sans text-sm">
     <!-- 頂部選單列 -->
-    <div class="h-[30px] bg-primary border-b border-primary-700 flex items-center justify-between px-2">
+    <div
+      class="h-[30px] bg-primary border-b border-primary-700 flex items-center justify-between px-2"
+    >
       <div class="flex items-center gap-3">
         <div class="p-1">
           <Icon icon="vscode-icons:file-type-vscode" class="w-4 h-4" />
@@ -13,7 +15,7 @@
           <span class="sm:hidden">Evelyn Resume</span>
         </div>
       </div>
-      
+
       <!-- 手機版漢堡選單 -->
       <button
         @click="toggleSidebar"
@@ -28,37 +30,28 @@
       <!-- 主要編輯區域 -->
       <div class="flex-1 flex flex-col relative">
         <!-- Tab 列 -->
-        <div
-          class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch overflow-x-auto overflow-y-hidden"
-        >
+        <div class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch">
           <div
-            v-for="(tab, index) in openTabs"
-            :key="tab.id"
-            @click="setActiveTab(tab)"
             :class="[
-              'relative min-w-[120px] max-w-[200px] h-[35px] border-r border-primary-200 flex items-center gap-2 px-3 cursor-pointer transition-colors duration-200 flex-shrink-0',
-              activeFile.id === tab.id ? 'bg-card' : 'bg-primary-100 hover:bg-primary-50',
+              'relative w-[200px] h-[35px] border-r border-primary-200 flex items-center gap-2 px-3 bg-card',
               // 特殊檔案類型樣式
-              tab.type === '延伸模組' ? 'font-medium' : '',
+              activeFile.type === '延伸模組' ? 'font-medium' : '',
             ]"
           >
             <Icon
-              :icon="tab.icon"
+              :icon="activeFile.icon"
               class="w-3 h-3"
-              :style="{
-                color: activeFile.id === tab.id ? getFileColor(tab.id) : 'var(--color-primary)',
-              }"
+              :style="{ color: getFileColor(activeFile.id) }"
             />
-            <span class="text-sm truncate">{{ tab.displayName }}</span>
+            <span class="text-sm truncate">{{ activeFile.displayName }}</span>
             <Icon
-              icon="heroicons:x-mark"
-              class="w-3 h-3 ml-auto p-0.5 rounded hover:bg-primary-200 transition-colors flex-shrink-0"
-              @click.stop="closeTab(tab)"
+              icon="heroicons:lock-closed"
+              class="w-3 h-3 ml-auto text-gray-400 flex-shrink-0"
+              title="此分頁已鎖定"
             />
             <div
-              v-if="activeFile.id === tab.id"
               class="absolute bottom-0 left-0 right-0 h-px"
-              :style="{ backgroundColor: getFileColor(tab.id) }"
+              :style="{ backgroundColor: getFileColor(activeFile.id) }"
             ></div>
           </div>
         </div>
@@ -92,8 +85,8 @@
           // 手機版 - 固定定位覆蓋層，從頂部選單下方開始
           'fixed md:static right-0 z-20 shadow-xl md:shadow-none',
           // 顯示/隱藏控制 - 手機版用 transform，桌面版用 width
-          isSidebarCollapsed 
-            ? 'transform translate-x-full md:translate-x-0' 
+          isSidebarCollapsed
+            ? 'transform translate-x-full md:translate-x-0'
             : 'transform translate-x-0',
         ]"
         :style="{
@@ -109,70 +102,77 @@
             'md:block',
           ]"
           :style="{
-            width: windowWidth >= 768 ? (isSidebarCollapsed ? '0px' : `${sidebarWidth}px`) : '240px',
+            width:
+              windowWidth >= 768 ? (isSidebarCollapsed ? '0px' : `${sidebarWidth}px`) : '240px',
           }"
         >
-        <div
-          class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
-        >
-          <span class="text-xs font-bold tracking-wider text-white">EXPLORER</span>
-          <div class="flex gap-1">
-            <Icon
-              icon="heroicons:document-plus"
-              class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
-              title="New File"
-            />
-            <Icon
-              icon="heroicons:folder-plus"
-              class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
-              title="New Folder"
-            />
-            <Icon
-              icon="heroicons:arrow-path"
-              class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
-              title="Refresh"
-              @click="refreshPage"
-            />
-          </div>
-        </div>
-
-        <!-- 檔案總管 -->
-        <div class="flex-1 py-2">
-          <div class="px-3">
-            <div
-              @click="toggleFolder"
-              class="flex items-center gap-1 py-1 cursor-pointer hover:bg-primary-50 transition-colors"
-            >
+          <div
+            class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
+          >
+            <span class="text-xs font-bold tracking-wider text-white">EXPLORER</span>
+            <div class="flex gap-1">
               <Icon
-                :icon="isFolderExpanded ? 'heroicons:chevron-down' : 'heroicons:chevron-right'"
-                class="w-3 h-3 text-gray-600 transition-transform"
+                icon="heroicons:document-plus"
+                class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
+                title="New File"
               />
               <Icon
-                :icon="isFolderExpanded ? 'heroicons:folder-open' : 'heroicons:folder'"
-                class="w-4 h-4 text-accent"
+                icon="heroicons:folder-plus"
+                class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
+                title="New Folder"
               />
-              <span class="text-sm font-medium text-text">RESUME-PROJECT</span>
+              <Icon
+                icon="heroicons:arrow-path"
+                class="w-4 h-4 cursor-pointer hover:text-accent transition-colors text-white"
+                title="Refresh"
+                @click="refreshPage"
+              />
             </div>
-            <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">
-              <!-- 檔案列表 -->
+          </div>
+
+          <!-- 檔案總管 -->
+          <div class="flex-1 py-2">
+            <div class="px-3">
               <div
-                v-for="file in sectionsFiles"
-                :key="file.id"
-                @click="handleFileClick(file)"
-                :class="[
-                  'flex items-center gap-2 px-2 py-1 cursor-pointer rounded hover:bg-primary-50 transition-colors duration-200',
-                  activeFile.id === file.id ? 'bg-primary-100' : '',
-                  // 延伸模組特殊樣式
-                  file.type === '延伸模組' ? 'font-medium' : '',
-                ]"
+                @click="toggleFolder"
+                class="flex items-center gap-1 py-1 cursor-pointer hover:bg-primary-50 transition-colors"
               >
-                <Icon :icon="file.icon" class="w-4 h-4" :style="{ color: getFileColor(file.id) }" />
-                <span class="text-sm">{{ file.displayName }}</span>
-                <span v-if="file.type === '延伸模組'" class="text-xs text-accent ml-auto">ext</span>
+                <Icon
+                  :icon="isFolderExpanded ? 'heroicons:chevron-down' : 'heroicons:chevron-right'"
+                  class="w-3 h-3 text-gray-600 transition-transform"
+                />
+                <Icon
+                  :icon="isFolderExpanded ? 'heroicons:folder-open' : 'heroicons:folder'"
+                  class="w-4 h-4 text-accent"
+                />
+                <span class="text-sm font-medium text-text">RESUME-PROJECT</span>
+              </div>
+              <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">
+                <!-- 檔案列表 -->
+                <div
+                  v-for="file in sectionsFiles"
+                  :key="file.id"
+                  @click="handleFileClick(file)"
+                  :class="[
+                    'flex items-center gap-2 px-2 py-1 cursor-pointer rounded hover:bg-primary-50 transition-colors duration-200',
+                    activeFile.id === file.id ? 'bg-primary-100' : '',
+                    // 延伸模組特殊樣式
+                    file.type === '延伸模組' ? 'font-medium' : '',
+                  ]"
+                >
+                  <Icon
+                    :icon="file.icon"
+                    class="w-4 h-4"
+                    :style="{ color: getFileColor(file.id) }"
+                  />
+                  <span class="text-sm">{{ file.displayName }}</span>
+                  <span v-if="file.type === '延伸模組'" class="text-xs text-accent ml-auto"
+                    >ext</span
+                  >
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
 
         <!-- 側邊活動列 -->
@@ -295,12 +295,11 @@ const isFolderExpanded = ref(true);
 
 // 檔案管理狀態
 const activeFile = ref<FileItem>(getActiveFile());
-const openTabs = ref<FileItem[]>([]);
 
-// 初始化預設開啟的 tabs
-const initializeTabs = () => {
-  // 預設只開啟 Hero tab
-  openTabs.value = [sectionsFiles[0]]; // hero 是第一個
+// 初始化預設檔案
+const initializeActiveFile = () => {
+  // 預設設定 Hero 為活躍檔案
+  activeFile.value = sectionsFiles[0]; // hero 是第一個
   // 頁面載入後導航到 Hero 區域
   setTimeout(() => {
     navigateToSection('hero');
@@ -309,8 +308,8 @@ const initializeTabs = () => {
 
 // 在行動裝置上預設收合
 onMounted(() => {
-  // 初始化 tabs 和檔案狀態
-  initializeTabs();
+  // 初始化檔案狀態
+  initializeActiveFile();
 
   if (window.innerWidth < 768) {
     isSidebarCollapsed.value = true;
@@ -364,13 +363,13 @@ const navigateToSection = (section?: string) => {
         const containerRect = scrollContainer.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
         const relativeTop = elementRect.top - containerRect.top + scrollContainer.scrollTop;
-        
+
         // 計算偏移量：減去一些空間讓元素不會貼頂部
         const headerOffset = 20;
-        
+
         scrollContainer.scrollTo({
           top: Math.max(0, relativeTop - headerOffset),
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     }
@@ -380,31 +379,8 @@ const navigateToSection = (section?: string) => {
 // 檔案管理函數
 const handleFileClick = (file: FileItem) => {
   activeFile.value = file;
-
-  if (!openTabs.value.find((tab) => tab.id === file.id)) {
-    openTabs.value.push(file);
-  }
-  
   // 導航到對應的區域
   navigateToSection(file.section);
-};
-
-const setActiveTab = (tab: FileItem) => {
-  activeFile.value = tab;
-  // 導航到對應的區域
-  navigateToSection(tab.section);
-};
-
-const closeTab = (tab: FileItem) => {
-  const index = openTabs.value.findIndex((t) => t.id === tab.id);
-  if (index > -1) {
-    openTabs.value.splice(index, 1);
-
-    // 如果關閉的是當前活躍的 tab，切換到其他 tab
-    if (activeFile.value.id === tab.id && openTabs.value.length > 0) {
-      activeFile.value = openTabs.value[Math.max(0, index - 1)];
-    }
-  }
 };
 
 // 拖拽調整寬度功能

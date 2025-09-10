@@ -52,6 +52,7 @@
 - ✅ **Tab 導航功能**：實現 Tab 和檔案總管點擊導航到對應頁面區域，預設載入 Hero 區域
 - ✅ **導航跑版修復**：解決 Tab 導航時的佈局問題，移除造成高度異常的 CSS 類別
 - ✅ **Tailwind CSS 語法統一**：完成全專案 Tailwind 語法標準化，統一間距、過渡效果、響應式設計模式
+- ✅ **導航跳轉功能修復**：修復 Tab 和檔案總管點擊跳轉功能，改為對正確的滾動容器進行平滑滾動
 
 ### 3. 檔案系統配置
 - **統一數據源**：`fileSystem.ts` 為唯一配置來源
@@ -96,3 +97,4 @@
 - `claudeLog/20250909_232809.md` - SkillsSection RWD與圖示系統優化紀錄
 - `claudeLog/20250910_000252.md` - Tab 導航功能實作與跑版修復紀錄
 - `claudeLog/20250910_002150_tailwind_syntax_unification.md` - Tailwind CSS 語法統一作業紀錄
+- `claudeLog/20250910_134234.md` - 導航跳轉功能修復紀錄

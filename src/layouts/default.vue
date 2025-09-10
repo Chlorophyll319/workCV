@@ -357,15 +357,22 @@ const navigateToSection = (section?: string) => {
   if (section) {
     const element = document.getElementById(section);
     if (element) {
-      // 計算偏移量：頂部選單(30px) + Tab列(35px) + 一些額外空間(20px)
-      const headerOffset = 85;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: Math.max(0, offsetPosition), // 確保不會滾動到負值
-        behavior: 'smooth'
-      });
+      // 找到滾動容器 (main 元素)
+      const scrollContainer = document.querySelector('main');
+      if (scrollContainer) {
+        // 計算元素相對於容器的位置
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        const relativeTop = elementRect.top - containerRect.top + scrollContainer.scrollTop;
+        
+        // 計算偏移量：減去一些空間讓元素不會貼頂部
+        const headerOffset = 20;
+        
+        scrollContainer.scrollTo({
+          top: Math.max(0, relativeTop - headerOffset),
+          behavior: 'smooth'
+        });
+      }
     }
   }
 };

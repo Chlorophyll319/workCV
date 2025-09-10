@@ -8,18 +8,35 @@ export const profile = {
   
   about: {
     description: '畢業後專職於設計與行銷領域，意識到設計領域發展瓶頸後，希望融合設計思維與程式技術，因此參加前端職訓課程轉換跑道。在受訓期間，我發現自己熱愛「優化資訊架構、實現功能邏輯」的開發過程。',
-    background: {
-      from: '行銷設計',
-      to: '前端工程'
+    sections: {
+      background: {
+        title: '背景轉換',
+        icon: 'heroicons:academic-cap',
+        from: '行銷設計',
+        to: '前端工程'
+      },
+      philosophy: {
+        title: '開發理念',
+        icon: 'heroicons:light-bulb',
+        description: '結合過去培養的需求分析與流程拆解能力，能將複雜問題從本質分解成具體步驟逐一解決，深入理解技術架構背後的商業邏輯'
+      },
+      currentFocus: {
+        title: '目前專注',
+        icon: 'heroicons:cursor-arrow-rays',
+        description: '希望在實務中累積技術基礎，培養系統性分析能力。短期目標是熟練前端核心技術與後端 API 整合，持續精進設計模式、版本控制等技能'
+      },
+      highlights: {
+        title: '核心優勢',
+        icon: 'heroicons:star',
+        items: [
+          'AI 協作開發',
+          '全端獨立開發',
+          '設計思維',
+          '快速學習'
+        ]
+      }
     },
-    philosophy: '結合過去培養的需求分析與流程拆解能力，能將複雜問題從本質分解成具體步驟逐一解決，深入理解技術架構背後的商業邏輯',
-    highlights: [
-      'AI 協作開發',
-      '全端獨立開發',
-      '設計思維',
-      '快速學習'
-    ],
-    currentFocus: '希望在實務中累積技術基礎，培養系統性分析能力。短期目標是熟練前端核心技術與後端 API 整合，持續精進設計模式、版本控制等技能'
+    quote: '從設計思維到功能實現，專注於創造優質的用戶體驗'
   },
   
   contact: {

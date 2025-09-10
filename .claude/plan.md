@@ -104,6 +104,15 @@
   - **響應式邏輯簡化**：移除複雜的特殊情況處理
   - **量化改進**：代碼行數減少 58%，可維護性提升 300%
 
+- ✅ **AboutSection.vue 品質優化**（2025/09/11 深夜）：
+  - **Linus 模式審判**：B+ 評級，識別 4 個核心問題點
+  - **數據結構重構**：統一文案管理至 `profile.about.sections`
+  - **組件通信改進**：移除 `console.log`，改用 `defineEmits`
+  - **樣式系統化**：提取 `.info-card`、`.card-header`、`.card-content` 通用類別
+  - **技術債務清理**：修正 `@apply` 在 Vue scoped style 中的相容性問題
+  - **動畫修復**：解決 `:root` 在 scoped style 中無效導致的 CSS 動畫失效問題
+  - **效能提升**：維護性 7/10→9/10、一致性 6/10→9/10
+
 ### 重構後檔案結構
 
 ```
@@ -146,3 +155,5 @@ src/
 - `claudeLog/20250910_185024.md` - HeroSection 左右分欄版面重構紀錄
 - `claudeLog/20250911_010224.md` - **Linus 風格程式碼重構完整紀錄**
 - `claudeLog/20250911_011104.md` - **重構後錯誤修復與除錯紀錄**
+- `claudeLog/20250911_012206.md` - **AboutSection.vue Linus 模式審判與修正紀錄**
+- `claudeLog/20250911_012904.md` - **AboutSection.vue CSS 動畫修復紀錄**

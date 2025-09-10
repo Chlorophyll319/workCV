@@ -18,56 +18,48 @@
           <!-- Key Points Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 flex-1">
             <!-- Background -->
-            <div class="bg-white rounded-lg p-4 h-full flex flex-col">
-              <h3
-                class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
-              >
-                <Icon icon="heroicons:academic-cap" class="w-4 h-4 sm:w-5 sm:h-5" />
-                背景轉換
+            <div class="info-card">
+              <h3 class="card-header">
+                <Icon :icon="profile.about.sections.background.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                {{ profile.about.sections.background.title }}
               </h3>
-              <p class="text-sm sm:text-lg leading-relaxed font-medium text-text flex-1">
-                從 {{ profile.about.background.from }} 轉向 {{ profile.about.background.to }}，
+              <p class="card-content">
+                從 {{ profile.about.sections.background.from }} 轉向 {{ profile.about.sections.background.to }}，
                 帶來獨特的設計思維與用戶體驗觀點
               </p>
             </div>
 
             <!-- Philosophy -->
-            <div class="bg-white rounded-lg p-4 h-full flex flex-col">
-              <h3
-                class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
-              >
-                <Icon icon="heroicons:light-bulb" class="w-4 h-4 sm:w-5 sm:h-5" />
-                開發理念
+            <div class="info-card">
+              <h3 class="card-header">
+                <Icon :icon="profile.about.sections.philosophy.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                {{ profile.about.sections.philosophy.title }}
               </h3>
-              <p class="text-sm sm:text-lg leading-relaxed font-medium text-text flex-1">
-                {{ profile.about.philosophy }}
+              <p class="card-content">
+                {{ profile.about.sections.philosophy.description }}
               </p>
             </div>
 
             <!-- Current Focus -->
-            <div class="focus-card bg-white rounded-lg p-3 sm:p-4 h-full flex flex-col relative">
-              <h3
-                class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
-              >
-                <Icon icon="heroicons:cursor-arrow-rays" class="w-4 h-4 sm:w-5 sm:h-5" />
-                目前專注
+            <div class="info-card focus-card">
+              <h3 class="card-header">
+                <Icon :icon="profile.about.sections.currentFocus.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                {{ profile.about.sections.currentFocus.title }}
               </h3>
-              <p class="text-sm sm:text-lg leading-relaxed font-medium text-text flex-1">
-                {{ profile.about.currentFocus }}
+              <p class="card-content">
+                {{ profile.about.sections.currentFocus.description }}
               </p>
             </div>
 
             <!-- Highlights -->
-            <div class="bg-gray-50 rounded-lg p-3 sm:p-4 h-full flex flex-col">
-              <h3
-                class="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-lg text-primary"
-              >
-                <Icon icon="heroicons:star" class="w-4 h-4 sm:w-5 sm:h-5" />
-                核心優勢
+            <div class="info-card bg-gray-50">
+              <h3 class="card-header">
+                <Icon :icon="profile.about.sections.highlights.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                {{ profile.about.sections.highlights.title }}
               </h3>
               <div class="flex flex-wrap gap-2 flex-1 content-start">
                 <span
-                  v-for="highlight in profile.about.highlights"
+                  v-for="highlight in profile.about.sections.highlights.items"
                   :key="highlight"
                   class="px-2 py-1 sm:px-3 sm:py-2 border border-accent rounded text-xs sm:text-sm font-medium text-accent"
                 >
@@ -83,7 +75,7 @@
             style="border-color: var(--color-primary)"
           >
             <p class="text-sm sm:text-lg lg:text-xl italic font-semibold text-text">
-              "從設計思維到功能實現，專注於創造優質的用戶體驗"
+              "{{ profile.about.quote }}"
             </p>
           </div>
         </div>
@@ -93,10 +85,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
 import { profile } from '../../assets/data/profile';
+
+// 定義 emits
+const emit = defineEmits<{
+  tabClose: []
+}>();
+
 // 簡潔的文件定義
 const aboutFile = {
   icon: 'heroicons:user',
@@ -104,13 +101,62 @@ const aboutFile = {
 };
 
 const handleTabClose = () => {
-  // Tab 關閉邏輯，可以根據需求實現
-  console.log('Tab closed');
+  emit('tabClose');
 };
 </script>
 
 <style scoped>
-/* Focus card animated border line - Cannot be replaced with Tailwind utilities */
+/* CSS 變數定義 - 移到組件層級 */
+
+/* 通用卡片樣式 */
+.info-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .info-card {
+    padding: 1rem;
+  }
+}
+
+/* 通用卡片標題樣式 */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}
+
+@media (min-width: 640px) {
+  .card-header {
+    font-size: 1.125rem;
+  }
+}
+
+/* 通用卡片內容樣式 */
+.card-content {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  font-weight: 500;
+  color: var(--color-text);
+  flex: 1;
+}
+
+@media (min-width: 640px) {
+  .card-content {
+    font-size: 1.125rem;
+  }
+}
+
+/* Focus card 動畫邊框 - 無法用 Tailwind utilities 替代 */
 .focus-card {
   border: 2px solid transparent;
   background:

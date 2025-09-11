@@ -93,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 import { Icon } from '@iconify/vue';
 import TopBar from '../components/layout/TopBar.vue';
 import Sidebar from '../components/layout/Sidebar.vue';
@@ -127,9 +127,10 @@ onMounted(() => {
 
   window.addEventListener('resize', handleResize);
 
-  setTimeout(() => {
+  // 等待 DOM 更新完成後導航到 hero 區塊
+  nextTick(() => {
     navigateToSection('hero');
-  }, 100);
+  });
 
   return () => {
     window.removeEventListener('resize', handleResize);

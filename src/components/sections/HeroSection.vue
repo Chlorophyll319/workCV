@@ -169,7 +169,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { profile } from '../../store/data/profile';
-import Tab from '../Tab.vue';
+import Tab from '../../composables/Tab.vue';
 import { SECTIONS } from '../../store/layout';
 
 // 使用簡潔的 section 定義

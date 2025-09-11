@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import Tab from '../Tab.vue';
+import Tab from '../../composables/Tab.vue';
 import { skillCategories } from '../../store/data/skills';
 
 // 定義 emits

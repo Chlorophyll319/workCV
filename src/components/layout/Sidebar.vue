@@ -77,6 +77,7 @@
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import { SECTIONS, LAYOUT_CONSTANTS } from '../../store/layout';
+import { useResizable } from '../../composables/useResizable';
 
 interface Props {
   width: number;
@@ -104,31 +105,12 @@ const handleSectionClick = (section: (typeof SECTIONS)[number]) => {
   emit('section-change', section.id);
 };
 
-const startResize = (e: MouseEvent) => {
-  const startX = e.clientX;
-  const startWidth = props.width;
-
-  const handleMouseMove = (e: MouseEvent) => {
-    const newWidth = startWidth - (e.clientX - startX);
-    const clampedWidth = Math.min(
-      Math.max(newWidth, LAYOUT_CONSTANTS.SIDEBAR_MIN_WIDTH),
-      LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH,
-    );
-    emit('resize', clampedWidth);
-  };
-
-  const handleMouseUp = () => {
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
-    document.body.style.cursor = '';
-    document.body.style.userSelect = '';
-  };
-
-  document.addEventListener('mousemove', handleMouseMove);
-  document.addEventListener('mouseup', handleMouseUp);
-  document.body.style.cursor = 'col-resize';
-  document.body.style.userSelect = 'none';
-};
+const { startResize } = useResizable(
+  props.width,
+  LAYOUT_CONSTANTS.SIDEBAR_MIN_WIDTH,
+  LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH,
+  (width) => emit('resize', width)
+);
 </script>
 
 <style scoped>

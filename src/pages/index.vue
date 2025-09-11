@@ -2,7 +2,7 @@
   <div class="space-y-4 md:space-y-6 max-w-none overflow-x-hidden">
     <!-- Hero Section - Full Width -->
     <div id="hero" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
-      <HeroSectionNew />
+      <HeroSection />
     </div>
 
     <!-- About Me Section - Full Width -->
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
-import HeroSectionNew from '../components/sections/HeroSectionNew.vue';
+import HeroSection from '../components/sections/HeroSection.vue';
 import AboutSection from '../components/sections/AboutSection.vue';
 import ProjectsSection from '../components/sections/ProjectsSection.vue';
 import SkillsSection from '../components/sections/SkillsSection.vue';

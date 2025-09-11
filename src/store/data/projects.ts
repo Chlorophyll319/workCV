@@ -1,22 +1,21 @@
-// Linus 風格：統一 metrics 結構，消除特殊情況
 interface ProjectMetrics {
-  score?: number          // 統一評分 0-100
-  performance: string     // 關鍵效能指標
-  availability?: string   // 可用性指標
+  lighthouse?: number | null     // Lighthouse 評分
+  coreFeatures: string | null    // 核心功能描述
+  scale?: string | null          // 專案規模
 }
 
 export interface Project {
   id: number
   name: string
-  type: string
-  description: string
-  techStack: string[]
+  type: string | null
+  description: string | null
+  techStack: string[] | null
   demoUrl?: string | null
   githubUrl?: string | null
-  icon: string
-  status: string
-  metrics: ProjectMetrics
-  highlights: string[]
+  icon: string | null
+  status: string | null
+  metrics: ProjectMetrics | null
+  highlights: string[] | null
 }
 
 // UI 常數定義
@@ -26,15 +25,15 @@ export const PROJECT_CONSTANTS = {
     accent: 'var(--color-accent)'
   },
   labels: {
-    techStack: '技術棧',
+    techStack: '開發技術',
     metrics: '效能指標',
     demo: 'Demo',
     github: 'GitHub'
   },
   metricLabels: {
-    score: '綜合評分',
-    performance: '關鍵指標',
-    availability: '可用性'
+    lighthouse: 'Lighthouse 評分',
+    coreFeatures: '核心功能',
+    scale: '專案規模'
   }
 }
 
@@ -45,14 +44,14 @@ export const projects: Project[] = [
     type: '全端專案',
     description: '具備前後台管理功能的課程資訊網站，提供訓練單位介紹、學員成果展示、FAQ 系統與文章內容管理。重點練習 CRUD 操作與使用者權限管理。',
     techStack: ['Vue 3', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Markdown-it', 'Mermaid'],
-    demoUrl: null,
-    githubUrl: null,
+    demoUrl: 'https://chlorophyll319.github.io/frontPrWebOnlineVer-vite-project/#/',
+    githubUrl: 'https://github.com/Chlorophyll319/frontPrWebOnlineVer-vite-project',
     icon: 'i-ph-graduation-cap',
     status: '已完成',
     metrics: {
-      score: 92,
-      performance: '載入 1.2s',
-      availability: '50+ 用戶, 99.8% 運行'
+      lighthouse: 92,
+      coreFeatures: '用戶管理、文章發布、FAQ 系統、成果展示',
+      scale: '7個頁面、12支 API、雙權限管理'
     },
     highlights: [
       '完整前後台分離架構',
@@ -71,11 +70,11 @@ export const projects: Project[] = [
     demoUrl: null,
     githubUrl: null,
     icon: 'i-ph-user-circle',
-    status: '開發中',
+    status: '已完成',
     metrics: {
-      score: 98,
-      performance: '載入 0.8s',
-      availability: '開發中'
+      lighthouse: 98,
+      coreFeatures: '個人資訊展示、技能標籤、作品集、SEO 優化',
+      scale: '5個組件、一頁式設計、RWD 支援'
     },
     highlights: [
       'VSCode 主題風格設計',
@@ -94,10 +93,11 @@ export const projects: Project[] = [
     demoUrl: null,
     githubUrl: null,
     icon: 'i-ph-credit-card',
-    status: '已完成',
+    status: '開發中',
     metrics: {
-      performance: 'API <100ms',
-      availability: '99.9% 運行'
+      lighthouse: null,
+      coreFeatures: '金流 API 串接、加密參數生成、Callback 處理',
+      scale: '3個 API 端點、SHA256 加密、Express 中間件'
     },
     highlights: [
       'NewebPay 金流 API 串接',

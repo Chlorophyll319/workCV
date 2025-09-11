@@ -1,7 +1,7 @@
 export interface Skill {
   name: string
   description: string
-  level: 'intermediate' | 'advanced'  // Linus 風格：移除未使用的 'beginner'
+  level: 'intermediate' | 'advanced'
   category: 'frontend' | 'backend' | 'tools' | 'ai'
   icon: string
 }

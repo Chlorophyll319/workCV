@@ -19,7 +19,9 @@
                 <div class="flex flex-col gap-4">
                   <!-- Extension Icon & Basic Info -->
                   <div class="flex items-start gap-3 sm:gap-4">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl font-bold flex-shrink-0">
+                    <div
+                      class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl font-bold flex-shrink-0"
+                    >
                       {{ profile.name.charAt(0) }}{{ profile.englishName.charAt(0) }}
                     </div>
 
@@ -54,11 +56,18 @@
 
                   <!-- Action Buttons -->
                   <div class="flex flex-row gap-3 w-full sm:w-auto sm:self-start">
-                    <a :href="profile.contact.github" target="_blank" class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm bg-primary text-white hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:bg-primary-800">
+                    <a
+                      :href="profile.contact.github"
+                      target="_blank"
+                      class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm bg-primary text-white hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:bg-primary-800"
+                    >
                       <Icon icon="heroicons:code-bracket" class="w-4 h-4" />
                       <span>查看專案</span>
                     </a>
-                    <a :href="`mailto:${profile.contact.email}`" class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm border-2 border-accent text-accent bg-transparent hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1">
+                    <a
+                      :href="`mailto:${profile.contact.email}`"
+                      class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm border-2 border-accent text-accent bg-transparent hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1"
+                    >
                       <Icon icon="heroicons:envelope" class="w-4 h-4" />
                       <span>聯絡合作</span>
                     </a>
@@ -84,10 +93,22 @@
                     技能分類
                   </h4>
                   <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-blue-50 text-blue-700 border-blue-200">前端開發</span>
-                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-green-50 text-green-700 border-green-200">後端開發</span>
-                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-orange-50 text-orange-700 border-orange-200">資料庫</span>
-                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-purple-50 text-purple-700 border-purple-200">AI協作</span>
+                    <span
+                      class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-blue-50 text-blue-700 border-blue-200"
+                      >前端開發</span
+                    >
+                    <span
+                      class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-green-50 text-green-700 border-green-200"
+                      >後端開發</span
+                    >
+                    <span
+                      class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-orange-50 text-orange-700 border-orange-200"
+                      >資料庫</span
+                    >
+                    <span
+                      class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-purple-50 text-purple-700 border-purple-200"
+                      >AI協作</span
+                    >
                   </div>
                 </div>
 
@@ -110,7 +131,7 @@
                     </div>
                     <div class="flex items-center gap-2 p-2 text-gray-600 bg-gray-50 rounded">
                       <Icon icon="heroicons:calendar-days" class="w-4 h-4 flex-shrink-0" />
-                      <span>持續更新中</span>
+                      <span>持續精進中</span>
                     </div>
                   </div>
                 </div>
@@ -118,8 +139,8 @@
             </div>
 
             <!-- 右側技術堆疊區塊 -->
-            <div class="lg:col-span-4 order-2 lg:order-2 lg:border-l lg:pl-6">
-              <div class="space-y-6">
+            <div class="lg:col-span-4 order-2 lg:order-2 lg:border-l lg:pl-6 flex flex-col">
+              <div class="space-y-6 flex-1">
                 <!-- Tech Stack -->
                 <div>
                   <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
@@ -127,12 +148,30 @@
                     開發工具
                   </h4>
                   <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-blue-100 text-blue-800">Vue3</span>
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-indigo-100 text-indigo-800">TypeScript</span>
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-green-100 text-green-800">JavaScript</span>
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-purple-100 text-purple-800">Node.js</span>
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-yellow-100 text-yellow-800">MongoDB</span>
-                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-pink-100 text-pink-800">Claude</span>
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-blue-100 text-blue-800"
+                      >Vue3</span
+                    >
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-blue-100 text-blue-800"
+                      >TypeScript</span
+                    >
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-blue-100 text-blue-800"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-green-100 text-green-800"
+                      >Node.js</span
+                    >
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-orange-100 text-orange-800"
+                      >MongoDB</span
+                    >
+                    <span
+                      class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-purple-100 text-purple-800"
+                      >Claude</span
+                    >
                   </div>
                 </div>
 
@@ -140,21 +179,44 @@
                 <div>
                   <h4 class="text-sm font-semibold text-gray-900 mb-3">關於作者</h4>
                   <div class="text-xs text-gray-600 space-y-2">
-                    <p>專注於前端技術與使用者體驗設計</p>
-                    <p>擅長 Vue.js 生態系統開發</p>
-                    <p>熱衷於探索新技術與工具</p>
+                    <p>
+                      設計與企劃的背景讓我在開發時更能兼顧技術架構、實際需求與使用者體驗，確保產品不只運作順暢，更能真正滿足用戶期待。這樣的跨領域經驗，幫助我在溝通時能站在不同角度思考，讓合作更加順利。
+                    </p>
+                    <ul class="space-y-2">
+                      <li class="flex items-start gap-2">
+                        <Icon
+                          icon="heroicons:check-circle"
+                          class="w-4 h-4 text-primary mt-0.5 flex-shrink-0"
+                        />
+                        <span>專精 Vue.js 前端技術與使用者體驗設計</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <Icon
+                          icon="heroicons:chat-bubble-left-right"
+                          class="w-4 h-4 text-primary mt-0.5 flex-shrink-0"
+                        />
+                        <span>擅長將複雜技術轉為易懂說明，促進團隊合作</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <Icon
+                          icon="heroicons:cog-6-tooth"
+                          class="w-4 h-4 text-primary mt-0.5 flex-shrink-0"
+                        />
+                        <span>承襲企劃思維，先整體規劃再分階段執行</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
+              </div>
 
-                <!-- Publisher Info -->
-                <div class="pt-4">
-                  <div class="space-y-2">
-                    <div class="text-xs sm:text-sm text-gray-600">
-                      <span class="font-medium">Published by:</span> {{ profile.name }}
-                    </div>
-                    <div class="text-xs text-gray-500">
-                      Last updated: {{ new Date().toLocaleDateString('zh-TW') }}
-                    </div>
+              <!-- Publisher Info -->
+              <div class="pt-4 mt-auto">
+                <div class="space-y-2">
+                  <div class="text-xs sm:text-sm text-gray-600">
+                    <span class="font-medium">Published by:</span> {{ profile.name }}
+                  </div>
+                  <div class="text-xs text-gray-500">
+                    Last updated: {{ new Date().toLocaleDateString('zh-TW') }}
                   </div>
                 </div>
               </div>

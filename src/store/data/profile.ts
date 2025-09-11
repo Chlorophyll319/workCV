@@ -5,7 +5,7 @@ export const profile = {
   name: '葉芃',
   englishName: 'Evelyn',
   title: '前端工程師',
-  subtitle: 'Frontend Engineer | Aspiring Backend',
+  subtitle: 'Frontend Engineer',
   tagline: TAGLINE,
   description: '行銷設計出身，完成泰山職訓局半年前端開發課程，具備前後端分離的獨立開發實作經驗。開發過程中習慣與 AI 協作，透過對話釐清問題、規劃流程並輔助除錯，擅長拆解需求並規劃開發流程。',
   

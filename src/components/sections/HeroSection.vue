@@ -188,7 +188,7 @@
                           icon="heroicons:check-circle"
                           class="w-4 h-4 text-primary mt-0.5 flex-shrink-0"
                         />
-                        <span>專精 Vue.js 前端技術與使用者體驗設計</span>
+                        <span>Vue.js / pinia / router 前端技術與使用者體驗設計</span>
                       </li>
                       <li class="flex items-start gap-2">
                         <Icon
@@ -202,7 +202,7 @@
                           icon="heroicons:cog-6-tooth"
                           class="w-4 h-4 text-primary mt-0.5 flex-shrink-0"
                         />
-                        <span>承襲企劃思維，先整體規劃再分階段執行</span>
+                        <span>承襲企劃思維，先整體規劃再分階段滾動式調整執行</span>
                       </li>
                     </ul>
                   </div>

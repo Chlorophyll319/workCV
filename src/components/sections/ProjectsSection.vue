@@ -23,26 +23,26 @@
                   class="w-8 h-8 rounded-lg flex items-center justify-center text-white"
                   :style="getProjectIconStyle(index)"
                 >
-                  <Icon :icon="getProjectIcon(project.icon)" class="w-4 h-4" />
+                  <Icon :icon="getProjectIcon(project.icon || '')" class="w-4 h-4" />
                 </div>
                 <div>
                   <h3 class="text-lg font-bold text-gray-800">
                     {{ project.name }}
                   </h3>
                   <span class="text-xs text-gray-500">
-                    {{ project.type }}
+                    {{ project.type || 'N/A' }}
                   </span>
                 </div>
               </div>
               <div class="flex items-center gap-1">
                 <Icon icon="heroicons:star-solid" class="w-3 h-3 text-accent" />
-                <span class="text-xs text-gray-500">{{ project.status }}</span>
+                <span class="text-xs text-gray-500">{{ project.status || 'N/A' }}</span>
               </div>
             </div>
 
             <!-- Project Description -->
             <p class="text-gray-600 text-sm leading-relaxed mb-3">
-              {{ project.description }}
+              {{ project.description || '專案描述待補充' }}
             </p>
 
             <!-- Tech Stack -->
@@ -52,7 +52,7 @@
               </h4>
               <div class="flex flex-wrap gap-1">
                 <span
-                  v-for="tech in project.techStack"
+                  v-for="tech in project.techStack || []"
                   :key="tech"
                   class="px-2 py-1 bg-white rounded text-xs font-mono text-gray-700 border border-gray-300"
                 >
@@ -68,7 +68,7 @@
                 {{ PROJECT_CONSTANTS.labels.metrics }}
               </h4>
               <div class="grid grid-cols-2 gap-2 text-xs">
-                <div v-for="(value, key) in project.metrics" :key="key">
+                <div v-for="(value, key) in project.metrics || {}" :key="key">
                   <div class="text-gray-500 text-xs">{{ getMetricLabel(key) }}</div>
                   <div class="font-semibold text-xs" :style="{ color: getMetricColor(key) }">
                     {{ value }}

@@ -26,3 +26,6 @@ dist-ssr
 # Auto-generated type declarations
 auto-imports.d.ts
 components.d.ts
+
+# Claude Code files
+.claude

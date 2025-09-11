@@ -177,11 +177,15 @@
 
                 <!-- Extension More Info -->
                 <div>
-                  <h4 class="text-sm font-semibold text-gray-900 mb-3">關於作者</h4>
+                  <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <Icon icon="heroicons:user-circle" class="w-4 h-4" />
+                    關於作者
+                  </h4>
                   <div class="text-xs text-gray-600 space-y-2">
                     <p>
-                      設計與企劃的背景讓我在開發時更能兼顧技術架構、實際需求與使用者體驗，確保產品不只運作順暢，更能真正滿足用戶期待。這樣的跨領域經驗，幫助我在溝通時能站在不同角度思考，讓合作更加順利。
+                      設計與企劃的背景讓我在開發時更能兼顧技術架構、實際需求與使用者體驗，確保產品不只運作順暢，更能真正滿足用戶期待。
                     </p>
+                    <p>這樣的跨領域經驗，幫助我在溝通時能站在不同角度思考，讓合作更加順利。</p>
                     <ul class="space-y-2">
                       <li class="flex items-start gap-2">
                         <Icon

@@ -1,7 +1,8 @@
 interface ProjectMetrics {
-  lighthouse?: number | null     // Lighthouse 評分
+  lighthouse?: string | null     // Lighthouse 評分
   coreFeatures: string | null    // 核心功能描述
   scale?: string | null          // 專案規模
+  duration?: string | null       // 開發時間
 }
 
 export interface Project {
@@ -33,7 +34,8 @@ export const PROJECT_CONSTANTS = {
   metricLabels: {
     lighthouse: 'Lighthouse 評分',
     coreFeatures: '核心功能',
-    scale: '專案規模'
+    scale: '專案規模',
+    duration: '開發時間'
   }
 }
 
@@ -42,23 +44,25 @@ export const projects: Project[] = [
     id: 1,
     name: '職訓資訊分享網站',
     type: '全端專案',
-    description: '具備前後台管理功能的課程資訊網站，提供訓練單位介紹、學員成果展示、FAQ 系統與文章內容管理。重點練習 CRUD 操作與使用者權限管理。',
-    techStack: ['Vue 3', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Markdown-it', 'Mermaid'],
+    description: '獨立開發具備前後台管理功能的課程資訊網站，提供訓練單位介紹、學員成果展示、FAQ 系統與文章內容管理，並整合 Markdown 與 Mermaid 語法渲染。專注於完整的 CRUD 操作與使用者權限管理系統。',
+    techStack: ['Vue 3', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Passport.js', 'Tailwind CSS', 'PrimeVue', 'daisyUI', 'Markdown-it', 'Mermaid', 'highlight.js'],
     demoUrl: 'https://chlorophyll319.github.io/frontPrWebOnlineVer-vite-project/#/',
     githubUrl: 'https://github.com/Chlorophyll319/frontPrWebOnlineVer-vite-project',
     icon: 'i-ph-graduation-cap',
     status: '已完成',
     metrics: {
-      lighthouse: 92,
-      coreFeatures: '用戶管理、文章發布、FAQ 系統、成果展示',
-      scale: '7個頁面、12支 API、雙權限管理'
+      lighthouse: '效能 98',
+      coreFeatures: 'JWT 身份驗證、內容管理系統、檔案路由、Markdown 渲染',
+      scale: '前後台雙布局、12支 RESTful API、MVC 架構、ERD 資料庫設計',
+      duration: '45 天'
     },
     highlights: [
-      '完整前後台分離架構',
-      'MongoDB 資料庫設計與優化',
-      'JWT 身份驗證系統',
-      'Markdown 文章編輯器整合',
-      '響應式 RWD 設計'
+      '前後台分離架構：前台 daisyUI + 後台 PrimeVue 雙 UI 系統',
+      'RESTful API 設計：採用 MVC 架構與 Express.js 建構後端服務',
+      'MongoDB 資料庫：使用 Mongoose ODM，完整 ERD 設計與資料關聯',
+      'JWT + Passport.js 認證：完整的登入驗證與權限控管機制',
+      'Markdown CMS：支援程式碼高亮、數學公式與 Mermaid 圖表渲染',
+      '檔案路由系統：使用 unplugin-vue-router 自動生成路由配置'
     ]
   },
   {
@@ -72,9 +76,10 @@ export const projects: Project[] = [
     icon: 'i-ph-user-circle',
     status: '已完成',
     metrics: {
-      lighthouse: 98,
+      lighthouse: null,
       coreFeatures: '個人資訊展示、技能標籤、作品集、SEO 優化',
-      scale: '5個組件、一頁式設計、RWD 支援'
+      scale: '5個組件、一頁式設計、RWD 支援',
+      duration: '7 天'
     },
     highlights: [
       'VSCode 主題風格設計',
@@ -97,7 +102,8 @@ export const projects: Project[] = [
     metrics: {
       lighthouse: null,
       coreFeatures: '金流 API 串接、加密參數生成、Callback 處理',
-      scale: '3個 API 端點、SHA256 加密、Express 中間件'
+      scale: '3個 API 端點、SHA256 加密、Express 中間件',
+      duration: null
     },
     highlights: [
       'NewebPay 金流 API 串接',

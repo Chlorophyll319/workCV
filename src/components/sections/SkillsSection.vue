@@ -50,17 +50,17 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
-import { skillCategories } from '../../assets/data/skills';
+import { skillCategories } from '../../store/data/skills';
 
 // 定義 emits
 const emit = defineEmits<{
-  tabClose: []
+  tabClose: [];
 }>();
 
 // 簡潔的文件定義
 const skillsFile = {
   icon: 'heroicons:cog-6-tooth',
-  displayName: '技術技能'
+  displayName: '技術技能',
 };
 
 const handleTabClose = () => {

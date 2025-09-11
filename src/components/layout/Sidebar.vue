@@ -4,7 +4,9 @@
     :style="{ width: `${width}px` }"
   >
     <!-- Header -->
-    <div class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700">
+    <div
+      class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
+    >
       <span class="text-xs font-bold tracking-wider text-white">EXPLORER</span>
       <div class="flex gap-1">
         <Icon
@@ -43,7 +45,7 @@
           />
           <span class="text-sm font-medium text-text">RESUME-PROJECT</span>
         </div>
-        
+
         <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">
           <div
             v-for="section in sections"
@@ -54,11 +56,7 @@
               activeSection === section.id ? 'bg-primary-100' : '',
             ]"
           >
-            <Icon
-              :icon="section.icon"
-              class="w-4 h-4"
-              :style="{ color: section.color }"
-            />
+            <Icon :icon="section.icon" class="w-4 h-4" :style="{ color: section.color }" />
             <span class="text-sm">{{ section.name }}</span>
           </div>
         </div>
@@ -78,7 +76,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
-import { SECTIONS, LAYOUT_CONSTANTS } from '../../constants/layout';
+import { SECTIONS, LAYOUT_CONSTANTS } from '../../store/layout';
 
 interface Props {
   width: number;
@@ -102,7 +100,7 @@ const toggleFolder = () => {
   isFolderExpanded.value = !isFolderExpanded.value;
 };
 
-const handleSectionClick = (section: typeof SECTIONS[number]) => {
+const handleSectionClick = (section: (typeof SECTIONS)[number]) => {
   emit('section-change', section.id);
 };
 
@@ -114,7 +112,7 @@ const startResize = (e: MouseEvent) => {
     const newWidth = startWidth - (e.clientX - startX);
     const clampedWidth = Math.min(
       Math.max(newWidth, LAYOUT_CONSTANTS.SIDEBAR_MIN_WIDTH),
-      LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH
+      LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH,
     );
     emit('resize', clampedWidth);
   };

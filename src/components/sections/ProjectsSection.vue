@@ -109,7 +109,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
-import { projects, PROJECT_CONSTANTS } from '../../assets/data/projects';
+import { projects, PROJECT_CONSTANTS } from '../../store/data/projects';
 
 // 定義 emits
 const emit = defineEmits<{

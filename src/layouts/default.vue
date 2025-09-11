@@ -98,7 +98,7 @@ import { Icon } from '@iconify/vue';
 import TopBar from '../components/layout/TopBar.vue';
 import Sidebar from '../components/layout/Sidebar.vue';
 import ActivityBar from '../components/layout/ActivityBar.vue';
-import { SECTIONS, LAYOUT_CONSTANTS } from '../constants/layout';
+import { SECTIONS, LAYOUT_CONSTANTS } from '../store/layout';
 
 const isSidebarCollapsed = ref(false);
 const sidebarWidth = ref(LAYOUT_CONSTANTS.SIDEBAR_DEFAULT_WIDTH);

@@ -1,7 +1,7 @@
 export interface Skill {
   name: string
   description: string
-  level: 'beginner' | 'intermediate' | 'advanced'
+  level: 'intermediate' | 'advanced'  // Linus 風格：移除未使用的 'beginner'
   category: 'frontend' | 'backend' | 'tools' | 'ai'
   icon: string
 }
@@ -158,38 +158,39 @@ export const skills: Skill[] = [
   }
 ]
 
-// 統一的技能類別數據結構 - 消除重複代碼
-export const skillCategories: SkillCategory[] = [
+// Linus 風格：自動顏色分配，消除特殊情況
+const SKILL_COLORS = ['primary', 'accent'] as const
+
+const SKILL_CATEGORIES_BASE = [
   {
-    id: 'frontend',
+    id: 'frontend' as const,
     title: 'Frontend',
-    icon: 'heroicons:code-bracket',
-    borderColor: 'border-primary',
-    iconColor: 'text-primary',
-    skills: skills.filter(skill => skill.category === 'frontend')
+    icon: 'heroicons:code-bracket'
   },
   {
-    id: 'backend',
+    id: 'backend' as const,
     title: 'Backend',
-    icon: 'heroicons:server',
-    borderColor: 'border-accent',
-    iconColor: 'text-accent',
-    skills: skills.filter(skill => skill.category === 'backend')
+    icon: 'heroicons:server'
   },
   {
-    id: 'tools',
+    id: 'tools' as const,
     title: '開發工具',
-    icon: 'heroicons:wrench-screwdriver',
-    borderColor: 'border-primary',
-    iconColor: 'text-primary',
-    skills: skills.filter(skill => skill.category === 'tools')
+    icon: 'heroicons:wrench-screwdriver'
   },
   {
-    id: 'ai',
+    id: 'ai' as const,
     title: 'AI 協作',
-    icon: 'heroicons:cpu-chip',
-    borderColor: 'border-accent',
-    iconColor: 'text-accent',
-    skills: skills.filter(skill => skill.category === 'ai')
+    icon: 'heroicons:cpu-chip'
   }
-]
+] as const
+
+// 統一的技能類別數據結構 - 消除顏色分配特殊情況
+export const skillCategories: SkillCategory[] = SKILL_CATEGORIES_BASE.map((category, index) => {
+  const colorType = SKILL_COLORS[index % 2]
+  return {
+    ...category,
+    borderColor: `border-${colorType}`,
+    iconColor: `text-${colorType}`,
+    skills: skills.filter(skill => skill.category === category.id)
+  }
+})

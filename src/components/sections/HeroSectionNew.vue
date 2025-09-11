@@ -168,13 +168,13 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { profile } from '../../assets/data/profile';
+import { profile } from '../../store/data/profile';
 import Tab from '../Tab.vue';
-import { SECTIONS } from '../../constants/layout';
+import { SECTIONS } from '../../store/layout';
 
 // 使用簡潔的 section 定義
 const extensionFile = {
   icon: 'heroicons:puzzle-piece',
-  displayName: 'YEH,PENG'
+  displayName: 'YEH,PENG',
 };
 </script>

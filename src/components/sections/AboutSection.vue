@@ -20,19 +20,25 @@
             <!-- Background -->
             <div class="info-card">
               <h3 class="card-header">
-                <Icon :icon="profile.about.sections.background.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                <Icon
+                  :icon="profile.about.sections.background.icon"
+                  class="w-4 h-4 sm:w-5 sm:h-5"
+                />
                 {{ profile.about.sections.background.title }}
               </h3>
               <p class="card-content">
-                從 {{ profile.about.sections.background.from }} 轉向 {{ profile.about.sections.background.to }}，
-                帶來獨特的設計思維與用戶體驗觀點
+                從 {{ profile.about.sections.background.from }} 轉向
+                {{ profile.about.sections.background.to }}， 帶來獨特的設計思維與用戶體驗觀點
               </p>
             </div>
 
             <!-- Philosophy -->
             <div class="info-card">
               <h3 class="card-header">
-                <Icon :icon="profile.about.sections.philosophy.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                <Icon
+                  :icon="profile.about.sections.philosophy.icon"
+                  class="w-4 h-4 sm:w-5 sm:h-5"
+                />
                 {{ profile.about.sections.philosophy.title }}
               </h3>
               <p class="card-content">
@@ -43,7 +49,10 @@
             <!-- Current Focus -->
             <div class="info-card focus-card">
               <h3 class="card-header">
-                <Icon :icon="profile.about.sections.currentFocus.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                <Icon
+                  :icon="profile.about.sections.currentFocus.icon"
+                  class="w-4 h-4 sm:w-5 sm:h-5"
+                />
                 {{ profile.about.sections.currentFocus.title }}
               </h3>
               <p class="card-content">
@@ -54,7 +63,10 @@
             <!-- Highlights -->
             <div class="info-card bg-gray-50">
               <h3 class="card-header">
-                <Icon :icon="profile.about.sections.highlights.icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+                <Icon
+                  :icon="profile.about.sections.highlights.icon"
+                  class="w-4 h-4 sm:w-5 sm:h-5"
+                />
                 {{ profile.about.sections.highlights.title }}
               </h3>
               <div class="flex flex-wrap gap-2 flex-1 content-start">
@@ -87,17 +99,17 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import Tab from '../Tab.vue';
-import { profile } from '../../assets/data/profile';
+import { profile } from '../../store/data/profile';
 
 // 定義 emits
 const emit = defineEmits<{
-  tabClose: []
+  tabClose: [];
 }>();
 
 // 簡潔的文件定義
 const aboutFile = {
   icon: 'heroicons:user',
-  displayName: '關於我'
+  displayName: '關於我',
 };
 
 const handleTabClose = () => {

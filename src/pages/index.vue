@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4 md:space-y-6 max-w-none overflow-x-hidden">
-    <!-- Hero Section - Full Width - 立即載入 (LCP 關鍵) -->
-    <div id="hero" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+    <!-- Hero Section - Full Width - 立即載入 (LCP 關鍵) - 最小高度移除避免 Layout Shift -->
+    <div id="hero">
       <HeroSection />
     </div>
 

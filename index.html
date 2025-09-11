@@ -13,7 +13,15 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//cdn-icons-png.flaticon.com" />
 
-    <!-- Critical font preload -->
+    <!-- 優化字體載入 - 使用本機字體降低 LCP 延遲 -->
+    <style>
+      /* 立即可用的系統字體 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+    
+    <!-- 字體資源預載入但非阻塞 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

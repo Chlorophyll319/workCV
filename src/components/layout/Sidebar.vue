@@ -63,13 +63,6 @@
       </div>
     </div>
 
-    <!-- Resize Handle -->
-    <div
-      v-if="!isSidebarCollapsed"
-      @mousedown="startResize"
-      class="absolute right-0 top-0 w-2 h-full cursor-col-resize hover:bg-accent hover:bg-opacity-60 transition-colors duration-200 z-30 bg-transparent hidden md:block"
-      title="Drag to resize sidebar"
-    ></div>
   </div>
 </template>
 
@@ -77,7 +70,6 @@
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import { SECTIONS, LAYOUT_CONSTANTS } from '../../store/layout';
-import { useResizable } from '../../composables/useResizable';
 
 interface Props {
   width: number;
@@ -105,12 +97,6 @@ const handleSectionClick = (section: (typeof SECTIONS)[number]) => {
   emit('section-change', section.id);
 };
 
-const { startResize } = useResizable(
-  props.width,
-  LAYOUT_CONSTANTS.SIDEBAR_MIN_WIDTH,
-  LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH,
-  (width) => emit('resize', width)
-);
 </script>
 
 <style scoped>

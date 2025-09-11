@@ -71,8 +71,8 @@ export const projects: Project[] = [
     type: '前端專案',
     description: 'VSCode 主題風格的一頁式個人履歷網站，作為技術能力展示與作品集平台。專注於優秀的使用者體驗與 SEO 優化。',
     techStack: ['Vue 3', 'Nuxt UI', 'Tailwind v4', '@vueuse/head', 'TypeScript'],
-    demoUrl: null,
-    githubUrl: null,
+    demoUrl: 'https://chlorophyll319.github.io/workCV/#/',
+    githubUrl: 'https://github.com/Chlorophyll319/workCV',
     icon: 'i-ph-user-circle',
     status: '已完成',
     metrics: {

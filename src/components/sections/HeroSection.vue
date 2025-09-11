@@ -6,7 +6,7 @@
         <!-- Extensions Header -->
         <Tab :file="extensionFile" />
 
-        <!-- Extension Item -->
+        <!-- Extension Item - 保持原本佈局但優化渲染 -->
         <div class="space-y-4 flex-1">
           <!-- Extension Card -->
           <div
@@ -26,11 +26,12 @@
                     </div>
 
                     <div class="flex-1 min-w-0">
-                      <h2
+                      <h1
                         class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-1 leading-tight"
+                        style="font-display: swap;"
                       >
                         {{ profile.name }} ({{ profile.englishName }})
-                      </h2>
+                      </h1>
                       <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-2 sm:mb-3">
                         {{ profile.title }}
                       </p>
@@ -112,8 +113,8 @@
                   </div>
                 </div>
 
-                <!-- Extension Details -->
-                <div>
+                <!-- Extension Details - 延遲載入以優化 LCP -->
+                <div v-show="isVisible">
                   <h4
                     class="text-sm sm:text-base font-semibold text-gray-900 mb-3 flex items-center gap-2"
                   >
@@ -175,8 +176,8 @@
                   </div>
                 </div>
 
-                <!-- Extension More Info -->
-                <div>
+                <!-- Extension More Info - 延遲載入以優化 LCP -->
+                <div v-show="isVisible">
                   <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <Icon icon="heroicons:user-circle" class="w-4 h-4" />
                     關於作者
@@ -233,10 +234,23 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { profile } from '../../store/data/profile';
 import Tab from '../Tab.vue';
-import { SECTIONS } from '../../store/layout';
+
+// 延遲顯示次要內容以優化 LCP
+const isVisible = ref(false);
+
+// 主要內容載入後再顯示次要內容
+onMounted(() => {
+  // 使用 requestAnimationFrame 確保主要內容先渲染
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      isVisible.value = true;
+    }, 100); // 100ms 後載入次要內容
+  });
+});
 
 // 使用簡潔的 section 定義
 const extensionFile = {

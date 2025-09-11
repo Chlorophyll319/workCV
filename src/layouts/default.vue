@@ -6,6 +6,13 @@
     <div class="flex-1 flex overflow-hidden">
       <!-- 主要編輯區域 -->
       <div class="flex-1 flex flex-col relative">
+        <!-- Resize Handle -->
+        <div
+          v-if="!isSidebarCollapsed && !isMobile"
+          @mousedown="startResizeHandler"
+          class="absolute right-0 top-0 w-1 h-full cursor-col-resize hover:bg-accent hover:bg-opacity-60 transition-colors duration-200 z-30 bg-transparent"
+          title="Drag to resize sidebar"
+        ></div>
         <!-- Tab 列 -->
         <div class="h-[35px] bg-primary-100 border-b border-primary-200 flex items-stretch">
           <div
@@ -51,7 +58,7 @@
       >
         <!-- 側邊面板 -->
         <Sidebar
-          v-if="!isSidebarCollapsed || !isMobile"
+          v-if="!isSidebarCollapsed"
           :width="isMobile ? 240 : sidebarWidth"
           :active-section="currentSectionId"
           :is-sidebar-collapsed="isSidebarCollapsed"
@@ -59,6 +66,7 @@
           @resize="handleSidebarResize"
           @refresh="refreshPage"
         />
+
 
         <!-- 活動列 -->
         <ActivityBar :is-sidebar-collapsed="isSidebarCollapsed" @toggle-sidebar="toggleSidebar" />
@@ -99,6 +107,7 @@ import TopBar from '../components/layout/TopBar.vue';
 import Sidebar from '../components/layout/Sidebar.vue';
 import ActivityBar from '../components/layout/ActivityBar.vue';
 import { SECTIONS, LAYOUT_CONSTANTS } from '../store/layout';
+import { useResizable } from '../composables/useResizable';
 
 const isSidebarCollapsed = ref(false);
 const sidebarWidth = ref(LAYOUT_CONSTANTS.SIDEBAR_DEFAULT_WIDTH);
@@ -171,4 +180,17 @@ const handleSectionChange = (sectionId: string) => {
 const handleSidebarResize = (width: number) => {
   sidebarWidth.value = width;
 };
+
+const startResizeHandler = (e: MouseEvent) => {
+  const { startResize } = useResizable(
+    sidebarWidth.value,
+    LAYOUT_CONSTANTS.SIDEBAR_MIN_WIDTH,
+    LAYOUT_CONSTANTS.SIDEBAR_MAX_WIDTH,
+    (width) => {
+      sidebarWidth.value = width;
+    }
+  );
+  startResize(e);
+};
+
 </script>

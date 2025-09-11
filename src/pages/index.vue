@@ -1,33 +1,51 @@
 <template>
   <div class="space-y-4 md:space-y-6 max-w-none overflow-x-hidden">
-    <!-- Hero Section - Full Width -->
+    <!-- Hero Section - Full Width - 立即載入 (LCP 關鍵) -->
     <div id="hero" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       <HeroSection />
     </div>
 
-    <!-- About Me Section - Full Width -->
-    <div id="about" class="min-h-[300px] md:min-h-[400px]">
-      <AboutSection />
+    <!-- About Me Section - Lazy Load -->
+    <div id="about" class="min-h-[300px] md:min-h-[400px]" ref="aboutTarget">
+      <AboutSection v-if="aboutVisible" />
+      <div v-else class="h-full flex items-center justify-center">
+        <div class="animate-pulse text-gray-400">載入中...</div>
+      </div>
     </div>
 
-    <!-- Projects Section - Full Width -->
-    <div id="projects" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
-      <ProjectsSection />
+    <!-- Projects Section - Lazy Load -->
+    <div id="projects" class="min-h-[400px] md:min-h-[500px] lg:min-h-[600px]" ref="projectsTarget">
+      <ProjectsSection v-if="projectsVisible" />
+      <div v-else class="h-full flex items-center justify-center">
+        <div class="animate-pulse text-gray-400">載入中...</div>
+      </div>
     </div>
 
-    <!-- Skills Section - Full Width -->
-    <div id="skills" class="min-h-[400px] md:min-h-[500px]">
-      <SkillsSection />
+    <!-- Skills Section - Lazy Load -->
+    <div id="skills" class="min-h-[400px] md:min-h-[500px]" ref="skillsTarget">
+      <SkillsSection v-if="skillsVisible" />
+      <div v-else class="h-full flex items-center justify-center">
+        <div class="animate-pulse text-gray-400">載入中...</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import { useHead } from '@vueuse/head';
+import { useLazyLoad } from '../composables/useLazyLoad';
 import HeroSection from '../components/sections/HeroSection.vue';
-import AboutSection from '../components/sections/AboutSection.vue';
-import ProjectsSection from '../components/sections/ProjectsSection.vue';
-import SkillsSection from '../components/sections/SkillsSection.vue';
+
+// 動態導入其他 section（code splitting）
+const AboutSection = defineAsyncComponent(() => import('../components/sections/AboutSection.vue'));
+const ProjectsSection = defineAsyncComponent(() => import('../components/sections/ProjectsSection.vue'));
+const SkillsSection = defineAsyncComponent(() => import('../components/sections/SkillsSection.vue'));
+
+// Lazy loading 設定
+const { target: aboutTarget, isVisible: aboutVisible } = useLazyLoad(0.1);
+const { target: projectsTarget, isVisible: projectsVisible } = useLazyLoad(0.1);
+const { target: skillsTarget, isVisible: skillsVisible } = useLazyLoad(0.1);
 
 // 指定使用 default layout
 defineOptions({

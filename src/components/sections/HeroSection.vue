@@ -10,7 +10,7 @@
         <div class="space-y-4 flex-1">
           <!-- Extension Card -->
           <div
-            class="bg-white extension-card extension-animate grid grid-cols-1 lg:grid-cols-12 gap-6"
+            class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 transition-all duration-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 animate-[slideInUp_0.5s_ease-out] grid grid-cols-1 lg:grid-cols-12 gap-6"
           >
             <!-- 左側主要內容區塊 -->
             <div class="lg:col-span-8 order-1 lg:order-1">
@@ -19,7 +19,7 @@
                 <div class="flex flex-col gap-4">
                   <!-- Extension Icon & Basic Info -->
                   <div class="flex items-start gap-3 sm:gap-4">
-                    <div class="extension-icon">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl font-bold flex-shrink-0">
                       {{ profile.name.charAt(0) }}{{ profile.englishName.charAt(0) }}
                     </div>
 
@@ -54,11 +54,11 @@
 
                   <!-- Action Buttons -->
                   <div class="flex flex-row gap-3 w-full sm:w-auto sm:self-start">
-                    <a :href="profile.contact.github" target="_blank" class="install-btn">
+                    <a :href="profile.contact.github" target="_blank" class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm bg-primary text-white hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:bg-primary-800">
                       <Icon icon="heroicons:code-bracket" class="w-4 h-4" />
                       <span>查看專案</span>
                     </a>
-                    <a :href="`mailto:${profile.contact.email}`" class="details-btn">
+                    <a :href="`mailto:${profile.contact.email}`" class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto px-6 py-2 text-sm border-2 border-accent text-accent bg-transparent hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:-translate-y-1">
                       <Icon icon="heroicons:envelope" class="w-4 h-4" />
                       <span>聯絡合作</span>
                     </a>
@@ -84,10 +84,10 @@
                     技能分類
                   </h4>
                   <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="category-tag category-frontend">前端開發</span>
-                    <span class="category-tag category-backend">後端開發</span>
-                    <span class="category-tag category-database">資料庫</span>
-                    <span class="category-tag category-ai">AI協作</span>
+                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-blue-50 text-blue-700 border-blue-200">前端開發</span>
+                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-green-50 text-green-700 border-green-200">後端開發</span>
+                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-orange-50 text-orange-700 border-orange-200">資料庫</span>
+                    <span class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 hover:scale-105 border-2 uppercase tracking-wider bg-purple-50 text-purple-700 border-purple-200">AI協作</span>
                   </div>
                 </div>
 
@@ -127,12 +127,12 @@
                     開發工具
                   </h4>
                   <div class="flex flex-wrap gap-2">
-                    <span class="skill-vue">Vue3</span>
-                    <span class="skill-ts">TypeScript</span>
-                    <span class="skill-js">JavaScript</span>
-                    <span class="skill-node">Node.js</span>
-                    <span class="skill-db">MongoDB</span>
-                    <span class="skill-ai">Claude</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-blue-100 text-blue-800">Vue3</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-indigo-100 text-indigo-800">TypeScript</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-green-100 text-green-800">JavaScript</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-purple-100 text-purple-800">Node.js</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-yellow-100 text-yellow-800">MongoDB</span>
+                    <span class="px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 bg-pink-100 text-pink-800">Claude</span>
                   </div>
                 </div>
 
@@ -169,7 +169,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { profile } from '../../store/data/profile';
-import Tab from '../../composables/Tab.vue';
+import Tab from '../Tab.vue';
 import { SECTIONS } from '../../store/layout';
 
 // 使用簡潔的 section 定義

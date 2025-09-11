@@ -17,7 +17,7 @@
             class="min-h-[280px] flex flex-col bg-gray-50 rounded-xl border-2 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             :class="category.borderColor"
           >
-            <div class="category-header mb-4">
+            <div class="mb-4">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center">
                   <Icon :icon="category.icon" class="w-4 h-4" :class="category.iconColor" />

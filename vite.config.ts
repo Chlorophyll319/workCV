@@ -7,27 +7,27 @@ import Fonts from 'unplugin-fonts/vite';
 import Layouts from 'vite-plugin-vue-layouts-next';
 
 export default defineConfig({
-  base:'./',
+  base: './', // GitHub Pages 部署路径
   plugins: [
-    VueRouter(),
-    Layouts(),
-    vue(),
-    ui(),
-    tailwindcss(),
+    VueRouter(), // 自動路由生成
+    Layouts(), // 佈局系統
+    vue(), // Vue 3 支援
+    ui(), // Nuxt UI 組件庫
+    tailwindcss(), // Tailwind CSS v4
     Fonts({
       custom: {
         families: [
           {
-            name: 'jf-openhuninn',
+            name: 'jf-openhuninn', // 自定義中文字體
             src: './src/assets/font/*.ttf',
           },
         ],
-        display: 'swap',
-        preload: true,
+        display: 'swap', // 字體載入策略（避免 FOIT）
+        preload: true, // 字體預載入（提升 FCP）
       },
     }),
   ],
   server: {
-    port: 3000,
+    port: 3000, // 開發伺服器端口
   },
 });

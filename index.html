@@ -1,18 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <link
       rel="icon"
-      type="string"
+      type="image/png"
       href="https://cdn-icons-png.flaticon.com/128/14900/14900085.png"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdn-icons-png.flaticon.com">
+    
+    <!-- Critical font preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
+      media="print" onload="this.media='all'"
     />
-    <title>Vite + Vue + TS</title>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
+      />
+    </noscript>
+    
+    <title>工作履歷 - Vue 開發者作品集</title>
+    <meta name="description" content="Vue.js 開發者的個人履歷網站，展示專業技能與專案作品">
   </head>
   <body>
     <div id="app" class="isolate"></div>

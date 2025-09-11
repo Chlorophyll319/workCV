@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm run dev:*)",
       "Bash(date +\"%Y%m%d_%H%M%S\")",
-      "Bash(claude mcp add sequential-thinking:*)"
+      "Bash(claude mcp add sequential-thinking:*)",
+      "mcp__context7__resolve-library-id",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

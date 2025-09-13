@@ -3,9 +3,9 @@
     <!-- 頂部選單列 -->
     <TopBar @toggle-sidebar="toggleSidebar" />
 
-    <div class="flex-1 flex overflow-hidden">
+    <div class="flex-1 flex overflow-hidden min-w-0">
       <!-- 主要編輯區域 -->
-      <div class="flex-1 flex flex-col relative">
+      <div class="flex-1 flex flex-col relative min-w-0">
         <!-- Resize Handle -->
         <div
           v-if="!isSidebarCollapsed && !isMobile"
@@ -37,8 +37,8 @@
         </div>
 
         <!-- 主要內容區 -->
-        <main role="main" class="flex-1 bg-base overflow-auto scroll-smooth">
-          <div class="max-w-full mx-auto min-h-[80vh]">
+        <main role="main" class="flex-1 bg-base overflow-x-hidden overflow-y-auto scroll-smooth min-w-0">
+          <div class="w-full min-h-[80vh] overflow-x-hidden">
             <router-view />
           </div>
         </main>

@@ -16,8 +16,14 @@
     <!-- 優化字體載入 - 使用本機字體降低 LCP 延遲 -->
     <style>
       /* 立即可用的系統字體 */
-      body {
+      html, body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+      * {
+        box-sizing: border-box;
       }
     </style>
     
@@ -28,14 +34,14 @@
     <!-- Chiron GoRound TC 中文字體 -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap"
       />
     </noscript>
 

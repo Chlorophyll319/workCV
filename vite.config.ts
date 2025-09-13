@@ -17,22 +17,4 @@ export default defineConfig({
   server: {
     port: 3000, // 開發伺服器端口
   },
-  build: {
-    target: 'esnext', // 現代瀏覽器優化
-    minify: 'terser', // 使用 terser 壓縮
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // 拆分第三方庫
-          'vue-vendor': ['vue', 'vue-router', 'pinia'],
-          'ui-vendor': ['@nuxt/ui', '@iconify/vue'],
-          'utils-vendor': ['@vueuse/core', '@vueuse/head'],
-        },
-      },
-    },
-    // 啟用 gzip 壓縮
-    reportCompressedSize: true,
-    // 優化 chunk 大小警告
-    chunkSizeWarningLimit: 1000,
-  },
 });

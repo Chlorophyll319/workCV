@@ -1,5 +1,5 @@
 <template>
-  <section class="h-full p-3 sm:p-4 md:p-6 lg:p-8 bg-transparent">
+  <section class="h-full p-3 sm:p-4 md:p-6 lg:p-8 bg-transparent overflow-x-hidden">
     <div class="h-full flex flex-col">
       <!-- About Card -->
       <div

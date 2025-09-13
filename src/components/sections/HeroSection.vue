@@ -1,8 +1,8 @@
 <template>
-  <section id="hero" class="h-full p-2 sm:p-4 md:p-6">
+  <section id="hero" class="h-full p-2 sm:p-4 md:p-6 overflow-x-hidden">
     <div class="h-full flex flex-col">
       <!-- VSCode Extensions Marketplace -->
-      <div class="flex-1 min-h-full p-2 sm:px-4 md:px-6">
+      <div class="flex-1 min-h-full p-2 sm:px-4 md:px-6 overflow-x-hidden">
         <!-- Extensions Header -->
         <Tab :file="extensionFile" />
 
@@ -31,7 +31,7 @@
 
                     <div class="flex-1 min-w-0">
                       <h1
-                        class="text-hero-title text-gray-900 mb-1 leading-tight"
+                        class="text-hero-title text-gray-800 mb-1 leading-tight"
                       >
                         {{ profile.name }} ({{ profile.englishName }})
                       </h1>
@@ -91,7 +91,7 @@
                 <!-- Skills Categories -->
                 <div>
                   <h4
-                    class="text-card-title text-gray-900 mb-3 flex items-center gap-2"
+                    class="text-card-title text-gray-800 mb-3 flex items-center gap-2"
                   >
                     <Icon icon="heroicons:tag" class="w-4 h-4" />
                     技能分類
@@ -119,7 +119,7 @@
                 <!-- Extension Details -->
                 <div>
                   <h4
-                    class="text-card-title text-gray-900 mb-3 flex items-center gap-2"
+                    class="text-card-title text-gray-800 mb-3 flex items-center gap-2"
                   >
                     <Icon icon="heroicons:information-circle" class="w-4 h-4" />
                     詳細資訊

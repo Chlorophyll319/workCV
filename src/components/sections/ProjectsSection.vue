@@ -93,7 +93,8 @@
                 v-if="project.githubUrl"
                 :href="project.githubUrl"
                 target="_blank"
-                class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 border-primary text-primary transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                :style="getGithubButtonStyle(index)"
               >
                 <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
                 {{ PROJECT_CONSTANTS.labels.github }}
@@ -143,6 +144,11 @@ const getProjectIconStyle = (index: number) => ({
 
 const getProjectButtonStyle = (index: number) => ({
   backgroundColor: getProjectColor(index),
+});
+
+const getGithubButtonStyle = (index: number) => ({
+  borderColor: getProjectColor(index),
+  color: getProjectColor(index),
 });
 
 // 使用常數而非硬編碼

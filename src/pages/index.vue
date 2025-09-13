@@ -30,12 +30,14 @@
     </div>
 
     <!-- Footer Section - 下方面板風格，移除間距 -->
-    <FooterSection />
+    <div id="footer">
+      <FooterSection />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, ref, onMounted } from 'vue';
 import { useHead } from '@vueuse/head';
 import { useLazyLoad } from '../composables/useLazyLoad';
 import HeroSection from '../components/sections/HeroSection.vue';
@@ -46,10 +48,33 @@ const AboutSection = defineAsyncComponent(() => import('../components/sections/A
 const ProjectsSection = defineAsyncComponent(() => import('../components/sections/ProjectsSection.vue'));
 const SkillsSection = defineAsyncComponent(() => import('../components/sections/SkillsSection.vue'));
 
-// Lazy loading 設定
-const { target: aboutTarget, isVisible: aboutVisible } = useLazyLoad(0.1);
-const { target: projectsTarget, isVisible: projectsVisible } = useLazyLoad(0.1);
-const { target: skillsTarget, isVisible: skillsVisible } = useLazyLoad(0.1);
+// 漸進式載入策略 - 平衡效能與使用者體驗
+const aboutVisible = ref(false);
+const projectsVisible = ref(false);
+const skillsVisible = ref(false);
+
+// 保留 lazy loading 作為備案，但主要靠時間觸發
+const { target: aboutTarget } = useLazyLoad(0.1);
+const { target: projectsTarget } = useLazyLoad(0.1);
+const { target: skillsTarget } = useLazyLoad(0.1);
+
+// 優化的載入時序
+onMounted(() => {
+  // 立即載入 About (最重要的內容)
+  setTimeout(() => {
+    aboutVisible.value = true;
+  }, 800);
+
+  // 1.5秒後載入 Projects (作品集重要度次之)
+  setTimeout(() => {
+    projectsVisible.value = true;
+  }, 1500);
+
+  // 2.5秒後載入 Skills (相對輕量)
+  setTimeout(() => {
+    skillsVisible.value = true;
+  }, 2500);
+});
 
 // 指定使用 default layout
 defineOptions({

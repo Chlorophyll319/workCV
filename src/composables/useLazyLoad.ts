@@ -21,7 +21,7 @@ export function useLazyLoad(threshold = 0.1) {
           }
         })
       },
-      { threshold, rootMargin: '50px' }
+      { threshold, rootMargin: '200px' } // 增加預載入距離，提前載入
     )
 
     observer.observe(target.value)

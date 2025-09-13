@@ -1,9 +1,10 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
+@import './typography.css';
 
 @theme {
-  /* Font Families */
-  --font-family-chinese: 'jf-openhuninn', system-ui, sans-serif;
+  /* Font Families - 使用 Google Fonts 優化載入 */
+  --font-family-chinese: 'Chiron Hei HK', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-code: 'Fira Code', 'Courier New', monospace;
   --font-family-english: 'Fira Code', system-ui, sans-serif;
 
@@ -46,7 +47,7 @@
 
 body {
   margin: 0;
-  font-family: 'jf-openhuninn', system-ui, sans-serif;
+  font-family: 'Chiron Hei HK', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--color-background);
   color: #000000;
   line-height: 1.6;

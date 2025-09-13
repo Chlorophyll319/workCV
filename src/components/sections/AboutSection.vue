@@ -11,7 +11,7 @@
         <!-- Content -->
         <div class="space-y-4 sm:space-y-6 flex-1 flex flex-col">
           <!-- Main Description -->
-          <div class="text-gray-800 leading-relaxed text-sm sm:text-lg lg:text-xl">
+          <div class="text-body text-gray-800 leading-relaxed">
             {{ profile.about.description }}
           </div>
 
@@ -73,7 +73,7 @@
                 <span
                   v-for="highlight in profile.about.sections.highlights.items"
                   :key="highlight"
-                  class="px-2 py-1 sm:px-3 sm:py-2 border border-accent rounded text-xs sm:text-sm font-medium text-accent"
+                  class="text-tag px-2 py-1 sm:px-3 sm:py-2 border border-accent rounded font-medium text-accent"
                 >
                   {{ highlight }}
                 </span>
@@ -86,7 +86,7 @@
             class="mt-6 sm:mt-8 text-center border-t-2 pt-4 sm:pt-6"
             style="border-color: var(--color-primary)"
           >
-            <p class="text-sm sm:text-lg lg:text-xl italic font-semibold text-text">
+            <p class="text-body italic font-semibold text-text">
               "{{ profile.about.quote }}"
             </p>
           </div>
@@ -167,6 +167,8 @@ const handleTabClose = () => {
     font-size: 1.125rem;
   }
 }
+
+/* 主網格已改用 Tailwind: grid-cols-1 md:grid-cols-2 xl:grid-cols-4 */
 
 /* Focus card 動畫邊框 - 無法用 Tailwind utilities 替代 */
 .focus-card {

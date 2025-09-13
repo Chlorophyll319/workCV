@@ -37,8 +37,8 @@
         </div>
 
         <!-- 主要內容區 -->
-        <main class="flex-1 bg-base p-2 sm:p-4 md:p-6 overflow-auto scroll-smooth">
-          <div class="max-w-full mx-auto">
+        <main role="main" class="flex-1 bg-base overflow-auto scroll-smooth">
+          <div class="max-w-full mx-auto min-h-[80vh]">
             <router-view />
           </div>
         </main>
@@ -47,14 +47,10 @@
       <!-- 側邊區域 -->
       <div
         :class="[
-          'flex transition-all duration-300 ease-in-out',
-          isMobile ? 'fixed right-0 z-20 shadow-xl' : 'relative',
-          isSidebarCollapsed && isMobile ? 'transform translate-x-full' : 'transform translate-x-0',
+          'flex sidebar-container',
+          isMobile ? 'sidebar-mobile' : 'sidebar-desktop',
+          isSidebarCollapsed && isMobile ? 'sidebar-collapsed' : '',
         ]"
-        :style="{
-          top: isMobile ? '30px' : '0',
-          height: isMobile ? 'calc(100vh - 30px)' : '100%',
-        }"
       >
         <!-- 側邊面板 -->
         <Sidebar
@@ -194,3 +190,29 @@ const startResizeHandler = (e: MouseEvent) => {
 };
 
 </script>
+
+<style scoped>
+.sidebar-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-mobile {
+  position: fixed;
+  right: 0;
+  z-index: 20;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  top: 30px;
+  height: calc(100vh - 30px);
+  transform: translateX(0);
+}
+
+.sidebar-desktop {
+  position: relative;
+  top: 0;
+  height: 100%;
+}
+
+.sidebar-collapsed {
+  transform: translateX(100%);
+}
+</style>

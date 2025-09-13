@@ -7,7 +7,7 @@
     <div
       class="h-[35px] bg-primary flex items-center justify-between px-3 border-b border-primary-700"
     >
-      <span class="text-xs font-bold tracking-wider text-white">EXPLORER</span>
+      <span class="text-caption font-bold tracking-wider text-white">EXPLORER</span>
       <div class="flex gap-1">
         <Icon
           icon="heroicons:document-plus"
@@ -43,7 +43,7 @@
             :icon="isFolderExpanded ? 'heroicons:folder-open' : 'heroicons:folder'"
             class="w-4 h-4 text-accent"
           />
-          <span class="text-sm font-medium text-text">RESUME-PROJECT</span>
+          <span class="text-body-secondary font-medium text-text">RESUME-PROJECT</span>
         </div>
 
         <div v-show="isFolderExpanded" class="ml-4 transition-all duration-200">

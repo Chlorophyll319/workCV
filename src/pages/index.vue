@@ -28,6 +28,9 @@
         <div class="animate-pulse text-gray-400">載入中...</div>
       </div>
     </div>
+
+    <!-- Footer Section - 下方面板風格，移除間距 -->
+    <FooterSection />
   </div>
 </template>
 
@@ -36,6 +39,7 @@ import { defineAsyncComponent } from 'vue';
 import { useHead } from '@vueuse/head';
 import { useLazyLoad } from '../composables/useLazyLoad';
 import HeroSection from '../components/sections/HeroSection.vue';
+import FooterSection from '../components/sections/FooterSection.vue';
 
 // 動態導入其他 section（code splitting）
 const AboutSection = defineAsyncComponent(() => import('../components/sections/AboutSection.vue'));
@@ -60,18 +64,36 @@ useHead({
   meta: [
     {
       name: 'description',
-      content:
-        '從設計思維到功能實現，擅長與 AI 協作的前端工程師。具備 Vue 3、Node.js 全端開發經驗。',
+      content: '從設計思維到功能實現，擅長與 AI 協作的前端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。',
     },
-    { name: 'keywords', content: '前端工程師, Vue 3, Node.js, AI協作, 履歷, Frontend Engineer' },
+    { name: 'keywords', content: '前端工程師, Vue 3, Node.js, TypeScript, AI協作, 履歷, Frontend Engineer, 葉芃, Evelyn' },
+    { name: 'author', content: '葉芃 (Evelyn)' },
+    { name: 'robots', content: 'index, follow' },
+    
     // Open Graph
-    { property: 'og:title', content: '葉芃 (Evelyn) - Frontend Engineer' },
-    { property: 'og:description', content: '從設計思維到功能實現，擅長與 AI 協作的前端工程師' },
+    { property: 'og:title', content: '葉芃 (Evelyn) - Frontend Engineer | AI協作開發' },
+    { property: 'og:description', content: '從設計思維到功能實現，擅長與 AI 協作的前端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。' },
     { property: 'og:type', content: 'website' },
-    // Twitter
+    { property: 'og:url', content: 'https://chlorophyll319.github.io/workCV/#/' },
+    { property: 'og:site_name', content: 'Evenly 個人履歷網站' },
+    { property: 'og:locale', content: 'zh_TW' },
+    
+    // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: '葉芃 (Evelyn) - Frontend Engineer' },
-    { name: 'twitter:description', content: '從設計思維到功能實現，擅長與 AI 協作的前端工程師' },
+    { name: 'twitter:title', content: '葉芃 (Evenly) - Frontend Engineer | AI協作開發' },
+    { name: 'twitter:description', content: '從設計思維到功能實現，擅長與 AI 協作的前端工程師。Vue 3 + TypeScript 全端開發經驗。' },
+    { name: 'twitter:site', content: '@Evenly_Resume' },
+    
+    // 額外 SEO
+    { name: 'theme-color', content: '#007acc' },
+    { name: 'msapplication-TileColor', content: '#007acc' },
   ],
 });
+
+
+// 使用簡潔的 section 定義
+const extensionFile = {
+  icon: 'heroicons:puzzle-piece',
+  displayName: 'YEH,PENG',
+};
 </script>

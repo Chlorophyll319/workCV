@@ -9,7 +9,7 @@
         <Tab :file="skillsFile" @close="handleTabClose" />
 
         <!-- Skills Categories Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 flex-1">
           <!-- 統一的技能類別模板 - 消除重複代碼 -->
           <div
             v-for="category in skillCategories"
@@ -22,7 +22,7 @@
                 <div class="w-8 h-8 rounded-lg flex items-center justify-center">
                   <Icon :icon="category.icon" class="w-4 h-4" :class="category.iconColor" />
                 </div>
-                <h3 class="text-lg font-bold text-gray-800">{{ category.title }}</h3>
+                <h3 class="text-card-title text-gray-800">{{ category.title }}</h3>
               </div>
             </div>
             <div class="flex-1 space-y-3">
@@ -33,9 +33,9 @@
               >
                 <div class="flex items-center gap-2 mb-1">
                   <Icon :icon="skill.icon" class="w-4 h-4" :class="category.iconColor" />
-                  <span class="text-sm font-medium text-gray-800">{{ skill.name }}</span>
+                  <span class="text-body-secondary font-medium text-gray-800">{{ skill.name }}</span>
                 </div>
-                <p class="text-xs text-gray-600 leading-relaxed text-left">
+                <p class="text-caption text-gray-600 leading-relaxed text-left">
                   {{ skill.description }}
                 </p>
               </div>

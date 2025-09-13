@@ -1,0 +1,52 @@
+/* 統一的文字大小系統 - Linus式簡潔設計 */
+
+/* 
+ * 文字階層系統 (基於視覺重要性，不是元素類型)
+ * - 每個階層都有統一的響應式規則
+ * - 避免特殊情況，消除複雜性
+ */
+
+/* 主標題：最重要的資訊 */
+.text-hero-title {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold;
+}
+
+/* 區塊標題：Section 標題 */
+.text-section-title {
+  @apply text-base sm:text-lg md:text-xl font-bold;
+}
+
+/* 子標題：卡片標題、分類標題 */
+.text-card-title {
+  @apply text-sm sm:text-base md:text-lg font-bold;
+}
+
+/* 標籤標題：小標題、欄位標題 */
+.text-label-title {
+  @apply text-xs sm:text-sm font-semibold;
+}
+
+/* 內文：主要描述文字 */
+.text-body {
+  @apply text-sm sm:text-base;
+}
+
+/* 副文：次要描述 */
+.text-body-secondary {
+  @apply text-xs sm:text-sm;
+}
+
+/* 小字：輔助資訊、狀態資訊 */
+.text-caption {
+  @apply text-xs;
+}
+
+/* 按鈕文字：統一的按鈕文字大小 */
+.text-button {
+  @apply text-sm font-semibold;
+}
+
+/* 技術標籤：統一的標籤大小 */
+.text-tag {
+  @apply text-xs font-medium;
+}

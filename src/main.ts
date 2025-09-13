@@ -11,12 +11,17 @@ import { setupLayouts } from 'virtual:generated-layouts';
 import ui from '@nuxt/ui/vue-plugin';
 // TaillwindCSS
 import './assets/main.css';
+// SEO Head Management
+import { createHead } from '@vueuse/head';
 
 const app = createApp(App);
+const head = createHead();
 const router = createRouter({
   routes: setupLayouts(routes),
   history: createWebHashHistory(),
 });
+
+app.use(head);
 app.use(router);
 app.use(ui);
 

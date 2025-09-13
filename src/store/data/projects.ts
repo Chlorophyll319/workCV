@@ -1,8 +1,16 @@
 interface ProjectMetrics {
-  lighthouse?: string | null     // Lighthouse 評分
-  coreFeatures: string | null    // 核心功能描述
+  // 已完成專案欄位
+  lighthouse?: string | null     // Lighthouse 評分（前端專案）
+  coreFeatures?: string | null   // 核心功能描述（已完成專案）
   scale?: string | null          // 專案規模
   duration?: string | null       // 開發時間
+  
+  // 未完成專案欄位
+  apiPerformance?: string | null // API 效能評測（後端專案）
+  currentProgress?: string | null // 開發進度
+  availableFeatures?: string | null // 可用功能
+  projectScope?: string | null   // 專案架構
+  timeline?: string | null       // 預計完成
 }
 
 export interface Project {
@@ -32,10 +40,17 @@ export const PROJECT_CONSTANTS = {
     github: 'GitHub'
   },
   metricLabels: {
+    // 已完成專案標籤
     lighthouse: 'Lighthouse 評分',
     coreFeatures: '核心功能',
     scale: '專案規模',
-    duration: '開發時間'
+    duration: '開發時間',
+    // 未完成專案標籤
+    apiPerformance: 'API 效能評測',
+    currentProgress: '開發進度',
+    availableFeatures: '可用功能',
+    projectScope: '專案架構',
+    timeline: '預計完成'
   }
 }
 
@@ -54,7 +69,7 @@ export const projects: Project[] = [
       lighthouse: '效能 98',
       coreFeatures: 'JWT 身份驗證、內容管理系統、檔案路由、Markdown 渲染',
       scale: '前後台雙布局、12支 RESTful API、MVC 架構、ERD 資料庫設計',
-      duration: '45 天'
+      duration: '45 days'
     },
     highlights: [
       '前後台分離架構：前台 daisyUI + 後台 PrimeVue 雙 UI 系統',
@@ -69,48 +84,54 @@ export const projects: Project[] = [
     id: 2,
     name: '個人履歷網站',
     type: '前端專案',
-    description: 'VSCode 主題風格的一頁式個人履歷網站，作為技術能力展示與作品集平台。專注於優秀的使用者體驗與 SEO 優化。',
-    techStack: ['Vue 3', 'Nuxt UI', 'Tailwind v4', '@vueuse/head', 'TypeScript'],
+    description: 'VSCode 主題風格的一頁式個人履歷網站，展現在 UX 創新與技術規範之間的平衡能力。選擇實現複雜的互動式界面來展現交互設計技能，同時確保 SEO 優化與最佳實踐符合業界標準，體現對使用者體驗與技術品質並重的開發理念。',
+    techStack: ['Vue 3', 'Vite', 'Nuxt UI', 'Tailwind v4', '@vueuse/head', '@vueuse/core', 'TypeScript', 'Pinia', 'Vue Router', '@iconify/vue'],
     demoUrl: 'https://chlorophyll319.github.io/workCV/#/',
     githubUrl: 'https://github.com/Chlorophyll319/workCV',
     icon: 'i-ph-user-circle',
     status: '已完成',
     metrics: {
-      lighthouse: null,
-      coreFeatures: '個人資訊展示、技能標籤、作品集、SEO 優化',
-      scale: '5個組件、一頁式設計、RWD 支援',
-      duration: '7 天'
+      lighthouse: 'SEO 91 • 最佳做法 100',
+      coreFeatures: '技術決策平衡、SEO 優化、互動式 UI、型別安全',
+      scale: '7個核心組件、複雜狀態管理、TypeScript 100% 覆蓋、響應式設計',
+      duration: '10 days'
     },
     highlights: [
-      'VSCode 主題風格設計',
-      'Tailwind v4 CSS-first 配置',
-      '完整 SEO meta 設定',
-      'TypeScript 類型安全',
-      '模組化組件架構'
+      'VSCode 風格 UI：完整實現拖拽調整、響應式側邊欄等複雜互動功能',
+      '技術決策展示：在創意實現與技術規範間找到最佳平衡點',
+      'SEO 優化達標：91/100 分數確保搜尋引擎友好與社群分享最佳化',
+      '最佳實踐滿分：100/100 展現對 Web 標準與開發規範的深度理解',
+      'Nuxt UI + Tailwind v4：整合最新技術棧打造統一設計語言',
+      '複雜狀態管理：實現拖拽、響應式佈局與多層級組件通信',
+      'TypeScript 型別安全：全專案 100% 覆蓋，確保程式碼品質與維護性',
+      '使用者體驗優先：創意互動設計兼顧無障礙設計與跨裝置相容性'
     ]
   },
   {
     id: 3,
-    name: 'PayMock 模擬器',
-    type: '後端練習',
-    description: '以 NewebPay 為範例的小型付款流程模擬器，練習金流 API 串接、加密參數生成與 callback 回傳解析。專注於資料安全與 API 設計。',
-    techStack: ['Node.js', 'Express', 'NewebPay API', 'SHA256 加密'],
-    demoUrl: null,
-    githubUrl: null,
-    icon: 'i-ph-credit-card',
+    name: 'LINE 機器人黛栗',
+    type: '聊天機器人',
+    description: '全功能 LINE 聊天機器人，採用 Node.js + Express 架構，深度整合台灣政府開放資料 30+ API。提供即時天氣預報、空氣品質監測、地震速報、放假日查詢、淺草籤詩抽籤與智能對話系統。具備完整的模組化設計、統一錯誤處理機制與人性化互動體驗。',
+    techStack: ['Node.js', 'Express.js', 'LINE Messaging API', '氣象局開放資料API', 'MongoDB', 'JSDoc','RESTful API'],
+    demoUrl: 'https://line.me/R/ti/p/@142cmsyc',
+    githubUrl: 'https://github.com/Chlorophyll319/Daily-LINEBot',
+    icon: 'i-ph-chat-circle',
     status: '開發中',
     metrics: {
-      lighthouse: null,
-      coreFeatures: '金流 API 串接、加密參數生成、Callback 處理',
-      scale: '3個 API 端點、SHA256 加密、Express 中間件',
-      duration: null
+      currentProgress: '30+ OpenData整合完成、MongoDB架構建立、API響應<2s',
+      availableFeatures: '天氣查詢、空品監測、地震速報、智能對話、LINE選單',
+      projectScope: '7模組系統、統一錯誤處理、完整JSDoc文件',
+      timeline: '核心功能完善中，預計2週內完成部署優化'
     },
     highlights: [
-      'NewebPay 金流 API 串接',
-      'SHA256 安全加密驗證',
-      'callback 回調處理機制',
-      'Express 中間件開發',
-      'API 錯誤處理與日誌'
+      '氣象局 API 整合：一週/三天天氣預報、即時觀測、天氣警報、熱傷害指數',
+      '環保署空氣品質監測：即時 AQI、PM2.5、預報資料、歷史數據查詢',
+      '地震速報系統：顯著有感地震報告、小區域地震資訊、震度資料',
+      '政府行政日曆：辦公日曆表、天災停班停課資訊即時查詢',
+      '淺草籤詩系統：完整籤詩資料庫、隨機抽籤、指定籤號查詢功能',
+      '智能對話引擎：關鍵字識別、情境化回應、鼓勵話語與程式設計師笑話',
+      'LINE 選單互動：視覺化操作介面、快速功能存取、使用者體驗優化',
+      '模組化架構重構：統一程式風格、完整 JSDoc 註解、人性化錯誤處理'
     ]
   }
 ]

@@ -16,24 +16,32 @@
     <!-- 優化字體載入 - 使用本機字體降低 LCP 延遲 -->
     <style>
       /* 立即可用的系統字體 */
-      body {
+      html, body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+      * {
+        box-sizing: border-box;
       }
     </style>
     
     <!-- 字體資源預載入但非阻塞 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Chiron GoRound TC 中文字體 -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap"
       />
     </noscript>
 
@@ -42,8 +50,8 @@
       name="description"
       content="嗨，我是葉芃，一位正在轉職的前端開發者。喜歡從問題的根本切入，先規劃全貌再一步步落實，專注於 Vue.js 與使用者體驗設計，也善於把技術概念轉化為大家都能理解的語言！"
     />
-    <script type="module" crossorigin src="./assets/index-2c-KHIMM.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Db1B7X7g.css">
+    <script type="module" crossorigin src="./assets/index-CNQONIEg.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CwdY1Pk4.css">
   </head>
   <body>
     <div id="app" class="isolate"></div>

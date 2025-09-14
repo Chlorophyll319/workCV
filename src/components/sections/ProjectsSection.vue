@@ -13,7 +13,7 @@
           <div
             v-for="(project, index) in projects"
             :key="project.id"
-            class="project-card bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+            class="project-card bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
             :style="getProjectBorderStyle(index)"
           >
             <!-- Project Header -->
@@ -35,70 +35,75 @@
                 </div>
               </div>
               <div class="flex items-center gap-1">
-                <Icon icon="heroicons:star-solid" class="w-3 h-3 text-accent" />
+                <Icon :icon="getStatusIcon(project.status)" class="w-3 h-3" :class="getStatusIconColor(project.status)" />
                 <span class="text-caption text-gray-500">{{ project.status || 'N/A' }}</span>
               </div>
             </div>
 
             <!-- Project Description -->
-            <p class="text-body text-gray-600 leading-relaxed mb-3">
-              {{ project.description || '專案描述待補充' }}
-            </p>
-
-            <!-- Tech Stack -->
-            <div class="mb-3">
-              <h4 class="text-label-title text-gray-800 mb-1">
-                {{ PROJECT_CONSTANTS.labels.techStack }}
-              </h4>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  v-for="tech in project.techStack || []"
-                  :key="tech"
-                  class="tech-stack-tag text-tag px-2 py-1 bg-white rounded font-mono text-gray-700 border border-gray-300"
-                >
-                  {{ tech }}
-                </span>
-              </div>
+            <div class="flex-1 mb-4">
+              <p class="text-body text-gray-600 leading-relaxed">
+                {{ project.description || '專案描述待補充' }}
+              </p>
             </div>
 
-            <!-- Metrics -->
-            <div class="bg-white rounded-lg p-2 mb-3 border border-gray-200">
-              <h4 class="text-label-title text-gray-800 mb-1 flex items-center gap-1">
-                <Icon icon="heroicons:chart-bar" class="w-3 h-3" />
-                {{ PROJECT_CONSTANTS.labels.metrics }}
-              </h4>
-              <div class="grid grid-cols-2 gap-2 text-caption">
-                <div v-for="(value, key) in project.metrics || {}" :key="key">
-                  <div class="text-caption text-gray-500">{{ getMetricLabel(key) }}</div>
-                  <div class="text-caption font-semibold" :style="{ color: getMetricColor(key) }">
-                    {{ value }}
+            <!-- Fixed Bottom Section -->
+            <div class="mt-auto space-y-3">
+              <!-- Tech Stack -->
+              <div>
+                <h4 class="text-label-title text-gray-800 mb-1">
+                  {{ PROJECT_CONSTANTS.labels.techStack }}
+                </h4>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    v-for="tech in project.techStack || []"
+                    :key="tech"
+                    class="tech-stack-tag text-tag px-2 py-1 bg-white rounded font-mono text-gray-700 border border-gray-300"
+                  >
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Metrics -->
+              <div class="bg-white rounded-lg p-2 border border-gray-200">
+                <h4 class="text-label-title text-gray-800 mb-1 flex items-center gap-1">
+                  <Icon icon="heroicons:chart-bar" class="w-3 h-3" />
+                  {{ PROJECT_CONSTANTS.labels.metrics }}
+                </h4>
+                <div class="grid grid-cols-2 gap-2 text-caption">
+                  <div v-for="(value, key) in project.metrics || {}" :key="key">
+                    <div class="text-caption text-gray-500">{{ getMetricLabel(key) }}</div>
+                    <div class="text-caption font-semibold" :style="{ color: getMetricColor(key) }">
+                      {{ value }}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="button-group gap-2">
-              <a
-                v-if="project.demoUrl"
-                :href="project.demoUrl"
-                target="_blank"
-                class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 text-white"
-                :style="getProjectButtonStyle(index)"
-              >
-                <Icon icon="heroicons:play" class="w-3 h-3" />
-                {{ PROJECT_CONSTANTS.labels.demo }}
-              </a>
-              <a
-                v-if="project.githubUrl"
-                :href="project.githubUrl"
-                target="_blank"
-                class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
-                :style="getGithubButtonStyle(index)"
-              >
-                <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
-                {{ PROJECT_CONSTANTS.labels.github }}
-              </a>
+              <!-- Action Buttons -->
+              <div class="button-group gap-2">
+                <a
+                  v-if="project.demoUrl"
+                  :href="project.demoUrl"
+                  target="_blank"
+                  class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 text-white"
+                  :style="getProjectButtonStyle(index)"
+                >
+                  <Icon icon="heroicons:play" class="w-3 h-3" />
+                  {{ PROJECT_CONSTANTS.labels.demo }}
+                </a>
+                <a
+                  v-if="project.githubUrl"
+                  :href="project.githubUrl"
+                  target="_blank"
+                  class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                  :style="getGithubButtonStyle(index)"
+                >
+                  <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
+                  {{ PROJECT_CONSTANTS.labels.github }}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -166,6 +171,22 @@ const getMetricColor = (key: string) => {
     apiResponse: PROJECT_CONSTANTS.colors.primary,
   };
   return colorMap[key] || PROJECT_CONSTANTS.colors.primary;
+};
+
+const getStatusIcon = (status: string | null) => {
+  const statusMap: Record<string, string> = {
+    '已完成': 'heroicons:star-solid',
+    '開發中': 'heroicons:fire-solid',
+  };
+  return statusMap[status || ''] || 'heroicons:question-mark-circle';
+};
+
+const getStatusIconColor = (status: string | null) => {
+  const colorMap: Record<string, string> = {
+    '已完成': 'text-accent',
+    '開發中': 'text-orange-500',
+  };
+  return colorMap[status || ''] || 'text-gray-400';
 };
 
 const getProjectIcon = (iconName: string) => {

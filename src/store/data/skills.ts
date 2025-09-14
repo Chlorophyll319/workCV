@@ -60,7 +60,7 @@ export const skills: Skill[] = [
     category: 'frontend'
   },
   {
-    name: 'Mermaid',
+    name: 'Mermaid.js',
     icon: 'simple-icons:mermaid',
     description: '圖表渲染、流程圖與架構圖表展示',
     level: 'intermediate',
@@ -96,8 +96,22 @@ export const skills: Skill[] = [
     level: 'intermediate',
     category: 'backend'
   },
+  {
+    name: 'CRUD 操作',
+    icon: 'heroicons:server-stack',
+    description: '資料庫增刪改查、RESTful 端點設計',
+    level: 'intermediate',
+    category: 'backend'
+  },
 
   // Tools
+    {
+    name: 'Vite',
+    icon: 'logos:vitejs',
+    description: '快速構建工具、打包優化',
+    level: 'intermediate',
+    category: 'tools'
+  },
   {
     name: 'Git / GitHub',
     icon: 'logos:git-icon',

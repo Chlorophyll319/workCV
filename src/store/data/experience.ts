@@ -21,8 +21,8 @@ export const experienceData: ExperienceItem[] = [
     organization: '專題作品',
     startDate: '2025/9',
     endDate: '2025/9',
-    description: '開發一頁式個人履歷網站，作為技術能力展示與作品集平台，採用 Vue3 + Tailwind CSS 與 NuxtUI 元件庫',
-    skills: ['Vue3', 'Nuxt3', 'Tailwind CSS', 'NuxtUI', 'SSG'],
+    description: '結訓後持續自主學習，開發一頁式個人履歷網站作為技術展示平台。在此專案中深入學習 TypeScript 強型別開發，並積極嘗試 NuxtUI、Tailwind v4 等新套件與 UI 框架',
+    skills: ['Vue3', 'TypeScript', 'Nuxt3', 'Tailwind CSS v4', 'NuxtUI', 'SSG', '新技術學習'],
     status: 'current',
     gitCommitStyle: 'feat(portfolio): Vue3 個人履歷網站建構'
   },
@@ -33,7 +33,7 @@ export const experienceData: ExperienceItem[] = [
     organization: '專題作品',
     startDate: '2025/8',
     endDate: '2025/9',
-    description: '獨立開發具備前後台管理功能的課程資訊網站，提供訓練單位介紹、學員成果展示、FAQ 系統與文章內容管理，並整合 Markdown 與 Mermaid 語法渲染',
+    description: '參與泰山職訓局前端開發課程期間，深入學習程式設計原理與語法，並獨立開發此前後端分離的全端專題作品。網站具備前後台管理功能，提供訓練單位介紹、學員成果展示、FAQ 系統與文章內容管理，並整合 Markdown 與 Mermaid 語法渲染',
     skills: ['Vue3', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
     status: 'completed',
     gitCommitStyle: 'feat(fullstack): 職訓資訊分享網站開發完成'
@@ -45,8 +45,8 @@ export const experienceData: ExperienceItem[] = [
     organization: '樂麵屋_太魯閣國際股份有限公司',
     startDate: '2022/8',
     endDate: '2023/1',
-    description: '負責品牌社群經營、會員系統設計、行銷活動發想與視覺設計，培養了用戶體驗思維與數據分析能力',
-    skills: ['社群經營', '會員系統設計', 'UI/UX', '數據分析', '行銷企劃'],
+    description: '負責品牌社群經營與行銷活動企劃，並參與會員系統的 UI/UX 設計流程。透過旁聽後台系統設計會議，初次接觸程式邏輯思維，了解功能實現的可行性評估。擔任內外部溝通窗口（店面、辦公室、百貨樓管、印刷廠），深化跨領域協作經驗',
+    skills: ['社群經營', '會員系統設計', 'UI/UX', '後台系統理解', '程式邏輯概念', '數據分析', '行銷企劃', '跨部門溝通'],
     status: 'completed',
     gitCommitStyle: 'feat(marketing): 數位化流程優化與品牌社群經營'
   },
@@ -57,8 +57,8 @@ export const experienceData: ExperienceItem[] = [
     organization: '公共關係暨廣告學系',
     startDate: '2017/9',
     endDate: '2022/6',
-    description: '專案企劃與跨領域協作能力培養，奠定了需求分析、行動規劃等與團隊溝通的基礎，對軟體開發的協作流程很有幫助',
-    skills: ['專案企劃', '跨領域協作', '需求分析', '團隊溝通'],
+    description: '透過企劃書撰寫與行銷活動策劃，學習如何從需求分析到落地執行的完整專案流程。這些企劃思維與執行經驗，對於 Side Project 的規劃與程式開發的系統性思考提供了重要基礎。跨領域團隊協作經驗也強化了溝通協調能力',
+    skills: ['專案企劃', '企劃書撰寫', '行銷活動策劃', '跨領域協作', '需求分析', '執行計劃', '團隊溝通'],
     status: 'completed',
     gitCommitStyle: 'feat(education): 公關廣告學系畢業'
   }

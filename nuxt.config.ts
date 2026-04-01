@@ -10,5 +10,16 @@ export default defineNuxtConfig({
   // 全局 CSS（含 Tailwind v4 + Nuxt UI + 自訂 token）
   css: ['~/assets/main.css'],
 
+  // 全局 <head> 預設值
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    },
+  },
+
   compatibilityDate: '2025-01-01',
 })

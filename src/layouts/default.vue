@@ -39,7 +39,7 @@
         <!-- 主要內容區 -->
         <main role="main" class="flex-1 bg-base overflow-x-hidden overflow-y-auto scroll-smooth min-w-0">
           <div class="w-full min-h-[80vh] overflow-x-hidden">
-            <router-view />
+            <slot />
           </div>
         </main>
       </div>

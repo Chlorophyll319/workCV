@@ -26,6 +26,11 @@ dist-ssr
 # Auto-generated type declarations
 auto-imports.d.ts
 components.d.ts
+typed-router.d.ts
+
+# Nuxt generated files
+.nuxt
+.output
 
 # Claude Code files
 .claude

@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
@@ -24,6 +25,8 @@
     "yup": "^1.7.0"
   },
   "devDependencies": {
+    "nuxt": "^3",
+    "@pinia/nuxt": "^0.11.0",
     "@eslint/js": "^9.35.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",

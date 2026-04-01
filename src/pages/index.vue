@@ -38,7 +38,6 @@
 
 <script setup lang="ts">
 import { defineAsyncComponent, ref, onMounted } from 'vue';
-import { useHead } from '@vueuse/head';
 import { useLazyLoad } from '../composables/useLazyLoad';
 import HeroSection from '../components/sections/HeroSection.vue';
 import FooterSection from '../components/sections/FooterSection.vue';
@@ -80,14 +79,12 @@ onMounted(() => {
   }, 2500);
 });
 
-// 指定使用 default layout
-defineOptions({
-  meta: {
-    layout: 'default',
-  },
+// 指定使用 default layout（Nuxt 會自動套用，這裡明確宣告）
+definePageMeta({
+  layout: 'default',
 });
 
-// 設定頁面 meta
+// 設定頁面 meta（Nuxt 內建 useHead，無需額外 import）
 useHead({
   title: '葉芃 (Evelyn) - Frontend Engineer | 積極求職中',
   meta: [

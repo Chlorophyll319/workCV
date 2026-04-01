@@ -1,111 +1,150 @@
 <template>
-  <section class="projects-section h-full p-2 sm:p-4 md:p-6 overflow-x-hidden">
-    <div class="h-full flex flex-col">
-      <!-- Projects Card -->
-      <div
-        class="bg-white rounded-xl border-2 border-primary p-4 sm:p-6 flex-1 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-full"
-      >
-        <!-- File Tab -->
-        <Tab :file="projectsFile" @close="handleTabClose" />
+  <section id="projects" class="w-full py-8">
+    <div class="mb-2"><span class="kicker">Projects · 專案作品</span></div>
+    <div class="newspaper-rule mb-6"></div>
 
-        <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
-          <div
-            v-for="(project, index) in projects"
-            :key="project.id"
-            class="project-card bg-gray-50 rounded-xl border-2 border-gray-200 p-4 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            :style="getProjectBorderStyle(index)"
-          >
-            <!-- Project Header -->
-            <div class="flex items-start justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <div
-                  class="w-8 h-8 rounded-lg flex items-center justify-center text-white"
-                  :style="getProjectIconStyle(index)"
-                >
-                  <Icon :icon="getProjectIcon(project.icon || '')" class="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 class="text-card-title text-gray-800">
-                    {{ project.name }}
-                  </h3>
-                  <span class="text-caption text-gray-500">
-                    {{ project.type || 'N/A' }}
-                  </span>
-                </div>
-              </div>
-              <div class="flex items-center gap-1">
-                <Icon :icon="getStatusIcon(project.status)" class="w-3 h-3" :class="getStatusIconColor(project.status)" />
-                <span class="text-caption text-gray-500">{{ project.status || 'N/A' }}</span>
-              </div>
-            </div>
+    <!-- Featured project (first) -->
+    <div v-if="projects.length > 0" class="mb-6 pb-6 border-b border-rule-light">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <!-- Main content -->
+        <div class="md:col-span-2 md:pr-6 md:border-r md:border-rule-light">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="dateline">{{ projects[0].type }}</span>
+            <span class="dateline text-rule">·</span>
+            <span
+              class="dateline"
+              :class="projects[0].status === '已完成' ? 'text-accent-gold' : 'text-accent-blue'"
+            >{{ projects[0].status }}</span>
+          </div>
+          <h2 class="mb-3" style="font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif; font-size: 1.75rem; font-weight: 700; line-height: 1.2;">
+            {{ projects[0].name }}
+          </h2>
+          <p class="text-ink leading-relaxed mb-4">{{ projects[0].description }}</p>
 
-            <!-- Project Description -->
-            <div class="flex-1 mb-4">
-              <p class="text-body text-gray-600 leading-relaxed">
-                {{ project.description || '專案描述待補充' }}
-              </p>
-            </div>
+          <!-- Highlights -->
+          <ul v-if="projects[0].highlights?.length" class="space-y-1 mb-4">
+            <li
+              v-for="h in projects[0].highlights"
+              :key="h"
+              class="flex items-start gap-2 text-sm text-ink-secondary"
+            >
+              <span class="text-accent-red mt-0.5 flex-shrink-0">▸</span>
+              {{ h }}
+            </li>
+          </ul>
 
-            <!-- Fixed Bottom Section -->
-            <div class="mt-auto space-y-3">
-              <!-- Tech Stack -->
-              <div>
-                <h4 class="text-label-title text-gray-800 mb-1">
-                  {{ PROJECT_CONSTANTS.labels.techStack }}
-                </h4>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    v-for="tech in project.techStack || []"
-                    :key="tech"
-                    class="tech-stack-tag text-tag px-2 py-1 bg-white rounded font-mono text-gray-700 border border-gray-300"
-                  >
-                    {{ tech }}
-                  </span>
-                </div>
-              </div>
+          <!-- Action buttons -->
+          <div class="flex flex-wrap gap-2 mt-4">
+            <a
+              v-if="projects[0].demoUrl"
+              :href="projects[0].demoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper text-sm font-medium hover:bg-accent-red transition-colors"
+            >
+              <Icon icon="heroicons:play" class="w-3.5 h-3.5" />
+              查看 Demo
+            </a>
+            <a
+              v-if="projects[0].githubUrl"
+              :href="projects[0].githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 border border-ink text-ink text-sm font-medium hover:bg-paper-dark transition-colors"
+            >
+              <Icon icon="heroicons:code-bracket" class="w-3.5 h-3.5" />
+              GitHub
+            </a>
+          </div>
+        </div>
 
-              <!-- Metrics -->
-              <div class="bg-white rounded-lg p-2 border border-gray-200">
-                <h4 class="text-label-title text-gray-800 mb-1 flex items-center gap-1">
-                  <Icon icon="heroicons:chart-bar" class="w-3 h-3" />
-                  {{ PROJECT_CONSTANTS.labels.metrics }}
-                </h4>
-                <div class="grid grid-cols-2 gap-2 text-caption">
-                  <div v-for="(value, key) in project.metrics || {}" :key="key">
-                    <div class="text-caption text-gray-500">{{ getMetricLabel(key) }}</div>
-                    <div class="text-caption font-semibold" :style="{ color: getMetricColor(key) }">
-                      {{ value }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="button-group gap-2">
-                <a
-                  v-if="project.demoUrl"
-                  :href="project.demoUrl"
-                  target="_blank"
-                  class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 text-white"
-                  :style="getProjectButtonStyle(index)"
-                >
-                  <Icon icon="heroicons:play" class="w-3 h-3" />
-                  {{ PROJECT_CONSTANTS.labels.demo }}
-                </a>
-                <a
-                  v-if="project.githubUrl"
-                  :href="project.githubUrl"
-                  target="_blank"
-                  class="text-button flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
-                  :style="getGithubButtonStyle(index)"
-                >
-                  <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
-                  {{ PROJECT_CONSTANTS.labels.github }}
-                </a>
+        <!-- Side: metrics + tech -->
+        <div class="md:col-span-1 md:pl-6 mt-4 md:mt-0 space-y-4">
+          <!-- Metrics -->
+          <div v-if="projects[0].metrics && Object.keys(projects[0].metrics).length">
+            <div class="section-label mb-2">專案指標</div>
+            <div class="newspaper-rule-thin mb-3"></div>
+            <div class="space-y-1.5">
+              <div
+                v-for="(value, key) in projects[0].metrics"
+                :key="key"
+                class="flex justify-between text-sm border-b border-rule-light pb-1 last:border-0"
+              >
+                <span class="text-ink-secondary">{{ getMetricLabel(key) }}</span>
+                <span class="text-accent-red font-bold font-mono">{{ value }}</span>
               </div>
             </div>
           </div>
+
+          <!-- Tech stack -->
+          <div>
+            <div class="section-label mb-2">技術棧</div>
+            <div class="newspaper-rule-thin mb-3"></div>
+            <div class="flex flex-wrap gap-1">
+              <span
+                v-for="tech in projects[0].techStack"
+                :key="tech"
+                class="text-xs px-1.5 py-0.5 border border-rule-light text-ink-muted font-mono"
+              >{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary projects -->
+    <div v-if="projects.length > 1" class="grid grid-cols-1 md:grid-cols-2 gap-0">
+      <div
+        v-for="(project, index) in projects.slice(1)"
+        :key="project.id"
+        class="p-4 border-b border-rule-light"
+        :class="index === 0 ? 'md:border-r md:border-rule-light' : ''"
+      >
+        <div class="flex items-center gap-2 mb-1">
+          <span class="dateline">{{ project.type }}</span>
+          <span class="dateline text-rule">·</span>
+          <span
+            class="dateline"
+            :class="project.status === '已完成' ? 'text-accent-gold' : 'text-accent-blue'"
+          >{{ project.status }}</span>
+        </div>
+        <h3 class="mb-2" style="font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif; font-size: 1.1rem; font-weight: 700;">
+          {{ project.name }}
+        </h3>
+        <p class="text-sm text-ink-secondary leading-relaxed mb-3">{{ project.description }}</p>
+
+        <!-- Tech stack -->
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span
+            v-for="tech in project.techStack.slice(0, 5)"
+            :key="tech"
+            class="text-xs px-1.5 py-0.5 border border-rule-light text-ink-muted font-mono"
+          >{{ tech }}</span>
+          <span v-if="project.techStack.length > 5" class="text-xs text-ink-muted px-1">+{{ project.techStack.length - 5 }}</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex gap-2">
+          <a
+            v-if="project.demoUrl"
+            :href="project.demoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs px-3 py-1.5 bg-ink text-paper font-medium hover:bg-accent-red transition-colors inline-flex items-center gap-1"
+          >
+            <Icon icon="heroicons:play" class="w-3 h-3" />
+            Demo
+          </a>
+          <a
+            v-if="project.githubUrl"
+            :href="project.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs px-3 py-1.5 border border-ink text-ink font-medium hover:bg-paper-dark transition-colors inline-flex items-center gap-1"
+          >
+            <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
+            GitHub
+          </a>
         </div>
       </div>
     </div>
@@ -114,147 +153,8 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import Tab from '../Tab.vue';
 import { projects, PROJECT_CONSTANTS } from '../../store/data/projects';
 
-// 定義 emits
-const emit = defineEmits<{
-  tabClose: [];
-}>();
-
-// 簡潔的文件定義
-const projectsFile = {
-  icon: 'heroicons:rocket-launch',
-  displayName: '專案作品',
-};
-
-const handleTabClose = () => {
-  emit('tabClose');
-};
-
-// 統一的顏色系統 - 消除重複代碼
-const getProjectColor = (index: number): string => {
-  const colors = [PROJECT_CONSTANTS.colors.primary, PROJECT_CONSTANTS.colors.accent];
-  return colors[index % colors.length];
-};
-
-// 動態樣式生成器
-const getProjectBorderStyle = (index: number) => ({
-  borderColor: getProjectColor(index),
-});
-
-const getProjectIconStyle = (index: number) => ({
-  backgroundColor: getProjectColor(index),
-});
-
-const getProjectButtonStyle = (index: number) => ({
-  backgroundColor: getProjectColor(index),
-});
-
-const getGithubButtonStyle = (index: number) => ({
-  borderColor: getProjectColor(index),
-  color: getProjectColor(index),
-});
-
-// 使用常數而非硬編碼
-const getMetricLabel = (key: string) => {
-  return PROJECT_CONSTANTS.metricLabels[key as keyof typeof PROJECT_CONSTANTS.metricLabels] || key;
-};
-
-const getMetricColor = (key: string) => {
-  const colorMap: Record<string, string> = {
-    lighthouse: PROJECT_CONSTANTS.colors.accent,
-    performance: PROJECT_CONSTANTS.colors.primary,
-    loading: PROJECT_CONSTANTS.colors.accent,
-    users: PROJECT_CONSTANTS.colors.primary,
-    uptime: PROJECT_CONSTANTS.colors.accent,
-    apiResponse: PROJECT_CONSTANTS.colors.primary,
-  };
-  return colorMap[key] || PROJECT_CONSTANTS.colors.primary;
-};
-
-const getStatusIcon = (status: string | null) => {
-  const statusMap: Record<string, string> = {
-    '已完成': 'heroicons:star-solid',
-    '開發中': 'heroicons:fire-solid',
-  };
-  return statusMap[status || ''] || 'heroicons:question-mark-circle';
-};
-
-const getStatusIconColor = (status: string | null) => {
-  const colorMap: Record<string, string> = {
-    '已完成': 'text-accent',
-    '開發中': 'text-orange-500',
-  };
-  return colorMap[status || ''] || 'text-gray-400';
-};
-
-const getProjectIcon = (iconName: string) => {
-  const iconMap: Record<string, string> = {
-    'i-ph-graduation-cap': 'heroicons:academic-cap',
-    'i-ph-user-circle': 'heroicons:user-circle',
-    'i-ph-chat-circle': 'heroicons:chat-bubble-left-right',
-  };
-  return iconMap[iconName] || 'heroicons:document-text';
-};
+const getMetricLabel = (key: string) =>
+  PROJECT_CONSTANTS.metricLabels[key as keyof typeof PROJECT_CONSTANTS.metricLabels] || key;
 </script>
-
-<style scoped>
-/* Remove background since it's handled by parent */
-.projects-section {
-  background: transparent;
-}
-
-/* 主網格已改用 Tailwind: grid-cols-1 md:grid-cols-3 */
-
-/* Container Queries for individual Project Cards */
-.project-card {
-  container-type: inline-size;
-}
-
-/* 卡片內部響應式布局 - 當卡片寬度較小時 */
-@container (max-width: 280px) {
-  .project-card {
-    /* 調整 padding 讓內容更緊湊 */
-    padding: 0.75rem;
-  }
-
-  /* Header 區塊垂直堆疊 */
-  .project-card .flex.items-start.justify-between {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  /* 專案標題字體稍小 */
-  .project-card h3 {
-    font-size: 1rem;
-    line-height: 1.25;
-  }
-
-  /* Metrics 改為單欄 */
-  .project-card .grid-cols-2 {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-
-  /* Tech Stack 標籤更小 */
-  .project-card .tech-stack-tag {
-    font-size: 0.625rem;
-    padding: 0.125rem 0.375rem;
-  }
-}
-
-/* Button layout inside each project card */
-.button-group {
-  display: flex;
-  flex-direction: column;
-}
-
-/* When individual project card is wide enough (≥320px), buttons go horizontal */
-@container (min-width: 320px) {
-  .button-group {
-    flex-direction: row;
-  }
-}
-</style>

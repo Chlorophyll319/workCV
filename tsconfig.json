@@ -1,7 +1,4 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  // Nuxt 會在執行 nuxt dev / nuxt prepare 後自動產生 .nuxt/tsconfig.json
+  "extends": "./.nuxt/tsconfig.json"
 }

@@ -18,11 +18,11 @@ jobs:
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
         uses: actions/checkout@v3
-      # 步驟二：編譯
+      # 步驟二：編譯（靜態生成，供 GitHub Pages 使用）
       - name: Install and Build
         run: |
           npm install
-          npm run build
+          npm run generate
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
       # 步驟三：部署
@@ -30,4 +30,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: .output/public

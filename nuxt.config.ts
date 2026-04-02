@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 
   // 全局 <head> 預設值
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/workCV/' : '/',
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',

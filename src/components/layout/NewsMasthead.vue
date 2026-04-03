@@ -15,7 +15,7 @@
             <span class="text-xl md:text-2xl font-normal text-ink-secondary">Evelyn</span>
           </h1>
           <div class="mt-1 flex items-center gap-2 flex-wrap">
-            <span class="byline">前端工程師 · Frontend Engineer</span>
+            <span class="byline">全端工程師 · Full-Stack Engineer</span>
             <span class="byline text-rule">|</span>
             <span class="byline text-accent-gold font-semibold">積極求職中</span>
           </div>

@@ -3,7 +3,7 @@
     <!-- Kicker + Date -->
     <div class="flex items-center justify-between mb-2">
       <span class="kicker">Breaking News · 最新資訊</span>
-      <span class="dateline">積極求職中 · 即刻可上班</span>
+      <span class="dateline">積極求職中</span>
     </div>
 
     <!-- Headline -->
@@ -13,7 +13,7 @@
       Evelyn
     </h1>
     <div class="text-ink-secondary text-lg md:text-xl font-light mb-4 tracking-wide">
-      前端工程師 · Frontend Engineer
+      全端工程師 · Full-Stack Engineer
     </div>
 
     <!-- Rule -->

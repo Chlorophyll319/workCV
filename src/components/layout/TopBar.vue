@@ -5,7 +5,7 @@
         <Icon icon="heroicons:user" class="w-4 h-4 text-primary-50" />
       </div>
       <div class="text-xs text-primary-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] md:max-w-none">
-        <span class="hidden sm:inline">葉芃 (Evelyn) - Frontend Engineer Resume</span>
+        <span class="hidden sm:inline">葉芃 (Evelyn) - Full-Stack Engineer Resume</span>
         <span class="sm:hidden">Evelyn Resume</span>
       </div>
     </div>

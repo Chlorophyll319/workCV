@@ -50,23 +50,23 @@ onMounted(() => {
 definePageMeta({ layout: 'default' });
 
 const siteUrl = 'https://chlorophyll319.github.io/workCV/';
-const description = '從設計思維到功能實現，擅長與 AI 協作的前端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。';
+const description = '從設計思維到功能實現，擅長與 AI 協作的全端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。';
 
 useSeoMeta({
-  title: '葉芃 (Evelyn) | 前端工程師',
+  title: '葉芃 (Evelyn) | 全端工程師',
   description,
-  ogTitle: '葉芃 (Evelyn) | 前端工程師',
+  ogTitle: '葉芃 (Evelyn) | 全端工程師',
   ogDescription: description,
   ogType: 'website',
   ogUrl: siteUrl,
   ogSiteName: 'Evenly 個人履歷',
   ogLocale: 'zh_TW',
   twitterCard: 'summary_large_image',
-  twitterTitle: '葉芃 (Evelyn) | 前端工程師',
+  twitterTitle: '葉芃 (Evelyn) | 全端工程師',
   twitterDescription: description,
   robots: 'index, follow',
   author: '葉芃 (Evelyn)',
-  keywords: '前端工程師, Vue 3, Node.js, TypeScript, AI協作, 葉芃, Evelyn',
+  keywords: '全端工程師, Vue 3, Node.js, TypeScript, AI協作, 葉芃, Evelyn',
   themeColor: '#C0392B',
 });
 
@@ -82,7 +82,7 @@ useHead({
         '@type': 'Person',
         name: '葉芃',
         alternateName: 'Evelyn',
-        jobTitle: '前端工程師',
+        jobTitle: '全端工程師',
         url: siteUrl,
         sameAs: [
           'https://github.com/Chlorophyll319',

@@ -21,13 +21,8 @@
 
     <!-- Two-column layout -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-      <!-- Main column (2/3): tagline + description + links -->
+      <!-- Main column (2/3): description + links -->
       <div class="lg:col-span-2 lg:pr-8 lg:border-r lg:border-rule-light">
-        <!-- Pull quote (tagline) -->
-        <blockquote class="pull-quote mb-6">
-          「{{ profile.tagline }}」
-        </blockquote>
-
         <!-- Description -->
         <p class="text-ink leading-relaxed mb-6 drop-cap">
           {{ profile.description }}
@@ -78,18 +73,7 @@
           </li>
         </ul>
 
-        <!-- Tech tags -->
-        <div class="mt-6">
-          <div class="section-label mb-3">技術棧</div>
-          <div class="newspaper-rule-thin mb-4"></div>
-          <div class="flex flex-wrap gap-1.5">
-            <span
-              v-for="tech in ['Vue 3', 'TypeScript', 'Node.js', 'MongoDB', 'Nuxt', 'AI協作']"
-              :key="tech"
-              class="text-xs px-2 py-1 border border-rule-light text-ink-secondary font-mono hover:border-accent-blue hover:text-accent-blue transition-colors"
-            >{{ tech }}</span>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>

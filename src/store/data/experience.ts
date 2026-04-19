@@ -114,9 +114,9 @@ export const formatExperienceDate = (startDate: string, endDate?: string): strin
 
 export const calculateDuration = (startDate: string, endDate?: string): string => {
   // 簡單解析 YYYY/M 格式
-  const parseDate = (dateStr: string) => {
-    const [year, month] = dateStr.split('/').map(Number)
-    return { year, month }
+  const parseDate = (dateStr: string): { year: number; month: number } => {
+    const parts = dateStr.split('/').map(Number)
+    return { year: parts[0] ?? 0, month: parts[1] ?? 0 }
   }
 
   const start = parseDate(startDate)

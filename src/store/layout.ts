@@ -19,8 +19,8 @@ export const LAYOUT_CONSTANTS = {
 
 export const SECTIONS = [
   { id: 'hero', name: '個人簡介', icon: 'heroicons:user', color: THEME_COLORS.PRIMARY },
-  { id: 'about', name: '關於我', icon: 'heroicons:information-circle', color: THEME_COLORS.PRIMARY_700 },
   { id: 'projects', name: '專案作品', icon: 'heroicons:folder', color: THEME_COLORS.ACCENT_700 },
   { id: 'skills', name: '技能專長', icon: 'heroicons:cog-6-tooth', color: THEME_COLORS.ACCENT },
-  { id: 'footer', name: '我的經歷', icon: 'heroicons:document-text', color: THEME_COLORS.PRIMARY },
+  { id: 'about', name: '關於我', icon: 'heroicons:information-circle', color: THEME_COLORS.PRIMARY_700 },
+  { id: 'experience', name: '我的經歷', icon: 'heroicons:document-text', color: THEME_COLORS.PRIMARY },
 ] as const

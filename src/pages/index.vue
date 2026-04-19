@@ -27,8 +27,8 @@
 
 <script setup lang="ts">
 import { defineAsyncComponent, ref, onMounted } from 'vue';
-import { useLazyLoad } from '../composables/useLazyLoad';
-import HeroSection from '../components/sections/HeroSection.vue';
+import { useLazyLoad } from '@/composables/useLazyLoad';
+import HeroSection from '@/components/sections/HeroSection.vue';
 
 const ProjectsSection = defineAsyncComponent(() => import('../components/sections/ProjectsSection.vue'));
 const SkillsSection = defineAsyncComponent(() => import('../components/sections/SkillsSection.vue'));

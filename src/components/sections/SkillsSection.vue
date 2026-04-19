@@ -49,5 +49,5 @@
 </template>
 
 <script setup lang="ts">
-import { skillCategories } from '../../store/data/skills';
+import { skillCategories } from '@/store/data/skills';
 </script>

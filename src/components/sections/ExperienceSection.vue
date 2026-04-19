@@ -55,5 +55,5 @@ import {
   experienceData,
   formatExperienceDate,
   calculateDuration,
-} from '../../store/data/experience';
+} from '@/store/data/experience';
 </script>

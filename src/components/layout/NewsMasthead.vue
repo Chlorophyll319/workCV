@@ -9,7 +9,15 @@
         <!-- Left: Publication identity -->
         <div class="flex-1 min-w-0">
           <div class="kicker mb-1">Personal CV</div>
-          <div style="font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif; font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 700; letter-spacing: 0.02em; line-height: 1;">
+          <div
+            style="
+              font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
+              font-size: clamp(1.25rem, 3vw, 1.75rem);
+              font-weight: 700;
+              letter-spacing: 0.02em;
+              line-height: 1;
+            "
+          >
             個人履歷
           </div>
         </div>

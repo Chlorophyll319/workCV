@@ -29,13 +29,9 @@
 </template>
 
 <script setup lang="ts">
-const navItems = [
-  { id: 'hero', label: '個人簡介' },
-  { id: 'projects', label: '專案作品' },
-  { id: 'skills', label: '技能專長' },
-  { id: 'about', label: '關於我' },
-  { id: 'experience', label: '我的經歷' },
-];
+import { SECTIONS } from '@/store/layout';
+
+const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name }));
 
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);

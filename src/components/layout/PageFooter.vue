@@ -38,5 +38,5 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { profile } from '../../store/data/profile';
+import { profile } from '@/store/data/profile';
 </script>

@@ -153,7 +153,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { projects, PROJECT_CONSTANTS } from '../../store/data/projects';
+import { projects, PROJECT_CONSTANTS } from '@/store/data/projects';
 
 const getMetricLabel = (key: string) =>
   PROJECT_CONSTANTS.metricLabels[key as keyof typeof PROJECT_CONSTANTS.metricLabels] || key;

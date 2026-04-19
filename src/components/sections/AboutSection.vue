@@ -76,5 +76,5 @@
 </template>
 
 <script setup lang="ts">
-import { profile } from '../../store/data/profile';
+import { profile } from '@/store/data/profile';
 </script>

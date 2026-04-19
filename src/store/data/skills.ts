@@ -2,7 +2,7 @@ export interface Skill {
   name: string
   description: string
   level: 'intermediate' | 'advanced'
-  category: 'languages' | 'frontend' | 'backend' | 'tools' | 'ai'
+  category: 'languages' | 'frontend' | 'backend' | 'tools'
   icon: string
 }
 
@@ -135,36 +135,6 @@ export const skills: Skill[] = [
     level: 'intermediate',
     category: 'tools'
   },
-
-  // AI 協作
-  {
-    name: 'ChatGPT',
-    icon: 'simple-icons:openai',
-    description: '需求拆解、功能設計、錯誤診斷',
-    level: 'advanced',
-    category: 'ai'
-  },
-  {
-    name: 'Claude Code',
-    icon: 'simple-icons:anthropic',
-    description: '程式碼重構、架構規劃、除錯協助',
-    level: 'advanced',
-    category: 'ai'
-  },
-  {
-    name: 'GitHub Copilot',
-    icon: 'simple-icons:githubcopilot',
-    description: '程式碼補全、函式建議、開發加速',
-    level: 'intermediate',
-    category: 'ai'
-  },
-  {
-    name: 'Gemini CLI',
-    icon: 'simple-icons:googlegemini',
-    description: '命令列協作、技術諮詢、輔助開發',
-    level: 'intermediate',
-    category: 'ai'
-  }
 ]
 
 // Linus 風格：自動顏色分配，消除特殊情況
@@ -191,11 +161,6 @@ const SKILL_CATEGORIES_BASE = [
     title: 'Tools & Platforms',
     icon: 'heroicons:wrench-screwdriver'
   },
-  {
-    id: 'ai' as const,
-    title: 'AI 協作',
-    icon: 'heroicons:cpu-chip'
-  }
 ] as const
 
 // 統一的技能類別數據結構 - 消除顏色分配特殊情況

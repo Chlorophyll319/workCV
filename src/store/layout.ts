@@ -1,3 +1,18 @@
+export const MASTHEAD = {
+  kicker: 'Personal CV',
+  title: '個人履歷',
+  tagline: '從設計思維到功能實現',
+} as const;
+
+export const currentDate = computed(() => {
+  const now = new Date();
+  return now.toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+});
+
 export const SECTIONS = [
   { id: 'hero', name: '個人簡介', icon: 'heroicons:user' },
   { id: 'projects', name: '專案作品', icon: 'heroicons:folder' },

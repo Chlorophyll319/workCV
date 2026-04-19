@@ -8,7 +8,7 @@
       <div class="flex items-end justify-between gap-4 flex-wrap">
         <!-- Left: Publication identity -->
         <div class="flex-1 min-w-0">
-          <div class="kicker mb-1">Personal CV</div>
+          <div class="kicker mb-1">{{ MASTHEAD.kicker }}</div>
           <div
             style="
               font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
@@ -18,7 +18,7 @@
               line-height: 1;
             "
           >
-            個人履歷
+            {{ MASTHEAD.title }}
           </div>
         </div>
 
@@ -26,7 +26,7 @@
         <div class="text-right flex-shrink-0 hidden sm:block">
           <div class="dateline">{{ currentDate }}</div>
           <div class="mt-1 text-xs text-ink-muted max-w-[200px] leading-snug italic">
-            從設計思維到功能實現
+            {{ MASTHEAD.tagline }}
           </div>
         </div>
       </div>
@@ -38,12 +38,5 @@
 </template>
 
 <script setup lang="ts">
-const currentDate = computed(() => {
-  const now = new Date();
-  return now.toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-});
+import { currentDate, MASTHEAD } from '@/store/layout';
 </script>

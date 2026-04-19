@@ -8,7 +8,7 @@
           :key="item.id"
           @click="scrollToSection(item.id)"
           :class="[
-            'section-label py-2.5 px-4 border-r border-rule-light transition-colors cursor-pointer last:border-r-0 relative',
+            'section-label flex-1 text-center py-2.5 px-4 border-r border-rule-light transition-colors cursor-pointer last:border-r-0 relative',
             activeId === item.id
               ? 'text-ink border-b-2 border-b-accent-blue'
               : 'hover:bg-paper hover:text-ink-secondary'

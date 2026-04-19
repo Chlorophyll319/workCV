@@ -18,8 +18,10 @@
       <AboutSection v-if="aboutVisible" />
     </div>
 
-    <!-- Footer Section (Experience + Contact) -->
-    <FooterSection />
+    <!-- Experience Section -->
+    <div>
+      <ExperienceSection v-if="experienceVisible" />
+    </div>
   </div>
 </template>
 
@@ -27,24 +29,26 @@
 import { defineAsyncComponent, ref, onMounted } from 'vue';
 import { useLazyLoad } from '../composables/useLazyLoad';
 import HeroSection from '../components/sections/HeroSection.vue';
-import FooterSection from '../components/sections/FooterSection.vue';
 
-const AboutSection = defineAsyncComponent(() => import('../components/sections/AboutSection.vue'));
 const ProjectsSection = defineAsyncComponent(() => import('../components/sections/ProjectsSection.vue'));
 const SkillsSection = defineAsyncComponent(() => import('../components/sections/SkillsSection.vue'));
+const AboutSection = defineAsyncComponent(() => import('../components/sections/AboutSection.vue'));
+const ExperienceSection = defineAsyncComponent(() => import('../components/sections/ExperienceSection.vue'));
 
-const aboutVisible = ref(false);
 const projectsVisible = ref(false);
 const skillsVisible = ref(false);
+const aboutVisible = ref(false);
+const experienceVisible = ref(false);
 
-const { target: aboutTarget } = useLazyLoad(0.1);
 const { target: projectsTarget } = useLazyLoad(0.1);
 const { target: skillsTarget } = useLazyLoad(0.1);
+const { target: aboutTarget } = useLazyLoad(0.1);
 
 onMounted(() => {
-  setTimeout(() => { aboutVisible.value = true; }, 800);
-  setTimeout(() => { projectsVisible.value = true; }, 1500);
-  setTimeout(() => { skillsVisible.value = true; }, 2500);
+  setTimeout(() => { projectsVisible.value = true; }, 800);
+  setTimeout(() => { skillsVisible.value = true; }, 1500);
+  setTimeout(() => { aboutVisible.value = true; }, 2200);
+  setTimeout(() => { experienceVisible.value = true; }, 2900);
 });
 
 definePageMeta({ layout: 'default' });

@@ -1,7 +1,7 @@
 <template>
-  <footer id="experience" class="w-full mt-8 pb-8">
-    <!-- Section label -->
-    <div class="mb-3">
+  <section id="experience" class="w-full py-8">
+    <!-- Section header -->
+    <div class="flex items-center gap-4 mb-2">
       <span class="kicker">Experience · 我的經歷</span>
     </div>
     <div class="newspaper-rule mb-4"></div>
@@ -47,37 +47,12 @@
         </div>
       </div>
     </div>
-
-    <!-- Contact row -->
-    <div class="newspaper-rule-thin mt-6 mb-4"></div>
-    <div class="flex flex-wrap items-center gap-4 justify-between">
-      <div class="flex flex-wrap gap-4">
-        <a :href="contactInfo.github" target="_blank" rel="noopener noreferrer"
-           class="byline hover:text-accent-blue transition-colors flex items-center gap-1">
-          <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
-          GitHub
-        </a>
-        <a :href="`mailto:${contactInfo.email}`"
-           class="byline hover:text-accent-blue transition-colors flex items-center gap-1">
-          <Icon icon="heroicons:envelope" class="w-3 h-3" />
-          {{ contactInfo.email }}
-        </a>
-        <a :href="contactInfo.linkedin" target="_blank" rel="noopener noreferrer"
-           class="byline hover:text-accent-blue transition-colors flex items-center gap-1">
-          <Icon icon="heroicons:user" class="w-3 h-3" />
-          LinkedIn
-        </a>
-      </div>
-      <div class="dateline">{{ contactInfo.phone }}</div>
-    </div>
-  </footer>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import {
   experienceData,
-  contactInfo,
   formatExperienceDate,
   calculateDuration,
 } from '../../store/data/experience';

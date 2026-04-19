@@ -34,3 +34,4 @@ typed-router.d.ts
 
 # Claude Code files
 .claude
+.mcp.json

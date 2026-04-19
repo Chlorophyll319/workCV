@@ -18,51 +18,51 @@ export interface SkillCategory {
 export const skills: Skill[] = [
   // Frontend
   {
-    name: 'Vue 3',
-    icon: 'logos:vue',
-    description: 'Composition API、Vue Router、Pinia 狀態管理',
+    name: 'TypeScript',
+    icon: 'logos:typescript-icon',
+    description: '型別安全開發、介面定義、嚴格模式',
     level: 'intermediate',
     category: 'frontend'
   },
   {
-    name: 'HTML5 / CSS3',
-    icon: 'logos:html-5',
-    description: '語意化標籤、RWD 響應式設計',
-    level: 'intermediate',
-    category: 'frontend'
-  },
-  {
-    name: 'JavaScript (ES6+)',
+    name: 'JavaScript',
     icon: 'logos:javascript',
-    description: '現代語法、DOM 操作、非同步處理',
+    description: 'ES6+ 現代語法、非同步處理、DOM 操作',
     level: 'intermediate',
     category: 'frontend'
   },
   {
-    name: 'Tailwind CSS',
+    name: 'Vue 3 / Nuxt 3',
+    icon: 'logos:nuxt-icon',
+    description: 'Composition API、Pinia、SPA/SSG 部署',
+    level: 'intermediate',
+    category: 'frontend'
+  },
+  {
+    name: 'React / Next.js',
+    icon: 'logos:nextjs-icon',
+    description: 'React 19、Next.js 16、App Router、TanStack Query',
+    level: 'intermediate',
+    category: 'frontend'
+  },
+  {
+    name: 'Tailwind CSS v4',
     icon: 'logos:tailwindcss-icon',
-    description: 'daisyUI、PrimeVue、Utility-first 設計',
+    description: 'shadcn/ui、daisyUI、Nuxt UI、響應式設計',
     level: 'intermediate',
     category: 'frontend'
   },
   {
-    name: 'jQuery',
-    icon: 'logos:jquery',
-    description: 'DOM 操作、事件處理、動畫效果',
+    name: 'Pinia / Zustand',
+    icon: 'heroicons:circle-stack',
+    description: '跨框架狀態管理、持久化儲存',
     level: 'intermediate',
     category: 'frontend'
   },
   {
-    name: 'Markdown-it',
-    icon: 'logos:markdown',
-    description: 'Markdown 語法解析、文章內容管理',
-    level: 'intermediate',
-    category: 'frontend'
-  },
-  {
-    name: 'Mermaid.js',
-    icon: 'simple-icons:mermaid',
-    description: '圖表渲染、流程圖與架構圖表展示',
+    name: 'PWA',
+    icon: 'simple-icons:pwa',
+    description: 'Service Worker、離線支援、Web App Manifest',
     level: 'intermediate',
     category: 'frontend'
   },
@@ -71,51 +71,51 @@ export const skills: Skill[] = [
   {
     name: 'Node.js',
     icon: 'logos:nodejs-icon',
-    description: 'Express 框架、MVC 架構設計',
+    description: 'Express v5、MVC 架構、RESTful API 設計',
     level: 'intermediate',
     category: 'backend'
   },
   {
-    name: 'RESTful API',
-    icon: 'simple-icons:swagger',
-    description: 'API 設計與串接、Postman 測試',
+    name: 'Express.js',
+    icon: 'simple-icons:express',
+    description: '中介層設計、路由管理、API 代理層',
+    level: 'intermediate',
+    category: 'backend'
+  },
+  {
+    name: 'MongoDB / Mongoose',
+    icon: 'logos:mongodb-icon',
+    description: 'NoSQL 資料庫、ODM、ERD 設計',
     level: 'intermediate',
     category: 'backend'
   },
   {
     name: 'JWT + Passport.js',
     icon: 'simple-icons:jsonwebtokens',
-    description: '使用者登入驗證、權限控管',
-    level: 'intermediate',
-    category: 'backend'
-  },
-  {
-    name: 'MongoDB',
-    icon: 'logos:mongodb-icon',
-    description: 'NoSQL 文檔資料庫、Mongoose ODM',
-    level: 'intermediate',
-    category: 'backend'
-  },
-  {
-    name: 'CRUD 操作',
-    icon: 'heroicons:server-stack',
-    description: '資料庫增刪改查、RESTful 端點設計',
+    description: '身份驗證、權限控管、OTP 流程',
     level: 'intermediate',
     category: 'backend'
   },
 
   // Tools
-    {
-    name: 'Vite',
-    icon: 'logos:vitejs',
-    description: '快速構建工具、打包優化',
+  {
+    name: 'Git / GitHub Actions',
+    icon: 'logos:git-icon',
+    description: '版本控制、CI/CD、自動部署 GitHub Pages',
     level: 'intermediate',
     category: 'tools'
   },
   {
-    name: 'Git / GitHub',
-    icon: 'logos:git-icon',
-    description: '版本控制、GitHub Pages 部署',
+    name: 'Vite',
+    icon: 'logos:vitejs',
+    description: '快速構建、打包優化、插件生態',
+    level: 'intermediate',
+    category: 'tools'
+  },
+  {
+    name: 'Storybook',
+    icon: 'logos:storybook-icon',
+    description: '元件開發文件化、視覺化測試',
     level: 'intermediate',
     category: 'tools'
   },
@@ -123,20 +123,6 @@ export const skills: Skill[] = [
     name: 'Render',
     icon: 'simple-icons:render',
     description: '後端服務部署、環境管理',
-    level: 'intermediate',
-    category: 'tools'
-  },
-  {
-    name: 'Postman',
-    icon: 'logos:postman-icon',
-    description: 'API 測試、請求驗證、除錯工具',
-    level: 'intermediate',
-    category: 'tools'
-  },
-  {
-    name: 'ESLint / Prettier',
-    icon: 'logos:eslint',
-    description: '程式碼風格檢查、自動格式化',
     level: 'intermediate',
     category: 'tools'
   },

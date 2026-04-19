@@ -2,7 +2,7 @@ export interface Skill {
   name: string
   description: string
   level: 'intermediate' | 'advanced'
-  category: 'frontend' | 'backend' | 'tools' | 'ai'
+  category: 'languages' | 'frontend' | 'backend' | 'tools' | 'ai'
   icon: string
 }
 
@@ -16,21 +16,30 @@ export interface SkillCategory {
 }
 
 export const skills: Skill[] = [
-  // Frontend
+  // Languages
   {
     name: 'TypeScript',
     icon: 'logos:typescript-icon',
     description: '型別安全開發、介面定義、嚴格模式',
     level: 'intermediate',
-    category: 'frontend'
+    category: 'languages'
   },
   {
     name: 'JavaScript',
     icon: 'logos:javascript',
     description: 'ES6+ 現代語法、非同步處理、DOM 操作',
     level: 'intermediate',
-    category: 'frontend'
+    category: 'languages'
   },
+  {
+    name: 'HTML5 / CSS3',
+    icon: 'logos:html-5',
+    description: '語意化標籤、RWD 響應式設計',
+    level: 'intermediate',
+    category: 'languages'
+  },
+
+  // Frontend
   {
     name: 'Vue 3 / Nuxt 3',
     icon: 'logos:nuxt-icon',
@@ -163,6 +172,11 @@ const SKILL_COLORS = ['primary', 'accent'] as const
 
 const SKILL_CATEGORIES_BASE = [
   {
+    id: 'languages' as const,
+    title: 'Languages',
+    icon: 'heroicons:code-bracket-square'
+  },
+  {
     id: 'frontend' as const,
     title: 'Frontend',
     icon: 'heroicons:code-bracket'
@@ -174,7 +188,7 @@ const SKILL_CATEGORIES_BASE = [
   },
   {
     id: 'tools' as const,
-    title: '開發工具',
+    title: 'Tools & Platforms',
     icon: 'heroicons:wrench-screwdriver'
   },
   {

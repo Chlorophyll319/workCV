@@ -41,7 +41,12 @@ export const profile = {
   },
 
   contact: {
-    phone:    { href: 'tel:0971-700-818',                                 label: '0971-700-818',         icon: 'heroicons:phone',        external: false },
+    phone: {
+      href: 'tel:0971-700-818',
+      label: '0971-700-818',
+      icon: 'heroicons:phone',
+      external: false,
+    },
     github: {
       href: 'https://github.com/Chlorophyll319',
       label: 'GitHub',

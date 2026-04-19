@@ -2,17 +2,12 @@
   <nav class="bg-paper-dark border-b border-rule-light sticky top-0 z-50 w-full">
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <!-- Desktop nav -->
-      <div class="hidden sm:flex items-center gap-0">
+      <div class="hidden sm:flex items-center">
         <button
           v-for="item in navItems"
           :key="item.id"
           @click="scrollToSection(item.id)"
-          :class="[
-            'section-label flex-1 text-center py-2.5 px-4 border-r border-rule-light transition-colors cursor-pointer last:border-r-0 relative',
-            activeId === item.id
-              ? 'text-ink border-b-2 border-b-accent-blue'
-              : 'hover:bg-paper hover:text-ink-secondary'
-          ]"
+          :class="btnClass(item.id, 'flex-1 text-center px-4')"
         >
           {{ item.label }}
         </button>
@@ -24,12 +19,7 @@
           v-for="item in navItems"
           :key="item.id"
           @click="scrollToSection(item.id)"
-          :class="[
-            'section-label py-2.5 px-3 flex-shrink-0 border-r border-rule-light transition-colors cursor-pointer last:border-r-0',
-            activeId === item.id
-              ? 'text-ink border-b-2 border-b-accent-blue'
-              : 'hover:text-ink-secondary'
-          ]"
+          :class="btnClass(item.id, 'flex-shrink-0 px-3')"
         >
           {{ item.label }}
         </button>
@@ -39,47 +29,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import { SECTIONS } from '@/store/layout'
 
 const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name }))
 const activeId = ref<string>(SECTIONS[0].id)
 
-let observer: IntersectionObserver | null = null
-let scrollTimer: ReturnType<typeof setTimeout> | null = null
+const btnClass = (id: string, extra: string) => [
+  'section-label py-2.5 border-r border-rule-light transition-colors cursor-pointer last:border-r-0',
+  extra,
+  activeId.value === id
+    ? 'text-ink border-b-2 border-b-accent-blue'
+    : 'hover:bg-paper hover:text-ink-secondary',
+]
+
+const updateActive = () => {
+  const anchor = window.scrollY + window.innerHeight * 0.25
+  let current: string = SECTIONS[0].id
+  for (const { id } of SECTIONS) {
+    const el = document.getElementById(id)
+    if (el && el.offsetTop <= anchor) current = id
+  }
+  activeId.value = current
+}
 
 onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      if (scrollTimer) return
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          activeId.value = entry.target.id
-        }
-      }
-    },
-    { rootMargin: '-20% 0px -75% 0px', threshold: 0 }
-  )
-
-  SECTIONS.forEach(({ id }) => {
-    const el = document.getElementById(id)
-    if (el) observer!.observe(el)
-  })
+  window.addEventListener('scroll', updateActive, { passive: true })
+  updateActive()
 })
 
 onUnmounted(() => {
-  observer?.disconnect()
-  if (scrollTimer) clearTimeout(scrollTimer)
+  window.removeEventListener('scroll', updateActive)
 })
 
 const scrollToSection = (id: string) => {
   activeId.value = id
-  if (scrollTimer) clearTimeout(scrollTimer)
-  scrollTimer = setTimeout(() => { scrollTimer = null }, 800)
-  const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 </script>
 

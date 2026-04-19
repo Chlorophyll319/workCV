@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full mt-8 pb-8">
+  <footer id="experience" class="w-full mt-8 pb-8">
     <!-- Section label -->
     <div class="mb-3">
       <span class="kicker">Experience · 我的經歷</span>

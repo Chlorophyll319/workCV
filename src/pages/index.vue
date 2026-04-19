@@ -3,11 +3,6 @@
     <!-- Hero Section - 立即載入 (LCP 關鍵) -->
     <HeroSection />
 
-    <!-- About Me Section - Lazy Load -->
-    <div ref="aboutTarget">
-      <AboutSection v-if="aboutVisible" />
-    </div>
-
     <!-- Projects Section - Lazy Load -->
     <div ref="projectsTarget">
       <ProjectsSection v-if="projectsVisible" />
@@ -18,7 +13,12 @@
       <SkillsSection v-if="skillsVisible" />
     </div>
 
-    <!-- Footer Section -->
+    <!-- About Me Section - Lazy Load -->
+    <div ref="aboutTarget">
+      <AboutSection v-if="aboutVisible" />
+    </div>
+
+    <!-- Footer Section (Experience + Contact) -->
     <FooterSection />
   </div>
 </template>

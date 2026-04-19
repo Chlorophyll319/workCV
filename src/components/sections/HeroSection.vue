@@ -2,7 +2,7 @@
   <section id="hero" class="w-full py-6">
     <!-- Kicker + Date -->
     <div class="flex items-center justify-between mb-2">
-      <span class="kicker">Breaking News · 最新資訊</span>
+      <span class="kicker">設計思維 × 工程執行力 · 非本科轉職全端</span>
       <span class="dateline">積極求職中</span>
     </div>
 
@@ -60,7 +60,7 @@
 
       <!-- Side column (1/3): highlights -->
       <div class="lg:col-span-1 lg:pl-8 mt-6 lg:mt-0">
-        <div class="section-label mb-3">核心優勢</div>
+        <div class="section-label mb-3">轉職亮點</div>
         <div class="newspaper-rule-thin mb-4"></div>
         <ul class="space-y-3">
           <li

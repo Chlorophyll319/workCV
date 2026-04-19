@@ -2,8 +2,8 @@
   <section id="hero" class="w-full py-6">
     <!-- Kicker + Date -->
     <div class="flex items-center justify-between mb-2">
-      <span class="kicker">設計思維 × 工程執行力 · 非本科轉職全端</span>
-      <span class="dateline">積極求職中</span>
+      <span class="kicker">{{ profile.kicker }}</span>
+      <span class="dateline">{{ profile.dateline }}</span>
     </div>
 
     <!-- Headline -->
@@ -15,12 +15,12 @@
         font-weight: 900;
       "
     >
-      <span class="text-accent-red">葉芃</span>
+      <span class="text-accent-red">{{ profile.name }}</span>
       <span class="text-ink-secondary mx-3 font-normal" style="font-size: 0.55em">×</span>
-      Evelyn
+      {{ profile.englishName }}
     </h1>
     <div class="text-ink-secondary text-lg md:text-xl font-light mb-4 tracking-wide">
-      全端工程師 · Full-Stack Engineer
+      {{ profile.title }} · {{ profile.subtitle }}
     </div>
 
     <!-- Rule -->
@@ -43,14 +43,14 @@
             class="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper text-sm font-medium hover:bg-accent-red transition-colors"
           >
             <Icon :icon="profile.contact.github.icon" class="w-4 h-4" />
-            查看 GitHub
+            {{ profile.contact.github.buttonLabel }}
           </a>
           <a
             :href="profile.contact.email.href"
             class="inline-flex items-center gap-2 px-4 py-2 border border-ink text-ink text-sm font-medium hover:bg-paper-dark transition-colors"
           >
             <Icon :icon="profile.contact.email.icon" class="w-4 h-4" />
-            聯絡合作
+            {{ profile.contact.email.buttonLabel }}
           </a>
           <a
             :href="profile.contact.linkedin.href"
@@ -58,14 +58,14 @@
             class="inline-flex items-center gap-2 px-4 py-2 border border-rule text-ink-secondary text-sm font-medium hover:bg-paper-dark transition-colors"
           >
             <Icon :icon="profile.contact.linkedin.icon" class="w-4 h-4" />
-            LinkedIn
+            {{ profile.contact.linkedin.buttonLabel }}
           </a>
         </div>
       </div>
 
       <!-- Side column (1/3): highlights -->
       <div class="lg:col-span-1 lg:pl-8 mt-6 lg:mt-0">
-        <div class="section-label mb-3">轉職亮點</div>
+        <div class="section-label mb-3">{{ profile.highlightsTitle }}</div>
         <div class="newspaper-rule-thin mb-4"></div>
         <ul class="space-y-3">
           <li

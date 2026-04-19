@@ -5,6 +5,8 @@ export const profile = {
   englishName: 'Evelyn',
   title: '全端工程師',
   subtitle: 'Full-Stack Engineer',
+  kicker: '設計思維 × 工程執行力 · 非本科轉職全端',
+  dateline: '積極求職中',
   tagline: TAGLINE,
   description:
     '從行銷設計背景轉職工程師，職訓局課程一個月內獨立完成全端個人專題。在 10 人 eSIM 新創擔任全端工程師期間，獨立負責主產品電商前台開發、主導 AI 客服技術評估、並開發內部 ERP 系統。具備從需求拆解、技術選型到系統設計的完整工程經驗，善用 AI 工具加速開發與問題排查。',
@@ -50,23 +52,27 @@ export const profile = {
     github: {
       href: 'https://github.com/Chlorophyll319',
       label: 'GitHub',
+      buttonLabel: '查看 GitHub',
       icon: 'heroicons:code-bracket',
       external: true,
     },
     email: {
       href: 'mailto:kcnfoggy54@gmail.com',
       label: 'kcnfoggy54@gmail.com',
+      buttonLabel: '聯絡合作',
       icon: 'heroicons:envelope',
       external: false,
     },
     linkedin: {
       href: 'https://www.linkedin.com/in/peng-yeh-4b35a2175/',
       label: 'LinkedIn',
+      buttonLabel: 'LinkedIn',
       icon: 'heroicons:user',
       external: true,
     },
   },
 
+  highlightsTitle: '轉職亮點',
   highlights: [
     '設計出身，懂得從使用者需求逆推技術實作',
     '職訓一個月獨立完成全端專題，快速上手陌生技術',

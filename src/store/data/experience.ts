@@ -147,15 +147,6 @@ export const experienceData: ExperienceItem[] = [
   },
 ];
 
-// 聯絡資料
-export const contactInfo = {
-  github: 'https://github.com/chlorophyll319',
-  email: 'kcnfoggy54@gmail.com',
-  location: '台北市',
-  remoteAvailable: true,
-  status: 'Ready to work',
-};
-
 // 簡單的工具函數 - 直接使用履歷格式，消除複雜轉換
 export const formatExperienceDate = (startDate: string, endDate?: string): string => {
   if (!endDate) return startDate;
@@ -184,66 +175,6 @@ export const calculateDuration = (startDate: string, endDate?: string): string =
 
   if (remainingMonths === 0) return `${years}yr`;
   return `${years}yr ${remainingMonths}mo`;
-};
-
-export const getExperienceTypeColor = (
-  type: ExperienceItem['type'],
-  status: ExperienceItem['status'],
-) => {
-  if (status === 'current') return 'text-green-600';
-
-  switch (type) {
-    case 'project':
-      return 'text-primary';
-    case 'work':
-      return 'text-blue-600';
-    case 'education':
-      return 'text-gray-500';
-    case 'training':
-      return 'text-accent';
-    default:
-      return 'text-gray-400';
-  }
-};
-
-export const getExperienceBorderColor = (
-  type: ExperienceItem['type'],
-  status: ExperienceItem['status'],
-) => {
-  if (status === 'current') return 'border-l-green-500';
-
-  switch (type) {
-    case 'project':
-      return 'border-l-primary';
-    case 'work':
-      return 'border-l-primary-500';
-    case 'education':
-      return 'border-l-primary-500';
-    case 'training':
-      return 'border-l-accent';
-    default:
-      return 'border-l-primary-500';
-  }
-};
-
-export const getCommitDotColor = (
-  type: ExperienceItem['type'],
-  status: ExperienceItem['status'],
-) => {
-  if (status === 'current') return 'bg-green-500';
-
-  switch (type) {
-    case 'project':
-      return 'bg-primary';
-    case 'work':
-      return 'bg-primary-800';
-    case 'education':
-      return 'bg-primary-800';
-    case 'training':
-      return 'bg-accent';
-    default:
-      return 'bg-primary-800';
-  }
 };
 
 export const getExperienceIcon = (type: ExperienceItem['type']) => {

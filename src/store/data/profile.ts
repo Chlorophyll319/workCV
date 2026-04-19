@@ -72,6 +72,10 @@ export const profile = {
     },
   },
 
+  location: '台北市',
+  remoteAvailable: true,
+  status: 'Ready to work',
+
   highlightsTitle: '轉職亮點',
   highlights: [
     '設計出身，懂得從使用者需求逆推技術實作',

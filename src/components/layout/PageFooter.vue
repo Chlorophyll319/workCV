@@ -5,32 +5,21 @@
       <div class="flex flex-wrap items-center gap-4 justify-between">
         <div class="flex flex-wrap gap-4">
           <a
-            :href="profile.contact.github"
-            target="_blank"
-            rel="noopener noreferrer"
+            v-for="item in [profile.contact.github, profile.contact.email, profile.contact.linkedin]"
+            :key="item.href"
+            :href="item.href"
+            :target="item.external ? '_blank' : undefined"
+            :rel="item.external ? 'noopener noreferrer' : undefined"
             class="byline hover:text-accent-blue transition-colors flex items-center gap-1"
           >
-            <Icon icon="heroicons:code-bracket" class="w-3 h-3" />
-            GitHub
-          </a>
-          <a
-            :href="`mailto:${profile.contact.email}`"
-            class="byline hover:text-accent-blue transition-colors flex items-center gap-1"
-          >
-            <Icon icon="heroicons:envelope" class="w-3 h-3" />
-            {{ profile.contact.email }}
-          </a>
-          <a
-            :href="profile.contact.linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="byline hover:text-accent-blue transition-colors flex items-center gap-1"
-          >
-            <Icon icon="heroicons:user" class="w-3 h-3" />
-            LinkedIn
+            <Icon :icon="item.icon" class="w-3 h-3" />
+            {{ item.label }}
           </a>
         </div>
-        <div class="dateline">{{ profile.contact.phone }}</div>
+        <div class="dateline flex items-center gap-1">
+          <Icon :icon="profile.contact.phone.icon" class="w-3 h-3" />
+          {{ profile.contact.phone.label }}
+        </div>
       </div>
     </div>
   </footer>

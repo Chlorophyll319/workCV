@@ -7,7 +7,14 @@
     </div>
 
     <!-- Headline -->
-    <h1 class="text-ink leading-tight mb-1" style="font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900;">
+    <h1
+      class="text-ink leading-tight mb-1"
+      style="
+        font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 900;
+      "
+    >
       <span class="text-accent-red">葉芃</span>
       <span class="text-ink-secondary mx-3 font-normal" style="font-size: 0.55em">×</span>
       Evelyn
@@ -31,28 +38,26 @@
         <!-- Contact links -->
         <div class="flex flex-wrap gap-3 mt-4">
           <a
-            :href="profile.contact.github"
-            target="_blank"
-            rel="noopener noreferrer"
+            :href="profile.contact.github.href"
+            target="_blank" rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper text-sm font-medium hover:bg-accent-red transition-colors"
           >
-            <Icon icon="heroicons:code-bracket" class="w-4 h-4" />
+            <Icon :icon="profile.contact.github.icon" class="w-4 h-4" />
             查看 GitHub
           </a>
           <a
-            :href="`mailto:${profile.contact.email}`"
+            :href="profile.contact.email.href"
             class="inline-flex items-center gap-2 px-4 py-2 border border-ink text-ink text-sm font-medium hover:bg-paper-dark transition-colors"
           >
-            <Icon icon="heroicons:envelope" class="w-4 h-4" />
+            <Icon :icon="profile.contact.email.icon" class="w-4 h-4" />
             聯絡合作
           </a>
           <a
-            :href="profile.contact.linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
+            :href="profile.contact.linkedin.href"
+            target="_blank" rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 border border-rule text-ink-secondary text-sm font-medium hover:bg-paper-dark transition-colors"
           >
-            <Icon icon="heroicons:user" class="w-4 h-4" />
+            <Icon :icon="profile.contact.linkedin.icon" class="w-4 h-4" />
             LinkedIn
           </a>
         </div>
@@ -72,8 +77,6 @@
             {{ item }}
           </li>
         </ul>
-
-
       </div>
     </div>
   </section>

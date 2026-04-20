@@ -29,6 +29,7 @@ export interface Project {
 
 // UI 常數定義
 export const PROJECT_CONSTANTS = {
+  title: '作品集',
   colors: {
     primary: 'var(--color-primary)',
     accent: 'var(--color-accent)',

@@ -16,12 +16,15 @@
         <div class="flex-1 space-y-3">
           <!-- 類型 + 狀態 -->
           <div class="flex items-center gap-3">
-            <span class="font-label text-xs tracking-widest uppercase text-secondary">{{ project.type }}</span>
+            <span class="font-label text-xs tracking-widest uppercase text-secondary">{{
+              project.type
+            }}</span>
             <span class="text-outline-variant">·</span>
             <span
               class="font-label text-xs tracking-widest uppercase font-bold"
               :class="project.status === '已完成' ? 'text-secondary' : 'text-primary'"
-            >{{ project.status }}</span>
+              >{{ project.status }}</span
+            >
           </div>
 
           <!-- 標題 -->
@@ -53,21 +56,12 @@
             v-for="tech in project.techStack"
             :key="tech"
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
-          >{{ tech }}</span>
+            >{{ tech }}</span
+          >
         </div>
 
         <!-- 連結 -->
         <div class="flex gap-3 pt-3">
-          <a
-            v-if="project.demoUrl"
-            :href="project.demoUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-label text-xs tracking-widest uppercase px-4 py-2 bg-primary text-on-primary hover:bg-primary-container transition-colors duration-200 inline-flex items-center gap-1.5"
-          >
-            <Icon name="heroicons:arrow-top-right-on-square" class="w-3 h-3" />
-            {{ PROJECT_CONSTANTS.labels.demo }}
-          </a>
           <a
             v-if="project.githubUrl"
             :href="project.githubUrl"
@@ -77,6 +71,16 @@
           >
             <Icon name="heroicons:code-bracket" class="w-3 h-3" />
             {{ PROJECT_CONSTANTS.labels.github }}
+          </a>
+          <a
+            v-if="project.demoUrl"
+            :href="project.demoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-label text-xs tracking-widest uppercase px-4 py-2 bg-primary text-on-primary hover:bg-primary-container transition-colors duration-200 inline-flex items-center gap-1.5"
+          >
+            <Icon name="heroicons:arrow-top-right-on-square" class="w-3 h-3" />
+            {{ PROJECT_CONSTANTS.labels.demo }}
           </a>
         </div>
       </article>

@@ -31,22 +31,14 @@
       <p
         class="font-headline italic text-secondary max-w-2xl mx-auto"
         style="font-size: clamp(1rem, 2.5vw, 1.5rem)"
-      >
-        {{ title }}。{{ subtitle }}。
-      </p>
+      ></p>
+    </div>
 
-      <!-- 聯絡連結（小字，低調） -->
-      <div class="flex justify-center items-center gap-6 pt-2">
-        <a
-          v-for="item in contactItems"
-          :key="item.href"
-          :href="item.href"
-          :target="item.external ? '_blank' : undefined"
-          :rel="item.external ? 'noopener noreferrer' : undefined"
-          class="font-label text-xs tracking-widest uppercase text-on-surface opacity-60 hover:opacity-100 hover:text-primary transition-all duration-200"
-        >
-          {{ item.label }}
-        </a>
+    <!-- 向下滑動提示 -->
+    <div class="flex flex-col items-center gap-2 pb-8 text-secondary/50">
+      <span class="font-label text-xs tracking-widest uppercase">Scroll</span>
+      <div class="scroll-indicator">
+        <div class="scroll-dot" />
       </div>
     </div>
   </header>
@@ -55,15 +47,33 @@
 <script setup lang="ts">
 const name = '葉芃作品集';
 const englishName = 'Evelyn Portfolio';
-const title = '全端工程師';
-const subtitle = 'Full-Stack Engineer';
-const kicker = '設計思維 × 工程執行力 · 網頁開發';
+const kicker = '視覺設計 × 網頁開發 · 產品思維';
 const dateline = '積極求職中';
 const est = `Est. ${new Date().getFullYear()}`;
-
-const contactItems = [
-  { href: 'https://github.com/Chlorophyll319', label: 'GitHub', external: true },
-  { href: 'mailto:kcnfoggy54@gmail.com', label: 'kcnfoggy54@gmail.com', external: false },
-  { href: 'https://www.linkedin.com/in/peng-yeh-4b35a2175/', label: 'LinkedIn', external: true },
-];
 </script>
+
+<style scoped>
+.scroll-indicator {
+  width: 24px;
+  height: 38px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-dot {
+  width: 4px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%   { transform: translateY(0);   opacity: 1; }
+  60%  { transform: translateY(10px); opacity: 0.2; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+</style>

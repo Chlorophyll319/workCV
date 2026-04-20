@@ -163,7 +163,7 @@ export const projects: Project[] = [
     name: "Git 指令產生器（Yes, It's Git）",
     type: '前端工具',
     description:
-      'Git 學習輔助工具，提供指令產生器、速查表、情境導向、歷史記錄四個功能頁面。支援 cherry-pick、tag、remote、log 等多種指令類型，危險指令加二次確認與 Enter 快捷鍵；速查表支援分類 Tab 篩選與指令範例展開。',
+      'Git 學習輔助工具，提供指令產生器、速查表、情境導向、歷史記錄四個功能頁面。支援 clone、commit、merge、branch 等多種指令類型，危險指令加二次確認與 Enter 快捷鍵；速查表支援分類 Tab 篩選與指令範例展開。',
     techStack: [
       'Vue 3',
       'Vite',

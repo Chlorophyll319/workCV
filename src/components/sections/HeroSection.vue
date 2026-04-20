@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-const name = '葉芃作品集';
+const name = '葉芃';
 const englishName = 'Evelyn Portfolio';
 const kicker = '視覺設計 × 網頁開發 · 產品思維';
 const dateline = '積極求職中';
@@ -72,8 +72,17 @@ const est = `Est. ${new Date().getFullYear()}`;
 }
 
 @keyframes scroll-bounce {
-  0%   { transform: translateY(0);   opacity: 1; }
-  60%  { transform: translateY(10px); opacity: 0.2; }
-  100% { transform: translateY(0);   opacity: 1; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(10px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 </style>

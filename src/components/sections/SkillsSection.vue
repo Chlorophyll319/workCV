@@ -4,16 +4,11 @@
       技術能力
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       <div
-        v-for="(category, index) in skillCategories"
+        v-for="category in skillCategories"
         :key="category.id"
-        class="space-y-4 py-6"
-        :class="[
-          index < skillCategories.length - 1 ? 'lg:pr-8 lg:border-r lg:border-outline-variant' : '',
-          index < skillCategories.length - 2 ? 'sm:pr-8 sm:border-r sm:border-outline-variant lg:border-r-0' : '',
-          index % 2 !== 0 ? 'sm:pl-8 sm:border-r-0 lg:pl-8' : '',
-        ]"
+        class="space-y-4"
       >
         <!-- 分類標題 -->
         <div class="border-b border-outline-variant pb-3">

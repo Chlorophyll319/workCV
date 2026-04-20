@@ -1,6 +1,6 @@
 <template>
   <section id="skills" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight text-center section-heading">技術能力</h2>
+    <h2 class="text-center section-heading">技術能力</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       <div v-for="category in skillCategories" :key="category.id" class="space-y-4">

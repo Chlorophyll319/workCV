@@ -1,15 +1,11 @@
 <template>
   <section id="about" class="w-full py-16">
-    <h2 class="font-headline font-bold tracking-tight text-center section-heading">{{ about.title }}</h2>
+    <h2 class="text-center section-heading">{{ about.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       <!-- 主欄（8/12）：故事文字 -->
       <div class="lg:col-span-8 space-y-8">
         <!-- Pull quote -->
-        <blockquote class="border-l-4 border-primary pl-5 py-1">
-          <p class="font-headline text-xl leading-snug text-on-surface">
-            「{{ about.quote }}」
-          </p>
-        </blockquote>
+        <blockquote class="pull-quote">「{{ about.quote }}」</blockquote>
 
         <!-- 正文 -->
         <div class="font-body text-base leading-relaxed text-on-surface-variant space-y-4">

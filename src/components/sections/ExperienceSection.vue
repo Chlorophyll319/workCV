@@ -1,8 +1,6 @@
 <template>
   <section id="experience" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight text-center section-heading">
-      {{ experienceMeta.title }}
-    </h2>
+    <h2 class="text-center section-heading">{{ experienceMeta.title }}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <article
@@ -28,17 +26,12 @@
         </div>
 
         <!-- 職稱/標題 -->
-        <h3 class="font-headline font-bold leading-tight" style="font-size: 1.25rem">
+        <h3 class="font-headline font-bold leading-tight text-xl">
           {{ item.gitCommitStyle || item.title }}
         </h3>
 
         <!-- 組織 -->
-        <h4
-          class="font-body text-sm font-medium text-secondary m-0 normal-case tracking-normal"
-          style="letter-spacing: normal"
-        >
-          {{ item.organization }}
-        </h4>
+        <p class="font-body text-sm font-medium text-secondary">{{ item.organization }}</p>
 
         <!-- 說明 -->
         <p class="font-body text-sm leading-relaxed text-on-surface-variant">

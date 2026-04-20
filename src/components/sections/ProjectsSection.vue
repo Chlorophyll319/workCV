@@ -1,6 +1,6 @@
 <template>
   <section id="projects" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight text-center section-heading">{{ PROJECT_CONSTANTS.title }}</h2>
+    <h2 class="text-center section-heading">{{ PROJECT_CONSTANTS.title }}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
       <article
@@ -25,7 +25,7 @@
           </div>
 
           <!-- 標題 -->
-          <h3 class="font-headline font-bold leading-tight" style="font-size: 1.375rem">
+          <h3 class="font-headline font-bold leading-tight">
             {{ project.name }}
           </h3>
 

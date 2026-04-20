@@ -1,6 +1,7 @@
 const TAGLINE = '從需求拆解、技術選型到系統設計，具備完整工程經驗';
 
 export const about = {
+  title: '關於我',
   description:
     '畢業後專職於設計與行銷領域，在擔任行銷設計助理期間，透過旁聽後台系統設計會議，第一次意識到「能讓功能運作起來」遠比「讓畫面好看」更吸引我。這個轉折讓我決定參加職訓課程，正式轉換跑道。',
   sections: {
@@ -27,6 +28,9 @@ export const about = {
       icon: 'heroicons:star',
       items: ['新創全端獨立開發', '技術選型與架構設計', 'AI 工具加速開發', '設計思維轉職背景'],
     },
+  },
+  glance: {
+    title: 'At a Glance',
   },
   quote: TAGLINE,
 };

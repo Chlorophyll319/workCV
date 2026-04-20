@@ -27,7 +27,7 @@ export const profile = {
     email: {
       href: 'mailto:kcnfoggy54@gmail.com',
       label: 'kcnfoggy54@gmail.com',
-      buttonLabel: '聯絡合作',
+      buttonLabel: '聯絡方式',
       icon: 'simple-icons:gmail',
       external: false,
     },

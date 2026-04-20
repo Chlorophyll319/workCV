@@ -1,6 +1,6 @@
 <template>
   <section id="about" class="w-full py-16">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">關於我</h2>
+    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">{{ about.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       <!-- 主欄（8/12）：故事文字 -->
       <div class="lg:col-span-8 space-y-8">
@@ -19,7 +19,7 @@
 
         <!-- 核心優勢標籤 -->
         <div>
-          <h4 class="mb-3">核心優勢</h4>
+          <h4 class="mb-3">{{ about.sections.highlights.title }}</h4>
           <div class="flex flex-wrap gap-2">
             <span
               v-for="item in about.sections.highlights.items"
@@ -33,7 +33,7 @@
       <!-- 側欄（4/12）：AT A GLANCE 手風琴 -->
       <aside class="lg:col-span-4 border border-outline-variant">
         <div class="border-b border-outline-variant px-5 py-3">
-          <span class="font-label text-xs tracking-widest uppercase text-on-surface font-bold">At a Glance</span>
+          <span class="font-label text-xs tracking-widest uppercase text-on-surface font-bold">{{ about.glance.title }}</span>
         </div>
 
         <div class="divide-y divide-outline-variant/50 font-body text-sm">
@@ -109,7 +109,7 @@ const glanceItems = [
     id: 'contact',
     icon: profile.contact.email.icon,
     iconColor: 'text-secondary',
-    title: '聯絡方式',
+    title: profile.contact.email.buttonLabel,
     content: profile.contact.email.label,
     href: profile.contact.email.href,
   },

@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-surface border-b-[3px] border-double border-outline-variant sticky top-0 z-50 w-full">
+  <nav class="bg-surface border-b-[5px] border-solid border-outline-variant sticky top-0 z-50 w-full">
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="flex justify-between items-center py-5">
         <!-- 左：刊物品牌名稱 -->

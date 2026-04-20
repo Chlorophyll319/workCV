@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="border-t border-outline-variant pt-16 pb-16 w-full">
+  <section id="experience" class="pt-16 pb-16 w-full">
     <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
       我的經歷
     </h2>

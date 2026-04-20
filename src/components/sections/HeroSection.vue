@@ -1,5 +1,5 @@
 <template>
-  <header id="hero" class="border-b-[4px] border-double border-outline-variant w-full min-h-[calc(100vh-97px)] flex flex-col">
+  <header id="hero" class="w-full min-h-[calc(100vh-97px)] flex flex-col">
     <!-- 頂部刊物資訊列 -->
     <div class="grid grid-cols-3 items-end border-b border-outline-variant pb-3 text-secondary font-label text-xs tracking-widest uppercase">
       <span>{{ profile.kicker }}</span>

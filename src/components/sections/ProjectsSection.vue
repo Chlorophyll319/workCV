@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="border-t border-outline-variant pt-16 pb-16 w-full">
+  <section id="projects" class="pt-16 pb-16 w-full">
     <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
       作品集
     </h2>
@@ -8,58 +8,58 @@
       <article
         v-for="(project, index) in projects"
         :key="project.id"
-        class="space-y-3 py-8"
+        class="flex flex-col py-8"
         :class="[
           index % 2 === 0 ? 'md:pr-10 md:border-r md:border-outline-variant' : 'md:pl-10',
           index < projects.length - 2 ? 'border-b border-outline-variant' : '',
         ]"
       >
-        <!-- 類型 + 狀態 -->
-        <div class="flex items-center gap-3">
-          <span class="font-label text-xs tracking-widest uppercase text-secondary">{{ project.type }}</span>
-          <span class="text-outline-variant">·</span>
-          <span
-            class="font-label text-xs tracking-widest uppercase font-bold"
-            :class="project.status === '已完成' ? 'text-secondary' : 'text-primary'"
-          >{{ project.status }}</span>
+        <!-- 上方內容（撐滿剩餘空間） -->
+        <div class="flex-1 space-y-3">
+          <!-- 類型 + 狀態 -->
+          <div class="flex items-center gap-3">
+            <span class="font-label text-xs tracking-widest uppercase text-secondary">{{ project.type }}</span>
+            <span class="text-outline-variant">·</span>
+            <span
+              class="font-label text-xs tracking-widest uppercase font-bold"
+              :class="project.status === '已完成' ? 'text-secondary' : 'text-primary'"
+            >{{ project.status }}</span>
+          </div>
+
+          <!-- 標題 -->
+          <h3 class="font-headline font-bold leading-tight" style="font-size: 1.375rem;">
+            {{ project.name }}
+          </h3>
+
+          <!-- 說明 -->
+          <p class="font-body text-sm leading-relaxed text-on-surface-variant">
+            {{ project.description }}
+          </p>
+
+          <!-- 亮點 -->
+          <ul v-if="project.highlights?.length" class="space-y-1.5">
+            <li
+              v-for="h in project.highlights.slice(0, 3)"
+              :key="h"
+              class="flex items-start gap-2 font-body text-sm text-on-surface-variant"
+            >
+              <span class="text-primary mt-1 text-[10px] flex-shrink-0">▸</span>
+              {{ h }}
+            </li>
+          </ul>
         </div>
 
-        <!-- 標題 -->
-        <h3 class="font-headline font-bold leading-tight" style="font-size: 1.375rem;">
-          {{ project.name }}
-        </h3>
-
-        <!-- 說明 -->
-        <p class="font-body text-sm leading-relaxed text-on-surface-variant">
-          {{ project.description }}
-        </p>
-
-        <!-- 亮點 -->
-        <ul v-if="project.highlights?.length" class="space-y-1.5">
-          <li
-            v-for="h in project.highlights.slice(0, 3)"
-            :key="h"
-            class="flex items-start gap-2 font-body text-sm text-on-surface-variant"
-          >
-            <span class="text-primary mt-1 text-[10px] flex-shrink-0">▸</span>
-            {{ h }}
-          </li>
-        </ul>
-
         <!-- 技術棧 -->
-        <div class="flex flex-wrap gap-1.5 pt-1">
+        <div class="flex flex-wrap gap-1.5 pt-4">
           <span
-            v-for="tech in project.techStack?.slice(0, 5)"
+            v-for="tech in project.techStack"
             :key="tech"
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
           >{{ tech }}</span>
-          <span v-if="(project.techStack?.length ?? 0) > 5" class="font-body text-xs text-secondary">
-            +{{ (project.techStack?.length ?? 0) - 5 }}
-          </span>
         </div>
 
         <!-- 連結 -->
-        <div class="flex gap-3 pt-1">
+        <div class="flex gap-3 pt-1 mt-auto">
           <a
             v-if="project.demoUrl"
             :href="project.demoUrl"

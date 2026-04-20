@@ -12,6 +12,10 @@ export interface ExperienceItem {
   gitCommitStyle?: string; // Git commit 風格的標題
 }
 
+export const experienceMeta = {
+  title: '我的經歷',
+};
+
 // 單一資料來源 - 基於真實履歷內容
 export const experienceData: ExperienceItem[] = [
   {

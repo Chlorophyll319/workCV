@@ -1,6 +1,8 @@
 <template>
   <section id="experience" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">我的經歷</h2>
+    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
+      {{ experienceMeta.title }}
+    </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <article
@@ -11,12 +13,18 @@
           index < experienceData.length - 1 ? 'md:pr-8 md:border-r md:border-outline-variant' : ''
         "
       >
-        <!-- 時間 -->
-        <div
-          class="font-label text-xs tracking-widest uppercase"
-          :class="index === 0 ? 'text-primary' : 'text-secondary'"
-        >
-          {{ formatExperienceDate(item.startDate, item.endDate) }}
+        <!-- 類型 icon + 時間 -->
+        <div class="flex items-center gap-2">
+          <Icon
+            :name="getExperienceIcon(item.type)"
+            class="size-3.5 text-on-surface-variant/50 shrink-0"
+          />
+          <span
+            class="font-label text-xs tracking-widest uppercase"
+            :class="index === 0 ? 'text-primary' : 'text-secondary'"
+          >
+            {{ formatExperienceDate(item.startDate, item.endDate) }}
+          </span>
         </div>
 
         <!-- 職稱/標題 -->
@@ -45,7 +53,7 @@
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
             >{{ skill }}</span
           >
-          <span v-if="item.skills.length > 5" class="font-body text-xs text-secondary">
+          <span v-if="item.skills.length > 5" class="font-body text-xs text-secondary self-center">
             +{{ item.skills.length - 5 }}
           </span>
         </div>
@@ -55,5 +63,10 @@
 </template>
 
 <script setup lang="ts">
-import { experienceData, formatExperienceDate } from '@/store/data/experience';
+import {
+  experienceData,
+  experienceMeta,
+  formatExperienceDate,
+  getExperienceIcon,
+} from '@/store/data/experience';
 </script>

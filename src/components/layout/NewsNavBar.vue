@@ -9,18 +9,10 @@
       <div class="flex justify-between items-center h-14 md:h-16">
         <!-- 左：品牌 -->
         <button
-          class="select-none text-left cursor-pointer"
+          class="select-none cursor-pointer flex items-center gap-2"
           @click="scrollToSection('hero')"
         >
-          <div class="text-[10px] font-label tracking-[0.2em] uppercase text-primary leading-none mb-0.5">
-            {{ MASTHEAD.kicker }}
-          </div>
-          <div
-            class="font-headline font-bold uppercase tracking-tighter text-on-surface leading-none"
-            style="font-size: clamp(0.9rem, 2.2vw, 1.375rem);"
-          >
-            {{ MASTHEAD.title }}
-          </div>
+          <img src="/logo-color.svg" alt="logo" class="h-8 w-auto" />
         </button>
 
         <!-- 中/右：導覽連結（Desktop） -->
@@ -54,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { SECTIONS, MASTHEAD } from '@/store/layout'
+import { SECTIONS } from '@/store/layout'
 
 const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name, icon: s.icon }))
 const activeId = ref<string>(SECTIONS[0].id)

@@ -94,7 +94,7 @@ export const projects: Project[] = [
     name: "Git 指令產生器（Yes, It's Git）",
     type: '前端工具',
     description:
-      'Git 學習輔助工具，提供指令產生器、速查表、情境導向、歷史記錄四個功能頁面。支援 clone、commit、merge、branch 等多種指令類型，危險指令加二次確認與 Enter 快捷鍵；速查表支援分類 Tab 篩選與指令範例展開。',
+      'Git 學習輔助工具，從「遇到情境該用什麼指令」出發設計，提供指令產生器、速查表、情境導向、歷史記錄，搭配二次確認保護避免誤觸危險指令。',
     techStack: [
       'Vue 3',
       'Vite',
@@ -117,7 +117,7 @@ export const projects: Project[] = [
       duration: '持續更新',
     },
     highlights: [
-      '指令產生器：支援 cherry-pick、tag、remote、log 等多種指令類型',
+      '指令產生器：支援 clone、commit、merge、branch 等多種指令類型',
       '危險指令加二次確認與 Enter 快捷鍵保護',
       '速查表：分類 Tab 篩選 + 指令範例展開',
       '情境導向：依使用情境引導選擇正確指令',

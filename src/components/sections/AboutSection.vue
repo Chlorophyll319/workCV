@@ -1,9 +1,7 @@
 <template>
-  <section
-    id="about"
-    class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full py-16"
-  >
+  <section id="about" class="w-full py-16">
     <h2 class="font-headline font-bold tracking-tight mb-12 text-center">關於我</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
     <!-- 主欄（8/12）：故事文字 -->
     <div class="lg:col-span-8 space-y-6">
       <h2 class="font-headline font-bold tracking-tight">
@@ -74,6 +72,7 @@
         </li>
       </ul>
     </aside>
+    </div>
   </section>
 </template>
 

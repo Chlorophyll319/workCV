@@ -1,88 +1,55 @@
 <template>
-  <section id="hero" class="w-full py-6">
-    <!-- Kicker + Date -->
-    <div class="flex items-center justify-between mb-2">
-      <span class="kicker">{{ profile.kicker }}</span>
-      <span class="dateline">{{ profile.dateline }}</span>
+  <header id="hero" class="text-center space-y-5 pt-12 pb-12 border-b-[4px] border-double border-outline-variant w-full">
+    <!-- 頂部刊物資訊列 -->
+    <div class="flex justify-between items-end border-b border-outline-variant pb-3 mb-8 text-secondary font-label text-xs tracking-widest uppercase">
+      <span>{{ profile.kicker }}</span>
+      <span>{{ profile.dateline }}</span>
+      <span>Est. 2025</span>
     </div>
 
-    <!-- Headline -->
+    <!-- 主名字 -->
     <h1
-      class="text-ink leading-tight mb-1"
-      style="
-        font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 900;
-      "
+      class="font-headline font-extrabold tracking-tighter text-on-surface leading-none"
+      style="font-size: clamp(4rem, 16vw, 9rem);"
     >
-      <span class="text-accent-red">{{ profile.name }}</span>
-      <span class="text-ink-secondary mx-3 font-normal" style="font-size: 0.55em">×</span>
-      {{ profile.englishName }}
+      {{ profile.name }}
     </h1>
-    <div class="text-ink-secondary text-lg md:text-xl font-light mb-4 tracking-wide">
-      {{ profile.title }} · {{ profile.subtitle }}
+
+    <!-- 英文名（斜體，小一號） -->
+    <div
+      class="font-headline italic text-secondary"
+      style="font-size: clamp(1.5rem, 5vw, 3.5rem); line-height: 1.1;"
+    >
+      {{ profile.englishName }}
     </div>
 
-    <!-- Rule -->
-    <div class="newspaper-rule mb-6"></div>
+    <!-- 職稱 -->
+    <p class="font-headline italic text-secondary max-w-2xl mx-auto" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">
+      {{ profile.title }}。{{ profile.subtitle }}。
+    </p>
 
-    <!-- Two-column layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-      <!-- Main column (2/3): description + links -->
-      <div class="lg:col-span-2 lg:pr-8 lg:border-r lg:border-rule-light">
-        <!-- Description -->
-        <p class="text-ink leading-relaxed mb-6 drop-cap">
-          {{ profile.description }}
-        </p>
-
-        <!-- Contact links -->
-        <div class="flex flex-wrap gap-3 mt-4">
-          <a
-            :href="profile.contact.github.href"
-            target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper text-sm font-medium hover:bg-accent-red transition-colors"
-          >
-            <Icon :icon="profile.contact.github.icon" class="w-4 h-4" />
-            {{ profile.contact.github.buttonLabel }}
-          </a>
-          <a
-            :href="profile.contact.email.href"
-            class="inline-flex items-center gap-2 px-4 py-2 border border-ink text-ink text-sm font-medium hover:bg-paper-dark transition-colors"
-          >
-            <Icon :icon="profile.contact.email.icon" class="w-4 h-4" />
-            {{ profile.contact.email.buttonLabel }}
-          </a>
-          <a
-            :href="profile.contact.linkedin.href"
-            target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 border border-rule text-ink-secondary text-sm font-medium hover:bg-paper-dark transition-colors"
-          >
-            <Icon :icon="profile.contact.linkedin.icon" class="w-4 h-4" />
-            {{ profile.contact.linkedin.buttonLabel }}
-          </a>
-        </div>
-      </div>
-
-      <!-- Side column (1/3): highlights -->
-      <div class="lg:col-span-1 lg:pl-8 mt-6 lg:mt-0">
-        <div class="section-label mb-3">{{ profile.highlightsTitle }}</div>
-        <div class="newspaper-rule-thin mb-4"></div>
-        <ul class="space-y-3">
-          <li
-            v-for="item in profile.highlights"
-            :key="item"
-            class="flex items-start gap-2 text-sm text-ink leading-snug pb-3 border-b border-rule-light last:border-0"
-          >
-            <span class="text-accent-red mt-0.5 font-bold flex-shrink-0">▸</span>
-            {{ item }}
-          </li>
-        </ul>
-      </div>
+    <!-- 聯絡連結（小字，低調） -->
+    <div class="flex justify-center items-center gap-6 pt-2">
+      <a
+        v-for="item in contactItems"
+        :key="item.href"
+        :href="item.href"
+        :target="item.external ? '_blank' : undefined"
+        :rel="item.external ? 'noopener noreferrer' : undefined"
+        class="font-label text-xs tracking-widest uppercase text-on-surface opacity-60 hover:opacity-100 hover:text-primary transition-all duration-200"
+      >
+        {{ item.label }}
+      </a>
     </div>
-  </section>
+  </header>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import { profile } from '@/store/data/profile';
+
+const contactItems = [
+  profile.contact.github,
+  profile.contact.email,
+  profile.contact.linkedin,
+];
 </script>

@@ -1,45 +1,55 @@
 <template>
-  <nav class="bg-paper-dark border-b border-rule-light sticky top-0 z-50 w-full">
+  <nav class="bg-surface border-b-[3px] border-double border-outline-variant sticky top-0 z-50 w-full">
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <!-- Desktop nav -->
-      <div class="hidden sm:flex items-center">
-        <button
-          v-for="item in navItems"
-          :key="item.id"
-          @click="scrollToSection(item.id)"
-          :class="btnClass(item.id, 'flex-1 text-center px-4')"
+      <div class="flex justify-between items-center py-5">
+        <!-- 左：刊物品牌名稱 -->
+        <div
+          class="font-headline font-bold uppercase tracking-tighter text-on-surface select-none"
+          style="font-size: clamp(1.25rem, 3vw, 1.875rem); line-height: 1;"
         >
-          {{ item.label }}
-        </button>
-      </div>
+          {{ MASTHEAD.title }}
+        </div>
 
-      <!-- Mobile nav: horizontal scroll -->
-      <div class="flex sm:hidden items-center overflow-x-auto scrollbar-none">
-        <button
-          v-for="item in navItems"
-          :key="item.id"
-          @click="scrollToSection(item.id)"
-          :class="btnClass(item.id, 'flex-shrink-0 px-3')"
-        >
-          {{ item.label }}
-        </button>
+        <!-- 中/右：導覽連結（Desktop） -->
+        <div class="hidden md:flex items-center gap-6">
+          <button
+            v-for="item in navItems"
+            :key="item.id"
+            @click="scrollToSection(item.id)"
+            :class="linkClass(item.id)"
+          >
+            {{ item.label }}
+          </button>
+        </div>
+
+        <!-- Mobile：漢堡選單位置用橫向滾動代替 -->
+        <div class="flex md:hidden items-center gap-4 overflow-x-auto scrollbar-none">
+          <button
+            v-for="item in navItems"
+            :key="item.id"
+            @click="scrollToSection(item.id)"
+            :class="linkClass(item.id, true)"
+          >
+            {{ item.label }}
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { SECTIONS } from '@/store/layout'
+import { SECTIONS, MASTHEAD } from '@/store/layout'
 
 const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name }))
 const activeId = ref<string>(SECTIONS[0].id)
 
-const btnClass = (id: string, extra: string) => [
-  'section-label py-2.5 border-r border-rule-light transition-colors cursor-pointer last:border-r-0',
-  extra,
+const linkClass = (id: string, mobile = false) => [
+  'font-label text-sm tracking-widest uppercase pb-1 border-b-2 transition-colors duration-200 cursor-pointer whitespace-nowrap',
+  mobile ? 'flex-shrink-0' : '',
   activeId.value === id
-    ? 'text-ink border-b-2 border-b-accent-blue'
-    : 'hover:bg-paper hover:text-ink-secondary',
+    ? 'text-primary font-bold border-b-primary'
+    : 'text-on-surface opacity-70 hover:opacity-100 hover:text-primary border-b-transparent',
 ]
 
 const updateActive = () => {
@@ -68,10 +78,6 @@ const scrollToSection = (id: string) => {
 </script>
 
 <style scoped>
-.scrollbar-none {
-  scrollbar-width: none;
-}
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
 </style>

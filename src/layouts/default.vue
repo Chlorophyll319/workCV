@@ -1,9 +1,6 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-paper text-ink font-sans">
-    <!-- 報紙報頭 -->
-    <LayoutNewsMasthead />
-
-    <!-- 水平導覽列 -->
+  <div class="min-h-screen flex flex-col bg-surface text-on-surface font-body antialiased">
+    <!-- 統一 Header（品牌識別 + 導覽列） -->
     <LayoutNewsNavBar />
 
     <!-- 主內容區 -->

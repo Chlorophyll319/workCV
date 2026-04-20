@@ -1,77 +1,60 @@
 <template>
-  <section id="about" class="w-full py-8">
-    <!-- Section header -->
-    <div class="flex items-center gap-4 mb-2">
-      <span class="kicker">About · 關於我</span>
-    </div>
-    <div class="newspaper-rule mb-6"></div>
+  <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full py-16">
+    <!-- 主欄（8/12）：故事文字 -->
+    <div class="lg:col-span-8 space-y-6">
+      <h2 class="font-headline font-bold tracking-tight">
+        {{ profile.about.quote ? `「${profile.about.quote}」` : profile.about.description.slice(0, 30) + '...' }}
+      </h2>
 
-    <!-- Pull quote across full width -->
-    <blockquote class="pull-quote mb-8 text-center border-l-0 border-t-4 border-b border-accent-red pt-4 pb-4 px-6">
-      「{{ profile.about.quote }}」
-    </blockquote>
-
-    <!-- Two-column layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-      <!-- Main column (2/3): story -->
-      <div class="md:col-span-2 md:pr-8 md:border-r md:border-rule-light">
-        <h2 class="mb-4" style="font-family: 'Playfair Display', 'Noto Serif TC', Georgia, serif; font-size: 1.5rem; font-weight: 700;">
-          我的故事
-        </h2>
-        <p class="text-ink leading-relaxed mb-6 drop-cap">
-          {{ profile.about.description }}
-        </p>
-        <p class="text-ink-secondary leading-relaxed">
-          {{ profile.description }}
-        </p>
-
-        <!-- Highlights tags -->
-        <div class="mt-6">
-          <div class="section-label mb-3">核心優勢標籤</div>
-          <div class="newspaper-rule-thin mb-4"></div>
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="item in profile.about.sections.highlights.items"
-              :key="item"
-              class="text-xs px-3 py-1.5 border border-ink text-ink font-medium tracking-wide uppercase hover:bg-ink hover:text-paper transition-colors"
-            >{{ item }}</span>
-          </div>
-        </div>
+      <div
+        class="font-body text-base leading-relaxed text-on-surface-variant drop-cap"
+        style="column-count: 1;"
+      >
+        <p class="mb-4">{{ profile.about.description }}</p>
+        <p>{{ profile.description }}</p>
       </div>
 
-      <!-- Side column (1/3): key sections -->
-      <div class="md:col-span-1 md:pl-8 mt-8 md:mt-0 space-y-6">
-        <!-- Background -->
-        <div>
-          <div class="section-label mb-2">{{ profile.about.sections.background.title }}</div>
-          <div class="newspaper-rule-thin mb-3"></div>
-          <p class="text-sm text-ink leading-snug">
-            從 <strong class="text-accent-red">{{ profile.about.sections.background.from }}</strong>
-            轉向
-            <strong class="text-accent-blue">{{ profile.about.sections.background.to }}</strong>，
-            帶來獨特的設計思維與用戶體驗觀點。
-          </p>
-        </div>
-
-        <!-- Philosophy -->
-        <div>
-          <div class="section-label mb-2">{{ profile.about.sections.philosophy.title }}</div>
-          <div class="newspaper-rule-thin mb-3"></div>
-          <p class="text-sm text-ink-secondary leading-snug">
-            {{ profile.about.sections.philosophy.description }}
-          </p>
-        </div>
-
-        <!-- Current Focus -->
-        <div>
-          <div class="section-label mb-2">{{ profile.about.sections.currentFocus.title }}</div>
-          <div class="newspaper-rule-thin mb-3"></div>
-          <p class="text-sm text-ink-secondary leading-snug">
-            {{ profile.about.sections.currentFocus.description }}
-          </p>
+      <!-- 核心優勢標籤 -->
+      <div class="pt-2">
+        <h4 class="mb-3">核心優勢</h4>
+        <div class="flex flex-wrap gap-2">
+          <span
+            v-for="item in profile.about.sections.highlights.items"
+            :key="item"
+            class="font-label text-xs px-3 py-1.5 border border-on-surface text-on-surface tracking-wide uppercase hover:bg-on-surface hover:text-surface transition-colors duration-200 cursor-default"
+          >{{ item }}</span>
         </div>
       </div>
     </div>
+
+    <!-- 側欄（4/12）：AT A GLANCE -->
+    <aside class="lg:col-span-4 bg-surface-container-low p-6 border-l-[3px] border-double border-outline-variant">
+      <h4 class="mb-5 border-b border-outline-variant pb-3">At a Glance</h4>
+
+      <!-- 背景 -->
+      <ul class="space-y-4 font-body text-sm">
+        <li class="flex justify-between border-b border-outline-variant/40 pb-3">
+          <span class="text-secondary">{{ profile.about.sections.background.title }}</span>
+          <span class="font-medium text-right max-w-[55%]">
+            {{ profile.about.sections.background.from }} → {{ profile.about.sections.background.to }}
+          </span>
+        </li>
+        <li class="flex justify-between border-b border-outline-variant/40 pb-3">
+          <span class="text-secondary">{{ profile.about.sections.philosophy.title }}</span>
+          <span class="font-medium text-right max-w-[55%]">{{ profile.about.sections.philosophy.description.slice(0, 30) }}…</span>
+        </li>
+        <li class="flex justify-between border-b border-outline-variant/40 pb-3">
+          <span class="text-secondary">{{ profile.about.sections.currentFocus.title }}</span>
+          <span class="font-medium text-primary text-right max-w-[55%]">{{ profile.about.sections.currentFocus.description.slice(0, 30) }}…</span>
+        </li>
+        <li class="flex justify-between">
+          <span class="text-secondary">聯絡方式</span>
+          <a :href="profile.contact.email.href" class="font-medium text-primary hover:underline underline-offset-2 decoration-primary">
+            {{ profile.contact.email.label }}
+          </a>
+        </li>
+      </ul>
+    </aside>
   </section>
 </template>
 

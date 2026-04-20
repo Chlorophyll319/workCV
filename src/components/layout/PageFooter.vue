@@ -1,20 +1,29 @@
 <template>
-  <footer class="w-full border-t border-rule-light bg-paper">
-    <div class="max-w-6xl mx-auto px-4 md:px-8 py-4">
-      <div class="newspaper-rule-thin mb-4"></div>
-      <div class="flex flex-wrap items-center gap-4 justify-between">
-        <div class="flex flex-wrap gap-4">
+  <footer class="bg-surface border-t-4 border-double border-outline-variant w-full">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center py-10 gap-6">
+        <!-- 左：品牌署名 -->
+        <div class="font-headline italic text-lg text-on-surface">
+          Curated by {{ profile.name }} · {{ profile.englishName }}
+        </div>
+
+        <!-- 中：聯絡連結 -->
+        <div class="flex flex-wrap justify-center gap-6">
           <a
             v-for="item in [profile.contact.github, profile.contact.email, profile.contact.linkedin, profile.contact.phone]"
             :key="item.href"
             :href="item.href"
             :target="item.external ? '_blank' : undefined"
             :rel="item.external ? 'noopener noreferrer' : undefined"
-            class="byline hover:text-accent-blue transition-colors flex items-center gap-1"
+            class="font-label text-xs tracking-widest uppercase text-on-surface hover:underline decoration-primary underline-offset-4 transition-all duration-200"
           >
-            <Icon :icon="item.icon" class="w-3 h-3" />
             {{ item.label }}
           </a>
+        </div>
+
+        <!-- 右：版權 -->
+        <div class="font-label text-xs tracking-widest uppercase text-secondary">
+          © {{ new Date().getFullYear() }} {{ profile.name }}
         </div>
       </div>
     </div>
@@ -22,6 +31,5 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import { profile } from '@/store/data/profile';
 </script>

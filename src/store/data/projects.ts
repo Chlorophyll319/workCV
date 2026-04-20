@@ -129,7 +129,7 @@ export const projects: Project[] = [
     name: 'Evenly - 個人履歷網站',
     type: '前端專案',
     description:
-      '一頁式個人履歷網站，設計歷經大改版（初版 VSCode 風格 → 現版報紙排版風格），持續迭代優化。使用 Nuxt 3（SPA mode）搭配 Vue 3、TypeScript、Tailwind CSS v4，整合 Pinia 狀態管理，建立 SEO 機制與 GitHub Actions 自動部署。',
+      '一頁式個人履歷網站，使用 Nuxt 3（SPA mode）搭配 Vue 3、TypeScript、Tailwind CSS v4，整合 Pinia 狀態管理，建立 SEO 機制與 GitHub Actions 自動部署。',
     techStack: [
       'Nuxt 3',
       'Vue 3',
@@ -173,9 +173,10 @@ export const projects: Project[] = [
       'pinia-plugin-persistedstate',
       'vee-validate',
       'yup',
-      'unplugin-vue-router',
+      'vue-router',
     ],
     githubUrl: 'https://github.com/Chlorophyll319/itsGit.github.io',
+    demoUrl: 'https://chlorophyll319.github.io/yesItsGit/',
     icon: 'i-ph-git-branch',
     status: '持續更新',
     metrics: {

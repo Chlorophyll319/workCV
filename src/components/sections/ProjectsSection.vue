@@ -59,7 +59,7 @@
         </div>
 
         <!-- 連結 -->
-        <div class="flex gap-3 pt-1 mt-auto">
+        <div class="flex gap-3 pt-3">
           <a
             v-if="project.demoUrl"
             :href="project.demoUrl"

@@ -41,14 +41,11 @@
         <!-- 技術標籤 -->
         <div v-if="item.skills?.length" class="flex flex-wrap gap-1.5 pt-1">
           <span
-            v-for="skill in item.skills.slice(0, 5)"
+            v-for="skill in item.skills"
             :key="skill"
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
             >{{ skill }}</span
           >
-          <span v-if="item.skills.length > 5" class="font-body text-xs text-secondary self-center">
-            +{{ item.skills.length - 5 }}
-          </span>
         </div>
       </article>
     </div>

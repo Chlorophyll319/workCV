@@ -30,10 +30,16 @@ import { defineAsyncComponent, ref, onMounted } from 'vue';
 import { useLazyLoad } from '@/composables/useLazyLoad';
 import HeroSection from '@/components/sections/HeroSection.vue';
 
-const ProjectsSection = defineAsyncComponent(() => import('../components/sections/ProjectsSection.vue'));
-const SkillsSection = defineAsyncComponent(() => import('../components/sections/SkillsSection.vue'));
+const ProjectsSection = defineAsyncComponent(
+  () => import('../components/sections/ProjectsSection.vue'),
+);
+const SkillsSection = defineAsyncComponent(
+  () => import('../components/sections/SkillsSection.vue'),
+);
 const AboutSection = defineAsyncComponent(() => import('../components/sections/AboutSection.vue'));
-const ExperienceSection = defineAsyncComponent(() => import('../components/sections/ExperienceSection.vue'));
+const ExperienceSection = defineAsyncComponent(
+  () => import('../components/sections/ExperienceSection.vue'),
+);
 
 const projectsVisible = ref(false);
 const skillsVisible = ref(false);
@@ -45,16 +51,25 @@ const { target: skillsTarget } = useLazyLoad(0.1);
 const { target: aboutTarget } = useLazyLoad(0.1);
 
 onMounted(() => {
-  setTimeout(() => { projectsVisible.value = true; }, 800);
-  setTimeout(() => { skillsVisible.value = true; }, 1500);
-  setTimeout(() => { aboutVisible.value = true; }, 2200);
-  setTimeout(() => { experienceVisible.value = true; }, 2900);
+  setTimeout(() => {
+    projectsVisible.value = true;
+  }, 800);
+  setTimeout(() => {
+    skillsVisible.value = true;
+  }, 1500);
+  setTimeout(() => {
+    aboutVisible.value = true;
+  }, 2200);
+  setTimeout(() => {
+    experienceVisible.value = true;
+  }, 2900);
 });
 
 definePageMeta({ layout: 'default' });
 
 const siteUrl = 'https://chlorophyll319.github.io/workCV/';
-const description = '從設計思維到功能實現，擅長與 AI 協作的全端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。';
+const description =
+  '從設計思維到功能實現，擅長與 AI 協作的全端工程師。具備 Vue 3、Node.js 全端開發經驗，專注於使用者體驗與現代 Web 技術。';
 
 useSeoMeta({
   title: '葉芃 (Evelyn) | 全端工程師',
@@ -75,9 +90,7 @@ useSeoMeta({
 });
 
 useHead({
-  link: [
-    { rel: 'canonical', href: siteUrl },
-  ],
+  link: [{ rel: 'canonical', href: siteUrl }],
   script: [
     {
       type: 'application/ld+json',

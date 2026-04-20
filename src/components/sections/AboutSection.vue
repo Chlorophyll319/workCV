@@ -1,6 +1,6 @@
 <template>
   <section id="about" class="w-full py-16">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">{{ about.title }}</h2>
+    <h2 class="font-headline font-bold tracking-tight text-center section-heading">{{ about.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       <!-- 主欄（8/12）：故事文字 -->
       <div class="lg:col-span-8 space-y-8">

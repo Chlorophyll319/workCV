@@ -76,6 +76,28 @@ h4 {
   }
 }
 
+/* --- Section 標題文字 --- */
+
+.section-heading {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 3px;
+  background-color: var(--color-primary);
+  margin: 0.6rem auto 0;
+}
+
 /* --- Masthead 標題 --- */
 .masthead-title {
   font-family: 'Newsreader', 'Noto Serif TC', Georgia, serif;

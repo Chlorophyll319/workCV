@@ -1,6 +1,6 @@
 <template>
   <section id="experience" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
+    <h2 class="font-headline font-bold tracking-tight text-center section-heading">
       {{ experienceMeta.title }}
     </h2>
 

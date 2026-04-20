@@ -6,7 +6,7 @@
     >
       <span>{{ profile.kicker }}</span>
       <span class="text-center">{{ profile.dateline }}</span>
-      <span class="text-right">Est. 2025</span>
+      <span class="text-right">{{ MASTHEAD.est }}</span>
     </div>
 
     <!-- 主內容置中區 -->
@@ -54,6 +54,7 @@
 
 <script setup lang="ts">
 import { profile } from '@/store/data/profile';
+import { MASTHEAD } from '@/store/layout';
 
 const contactItems = [profile.contact.github, profile.contact.email, profile.contact.linkedin];
 </script>

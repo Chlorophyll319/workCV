@@ -2,6 +2,7 @@ export const MASTHEAD = {
   kicker: 'Personal CV',
   title: '個人履歷',
   tagline: '從設計思維到功能實現',
+  est: `Est. ${new Date().getFullYear()}`,
 } as const;
 
 export const currentDate = computed(() => {

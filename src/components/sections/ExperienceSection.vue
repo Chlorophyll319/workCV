@@ -6,7 +6,7 @@
       <article
         v-for="(item, index) in experienceData"
         :key="item.id"
-        class="space-y-3"
+        class="flex flex-col space-y-3"
         :class="
           index < experienceData.length - 1 ? 'md:pr-8 md:border-r md:border-outline-variant' : ''
         "
@@ -39,7 +39,7 @@
         </p>
 
         <!-- 技術標籤 -->
-        <div v-if="item.skills?.length" class="flex flex-wrap gap-1.5 pt-1">
+        <div v-if="item.skills?.length" class="flex flex-wrap gap-1.5 pt-1 mt-auto">
           <span
             v-for="skill in item.skills"
             :key="skill"

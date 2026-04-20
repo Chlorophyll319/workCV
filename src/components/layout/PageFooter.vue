@@ -7,17 +7,18 @@
           Curated by {{ profile.name }} · {{ profile.englishName }}
         </div>
 
-        <!-- 中：聯絡連結 -->
-        <div class="flex flex-wrap justify-center gap-6 md:justify-self-center">
+        <!-- 中：聯絡連結（純 icon） -->
+        <div class="flex items-center justify-center gap-6 md:justify-self-center">
           <a
-            v-for="item in [profile.contact.github, profile.contact.email, profile.contact.linkedin, profile.contact.phone]"
+            v-for="item in contactIcons"
             :key="item.href"
             :href="item.href"
+            :title="item.label"
             :target="item.external ? '_blank' : undefined"
             :rel="item.external ? 'noopener noreferrer' : undefined"
-            class="font-label text-xs tracking-widest uppercase text-on-surface hover:underline decoration-primary underline-offset-4 transition-all duration-200"
+            class="text-on-surface opacity-50 hover:opacity-100 hover:text-primary transition-all duration-200"
           >
-            {{ item.label }}
+            <Icon :icon="item.icon" class="w-5 h-5" />
           </a>
         </div>
 
@@ -31,5 +32,13 @@
 </template>
 
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
 import { profile } from '@/store/data/profile';
+
+const contactIcons = [
+  profile.contact.github,
+  profile.contact.email,
+  profile.contact.linkedin,
+  profile.contact.phone,
+];
 </script>

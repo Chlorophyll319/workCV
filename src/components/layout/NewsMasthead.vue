@@ -27,14 +27,17 @@
           <div class="dateline mb-1">{{ currentDate }}</div>
           <div
             class="text-ink-muted leading-snug italic"
-            style="font-family: 'Playfair Display', Georgia, serif; font-size: 0.75rem; max-width: 200px;"
+            style="
+              font-family: 'Playfair Display', Georgia, serif;
+              font-size: 0.75rem;
+              max-width: 200px;
+            "
           >
             {{ MASTHEAD.tagline }}
           </div>
         </div>
       </div>
     </div>
-
   </header>
 </template>
 

@@ -46,11 +46,11 @@
 </template>
 
 <script setup lang="ts">
-import { SECTIONS } from '@/store/layout'
+import { SECTIONS } from '@/store/layout';
 
-const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name, icon: s.icon }))
-const activeId = ref<string>(SECTIONS[0].id)
-const scrolled = ref(false)
+const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name, icon: s.icon }));
+const activeId = ref<string>(SECTIONS[0].id);
+const scrolled = ref(false);
 
 const linkClass = (id: string, mobile = false) => [
   'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-label tracking-wider uppercase transition-all duration-200 cursor-pointer whitespace-nowrap',
@@ -58,36 +58,40 @@ const linkClass = (id: string, mobile = false) => [
   activeId.value === id
     ? 'bg-primary/10 text-primary font-semibold'
     : 'text-on-surface/60 hover:text-on-surface hover:bg-surface-variant',
-]
+];
 
 const handleScroll = () => {
-  scrolled.value = window.scrollY > 8
+  scrolled.value = window.scrollY > 8;
 
-  const anchor = window.scrollY + window.innerHeight * 0.25
-  let current: string = SECTIONS[0].id
+  const anchor = window.scrollY + window.innerHeight * 0.25;
+  let current: string = SECTIONS[0].id;
   for (const { id } of SECTIONS) {
-    const el = document.getElementById(id)
-    if (el && el.offsetTop <= anchor) current = id
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= anchor) current = id;
   }
-  activeId.value = current
-}
+  activeId.value = current;
+};
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll()
-})
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener('scroll', handleScroll);
+});
 
 const scrollToSection = (id: string) => {
-  activeId.value = id
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
+  activeId.value = id;
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 </script>
 
 <style scoped>
-.scrollbar-none { scrollbar-width: none; }
-.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
 </style>

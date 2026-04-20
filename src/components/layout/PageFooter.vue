@@ -23,7 +23,9 @@
         </div>
 
         <!-- 右：版權 -->
-        <div class="font-label text-xs tracking-widest uppercase text-secondary md:justify-self-end">
+        <div
+          class="font-label text-xs tracking-widest uppercase text-secondary md:justify-self-end"
+        >
           © {{ new Date().getFullYear() }} {{ profile.name }}
         </div>
       </div>

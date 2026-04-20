@@ -1,10 +1,10 @@
 <template>
   <header id="hero" class="border-b-[4px] border-double border-outline-variant w-full min-h-[calc(100vh-97px)] flex flex-col">
     <!-- 頂部刊物資訊列 -->
-    <div class="flex justify-between items-end border-b border-outline-variant pb-3 text-secondary font-label text-xs tracking-widest uppercase">
+    <div class="grid grid-cols-3 items-end border-b border-outline-variant pb-3 text-secondary font-label text-xs tracking-widest uppercase">
       <span>{{ profile.kicker }}</span>
-      <span>{{ profile.dateline }}</span>
-      <span>Est. 2025</span>
+      <span class="text-center">{{ profile.dateline }}</span>
+      <span class="text-right">Est. 2025</span>
     </div>
 
     <!-- 主內容置中區 -->

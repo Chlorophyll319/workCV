@@ -23,28 +23,16 @@
         <!-- 技能列表 -->
         <ul class="space-y-3">
           <li v-for="skill in category.skills" :key="skill.name" class="font-body text-sm">
-            <div class="flex items-baseline gap-2">
-              <span class="text-primary text-xs flex-shrink-0">◆</span>
+            <div class="flex items-start gap-2">
+              <Icon :name="skill.icon" class="size-4 shrink-0 mt-0.5 text-on-surface-variant" />
               <div>
                 <span class="text-on-surface font-medium">{{ skill.name }}</span>
-                <span v-if="skill.level === 'advanced'" class="text-primary font-bold ml-1 text-xs">★</span>
                 <p class="text-on-surface-variant text-xs leading-snug mt-0.5">{{ skill.description }}</p>
               </div>
             </div>
           </li>
         </ul>
       </div>
-    </div>
-
-    <!-- 圖例 -->
-    <div class="mt-8 pt-4 border-t border-outline-variant flex flex-wrap items-center gap-6">
-      <span class="font-label text-xs tracking-widest uppercase text-secondary">圖例</span>
-      <span class="font-body text-xs text-on-surface-variant flex items-center gap-1.5">
-        <span class="text-primary text-xs">★</span> 進階熟練
-      </span>
-      <span class="font-body text-xs text-on-surface-variant flex items-center gap-1.5">
-        <span class="text-primary text-xs">◆</span> 具備經驗
-      </span>
     </div>
   </section>
 </template>

@@ -1,36 +1,51 @@
 <template>
-  <nav class="bg-surface border-b-[5px] border-solid border-outline-variant sticky top-0 z-50 w-full">
+  <nav
+    :class="[
+      'bg-surface border-b border-outline-variant sticky top-0 z-50 w-full transition-shadow duration-300',
+      scrolled ? 'shadow-md' : 'shadow-none',
+    ]"
+  >
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="flex justify-between items-center py-5">
-        <!-- 左：刊物品牌名稱 -->
-        <div
-          class="font-headline font-bold uppercase tracking-tighter text-on-surface select-none"
-          style="font-size: clamp(1.25rem, 3vw, 1.875rem); line-height: 1;"
+      <div class="flex justify-between items-center h-14 md:h-16">
+        <!-- 左：品牌 -->
+        <button
+          class="select-none text-left cursor-pointer"
+          @click="scrollToSection('hero')"
         >
-          {{ MASTHEAD.title }}
-        </div>
+          <div class="text-[10px] font-label tracking-[0.2em] uppercase text-primary leading-none mb-0.5">
+            {{ MASTHEAD.kicker }}
+          </div>
+          <div
+            class="font-headline font-bold uppercase tracking-tighter text-on-surface leading-none"
+            style="font-size: clamp(0.9rem, 2.2vw, 1.375rem);"
+          >
+            {{ MASTHEAD.title }}
+          </div>
+        </button>
 
         <!-- 中/右：導覽連結（Desktop） -->
-        <div class="hidden md:flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-1">
           <button
             v-for="item in navItems"
             :key="item.id"
             @click="scrollToSection(item.id)"
             :class="linkClass(item.id)"
           >
-            {{ item.label }}
+            <Icon :name="item.icon" class="size-3.5 shrink-0" />
+            <span>{{ item.label }}</span>
           </button>
         </div>
 
-        <!-- Mobile：漢堡選單位置用橫向滾動代替 -->
-        <div class="flex md:hidden items-center gap-4 overflow-x-auto scrollbar-none">
+        <!-- Mobile：橫向滾動 -->
+        <div class="flex md:hidden items-center gap-1 overflow-x-auto scrollbar-none">
           <button
             v-for="item in navItems"
             :key="item.id"
             @click="scrollToSection(item.id)"
             :class="linkClass(item.id, true)"
           >
-            {{ item.label }}
+            <Icon :name="item.icon" class="size-3.5 shrink-0" />
+            <span>{{ item.label }}</span>
           </button>
         </div>
       </div>
@@ -41,18 +56,21 @@
 <script setup lang="ts">
 import { SECTIONS, MASTHEAD } from '@/store/layout'
 
-const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name }))
+const navItems = SECTIONS.map((s) => ({ id: s.id, label: s.name, icon: s.icon }))
 const activeId = ref<string>(SECTIONS[0].id)
+const scrolled = ref(false)
 
 const linkClass = (id: string, mobile = false) => [
-  'font-label text-sm tracking-widest uppercase pb-1 border-b-2 transition-colors duration-200 cursor-pointer whitespace-nowrap',
-  mobile ? 'flex-shrink-0' : '',
+  'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-label tracking-wider uppercase transition-all duration-200 cursor-pointer whitespace-nowrap',
+  mobile ? 'shrink-0' : '',
   activeId.value === id
-    ? 'text-primary font-bold border-b-primary'
-    : 'text-on-surface opacity-70 hover:opacity-100 hover:text-primary border-b-transparent',
+    ? 'bg-primary/10 text-primary font-semibold'
+    : 'text-on-surface/60 hover:text-on-surface hover:bg-surface-variant',
 ]
 
-const updateActive = () => {
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 8
+
   const anchor = window.scrollY + window.innerHeight * 0.25
   let current: string = SECTIONS[0].id
   for (const { id } of SECTIONS) {
@@ -63,12 +81,12 @@ const updateActive = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', updateActive, { passive: true })
-  updateActive()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  handleScroll()
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', updateActive)
+  window.removeEventListener('scroll', handleScroll)
 })
 
 const scrollToSection = (id: string) => {

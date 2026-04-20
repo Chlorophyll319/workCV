@@ -1,30 +1,34 @@
 <template>
   <section id="experience" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
-      我的經歷
-    </h2>
+    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">我的經歷</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <article
         v-for="(item, index) in experienceData"
         :key="item.id"
         class="space-y-3"
-        :class="index < experienceData.length - 1 ? 'md:pr-8 md:border-r md:border-outline-variant' : ''"
+        :class="
+          index < experienceData.length - 1 ? 'md:pr-8 md:border-r md:border-outline-variant' : ''
+        "
       >
         <!-- 時間 -->
-        <div class="font-label text-xs tracking-widest uppercase"
+        <div
+          class="font-label text-xs tracking-widest uppercase"
           :class="index === 0 ? 'text-primary' : 'text-secondary'"
         >
           {{ formatExperienceDate(item.startDate, item.endDate) }}
         </div>
 
         <!-- 職稱/標題 -->
-        <h3 class="font-headline font-bold leading-tight" style="font-size: 1.25rem;">
+        <h3 class="font-headline font-bold leading-tight" style="font-size: 1.25rem">
           {{ item.gitCommitStyle || item.title }}
         </h3>
 
         <!-- 組織 -->
-        <h4 class="font-body text-sm font-medium text-secondary m-0 normal-case tracking-normal" style="letter-spacing: normal;">
+        <h4
+          class="font-body text-sm font-medium text-secondary m-0 normal-case tracking-normal"
+          style="letter-spacing: normal"
+        >
           {{ item.organization }}
         </h4>
 
@@ -39,7 +43,8 @@
             v-for="skill in item.skills.slice(0, 5)"
             :key="skill"
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
-          >{{ skill }}</span>
+            >{{ skill }}</span
+          >
           <span v-if="item.skills.length > 5" class="font-body text-xs text-secondary">
             +{{ item.skills.length - 5 }}
           </span>
@@ -50,8 +55,5 @@
 </template>
 
 <script setup lang="ts">
-import {
-  experienceData,
-  formatExperienceDate,
-} from '@/store/data/experience';
+import { experienceData, formatExperienceDate } from '@/store/data/experience';
 </script>

@@ -1,8 +1,6 @@
 <template>
   <section id="projects" class="pt-16 pb-16 w-full">
-    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">
-      作品集
-    </h2>
+    <h2 class="font-headline font-bold tracking-tight mb-12 text-center">作品集</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
       <article
@@ -18,16 +16,19 @@
         <div class="flex-1 space-y-3">
           <!-- 類型 + 狀態 -->
           <div class="flex items-center gap-3">
-            <span class="font-label text-xs tracking-widest uppercase text-secondary">{{ project.type }}</span>
+            <span class="font-label text-xs tracking-widest uppercase text-secondary">{{
+              project.type
+            }}</span>
             <span class="text-outline-variant">·</span>
             <span
               class="font-label text-xs tracking-widest uppercase font-bold"
               :class="project.status === '已完成' ? 'text-secondary' : 'text-primary'"
-            >{{ project.status }}</span>
+              >{{ project.status }}</span
+            >
           </div>
 
           <!-- 標題 -->
-          <h3 class="font-headline font-bold leading-tight" style="font-size: 1.375rem;">
+          <h3 class="font-headline font-bold leading-tight" style="font-size: 1.375rem">
             {{ project.name }}
           </h3>
 
@@ -55,7 +56,8 @@
             v-for="tech in project.techStack"
             :key="tech"
             class="font-mono text-xs px-2 py-0.5 border border-outline-variant text-on-surface-variant"
-          >{{ tech }}</span>
+            >{{ tech }}</span
+          >
         </div>
 
         <!-- 連結 -->
@@ -63,7 +65,8 @@
           <a
             v-if="project.demoUrl"
             :href="project.demoUrl"
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
             class="font-label text-xs tracking-widest uppercase px-4 py-2 bg-primary text-on-primary hover:bg-primary-container transition-colors duration-200 inline-flex items-center gap-1.5"
           >
             <Icon icon="heroicons:arrow-top-right-on-square" class="w-3 h-3" />
@@ -72,7 +75,8 @@
           <a
             v-if="project.githubUrl"
             :href="project.githubUrl"
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
             class="font-label text-xs tracking-widest uppercase px-4 py-2 border border-on-surface text-on-surface hover:bg-surface-container transition-colors duration-200 inline-flex items-center gap-1.5"
           >
             <Icon icon="heroicons:code-bracket" class="w-3 h-3" />

@@ -7,13 +7,13 @@
         <!-- Pull quote -->
         <blockquote class="border-l-4 border-primary pl-5 py-1">
           <p class="font-headline text-xl leading-snug text-on-surface">
-            「{{ profile.about.quote }}」
+            「{{ about.quote }}」
           </p>
         </blockquote>
 
         <!-- 正文 -->
         <div class="font-body text-base leading-relaxed text-on-surface-variant space-y-4">
-          <p>{{ profile.about.description }}</p>
+          <p>{{ about.description }}</p>
           <p>{{ profile.description }}</p>
         </div>
 
@@ -22,7 +22,7 @@
           <h4 class="mb-3">核心優勢</h4>
           <div class="flex flex-wrap gap-2">
             <span
-              v-for="item in profile.about.sections.highlights.items"
+              v-for="item in about.sections.highlights.items"
               :key="item"
               class="font-label text-xs px-3 py-1.5 border border-outline text-on-surface tracking-wide uppercase hover:bg-on-surface hover:text-surface transition-colors duration-200 cursor-default"
             >{{ item }}</span>
@@ -78,6 +78,7 @@
 </template>
 
 <script setup lang="ts">
+import { about } from '@/store/data/about';
 import { profile } from '@/store/data/profile';
 
 const openId = ref<string | null>(null)
@@ -85,24 +86,24 @@ const openId = ref<string | null>(null)
 const glanceItems = [
   {
     id: 'background',
-    icon: profile.about.sections.background.icon,
+    icon: about.sections.background.icon,
     iconColor: 'text-secondary',
-    title: profile.about.sections.background.title,
-    content: `${profile.about.sections.background.from} → ${profile.about.sections.background.to}`,
+    title: about.sections.background.title,
+    content: `${about.sections.background.from} → ${about.sections.background.to}`,
   },
   {
     id: 'philosophy',
-    icon: profile.about.sections.philosophy.icon,
+    icon: about.sections.philosophy.icon,
     iconColor: 'text-secondary',
-    title: profile.about.sections.philosophy.title,
-    content: profile.about.sections.philosophy.description,
+    title: about.sections.philosophy.title,
+    content: about.sections.philosophy.description,
   },
   {
     id: 'currentFocus',
-    icon: profile.about.sections.currentFocus.icon,
+    icon: about.sections.currentFocus.icon,
     iconColor: 'text-primary',
-    title: profile.about.sections.currentFocus.title,
-    content: profile.about.sections.currentFocus.description,
+    title: about.sections.currentFocus.title,
+    content: about.sections.currentFocus.description,
   },
   {
     id: 'contact',

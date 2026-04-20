@@ -1,5 +1,3 @@
-const TAGLINE = '從需求拆解、技術選型到系統設計，具備完整工程經驗';
-
 export const about = {
   title: '關於我',
   description:
@@ -32,5 +30,5 @@ export const about = {
   glance: {
     title: 'At a Glance',
   },
-  quote: TAGLINE,
+  quote: '從需求拆解、技術選型到系統設計，具備完整工程經驗',
 };

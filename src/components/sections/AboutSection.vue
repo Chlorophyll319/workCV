@@ -8,7 +8,7 @@
         <blockquote class="pull-quote">「{{ about.quote }}」</blockquote>
 
         <!-- 正文 -->
-        <div class="font-body text-base leading-relaxed text-on-surface-variant space-y-4">
+        <div class="font-body mt-1 text-base leading-relaxed text-on-surface-variant space-y-4">
           <p>{{ about.description }}</p>
           <p>{{ profile.description }}</p>
         </div>
@@ -21,7 +21,8 @@
               v-for="item in about.sections.highlights.items"
               :key="item"
               class="font-label text-xs px-3 py-1.5 border border-outline text-on-surface tracking-wide uppercase hover:bg-on-surface hover:text-surface transition-colors duration-200 cursor-default"
-            >{{ item }}</span>
+              >{{ item }}</span
+            >
           </div>
         </div>
       </div>
@@ -29,7 +30,9 @@
       <!-- 側欄（4/12）：AT A GLANCE 手風琴 -->
       <aside class="lg:col-span-4 border border-outline-variant">
         <div class="border-b border-outline-variant px-5 py-3">
-          <span class="font-label text-xs tracking-widest uppercase text-on-surface font-bold">{{ about.glance.title }}</span>
+          <span class="font-label text-xs tracking-widest uppercase text-on-surface font-bold">{{
+            about.glance.title
+          }}</span>
         </div>
 
         <div class="divide-y divide-outline-variant/50 font-body text-sm">
@@ -63,7 +66,8 @@
                   :href="item.href"
                   class="text-on-surface-variant leading-relaxed"
                   :class="item.href ? 'text-primary hover:underline underline-offset-2' : ''"
-                >{{ item.content }}</component>
+                  >{{ item.content }}</component
+                >
               </div>
             </Transition>
           </div>
@@ -77,7 +81,7 @@
 import { about } from '@/store/data/about';
 import { profile } from '@/store/data/profile';
 
-const openId = ref<string | null>(null)
+const openId = ref<string | null>(null);
 
 const glanceItems = [
   {
@@ -109,5 +113,5 @@ const glanceItems = [
     content: profile.contact.email.label,
     href: profile.contact.email.href,
   },
-]
+];
 </script>

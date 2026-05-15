@@ -178,8 +178,8 @@ export const projects: Project[] = [
       'JWT',
       'Passport.js',
     ],
-    demoUrl: 'https://chlorophyll319.github.io/frontPrWebOnlineVer-vite-project/#/',
-    githubUrl: 'https://github.com/Chlorophyll319/frontPrWebOnlineVer-vite-project',
+    demoUrl: 'https://chlorophyll319.github.io/frontPrWeb',
+    githubUrl: 'https://github.com/Chlorophyll319/frontPrWeb',
     icon: 'i-ph-graduation-cap',
     status: '已完成',
     metrics: {

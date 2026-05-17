@@ -17,7 +17,11 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/logo-color.svg' },
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          href: `${process.env.NODE_ENV === 'production' ? '/workCV' : ''}/logo-color.svg`,
+        },
       ],
     },
   },

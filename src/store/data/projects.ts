@@ -117,7 +117,7 @@ export const projects: Project[] = [
       duration: '持續更新',
     },
     highlights: [
-      '指令產生器：支援 clone、commit、merge、branch 等多種指令類型',
+      '指令產生器：支援 cherry-pick、tag、remote、log 等多種指令類型',
       '危險指令加二次確認與 Enter 快捷鍵保護',
       '速查表：分類 Tab 篩選 + 指令範例展開',
       '情境導向：依使用情境引導選擇正確指令',
@@ -131,9 +131,9 @@ export const projects: Project[] = [
     name: 'Evenly - 個人履歷網站',
     type: '前端專案',
     description:
-      '一頁式個人履歷網站，使用 Nuxt 3（SPA mode）搭配 Vue 3、TypeScript、Tailwind CSS v4，整合 Pinia 狀態管理，建立 SEO 機制與 GitHub Actions 自動部署。',
+      '一頁式個人履歷網站，設計歷經大改版（初版 VSCode 風格 → 現版報紙排版風格），持續迭代優化。使用 Nuxt 4（SPA mode）搭配 Vue 3、TypeScript、Tailwind CSS v4，整合 Pinia 狀態管理，建立 SEO 機制與 GitHub Actions 自動部署。',
     techStack: [
-      'Nuxt 3',
+      'Nuxt 4',
       'Vue 3',
       'TypeScript',
       'Tailwind CSS v4',
@@ -153,8 +153,8 @@ export const projects: Project[] = [
     },
     highlights: [
       '報紙版面系統：Hero 頭版、技能與專案區塊採報紙分欄排版',
-      'Nuxt 3 SPA mode + TypeScript 全覆蓋，型別安全開發',
-      'Pinia 狀態管理 + Nuxt 3 自動化路由，建立型別定義與資料模型',
+      'Nuxt 4 SPA mode + TypeScript 全覆蓋，型別安全開發',
+      'Pinia 狀態管理 + Nuxt 4 自動化路由，建立型別定義與資料模型',
       'SEO：useSeoMeta + Open Graph / Twitter Card / JSON-LD 結構化資料',
       'GitHub Actions 自動部署至 GitHub Pages',
     ],

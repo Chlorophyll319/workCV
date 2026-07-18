@@ -41,7 +41,7 @@ export const skills: Skill[] = [
 
   // Frontend
   {
-    name: 'Vue 3 / Nuxt 3',
+    name: 'Vue 3 / Nuxt 4',
     icon: 'logos:nuxt-icon',
     description: 'Composition API、Pinia、SPA/SSG 部署',
     level: 'intermediate',
@@ -62,7 +62,7 @@ export const skills: Skill[] = [
     category: 'frontend'
   },
   {
-    name: 'Pinia / Zustand',
+    name: 'Pinia / Zustand / Redux',
     icon: 'heroicons:circle-stack',
     description: '跨框架狀態管理、持久化儲存',
     level: 'intermediate',
@@ -95,6 +95,13 @@ export const skills: Skill[] = [
     name: 'MongoDB / Mongoose',
     icon: 'logos:mongodb-icon',
     description: 'NoSQL 資料庫、ODM、ERD 設計',
+    level: 'intermediate',
+    category: 'backend'
+  },
+  {
+    name: 'PostgreSQL / Prisma',
+    icon: 'logos:postgresql',
+    description: '關聯式資料庫、schema 設計與交易處理',
     level: 'intermediate',
     category: 'backend'
   },
@@ -132,6 +139,20 @@ export const skills: Skill[] = [
     name: 'Render',
     icon: 'simple-icons:render',
     description: '後端服務部署、環境管理',
+    level: 'intermediate',
+    category: 'tools'
+  },
+  {
+    name: 'Figma',
+    icon: 'logos:figma',
+    description: '介面設計、設計稿協作與交付',
+    level: 'intermediate',
+    category: 'tools'
+  },
+  {
+    name: 'AI 協作開發',
+    icon: 'heroicons:sparkles',
+    description: 'Claude Code、Codex、Antigravity CLI 協作工作流',
     level: 'intermediate',
     category: 'tools'
   },

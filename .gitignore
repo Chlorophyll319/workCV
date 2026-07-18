@@ -27,6 +27,7 @@ dist-ssr
 auto-imports.d.ts
 components.d.ts
 typed-router.d.ts
+src/types/global.d.ts
 
 # Nuxt generated files
 .nuxt

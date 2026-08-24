@@ -195,4 +195,38 @@ export const projects: Project[] = [
       'Markdown 整合 highlight.js 程式碼高亮與 Mermaid 圖表渲染',
     ],
   },
+  {
+    id: 5,
+    name: 'LeaveFlow - 請假流程管理系統',
+    type: '全端專案',
+    description:
+      '以 ASP.NET Core MVC 打造的請假申請與簽核系統，員工線上提交申請、主管線上核准或駁回，狀態集中管理並可依狀態篩選查詢。狀態流轉嚴格限制在 Pending → Approved／Rejected／Cancelled 三條路徑，編輯與取消動作皆有伺服器端狀態守衛；以小時計時的工時計算另設上班時段公式與雙重驗證防線，避免邊界情況換算為 0。',
+    techStack: [
+      'C#',
+      'ASP.NET Core MVC',
+      '.NET 10',
+      'Razor Views',
+      'Bootstrap',
+      'Entity Framework Core',
+      'PostgreSQL',
+      'Npgsql',
+      'xUnit',
+    ],
+    githubUrl: 'https://github.com/Chlorophyll319/leave-flow',
+    icon: 'i-ph-calendar-check',
+    status: '已完成',
+    metrics: {
+      coreFeatures: '請假申請 CRUD、狀態流轉守衛、主管簽核流程',
+      scale: '3 張資料表、6 項核心功能（申請/清單/詳情/編輯/取消/簽核）',
+      duration: '35 天',
+    },
+    highlights: [
+      '狀態機設計：Pending → Approved／Rejected／Cancelled，無實體刪除，簽核與取消紀錄皆保留',
+      '表單防竄改與狀態守衛：僅 Pending 可編輯／取消，URL 直接存取非 Pending 申請會被拒絕並導回清單',
+      '以小時計時工時計算：固定上班時段扣除午休，時間輸入粒度限制 + 換算工時下限雙重防線',
+      'EF Core HasData() 建立 Seed 員工資料，隨 Migration 寫入 PostgreSQL（Neon）',
+      'xUnit + EF Core InMemory Provider 測試，涵蓋 ViewModel／Controller 狀態守衛與重複簽核防護',
+      'User Secrets 管理連線字串，機密設定不進版控',
+    ],
+  },
 ];

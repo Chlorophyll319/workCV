@@ -214,7 +214,7 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/Chlorophyll319/leave-flow',
     icon: 'i-ph-calendar-check',
-    status: '持續更新',
+    status: '已完成',
     metrics: {
       coreFeatures: '請假申請 CRUD、狀態流轉守衛、主管簽核流程',
       scale: '3 張資料表、6 項核心功能（申請/清單/詳情/編輯/取消/簽核）',
